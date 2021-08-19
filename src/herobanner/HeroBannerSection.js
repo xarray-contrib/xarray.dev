@@ -11,7 +11,7 @@ import {
   Box,
   Link,
 } from "@chakra-ui/react"
-export const HeroBanner = () => {
+export const HeroBannerSection = () => {
   return (
     <Container maxW={"7xl"}>
       <Stack
