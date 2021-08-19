@@ -7,7 +7,14 @@ export const NavBar = () => {
   const [display, setDisplay] = useState("none")
   return (
     <Flex>
-      <Flex position="absolute" top="1rem" right="1rem" align="center">
+      <Flex
+        as="nav"
+        justify="space-between"
+        position="fixed"
+        top="1rem"
+        right="1rem"
+        align="center"
+      >
         <Flex display={["none", "none", "flex", "flex"]}>
           <NextLink href="#" passHref>
             <Button as="a" variant="ghost" aria-label="Home" my={5} w="100%">
