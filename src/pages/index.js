@@ -1,9 +1,13 @@
-import Header from "components/sections/header"
+import Head from "next/head"
+import { NavBar } from "navbar"
 
 export default function IndexPage() {
   return (
     <>
-      <Header />
+      <Head>
+        <title>xarray: N-D labeled arrays and datasets in Python</title>
+      </Head>
+      <NavBar />
     </>
   )
 }
