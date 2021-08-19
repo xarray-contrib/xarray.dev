@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Switch, Button, Icon } from "@chakra-ui/react"
+import { Flex, Switch, Button, IconButton } from "@chakra-ui/react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
 
@@ -68,6 +68,14 @@ export const NavBar = () => {
             </Button>
           </NextLink>
         </Flex>
+
+        <IconButton
+          aria-label="Open Menu"
+          size="lg"
+          mr={2}
+          icon={<HamburgerIcon />}
+          onClick={() => {}}
+        />
       </Flex>
     </Flex>
   )
