@@ -9,11 +9,9 @@ export default function IndexPage() {
       <Head>
         <title>xarray: N-D labeled arrays and datasets in Python</title>
       </Head>
-      <Container maxW={"10xl"}>
-        <Stack direction="row">
-          <NavBar />
-          <HeroBanner />
-        </Stack>
+      <Container maxW={"full"}>
+        <NavBar />
+        <HeroBanner />
       </Container>
     </>
   )
