@@ -64,19 +64,29 @@ export const HeroBanner = () => {
               bg={"red.400"}
               _hover={{ bg: "red.500" }}
             >
-              <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/index.html">
+              <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/quick-overview.html">
                 Get Started
+              </Link>
+            </Button>
+            <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
+              <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/why-xarray.html">
+                Why xarray?
               </Link>
             </Button>
           </Stack>
         </Stack>
-        <Flex>
-          <AspectRatio>
+        <Flex
+          flex={1}
+          justify={"center"}
+          align={"center"}
+          position={"relative"}
+          w={"full"}
+        >
+          <AspectRatio flex="1 1 auto">
             <iframe
-              width="560"
-              height="315"
               src="https://www.youtube.com/embed/X0pAhJgySxk"
-              title="YouTube video player"
+              title="xarray presentation @ SciPy 2015"
+              allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             ></iframe>
           </AspectRatio>
