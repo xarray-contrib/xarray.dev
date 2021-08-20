@@ -1,7 +1,8 @@
 import Head from "next/head"
 import { Container, Stack } from "@chakra-ui/react"
 import { NavBar } from "navbar"
-import { HeroBanner } from "herobanner"
+import { HeroBannerSection } from "herobanner"
+import { FeaturesSection } from "features"
 
 export default function IndexPage() {
   return (
@@ -11,7 +12,8 @@ export default function IndexPage() {
       </Head>
       <Container maxW={"full"}>
         <NavBar />
-        <HeroBanner />
+        <HeroBannerSection />
+        <FeaturesSection />
       </Container>
     </>
   )

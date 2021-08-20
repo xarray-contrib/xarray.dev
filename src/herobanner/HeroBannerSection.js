@@ -11,7 +11,7 @@ import {
   Box,
   Link,
 } from "@chakra-ui/react"
-export const HeroBanner = () => {
+export const HeroBannerSection = () => {
   return (
     <Container maxW={"7xl"}>
       <Stack
@@ -46,10 +46,17 @@ export const HeroBanner = () => {
               N-D labeled arrays and datasets in Python
             </Text>
           </Heading>
-          <Text color={"gray.500"}>
-            Xarray introduces labels in the form of dimensions, coordinates, and
-            attributes on top of raw NumPy-like arrays, which allows for more
-            intuitive, more concise, and less error-prone user experience.
+          <Text color={"gray.600"} fontSize={"lg"}>
+            <strong>xarray</strong> (formerly <strong>xray</strong>) is an open
+            source project and Python package that introduces labels in the form
+            of dimensions, coordinates, and attributes on top of raw NumPy-like
+            arrays, which allows for more intuitive, more concise, and less
+            error-prone user experience.
+            <br />
+            <br />
+            xarray includes a large and growing library of domain-agnostic
+            functions for advanced analytics and visualization with these data
+            structures.
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
