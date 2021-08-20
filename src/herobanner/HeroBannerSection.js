@@ -46,7 +46,7 @@ export const HeroBannerSection = () => {
               N-D labeled arrays and datasets in Python
             </Text>
           </Heading>
-          <Text color={"gray.500"}>
+          <Text color={"gray.600"} fontSize={"lg"}>
             <strong>xarray</strong> (formerly <strong>xray</strong>) is an open
             source project and Python package that introduces labels in the form
             of dimensions, coordinates, and attributes on top of raw NumPy-like
