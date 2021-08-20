@@ -1,8 +1,6 @@
 import Head from "next/head"
 import { Container, Stack } from "@chakra-ui/react"
-import { NavBar } from "navbar"
-import { HeroBannerSection } from "herobanner"
-import { FeaturesSection } from "features"
+import { FeaturesSection, HeroBannerSection, NavBar } from "components"
 
 export default function IndexPage() {
   return (
