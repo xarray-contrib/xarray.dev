@@ -3,12 +3,10 @@ import {
   Flex,
   Container,
   Text,
-  Image,
   Stack,
   Heading,
   AspectRatio,
   Button,
-  Box,
   Link,
 } from "@chakra-ui/react"
 export const HeroBannerSection = () => {

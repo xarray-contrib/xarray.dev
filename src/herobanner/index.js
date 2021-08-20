@@ -1,1 +1,0 @@
-export { HeroBannerSection } from "./HeroBannerSection"
