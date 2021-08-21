@@ -28,7 +28,7 @@ export const EcosystemSection = () => {
       </Stack>
 
       <Container maxW={"6xl"} mt={10}>
-        <Tabs defaultIndex={1}>
+        <Tabs align="center" variant="soft-rounded" colorScheme="teal">
           <TabList>
             <Tab>Scientific Domains</Tab>
             <Tab>Array Libraries</Tab>

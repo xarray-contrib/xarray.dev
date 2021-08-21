@@ -27,9 +27,9 @@ export const SponsorsSection = () => {
       <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
           <Heading>Supported By</Heading>
-          <Text>
+          <Text color={"gray.600"} fontSize={"lg"}>
             We thank these institutions for generously supporting the
-            development and maintenance of xarray
+            development and maintenance of xarray.
           </Text>
         </Stack>
         <Stack

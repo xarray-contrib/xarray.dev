@@ -6,6 +6,7 @@ import {
   NavBar,
   EcosystemSection,
   SponsorsSection,
+  DonateSection,
 } from "components"
 
 export default function IndexPage() {
@@ -20,6 +21,7 @@ export default function IndexPage() {
         <FeaturesSection />
         <EcosystemSection />
         <SponsorsSection />
+        <DonateSection />
       </Container>
     </>
   )

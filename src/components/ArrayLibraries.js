@@ -3,7 +3,7 @@ import { Text, Image, Stack, Flex, Box, SimpleGrid } from "@chakra-ui/react"
 
 const Library = ({ name, description, url, logo }) => {
   return (
-    <Stack>
+    <Stack align="center">
       <Flex
         w={16}
         h={16}
