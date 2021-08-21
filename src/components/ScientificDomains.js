@@ -43,27 +43,27 @@ export const ScientificDomains = () => {
       },
       {
         name: "climpred",
-        description: "loremipsum",
+        description: "Verification of weather and climate forecasts.",
         domain: "GeoScience",
         repo: "https://github.com/pangeo-data/climpred",
       },
       {
         name: "xarray-spatial",
-        description: "loremipsum",
+        description: "Raster-based Spatial Analytics for Python",
         domain: "Geoscience",
-        repo: "https://github.com/pangeo-data/climpred",
+        repo: "https://github.com/makepath/xarray-spatial",
       },
       {
         name: "SquidPy",
-        description: "loremipsum",
+        description: "Spatial Single Cell Analysis in Python",
         domain: "Bionformatics",
-        repo: "https://github.com/pangeo-data/climpred",
+        repo: "https://github.com/theislab/squidpy",
       },
       {
         name: "xskillscore",
-        description: "loremipsum",
+        description: "Metrics for verifying forecasts",
         domain: "Statistical Computing",
-        repo: "https://github.com/pangeo-data/climpred",
+        repo: "https://github.com/xarray-contrib/xskillscore",
       },
       {
         name: "xrft",
@@ -86,6 +86,11 @@ export const ScientificDomains = () => {
 
   return (
     <Container maxW={"full"} mt={10}>
+      <Text color={"gray.600"} fontSize={"lg"}>
+        This section lists some of the standalone packages, projects developed
+        with xarray.
+      </Text>
+      <br />
       <Table variant="striped" colorScheme="teal">
         <TableCaption>
           <Button
@@ -97,7 +102,7 @@ export const ScientificDomains = () => {
             bg={"red.400"}
             _hover={{ bg: "red.500" }}
           >
-            <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/quick-overview.html">
+            <Link href="https://xarray.pydata.org/en/stable/ecosystem.html">
               See More
             </Link>
           </Button>
