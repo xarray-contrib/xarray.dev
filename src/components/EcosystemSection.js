@@ -10,10 +10,10 @@ import {
   Tab,
   TabPanel,
   TabPanels,
-  Image,
 } from "@chakra-ui/react"
 
 import { ScientificDomains } from "./ScientificDomains"
+import { ArrayLibraries } from "./ArrayLibraries"
 
 export const EcosystemSection = () => {
   return (
@@ -38,7 +38,7 @@ export const EcosystemSection = () => {
               <ScientificDomains />
             </TabPanel>
             <TabPanel>
-              <Text>Test</Text>
+              <ArrayLibraries />
             </TabPanel>
           </TabPanels>
         </Tabs>

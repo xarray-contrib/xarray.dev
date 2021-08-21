@@ -67,7 +67,7 @@ export const ScientificDomains = () => {
       },
       {
         name: "xrft",
-        description: "Signal Processing",
+        description: "Fourier transforms for xarray data",
         domain: "Signal Processing",
         repo: "https://github.com/pangeo-data/climpred",
       },
@@ -109,8 +109,8 @@ export const ScientificDomains = () => {
         </TableCaption>
         <Thead>
           <Tr>
-            {columns.map((column, index) => (
-              <Th key={index}>{column.Header}</Th>
+            {columns.map((column) => (
+              <Th key={column.accessor}>{column.Header}</Th>
             ))}
           </Tr>
         </Thead>
