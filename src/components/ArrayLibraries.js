@@ -1,0 +1,95 @@
+import React from "react"
+import { Text, Image, Stack, Flex, Box, SimpleGrid } from "@chakra-ui/react"
+
+const Library = ({ name, description, url, logo }) => {
+  return (
+    <Stack>
+      <Flex
+        w={16}
+        h={16}
+        align={"center"}
+        justify={"center"}
+        color={"white"}
+        rounded={"full"}
+        bg={"gray.50"}
+        mb={1}
+      >
+        <Image src={logo} alt={name} w={12} h={12}></Image>
+      </Flex>
+
+      <Text as="a" href={url} fontWeight={600}>
+        {name}
+      </Text>
+      <Text color={"gray.600"}>{description}</Text>
+    </Stack>
+  )
+}
+
+export const ArrayLibraries = () => {
+  const libraries = React.useMemo(
+    () => [
+      {
+        name: "NumPy",
+        description:
+          "NumPy is the fundamental package for array computing with Python.",
+        url: "https://numpy.org",
+        logo: "https://raw.githubusercontent.com/numpy/numpy.org/master/static/images/logos/numpy_logo.svg",
+      },
+      {
+        name: "Dask",
+        description:
+          "Distributed arrays and advanced parallelism for analytics, enabling performance at scale.",
+        url: "https://dask.org/",
+        logo: "https://raw.githubusercontent.com/andersy005/xarray-tutorial/main/images/dask_horizontal.svg",
+      },
+      {
+        name: "CuPy",
+        description:
+          "NumPy-compatible array library for GPU-accelerated computing with Python.",
+        url: "https://cupy.chainer.org/",
+        logo: "https://github.com/cupy/cupy/blob/master/docs/image/cupy_logo_1000px.png?raw=true",
+      },
+      {
+        name: "Zarr",
+        description:
+          "An implementation of chunked, compressed, N-dimensional arrays for Python.",
+        url: "http://zarr.readthedocs.io/",
+        logo: "https://raw.githubusercontent.com/zarr-developers/community/master/logos/logo1.png",
+      },
+      {
+        name: "Sparse",
+        description: "Sparse multi-dimensional arrays for the PyData ecosystem",
+        url: "https://sparse.pydata.org/",
+        logo: "https://github.com/pydata/sparse/blob/master/docs/logo.png?raw=true",
+      },
+      {
+        name: "Pint",
+        description: "Operate and manipulate physical quantities in Python",
+        url: "http://pint.readthedocs.org/",
+        logo: "https://github.com/hgrecco/pint/blob/master/docs/_static/logo-full.jpg?raw=true",
+      },
+    ],
+    []
+  )
+  return (
+    <Box p={4}>
+      <Text color={"gray.600"} fontSize={"lg"}>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua.
+      </Text>
+      <br />
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+        {libraries.map((library, index) => (
+          <Library
+            key={index}
+            name={library.name}
+            description={library.description}
+            logo={library.logo}
+            url={library.url}
+          />
+        ))}
+      </SimpleGrid>
+    </Box>
+  )
+}

@@ -1,6 +1,11 @@
 import Head from "next/head"
-import { Container, Stack } from "@chakra-ui/react"
-import { FeaturesSection, HeroBannerSection, NavBar } from "components"
+import { Container } from "@chakra-ui/react"
+import {
+  FeaturesSection,
+  HeroBannerSection,
+  NavBar,
+  EcosystemSection,
+} from "components"
 
 export default function IndexPage() {
   return (
@@ -12,6 +17,7 @@ export default function IndexPage() {
         <NavBar />
         <HeroBannerSection />
         <FeaturesSection />
+        <EcosystemSection />
       </Container>
     </>
   )
