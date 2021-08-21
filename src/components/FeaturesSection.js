@@ -9,6 +9,7 @@ import {
   HStack,
   Icon,
   VStack,
+  useColorModeValue,
 } from "@chakra-ui/react"
 
 import { CheckIcon } from "@chakra-ui/icons"
@@ -50,7 +51,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <Box p={4}>
+    <Box p={4} bg={useColorModeValue("gray.100", "gray.700")}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
         <Text color={"gray.600"} fontSize={"lg"}>
