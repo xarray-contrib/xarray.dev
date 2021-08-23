@@ -9,7 +9,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react"
-
+import { ChevronDownIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
 
 const MobileNavItem = ({ href, children, label }) => {
