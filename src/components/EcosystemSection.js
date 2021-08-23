@@ -30,15 +30,15 @@ export const EcosystemSection = () => {
       <Container maxW={"6xl"} mt={10}>
         <Tabs align="center" variant="soft-rounded" colorScheme="teal">
           <TabList>
-            <Tab>Scientific Domains</Tab>
             <Tab>Array Libraries</Tab>
+            <Tab>Scientific Domains</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <ScientificDomains />
+              <ArrayLibraries />
             </TabPanel>
             <TabPanel>
-              <ArrayLibraries />
+              <ScientificDomains />
             </TabPanel>
           </TabPanels>
         </Tabs>
