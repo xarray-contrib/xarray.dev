@@ -1,9 +1,9 @@
 import Head from "next/head"
 import { Container } from "@chakra-ui/react"
 import {
+  Header,
   FeaturesSection,
   HeroBannerSection,
-  NavBar,
   EcosystemSection,
   SponsorsSection,
   DonateSection,
@@ -16,8 +16,8 @@ export default function IndexPage() {
       <Head>
         <title>xarray: N-D labeled arrays and datasets in Python</title>
       </Head>
-      <Container maxW={"full"}>
-        <NavBar />
+      <Container maxW={"full"} maxH={"full"}>
+        <Header />
         <HeroBannerSection />
         <FeaturesSection />
         <EcosystemSection />
