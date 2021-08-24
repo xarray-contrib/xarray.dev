@@ -14,44 +14,46 @@ import {
 
 import { CheckIcon } from "@chakra-ui/icons"
 
-const features = [
-  {
-    title: "Interoperability",
-    text: "Interoperable with Dask, GPU and sparse arrays libraries such as Dask, CuPy, and sparse.",
-  },
-  {
-    title: "Apply operations over named dimensions",
-    text: "x.sum(['latitude', 'time'])",
-  },
-  {
-    title: "Select values by label instead of integer location",
-    text: "x.sel(time='2020-01-04')",
-  },
-  {
-    title: "Vectorized operations",
-    text: "Mathematical operations (e.g., `x - y`) vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
-  },
-  {
-    title: "GroupBy operations",
-    text: " Flexible split-apply-combine operations with groupby: x.groupby('time.dayofyear').mean()",
-  },
-  {
-    title: "Database like operations",
-    text: "Database like alignment based on coordinate labels that smoothly handles missing values: x, y = xr.align(x, y, join='outer').",
-  },
-  {
-    title: "Arbitrary metadata tracking",
-    text: "Keep track of arbitrary metadata in the form of a Python dictionary: ds.attrs",
-  },
-  {
-    title: "Flexible and Extensible I/O backend API",
-    text: "",
-  },
-]
-
 export const FeaturesSection = () => {
+  const features = React.useMemo(
+    () => [
+      {
+        title: "Interoperability",
+        text: "Interoperable with Dask, GPU and sparse arrays libraries such as Dask, CuPy, and sparse.",
+      },
+      {
+        title: "Apply operations over named dimensions",
+        text: "x.sum(['latitude', 'time'])",
+      },
+      {
+        title: "Select values by label instead of integer location",
+        text: "x.sel(time='2020-01-04')",
+      },
+      {
+        title: "Vectorized operations",
+        text: "Mathematical operations (e.g., `x - y`) vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
+      },
+      {
+        title: "GroupBy operations",
+        text: " Flexible split-apply-combine operations with groupby: x.groupby('time.dayofyear').mean()",
+      },
+      {
+        title: "Database like operations",
+        text: "Database like alignment based on coordinate labels that smoothly handles missing values: x, y = xr.align(x, y, join='outer').",
+      },
+      {
+        title: "Arbitrary metadata tracking",
+        text: "Keep track of arbitrary metadata in the form of a Python dictionary: ds.attrs",
+      },
+      {
+        title: "Flexible and Extensible I/O backend API",
+        text: "",
+      },
+    ],
+    []
+  )
   return (
-    <Box p={4} bg={useColorModeValue("gray.100", "gray.700")}>
+    <Box id={"features"} p={4} bg={useColorModeValue("gray.100", "gray.700")}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
         <Text color={"gray.600"} fontSize={"lg"}>

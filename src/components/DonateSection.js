@@ -11,7 +11,7 @@ import {
 
 export const DonateSection = () => {
   return (
-    <Container maxW={"7xl"} p="12">
+    <Container id={"donate"} maxW={"7xl"} p="12">
       <Heading align="center">Support xarray</Heading>
       <Stack
         align={"center"}

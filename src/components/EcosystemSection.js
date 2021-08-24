@@ -17,7 +17,7 @@ import { ArrayLibraries } from "./ArrayLibraries"
 
 export const EcosystemSection = () => {
   return (
-    <Box p={4}>
+    <Box id={"ecosystem"} p={4}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Ecosystem</Heading>
         <Text color={"gray.600"} fontSize={"lg"}>
