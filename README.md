@@ -1,6 +1,6 @@
 # xarray landing page
 
-![GitHub deployments](https://img.shields.io/github/deployments/andersy005/xarray-website/production?label=vercel&logo=vercel&style=for-the-badge)
+![GitHub deployments](https://img.shields.io/github/deployments/andersy005/xarray-website/Production?label=vercel&logo=vercel&style=for-the-badge)
 
 Landing Page for xarray project.
 
