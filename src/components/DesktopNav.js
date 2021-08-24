@@ -26,9 +26,11 @@ export const DesktopNav = (props) => {
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue("gray.600", "gray.200")}
                 _hover={{
                   textDecoration: "none",
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
                   color: useColorModeValue("gray.800", "white"),
                 }}
               >
@@ -40,6 +42,7 @@ export const DesktopNav = (props) => {
               <PopoverContent
                 border={0}
                 boxShadow={"xl"}
+                // eslint-disable-next-line react-hooks/rules-of-hooks
                 bg={useColorModeValue("white", "gray.800")}
                 p={4}
                 rounded={"xl"}
