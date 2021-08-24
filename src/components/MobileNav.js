@@ -79,7 +79,23 @@ export const MobileNav = ({ navItems, isOpen }) => {
   if (!isOpen) return null
 
   return (
-    <Stack>
+    <Stack
+      p={4}
+      display={{ md: "none" }}
+      zIndex={9999}
+      pos="fixed"
+      top="60px"
+      w={"full"}
+      bg={"white"}
+      minH={"calc(100vh - 60px)"}
+      css={{
+        backdropFilter: "saturate(180%) blur(5px)",
+        backgroundColor: useColorModeValue(
+          "rgba(255, 255, 255, 0.8)",
+          "rgba(26, 32, 44, 0.8)"
+        ),
+      }}
+    >
       {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}

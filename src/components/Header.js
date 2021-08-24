@@ -19,6 +19,7 @@ import { DesktopNav } from "./DesktopNav"
 export const Header = () => {
   const navItems = React.useMemo(
     () => [
+      { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
       { label: "Features", href: "#features" },
       { label: "Ecosystem", href: "#ecosystem" },
       { label: "Sponsors", href: "#sponsors" },
@@ -33,6 +34,10 @@ export const Header = () => {
           {
             label: "Stack Overflow",
             href: "https://stackoverflow.com/questions/tagged/python-xarray",
+          },
+          {
+            label: "Mailing List",
+            href: "https://groups.google.com/forum/#!forum/xarray",
           },
         ],
       },
