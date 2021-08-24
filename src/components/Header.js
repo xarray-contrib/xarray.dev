@@ -102,7 +102,6 @@ export const Header = () => {
               >
                 <Image
                   w={16}
-                  showBorder={false}
                   src={"dataset-diagram-logo.png"}
                   alt={"xarray logo"}
                 />
