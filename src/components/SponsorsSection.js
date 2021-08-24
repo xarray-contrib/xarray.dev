@@ -23,11 +23,11 @@ export const SponsorsSection = () => {
   )
 
   return (
-    <Box id={"sponsors"} bg={useColorModeValue("gray.100", "gray.700")}>
-      <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
+    <Box id={"sponsors"}>
+      <Container maxW={"8xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
           <Heading>Supported By</Heading>
-          <Text color={"gray.600"} fontSize={"lg"}>
+          <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
             We thank these institutions for generously supporting the
             development and maintenance of xarray.
           </Text>

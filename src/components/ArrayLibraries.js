@@ -1,5 +1,13 @@
 import React from "react"
-import { Text, Image, Stack, Flex, Box, SimpleGrid } from "@chakra-ui/react"
+import {
+  Text,
+  Image,
+  Stack,
+  Flex,
+  Box,
+  SimpleGrid,
+  useColorModeValue,
+} from "@chakra-ui/react"
 
 const Library = ({ name, description, url, logo }) => {
   return (
@@ -20,7 +28,7 @@ const Library = ({ name, description, url, logo }) => {
       <Text as="a" href={url} fontWeight={600}>
         {name}
       </Text>
-      <Text color={"gray.600"}>{description}</Text>
+      <Text color={useColorModeValue("gray.800", "white")}>{description}</Text>
     </Stack>
   )
 }
@@ -73,7 +81,7 @@ export const ArrayLibraries = () => {
   )
   return (
     <Box p={4}>
-      <Text color={"gray.600"} fontSize={"lg"}>
+      <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua.

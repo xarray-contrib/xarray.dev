@@ -20,14 +20,14 @@ export const EcosystemSection = () => {
     <Box id={"ecosystem"} p={4}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Ecosystem</Heading>
-        <Text color={"gray.600"} fontSize={"lg"}>
+        <Text fontSize={"lg"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua.
         </Text>
       </Stack>
 
-      <Container maxW={"6xl"} mt={10}>
+      <Container maxW={"8xl"} mt={10}>
         <Tabs align="center" variant="soft-rounded" colorScheme="teal">
           <TabList>
             <Tab>Array Libraries</Tab>

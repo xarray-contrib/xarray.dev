@@ -11,6 +11,7 @@ import {
   Button,
   Text,
   TableCaption,
+  useColorModeValue,
 } from "@chakra-ui/react"
 
 export const ScientificDomains = () => {
@@ -85,8 +86,8 @@ export const ScientificDomains = () => {
   )
 
   return (
-    <Container maxW={"full"} mt={10}>
-      <Text color={"gray.600"} fontSize={"lg"}>
+    <Container maxW={"8xl"} mt={10}>
+      <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
         This section lists some of the standalone packages, projects developed
         with xarray.
       </Text>
@@ -108,7 +109,7 @@ export const ScientificDomains = () => {
           </Button>
         </TableCaption>
         <Thead>
-          <Tr>
+          <Tr color={useColorModeValue("gray.800", "white")}>
             {columns.map((column) => (
               <Th key={column.accessor}>{column.Header}</Th>
             ))}
