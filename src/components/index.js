@@ -1,7 +1,7 @@
 export { FeaturesSection } from "./FeaturesSection"
 export { HeroBannerSection } from "./HeroBannerSection"
-export { NavBar } from "./NavBar"
 export { EcosystemSection } from "./EcosystemSection"
 export { SponsorsSection } from "./SponsorsSection"
 export { DonateSection } from "./DonateSection"
 export { Footer } from "./Footer"
+export { Header } from "./Header"

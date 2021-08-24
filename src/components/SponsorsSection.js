@@ -23,7 +23,7 @@ export const SponsorsSection = () => {
   )
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.700")}>
+    <Box id={"sponsors"} bg={useColorModeValue("gray.100", "gray.700")}>
       <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
           <Heading>Supported By</Heading>
