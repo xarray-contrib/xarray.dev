@@ -14,10 +14,10 @@ import NextLink from "next/link"
 
 import { ChevronRightIcon } from "@chakra-ui/icons"
 
-export const DesktopNav = (props) => {
+export const DesktopNav = ({ navItems, ...props }) => {
   return (
     <Stack direction={"row"} spacing={4} {...props}>
-      {props.navItems.map((navItem) => (
+      {navItems.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
