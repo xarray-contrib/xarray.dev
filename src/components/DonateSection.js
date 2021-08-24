@@ -12,11 +12,13 @@ import {
 export const DonateSection = () => {
   return (
     <Container id={"donate"} maxW={"7xl"} p="12">
-      <Heading align="center">Support xarray</Heading>
+      <Heading align="center" fontSize={"3xl"}>
+        Donate
+      </Heading>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        py={{ base: 10, md: 18 }}
         direction={{ base: "column", md: "row" }}
       >
         <Stack
