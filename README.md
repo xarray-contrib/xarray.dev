@@ -1,4 +1,6 @@
-# xarray website
+# xarray landing page
+
+![GitHub deployments](https://img.shields.io/github/deployments/andersy005/xarray-website/production?label=vercel&logo=vercel&style=for-the-badge)
 
 Landing Page for xarray project.
 
@@ -12,14 +14,14 @@ This project is built using the following tools/technologies:
 ## Requirements
 
 1. [Node.js](https://nodejs.org/)
-2. [yarn](https://yarnpkg.com/)] or [npm](https://www.npmjs.com/)
+2. [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
 
 ## Installation for local development
 
 ### 1. Clone the repository
 
 ```bash
-git clone
+git clone `REPO_URL`
 ```
 
 ### 2. Install dependencies
