@@ -51,7 +51,7 @@ const ListHeader = ({ children }) => {
 
 export const Footer = () => {
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.700")}>
+    <Box>
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}

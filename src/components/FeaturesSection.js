@@ -53,17 +53,17 @@ export const FeaturesSection = () => {
     []
   )
   return (
-    <Box id={"features"} p={4} bg={useColorModeValue("gray.100", "gray.700")}>
+    <Box id={"features"} p={4}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
-        <Text color={"gray.600"} fontSize={"lg"}>
+        <Text fontSize={"lg"}>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
           sed diam voluptua.
         </Text>
       </Stack>
 
-      <Container maxW={"6xl"} mt={10}>
+      <Container maxW={"8xl"} mt={10}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
           {features.map((feature, index) => (
             <HStack key={index} align={"top"}>
@@ -72,7 +72,9 @@ export const FeaturesSection = () => {
               </Box>
               <VStack align={"start"}>
                 <Text fontWeight={600}>{feature.title}</Text>
-                <Text color={"gray.600"}>{feature.text}</Text>
+                <Text color={useColorModeValue("gray.800", "white")}>
+                  {feature.text}
+                </Text>
               </VStack>
             </HStack>
           ))}

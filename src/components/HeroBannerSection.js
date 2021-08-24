@@ -8,10 +8,11 @@ import {
   AspectRatio,
   Button,
   Link,
+  useColorModeValue,
 } from "@chakra-ui/react"
 export const HeroBannerSection = () => {
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"8xl"}>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
@@ -44,7 +45,7 @@ export const HeroBannerSection = () => {
               N-D labeled arrays and datasets in Python
             </Text>
           </Heading>
-          <Text color={"gray.600"} fontSize={"lg"}>
+          <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
             <strong>xarray</strong> (formerly <strong>xray</strong>) is an open
             source project and Python package that introduces labels in the form
             of dimensions, coordinates, and attributes on top of raw NumPy-like

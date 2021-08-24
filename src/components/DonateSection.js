@@ -11,14 +11,14 @@ import {
 
 export const DonateSection = () => {
   return (
-    <Container id={"donate"} maxW={"7xl"} p="12">
+    <Container id={"donate"} maxW={"8xl"} p="12">
       <Heading align="center" fontSize={"3xl"}>
         Donate
       </Heading>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 10, md: 18 }}
+        py={{ base: 20, md: 26 }}
         direction={{ base: "column", md: "row" }}
       >
         <Stack
@@ -47,7 +47,7 @@ export const DonateSection = () => {
           </Button>
         </Stack>
         <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Text color={"gray.600"} fontSize={"lg"}>
+          <Text fontSize={"lg"}>
             xarray is a Sponsored Project of NumFOCUS, a{" "}
             <Text
               as="a"
