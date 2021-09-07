@@ -38,7 +38,7 @@ export const HeroBannerSection = () => {
                 zIndex: -1,
               }}
             >
-              xarray
+              Xarray
             </Text>
             <br />
             <Text as={"span"} color={"red.400"}>
@@ -46,14 +46,13 @@ export const HeroBannerSection = () => {
             </Text>
           </Heading>
           <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
-            <strong>xarray</strong> (formerly <strong>xray</strong>) is an open
-            source project and Python package that introduces labels in the form
-            of dimensions, coordinates, and attributes on top of raw NumPy-like
-            arrays, which allows for more intuitive, more concise, and less
-            error-prone user experience.
+            <strong>Xarray</strong> is an open source project and Python package
+            that introduces labels in the form of dimensions, coordinates, and
+            attributes on top of raw NumPy-like arrays, which allows for more
+            intuitive, more concise, and less error-prone user experience.
             <br />
             <br />
-            xarray includes a large and growing library of domain-agnostic
+            Xarray includes a large and growing library of domain-agnostic
             functions for advanced analytics and visualization with these data
             structures.
           </Text>
@@ -76,7 +75,7 @@ export const HeroBannerSection = () => {
             </Button>
             <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
               <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/why-xarray.html">
-                Why xarray?
+                Why Xarray?
               </Link>
             </Button>
           </Stack>
@@ -91,7 +90,7 @@ export const HeroBannerSection = () => {
           <AspectRatio flex="1 1 auto">
             <iframe
               src="https://www.youtube.com/embed/X0pAhJgySxk"
-              title="xarray presentation @ SciPy 2015"
+              title="Xarray presentation @ SciPy 2015"
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             ></iframe>
