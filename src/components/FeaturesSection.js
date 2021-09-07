@@ -20,7 +20,7 @@ export const FeaturesSection = () => {
     () => [
       {
         title: "Interoperability",
-        text: "Interoperable with Dask, GPU and sparse arrays libraries such as Dask, CuPy, and sparse.",
+        text: "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib.",
       },
       {
         title: "Apply operations over named dimensions",
@@ -48,7 +48,7 @@ export const FeaturesSection = () => {
       },
       {
         title: "Flexible and Extensible I/O backend API",
-        text: "",
+        text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB",
       },
     ],
     []
@@ -58,9 +58,10 @@ export const FeaturesSection = () => {
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
         <Text fontSize={"lg"}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+          Xarray provides data models for working with labeled arrays and
+          datasets. Its toolkit includes a broad set of domain-agnostic
+          functions for advanced analytics and visualization with these data
+          structures.
         </Text>
       </Stack>
 
