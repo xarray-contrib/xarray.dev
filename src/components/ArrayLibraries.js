@@ -13,8 +13,8 @@ const Library = ({ name, description, url, logo }) => {
   return (
     <Stack align="center">
       <Flex
-        w={16}
-        h={16}
+        w={32}
+        h={32}
         align={"center"}
         justify={"center"}
         color={"white"}
@@ -82,9 +82,8 @@ export const ArrayLibraries = () => {
   return (
     <Box p={4}>
       <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua.
+        Xarray supports multiple array backends, allowing users to choose array
+        types that work best for their application.
       </Text>
       <br />
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
