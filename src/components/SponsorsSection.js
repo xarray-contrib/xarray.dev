@@ -48,7 +48,7 @@ export const SponsorsSection = () => {
               rounded={"full"}
               mb={1}
             >
-              <Image w={60} h={60} src={sponsor.logo} alt={sponsor.name} />
+              <Image w={32} h={32} src={sponsor.logo} alt={sponsor.name} />
             </Flex>
           ))}
         </Stack>
