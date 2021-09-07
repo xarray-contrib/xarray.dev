@@ -101,7 +101,7 @@ export const Header = () => {
                 spacing={{ base: 2, sm: 4 }}
               >
                 <Image
-                  w={16}
+                  w={28}
                   src={"dataset-diagram-logo.png"}
                   alt={"xarray logo"}
                 />
