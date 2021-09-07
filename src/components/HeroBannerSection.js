@@ -5,7 +5,7 @@ import {
   Text,
   Stack,
   Heading,
-  AspectRatio,
+  Image,
   Button,
   Link,
   useColorModeValue,
@@ -56,6 +56,7 @@ export const HeroBannerSection = () => {
             functions for advanced analytics and visualization with these data
             structures.
           </Text>
+
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
@@ -87,14 +88,11 @@ export const HeroBannerSection = () => {
           position={"relative"}
           w={"full"}
         >
-          <AspectRatio flex="1 1 auto">
-            <iframe
-              src="https://www.youtube.com/embed/X0pAhJgySxk"
-              title="Xarray presentation @ SciPy 2015"
-              allowFullScreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
-          </AspectRatio>
+          <Image
+            src={"xarray-datastructure.png"}
+            alt="xarray data structure"
+            objectFit="contain"
+          ></Image>
         </Flex>
       </Stack>
     </Container>
