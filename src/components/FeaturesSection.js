@@ -11,6 +11,7 @@ import {
   Icon,
   VStack,
   useColorModeValue,
+  Code,
 } from "@chakra-ui/react"
 
 import { CheckIcon } from "@chakra-ui/icons"
@@ -21,34 +22,42 @@ export const FeaturesSection = () => {
       {
         title: "Interoperability",
         text: "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib.",
+        code: "",
       },
       {
         title: "Apply operations over named dimensions",
-        text: "x.sum(['latitude', 'time'])",
+        text: "",
+        code: 'x.sum(["latitude", "time"])',
       },
       {
         title: "Select values by label instead of integer location",
-        text: "x.sel(time='2020-01-04')",
+        text: "",
+        code: "x.sel(time='2020-01-04')",
       },
       {
         title: "Vectorized operations",
-        text: "Mathematical operations (e.g., `x - y`) vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
+        text: "Mathematical operations vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
+        code: "x - y",
       },
       {
         title: "GroupBy operations",
-        text: " Flexible split-apply-combine operations with groupby: x.groupby('time.dayofyear').mean()",
+        text: " Flexible split-apply-combine operations with groupby:",
+        code: "x.groupby('time.month').mean()",
       },
       {
         title: "Database like operations",
-        text: "Database like alignment based on coordinate labels that smoothly handles missing values: x, y = xr.align(x, y, join='outer').",
+        text: "Database like alignment based on coordinate labels that smoothly handles missing values:",
+        code: "x, y = xr.align(x, y, join='outer')",
       },
       {
         title: "Arbitrary metadata tracking",
-        text: "Keep track of arbitrary metadata in the form of a Python dictionary: ds.attrs",
+        text: "Keep track of arbitrary metadata in the form of a Python dictionary:",
+        code: "x.attrs['title'] = 'My Dataset'",
       },
       {
         title: "Flexible and Extensible I/O backend API",
         text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB",
+        code: "ds = xr.open_dataset(..., engine='engine_name')",
       },
     ],
     []
@@ -77,6 +86,9 @@ export const FeaturesSection = () => {
                 <Text color={useColorModeValue("gray.800", "white")}>
                   {feature.text}
                 </Text>
+                <Code variant="outline" display="block" whiteSpace="pre">
+                  {feature.code}
+                </Code>
               </VStack>
             </HStack>
           ))}
