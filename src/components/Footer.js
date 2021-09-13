@@ -8,14 +8,12 @@ import {
   Stack,
   Text,
   VisuallyHidden,
-  Input,
-  IconButton,
   Image,
   useColorModeValue,
 } from "@chakra-ui/react"
 
 import { FaTwitter, FaGithub } from "react-icons/fa"
-import { BiMailSend } from "react-icons/bi"
+import { GoogleGroups } from "./GoogleGroups"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -128,23 +126,7 @@ export const Footer = () => {
           <Stack align={"flex-start"}>
             <ListHeader>Stay up to date with Xarray news</ListHeader>
             <Stack direction={"row"}>
-              <Input
-                placeholder={"Your email address"}
-                bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-                border={0}
-                _focus={{
-                  bg: "whiteAlpha.300",
-                }}
-              />
-              <IconButton
-                bg={useColorModeValue("green.400", "green.800")}
-                color={useColorModeValue("white", "gray.800")}
-                _hover={{
-                  bg: "green.600",
-                }}
-                aria-label="Subscribe"
-                icon={<BiMailSend />}
-              />
+              <GoogleGroups />
             </Stack>
           </Stack>
         </SimpleGrid>
