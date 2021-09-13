@@ -33,22 +33,16 @@ export const DonateSection = () => {
             alt="NumFocus logo"
             objectFit="contain"
           ></Image>
-
-          <Button
-            rounded={"full"}
-            size={"lg"}
-            fontWeight={"normal"}
-            px={6}
-            colorScheme={"red"}
-            bg={"red.400"}
-            _hover={{ bg: "red.500" }}
-          >
-            <Link href="https://numfocus.org/donate-to-xarray">Donate ❤</Link>
-          </Button>
         </Stack>
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+        <Stack
+          flex={1}
+          spacing={{ base: 5, md: 10 }}
+          justify={"center"}
+          align={"center"}
+          position={"relative"}
+        >
           <Text fontSize={"lg"}>
-            xarray is a Sponsored Project of NumFOCUS, a{" "}
+            Xarray is a Sponsored Project of NumFOCUS, a{" "}
             <Text
               as="a"
               href={"https://en.wikipedia.org/wiki/501(c)(3)_organization"}
@@ -64,9 +58,20 @@ export const DonateSection = () => {
             for more information.
             <br />
             <br />
-            If you like xarray and want to support our mission, please consider
+            If you like Xarray and want to support our mission, please consider
             making a donation to support our efforts.
           </Text>
+          <Button
+            rounded={"full"}
+            size={"lg"}
+            fontWeight={"normal"}
+            px={6}
+            colorScheme={"red"}
+            bg={"red.400"}
+            _hover={{ bg: "red.500" }}
+          >
+            <Link href="https://numfocus.org/donate-to-xarray">Donate ❤</Link>
+          </Button>
         </Stack>
       </Stack>
     </Container>

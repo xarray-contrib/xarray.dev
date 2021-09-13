@@ -29,7 +29,7 @@ export const SponsorsSection = () => {
           <Heading>Supported By</Heading>
           <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
             We thank these institutions for generously supporting the
-            development and maintenance of xarray.
+            development and maintenance of Xarray.
           </Text>
         </Stack>
         <Stack
@@ -48,7 +48,7 @@ export const SponsorsSection = () => {
               rounded={"full"}
               mb={1}
             >
-              <Image w={60} h={60} src={sponsor.logo} alt={sponsor.name} />
+              <Image w={32} h={32} src={sponsor.logo} alt={sponsor.name} />
             </Flex>
           ))}
         </Stack>

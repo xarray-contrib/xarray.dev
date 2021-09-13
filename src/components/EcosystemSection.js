@@ -21,9 +21,9 @@ export const EcosystemSection = () => {
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Ecosystem</Heading>
         <Text fontSize={"lg"}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
+          Xarray is part of the larger scientific Python ecosystem. It is built
+          on top of NumPy, Pandas, and Dask and supports a wide range of domain
+          specific scientific applications.
         </Text>
       </Stack>
 

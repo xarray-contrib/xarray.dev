@@ -22,8 +22,8 @@ const SocialButton = ({ children, label, href }) => {
     <Button
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
       rounded={"full"}
-      w={8}
-      h={8}
+      w={12}
+      h={12}
       cursor={"pointer"}
       as={"a"}
       href={href}
@@ -66,7 +66,7 @@ export const Footer = () => {
               />
             </Box>
             <Text fontSize={"sm"}>
-              © {new Date().getFullYear()}, xarray core developers. Apache 2.0
+              © {new Date().getFullYear()}, Xarray core developers. Apache 2.0
               Licensed
             </Text>
             <Stack direction={"row"} spacing={6}>
@@ -74,18 +74,18 @@ export const Footer = () => {
                 label={"Twitter"}
                 href={"https://twitter.com/xarray_dev"}
               >
-                <FaTwitter />
+                <FaTwitter size={70} />
               </SocialButton>
               <SocialButton
                 label={"GitHub"}
                 href={"https://github.com/pydata/xarray"}
               >
-                <FaGithub />
+                <FaGithub size={70} />
               </SocialButton>
             </Stack>
           </Stack>
           <Stack align={"flex-start"}>
-            <ListHeader>xarray</ListHeader>
+            <ListHeader>Xarray</ListHeader>
             <Link href={"https://xarray.pydata.org/en/stable"}>
               Documentation
             </Link>
@@ -94,7 +94,7 @@ export const Footer = () => {
                 "https://xarray.pydata.org/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray"
               }
             >
-              Citing xarray
+              Citing Xarray
             </Link>
             <Link href={"https://xarray.pydata.org/en/stable/roadmap.html"}>
               Roadmap
@@ -126,7 +126,7 @@ export const Footer = () => {
             </Link>
           </Stack>
           <Stack align={"flex-start"}>
-            <ListHeader>Stay up to date with xarray news</ListHeader>
+            <ListHeader>Stay up to date with Xarray news</ListHeader>
             <Stack direction={"row"}>
               <Input
                 placeholder={"Your email address"}
