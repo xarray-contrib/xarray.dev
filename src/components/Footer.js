@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react"
 
 import { FaTwitter, FaGithub } from "react-icons/fa"
-import { GoogleGroups } from "./GoogleGroups"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -52,7 +51,7 @@ export const Footer = () => {
     <Box>
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
+          templateColumns={{ sm: "1fr 1fr", md: "2fr 2fr 2fr" }}
           spacing={8}
         >
           <Stack spacing={6}>
@@ -122,12 +121,6 @@ export const Footer = () => {
             <Link href={"https://groups.google.com/forum/#!forum/xarray"}>
               Mailing List
             </Link>
-          </Stack>
-          <Stack align={"flex-start"}>
-            <ListHeader>Stay up to date with Xarray news</ListHeader>
-            <Stack direction={"row"}>
-              <GoogleGroups />
-            </Stack>
           </Stack>
         </SimpleGrid>
       </Container>
