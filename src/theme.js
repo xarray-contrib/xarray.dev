@@ -1,9 +1,10 @@
 import { extendTheme } from "@chakra-ui/react"
 
+// color mode config
 const config = {
-  useSystemColorMode: true,
+  initialColorMode: "light",
+  useSystemColorMode: false,
 }
-
 // https://copypalette.app/ can be handy for color palette generation
 const colors = {
   white: {
