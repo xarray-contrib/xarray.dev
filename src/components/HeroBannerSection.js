@@ -10,6 +10,9 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react"
+
+import GitHubButton from "react-github-btn"
+
 export const HeroBannerSection = () => {
   return (
     <Container maxW={"8xl"}>
@@ -78,6 +81,23 @@ export const HeroBannerSection = () => {
               <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/why-xarray.html">
                 Why Xarray?
               </Link>
+            </Button>
+
+            <Button
+              variant={"link"}
+              rounded={"full"}
+              size={"lg"}
+              fontWeight={"normal"}
+              px={6}
+            >
+              <GitHubButton
+                href="https://github.com/pydata/xarray/"
+                data-size="large"
+                data-show-count="true"
+                aria-label="Star pydata/xarray on GitHub"
+              >
+                Star
+              </GitHubButton>
             </Button>
           </Stack>
         </Stack>
