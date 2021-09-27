@@ -101,7 +101,7 @@ export const HeroBannerSection = () => {
                 leftIcon={<IoLogoGithub />}
                 variant="outline"
               >
-                {data.stargazers_count.toLocaleString(undefined, {
+                {"2500".toLocaleString(undefined, {
                   minimumFractionDigits: 0,
                 })}
               </Button>
