@@ -19,11 +19,11 @@ import { DesktopNav } from "./DesktopNav"
 export const Header = () => {
   const navItems = React.useMemo(
     () => [
-      { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
       { label: "Features", href: "#features" },
       { label: "Ecosystem", href: "#ecosystem" },
       { label: "Sponsors", href: "#sponsors" },
       { label: "Donate ❤", href: "#donate" },
+      { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
       {
         label: "Community",
         children: [
