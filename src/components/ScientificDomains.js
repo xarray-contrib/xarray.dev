@@ -32,7 +32,7 @@ const ProjectProfile = ({
         rounded={"md"}
         overflow={"hidden"}
       >
-        <Image src={logo} alt={name} h={"120px"} w={"full"} />
+        <Image src={logo} alt={name} h={"120px"} w={"220px"} />
 
         <Heading fontSize={"2xl"} fontFamily={"body"}>
           {name}
@@ -55,9 +55,15 @@ const ProjectProfile = ({
           })}
         </Stack>
 
-        <Stack mt={8} direction={"row"} spacing={4}>
+        <Stack
+          align={"center"}
+          justify={"center"}
+          mt={6}
+          direction={"row"}
+          spacing={4}
+        >
           <Button
-            flex={1}
+            flex={-1}
             fontSize={"sm"}
             rounded={"full"}
             _focus={{
@@ -67,7 +73,7 @@ const ProjectProfile = ({
             <Link href={homepage}>Homepage</Link>
           </Button>
           <Button
-            flex={1}
+            flex={-1}
             fontSize={"sm"}
             rounded={"full"}
             boxShadow={
