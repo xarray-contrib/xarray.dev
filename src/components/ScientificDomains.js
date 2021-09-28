@@ -101,14 +101,15 @@ export const ScientificDomains = () => {
         description: "General Circulation Model Postprocessing with xarray",
         domains: ["🌊 Oceanography"],
         repo: "https://github.com/xgcm/xgcm",
+        homepage: "https://xgcm.readthedocs.io/en/latest/",
         logo: "https://raw.githubusercontent.com/xgcm/xgcm/master/doc/_static/logo.png",
       },
       {
         name: "verde",
-        description:
-          "Python library for processing spatial data and interpolating it on regular grids",
+        description: "Processing and interpolating spatial data",
         domains: ["🗺️ Geographic Processing"],
         repo: "https://github.com/fatiando/verde",
+        homepage: "https://www.fatiando.org/verde/latest/",
         logo: "https://raw.githubusercontent.com/fatiando/verde/master/doc/_static/verde-logo.svg",
       },
       {
@@ -122,7 +123,7 @@ export const ScientificDomains = () => {
       {
         name: "MetPy",
         description:
-          "Collection of tools for reading, visualizing and performing calculations with weather data.",
+          "Collection of tools for reading, visualizing and performing calculations with weather data",
         domains: ["🌪🌡☔ Meteorology"],
         repo: "https://github.com/Unidata/MetPy",
         homepage: "https://unidata.github.io/MetPy",
@@ -130,7 +131,7 @@ export const ScientificDomains = () => {
       },
       {
         name: "climpred",
-        description: "Verification of weather and climate forecasts.",
+        description: "Verification of weather and climate forecasts",
         domains: ["🌎 Geoscience"],
         repo: "https://github.com/pangeo-data/climpred",
         homepage: "https://climpred.readthedocs.io/",
@@ -172,7 +173,7 @@ export const ScientificDomains = () => {
         with xarray.
       </Text>
       <br />
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <SimpleGrid columns={{ base: 2, md: 3 }} spacing={10}>
         {projects
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((project, index) => (
