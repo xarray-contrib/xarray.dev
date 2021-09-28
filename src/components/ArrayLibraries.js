@@ -6,6 +6,7 @@ import {
   Flex,
   Box,
   SimpleGrid,
+  Heading,
   useColorModeValue,
 } from "@chakra-ui/react"
 
@@ -25,9 +26,15 @@ const Library = ({ name, description, url, logo }) => {
         <Image src={logo} alt={name} w={12} h={12}></Image>
       </Flex>
 
-      <Text as="a" href={url} fontWeight={600} color={"blue.400"}>
+      <Heading
+        as="a"
+        href={url}
+        color={"blue.400"}
+        fontSize={"2xl"}
+        fontFamily={"body"}
+      >
         {name}
-      </Text>
+      </Heading>
       <Text color={useColorModeValue("gray.800", "white")}>{description}</Text>
     </Stack>
   )

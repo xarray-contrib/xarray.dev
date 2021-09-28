@@ -31,8 +31,10 @@ const ProjectProfile = ({
         boxShadow={"2xl"}
         rounded={"md"}
         overflow={"hidden"}
+        p={4}
+        textAlign={"center"}
       >
-        <Image src={logo} alt={name} h={"120px"} w={"full"} />
+        <Image src={logo} alt={name} h={"120px"} w={"220px"} />
 
         <Heading fontSize={"2xl"} fontFamily={"body"}>
           {name}
@@ -55,9 +57,15 @@ const ProjectProfile = ({
           })}
         </Stack>
 
-        <Stack mt={8} direction={"row"} spacing={4}>
+        <Stack
+          align={"center"}
+          justify={"center"}
+          mt={6}
+          direction={"row"}
+          spacing={4}
+        >
           <Button
-            flex={1}
+            flex={-1}
             fontSize={"sm"}
             rounded={"full"}
             _focus={{
@@ -67,7 +75,7 @@ const ProjectProfile = ({
             <Link href={homepage}>Homepage</Link>
           </Button>
           <Button
-            flex={1}
+            flex={-1}
             fontSize={"sm"}
             rounded={"full"}
             boxShadow={
@@ -93,14 +101,15 @@ export const ScientificDomains = () => {
         description: "General Circulation Model Postprocessing with xarray",
         domains: ["🌊 Oceanography"],
         repo: "https://github.com/xgcm/xgcm",
+        homepage: "https://xgcm.readthedocs.io/en/latest/",
         logo: "https://raw.githubusercontent.com/xgcm/xgcm/master/doc/_static/logo.png",
       },
       {
         name: "verde",
-        description:
-          "Python library for processing spatial data and interpolating it on regular grids",
+        description: "Processing and interpolating spatial data",
         domains: ["🗺️ Geographic Processing"],
         repo: "https://github.com/fatiando/verde",
+        homepage: "https://www.fatiando.org/verde/latest/",
         logo: "https://raw.githubusercontent.com/fatiando/verde/master/doc/_static/verde-logo.svg",
       },
       {
@@ -114,7 +123,7 @@ export const ScientificDomains = () => {
       {
         name: "MetPy",
         description:
-          "Collection of tools for reading, visualizing and performing calculations with weather data.",
+          "Collection of tools for reading, visualizing and performing calculations with weather data",
         domains: ["🌪🌡☔ Meteorology"],
         repo: "https://github.com/Unidata/MetPy",
         homepage: "https://unidata.github.io/MetPy",
@@ -122,7 +131,7 @@ export const ScientificDomains = () => {
       },
       {
         name: "climpred",
-        description: "Verification of weather and climate forecasts.",
+        description: "Verification of weather and climate forecasts",
         domains: ["🌎 Geoscience"],
         repo: "https://github.com/pangeo-data/climpred",
         homepage: "https://climpred.readthedocs.io/",
@@ -153,6 +162,14 @@ export const ScientificDomains = () => {
         homepage: "https://hvplot.holoviz.org/",
         logo: "https://raw.githubusercontent.com/holoviz/hvplot/master/doc/_static/logo_horizontal.svg",
       },
+      {
+        name: "Pangeo",
+        description: "A community platform for Big Data geoscience",
+        domains: ["🌎 Geoscience"],
+        homepage: "https://pangeo.io/",
+        repo: "https://github.com/pangeo-data",
+        logo: "https://raw.githubusercontent.com/pangeo-data/pangeo/master/docs/_static/pangeo_simple_logo.svg",
+      },
     ],
     []
   )
@@ -164,7 +181,7 @@ export const ScientificDomains = () => {
         with xarray.
       </Text>
       <br />
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <SimpleGrid columns={{ base: 2, md: 3 }} spacing={10}>
         {projects
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((project, index) => (
