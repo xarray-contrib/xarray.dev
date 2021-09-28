@@ -31,7 +31,7 @@ const GitHubStats = () => {
   if (!data) return <div>loading...</div>
 
   return (
-    <Stack direction="row" spacing={4}>
+    <Stack direction="row" spacing={4} justify="center">
       <Button
         as={"a"}
         href={"https://github.com/pydata/xarray/stargazers"}
