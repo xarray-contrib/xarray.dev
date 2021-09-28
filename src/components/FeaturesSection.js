@@ -22,42 +22,34 @@ export const FeaturesSection = () => {
       {
         title: "Interoperability",
         text: "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib.",
-        code: "",
       },
       {
         title: "Apply operations over named dimensions",
         text: "",
-        code: 'x.sum(["latitude", "time"])',
       },
       {
         title: "Select values by label instead of integer location",
         text: "",
-        code: "x.sel(time='2020-01-04')",
       },
       {
         title: "Vectorized operations",
         text: "Mathematical operations vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
-        code: "x - y",
       },
       {
         title: "GroupBy operations",
         text: " Flexible split-apply-combine operations with groupby:",
-        code: "x.groupby('time.month').mean()",
       },
       {
         title: "Database like operations",
         text: "Database like alignment based on coordinate labels that smoothly handles missing values:",
-        code: "x, y = xr.align(x, y, join='outer')",
       },
       {
         title: "Arbitrary metadata tracking",
         text: "Keep track of arbitrary metadata in the form of a Python dictionary:",
-        code: "x.attrs['title'] = 'My Dataset'",
       },
       {
         title: "Flexible and Extensible I/O backend API",
         text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB",
-        code: "ds = xr.open_dataset(..., engine='engine_name')",
       },
     ],
     []
@@ -86,9 +78,6 @@ export const FeaturesSection = () => {
                 <Text color={useColorModeValue("gray.800", "white")}>
                   {feature.text}
                 </Text>
-                <Code variant="outline" display="block" whiteSpace="pre">
-                  {feature.code}
-                </Code>
               </VStack>
             </HStack>
           ))}
