@@ -24,17 +24,23 @@ export const SponsorsSection = () => {
 
   return (
     <Box id={"sponsors"}>
-      <Container maxW={"8xl"} py={16} as={Stack} spacing={12}>
-        <Stack spacing={0} align={"center"}>
-          <Heading>Supported By</Heading>
-          <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
+      <Container maxW={"6xl"} py={16} as={Stack} spacing={12}>
+        <Stack spacing={4}>
+          <Heading fontSize={"3xl"} textAlign={"center"}>
+            Supported By
+          </Heading>
+          <Text
+            color={useColorModeValue("gray.800", "white")}
+            fontSize={"lg"}
+            textAlign={"center"}
+          >
             We thank these institutions for generously supporting the
             development and maintenance of Xarray.
           </Text>
         </Stack>
         <Stack
           direction={{ base: "column", md: "row" }}
-          spacing={{ base: 10, md: 4, lg: 10 }}
+          spacing={-4}
           align={"center"}
           justify={"center"}
         >
