@@ -144,6 +144,15 @@ export const ScientificDomains = () => {
         homepage: "squidpy.readthedocs.io/en/stable/",
         logo: "https://raw.githubusercontent.com/theislab/squidpy/master/docs/source/_static/img/squidpy_horizontal.png",
       },
+      {
+        name: "hvPlot",
+        description:
+          "A high-level plotting API for the PyData ecosystem built on HoloViews",
+        domains: ["📊 Visualization"],
+        repo: "https://github.com/holoviz/hvplot",
+        homepage: "https://hvplot.holoviz.org/",
+        logo: "https://raw.githubusercontent.com/holoviz/hvplot/master/doc/_static/logo_horizontal.svg",
+      },
     ],
     []
   )
