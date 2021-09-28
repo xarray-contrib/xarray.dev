@@ -162,6 +162,14 @@ export const ScientificDomains = () => {
         homepage: "https://hvplot.holoviz.org/",
         logo: "https://raw.githubusercontent.com/holoviz/hvplot/master/doc/_static/logo_horizontal.svg",
       },
+      {
+        name: "Pangeo",
+        description: "A community platform for Big Data geoscience",
+        domains: ["🌎 Geoscience"],
+        homepage: "https://pangeo.io/",
+        repo: "https://github.com/pangeo-data",
+        logo: "https://raw.githubusercontent.com/pangeo-data/pangeo/master/docs/_static/pangeo_simple_logo.svg",
+      },
     ],
     []
   )
