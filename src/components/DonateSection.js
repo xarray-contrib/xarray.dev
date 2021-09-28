@@ -11,14 +11,13 @@ import {
 
 export const DonateSection = () => {
   return (
-    <Container id={"donate"} maxW={"8xl"} p="12">
-      <Heading align="center" fontSize={"3xl"}>
+    <Container id={"donate"} maxW={"6xl"} p={"12"}>
+      <Heading textAlign={"center"} fontSize={"3xl"}>
         Donate
       </Heading>
       <Stack
         align={"center"}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 26 }}
+        py={{ base: 8, md: 8 }}
         direction={{ base: "column", md: "row" }}
       >
         <Stack
@@ -30,8 +29,8 @@ export const DonateSection = () => {
         >
           <Image
             src={"NumFOCUS_sponsored_project_logo.svg"}
-            alt="NumFocus logo"
-            objectFit="contain"
+            alt={"NumFocus logo"}
+            objectFit={"contain"}
           ></Image>
         </Stack>
         <Stack
@@ -44,7 +43,7 @@ export const DonateSection = () => {
           <Text fontSize={"lg"}>
             Xarray is a Sponsored Project of NumFOCUS, a{" "}
             <Text
-              as="a"
+              as={"a"}
               href={"https://en.wikipedia.org/wiki/501(c)(3)_organization"}
             >
               501(c)(3) nonprofit charity
@@ -52,7 +51,7 @@ export const DonateSection = () => {
             in the United States. NumFOCUS provides Xarray with fiscal, legal,
             and administrative support to help ensure the health and
             sustainability of the project. Visit{" "}
-            <Text as="a" href="https://numfocus.org/">
+            <Text as={"a"} href={"https://numfocus.org/"}>
               numfocus.org
             </Text>{" "}
             for more information.
@@ -70,7 +69,7 @@ export const DonateSection = () => {
             bg={"red.400"}
             _hover={{ bg: "red.500" }}
           >
-            <Link href="https://numfocus.org/donate-to-xarray">Donate ❤</Link>
+            <Link href={"https://numfocus.org/donate-to-xarray"}>Donate ❤</Link>
           </Button>
         </Stack>
       </Stack>

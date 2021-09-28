@@ -86,13 +86,13 @@ export const ScientificDomains = () => {
   )
 
   return (
-    <Container maxW={"8xl"} mt={10}>
+    <Container maxW={"6xl"} mt={10}>
       <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
         This section lists some of the standalone packages, projects developed
         with xarray.
       </Text>
       <br />
-      <Table variant="striped" colorScheme="teal">
+      <Table variant={"striped"} colorScheme={"teal"}>
         <TableCaption>
           <Button
             rounded={"full"}

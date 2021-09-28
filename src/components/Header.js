@@ -53,11 +53,11 @@ export const Header = () => {
       <Flex
         as={"header"}
         pos="fixed"
-        top="0"
+        top={"0"}
         w={"full"}
         minH={"60px"}
         boxShadow={"sm"}
-        zIndex="999"
+        zIndex={"999"}
         justify={"center"}
         css={{
           backdropFilter: "saturate(180%) blur(5px)",
@@ -67,7 +67,7 @@ export const Header = () => {
           ),
         }}
       >
-        <Container as={Flex} maxW={"7xl"} align={"center"}>
+        <Container as={Flex} maxW={"6xl"} align={"center"}>
           <Flex
             flex={{ base: "0", md: "auto" }}
             ml={{ base: -2 }}

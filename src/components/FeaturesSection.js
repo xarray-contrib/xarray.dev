@@ -56,7 +56,7 @@ export const FeaturesSection = () => {
   )
   return (
     <Box id={"features"} p={4}>
-      <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
+      <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
         <Text fontSize={"lg"}>
           Xarray provides data models for working with labeled arrays and
@@ -66,7 +66,7 @@ export const FeaturesSection = () => {
         </Text>
       </Stack>
 
-      <Container maxW={"8xl"} mt={10}>
+      <Container maxW={"6xl"} mt={10}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
           {features.map((feature, index) => (
             <HStack key={index} align={"top"}>
