@@ -51,7 +51,7 @@ export const Footer = () => {
     <Box>
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: "1fr 1fr", md: "2fr 2fr 2fr" }}
+          templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
           spacing={8}
         >
           <Stack spacing={6}>
@@ -83,9 +83,7 @@ export const Footer = () => {
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Xarray</ListHeader>
-            <Link href={"https://xarray.pydata.org/en/stable"}>
-              Documentation
-            </Link>
+
             <Link
               href={
                 "https://xarray.pydata.org/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray"
@@ -103,6 +101,22 @@ export const Footer = () => {
             </Link>
             <Link href={"https://github.com/xarray-contrib"}>
               Compatible Projects
+            </Link>
+          </Stack>
+          <Stack align={"flex-start"}>
+            <ListHeader>Resources</ListHeader>
+            <Link href={"https://xarray.pydata.org/en/stable"}>
+              Documentation
+            </Link>
+            <Link
+              href={
+                "https://xarray.pydata.org/en/stable/tutorials-and-videos.html"
+              }
+            >
+              Tutorials
+            </Link>
+            <Link href={"https://xarray.pydata.org/en/stable/gallery.html"}>
+              Example Gallery
             </Link>
           </Stack>
           <Stack align={"flex-start"}>
