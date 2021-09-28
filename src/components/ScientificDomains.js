@@ -31,6 +31,8 @@ const ProjectProfile = ({
         boxShadow={"2xl"}
         rounded={"md"}
         overflow={"hidden"}
+        p={4}
+        textAlign={"center"}
       >
         <Image src={logo} alt={name} h={"120px"} w={"220px"} />
 
