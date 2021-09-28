@@ -11,18 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-import useSWR from "swr"
-
-import { IoLogoGithub } from "react-icons/io5"
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
-
 export const HeroBannerSection = () => {
-  const { data, error } = useSWR(
-    "https://api.github.com/repos/pydata/xarray",
-    fetcher
-  )
-
   return (
     <Container maxW={"8xl"}>
       <Stack
@@ -91,21 +80,6 @@ export const HeroBannerSection = () => {
                 Why Xarray?
               </Link>
             </Button>
-
-            <Stack direction="row" spacing={4}>
-              <Button
-                as={"a"}
-                href={"https://github.com/pydata/xarray/stargazers"}
-                rounded={"full"}
-                size={"lg"}
-                leftIcon={<IoLogoGithub />}
-                variant="outline"
-              >
-                {"2500".toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                })}
-              </Button>
-            </Stack>
           </Stack>
         </Stack>
         <Flex
