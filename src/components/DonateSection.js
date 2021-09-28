@@ -45,13 +45,14 @@ export const DonateSection = () => {
             <Text
               as={"a"}
               href={"https://en.wikipedia.org/wiki/501(c)(3)_organization"}
+              color={"blue.400"}
             >
               501(c)(3) nonprofit charity
             </Text>{" "}
             in the United States. NumFOCUS provides Xarray with fiscal, legal,
             and administrative support to help ensure the health and
             sustainability of the project. Visit{" "}
-            <Text as={"a"} href={"https://numfocus.org/"}>
+            <Text as={"a"} href={"https://numfocus.org/"} color={"blue.400"}>
               numfocus.org
             </Text>{" "}
             for more information.

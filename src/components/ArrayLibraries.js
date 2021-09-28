@@ -25,7 +25,7 @@ const Library = ({ name, description, url, logo }) => {
         <Image src={logo} alt={name} w={12} h={12}></Image>
       </Flex>
 
-      <Text as="a" href={url} fontWeight={600}>
+      <Text as="a" href={url} fontWeight={600} color={"blue.400"}>
         {name}
       </Text>
       <Text color={useColorModeValue("gray.800", "white")}>{description}</Text>
