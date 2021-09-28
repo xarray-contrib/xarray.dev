@@ -10,10 +10,44 @@ import {
   Tab,
   TabPanel,
   TabPanels,
+  Button,
 } from "@chakra-ui/react"
 
+import { IoLogoGithub } from "react-icons/io5"
 import { ScientificDomains } from "./ScientificDomains"
 import { ArrayLibraries } from "./ArrayLibraries"
+
+import useSWR from "swr"
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
+const GitHubStats = () => {
+  const { data, error } = useSWR(
+    "https://api.github.com/repos/pydata/xarray",
+    fetcher
+  )
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+
+  return (
+    <Stack direction="row" spacing={4} justify="center">
+      <Button
+        as={"a"}
+        href={"https://github.com/pydata/xarray/stargazers"}
+        rounded={"full"}
+        size={"lg"}
+        leftIcon={<IoLogoGithub />}
+        variant="outline"
+      >
+        {data.stargazers_count.toLocaleString(undefined, {
+          minimumFractionDigits: 0,
+        })}{" "}
+        Stars
+      </Button>
+    </Stack>
+  )
+}
 
 export const EcosystemSection = () => {
   return (
@@ -25,6 +59,7 @@ export const EcosystemSection = () => {
           on top of NumPy, Pandas, and Dask and supports a wide range of domain
           specific scientific applications.
         </Text>
+        <GitHubStats />
       </Stack>
 
       <Container maxW={"8xl"} mt={10}>

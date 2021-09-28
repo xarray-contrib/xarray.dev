@@ -10,6 +10,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react"
+
 export const HeroBannerSection = () => {
   return (
     <Container maxW={"8xl"}>
