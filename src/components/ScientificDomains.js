@@ -150,7 +150,7 @@ export const ScientificDomains = () => {
         description: "Spatial Single Cell Analysis in Python",
         domains: ["💊 Bioinformatics"],
         repo: "https://github.com/theislab/squidpy",
-        homepage: "squidpy.readthedocs.io/en/stable/",
+        homepage: "https://squidpy.readthedocs.io/en/stable/",
         logo: "https://raw.githubusercontent.com/theislab/squidpy/master/docs/source/_static/img/squidpy_horizontal.png",
       },
       {
