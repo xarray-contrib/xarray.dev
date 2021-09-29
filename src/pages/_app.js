@@ -1,11 +1,17 @@
-import { ChakraProvider, CSSReset } from "@chakra-ui/react"
+import { ChakraProvider } from "@chakra-ui/react"
 import theme from "../theme"
+import Layout from "components/Layout"
+import Head from "next/head"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <CSSReset />
-      <Component {...pageProps} />
+    <ChakraProvider resetCSS theme={theme}>
+      <Head>
+        <title>xarray: N-D labeled arrays and datasets in Python</title>
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ChakraProvider>
   )
 }
