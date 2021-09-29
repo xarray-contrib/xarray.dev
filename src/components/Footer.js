@@ -130,7 +130,7 @@ export const Footer = () => {
             <Link
               href={"https://stackoverflow.com/questions/tagged/python-xarray"}
             >
-              Stack OVerflow
+              Stack Overflow
             </Link>
             <Link href={"https://groups.google.com/forum/#!forum/xarray"}>
               Mailing List

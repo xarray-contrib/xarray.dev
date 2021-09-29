@@ -37,19 +37,19 @@ export const FeaturesSection = () => {
       },
       {
         title: "GroupBy operations",
-        text: " Flexible split-apply-combine operations with groupby:",
+        text: " Flexible split-apply-combine operations with groupby.",
       },
       {
         title: "Database like operations",
-        text: "Database like alignment based on coordinate labels that smoothly handles missing values:",
+        text: "Database like alignment based on coordinate labels that smoothly handles missing values.",
       },
       {
         title: "Arbitrary metadata tracking",
-        text: "Keep track of arbitrary metadata in the form of a Python dictionary:",
+        text: "Keep track of arbitrary metadata in the form of a Python dictionary.",
       },
       {
         title: "Flexible and Extensible I/O backend API",
-        text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB",
+        text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB.",
       },
     ],
     []
