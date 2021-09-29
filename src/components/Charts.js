@@ -11,14 +11,14 @@ export const Charts = () => {
     fetcher
   )
 
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+
   const pulls = data.map((item) => item.open_pull_requests)
   const issues = data.map((item) => item.open_issues)
   const dates = data.map((item) =>
     new Date(item.timestamp * 1000).toLocaleDateString()
   )
-
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
 
   const issuesData = {
     labels: dates,
