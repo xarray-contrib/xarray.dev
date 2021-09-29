@@ -24,11 +24,11 @@ export const FeaturesSection = () => {
         text: "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib.",
       },
       {
-        title: "Apply operations over named dimensions.",
+        title: "Apply operations over named dimensions",
         text: "",
       },
       {
-        title: "Select values by label instead of integer location.",
+        title: "Select values by label instead of integer location",
         text: "",
       },
       {
