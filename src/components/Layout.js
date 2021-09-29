@@ -1,13 +1,18 @@
-import React from "react"
-import { Footer } from "components"
-import { Header } from "components"
+import { Footer } from "./Footer"
+import { Header } from "./Header"
 import { Container } from "@chakra-ui/react"
-export const Layout = ({ children }) => {
+import React from "react"
+
+const Layout = ({ children }) => {
   return (
-    <Container maxW={"full"} maxH={"full"}>
-      <Header />
-      {children}
-      <Footer />
-    </Container>
+    <>
+      <Container maxW={"full"} maxH={"full"}>
+        <Header />
+        {children}
+        <Footer />
+      </Container>
+    </>
   )
 }
+
+export default Layout
