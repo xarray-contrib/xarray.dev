@@ -65,7 +65,7 @@ const ProjectProfile = ({
           spacing={4}
         >
           <Button
-            flex={-1}
+            flex={1}
             fontSize={"sm"}
             rounded={"full"}
             _focus={{
@@ -75,12 +75,9 @@ const ProjectProfile = ({
             <Link href={homepage}>Homepage</Link>
           </Button>
           <Button
-            flex={-1}
+            flex={1}
             fontSize={"sm"}
             rounded={"full"}
-            boxShadow={
-              "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-            }
             colorScheme={"teal"}
             bg={"teal.400"}
             _hover={{ bg: "teal.500" }}
@@ -181,7 +178,7 @@ export const ScientificDomains = () => {
         with xarray.
       </Text>
       <br />
-      <SimpleGrid columns={{ base: 2, md: 3 }} spacing={10}>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         {projects
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((project, index) => (
