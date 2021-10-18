@@ -3481,10 +3481,10 @@ raw-body@2.4.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-chartjs-2@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-3.0.5.tgz#afc23993a32e146bdcc9addff16a28d8964b98ad"
-  integrity sha512-fYr4E82agaZi9IFMe5GtOZ6WE/HWdxy/KywLNOzXsqgPkD2oo1IlrQLKMLUki/2UXko3p95TR2L8Q2rEss/opQ==
+react-chartjs-2@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-3.1.0.tgz#3eefac6202ce2ee1034dc89c05601f346435afb2"
+  integrity sha512-j4PdePVu66M408Kpk/2UEfFJw3Hw7TxhOKW3RhV7/eU117OL8phFrWrRDWEipvt2V+5myqHSGMvXzKCm/RkfUw==
   dependencies:
     lodash "^4.17.19"
 
