@@ -1,7 +1,7 @@
 import React from "react"
 import { Charts } from "components"
 
-const metricsPage = () => {
+const dashboardPage = () => {
   return (
     <>
       <Charts />
@@ -9,4 +9,4 @@ const metricsPage = () => {
   )
 }
 
-export default metricsPage
+export default dashboardPage
