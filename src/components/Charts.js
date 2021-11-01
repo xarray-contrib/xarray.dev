@@ -192,7 +192,7 @@ const LinePlot = ({ data }) => {
       x: (d) => d.date,
       y: (d) => d.count,
       z: (d) => d.type,
-      yLabel: "↑ Change in count",
+      yLabel: "↑ Change (log scale)",
       width,
       height: 600,
     })
@@ -237,10 +237,13 @@ export const Charts = () => {
     item.date = new Date(item.date)
   })
 
+  const start = d3.min(data, (d) => d.date).toDateString()
+  const today = new Date().toDateString()
+
   return (
     <Container maxW={"6xl"} mt={10} p={16}>
       <Text fontSize={"md"} align={"center"}>
-        Weekly count of issues and pull requests from Jan 2021 to present
+        Weekly count of issues and pull requests from {start} to {today}{" "}
         relative to each category&apos;s (issue and pull request) count on the
         highlighted date.
       </Text>
