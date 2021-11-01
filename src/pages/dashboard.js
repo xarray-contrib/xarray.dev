@@ -1,10 +1,10 @@
 import React from "react"
-import { Charts } from "components"
+import { WeeklyCountPlot } from "components"
 
 const dashboardPage = () => {
   return (
     <>
-      <Charts />
+      <WeeklyCountPlot />
     </>
   )
 }

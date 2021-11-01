@@ -224,7 +224,7 @@ const LinePlot = ({ data }) => {
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-export const Charts = () => {
+export const WeeklyCountPlot = () => {
   const { data, error } = useSWR(
     "https://gist.githubusercontent.com/andersy005/4f62b7b0cbf943b158cb11068e80c7c8/raw/740988cdf59121c1c4bf12345917301b5534217b/xarray-repo-weekly-data.json",
     fetcher
