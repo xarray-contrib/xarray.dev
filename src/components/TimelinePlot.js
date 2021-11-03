@@ -7,6 +7,7 @@ import _ from "lodash"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
+// Copied from https://observablehq.com/@mkfreeman/plot-tooltip
 const hover = (tip, pos, text) => {
   const side_padding = 10
   const vertical_padding = 5
@@ -160,6 +161,7 @@ const addTooltips = (chart, hover_styles = { fill: "blue", opacity: 0.5 }) => {
 const TimelinePlot = ({ data, attr }) => {
   const ref = React.useRef(null)
   const width = 1152
+  const height = 512
 
   React.useEffect(() => {
     const dateFormat = d3.timeFormat("%Y-%m-%d")
@@ -182,10 +184,15 @@ const TimelinePlot = ({ data, attr }) => {
         title: tip,
         fill: (d, i) => (d[attr] > movingAvg[i] + 5 ? 1 : 0), // adding 5 since we want to highlight points that are a least a bit *above* the moving average
       }).plot({
-        y: { grid: false },
+        y: {
+          grid: false,
+          // Figure out how to set the domain properly without breaking the plot
+          // domain: [d3.min(data, (d) => d[attr]), d3.max(data, (d) => d[attr])],
+        },
         x: {
-          tickRotate: 90,
+          tickRotate: 45,
           tickFormat: (d) => timeFormat(d),
+          label: "→ Time",
         },
         marks: [
           Plot.ruleX(data, {
@@ -210,6 +217,7 @@ const TimelinePlot = ({ data, attr }) => {
         marginBottom: 100,
         marginRight: 50,
         width: width,
+        height: height,
         color: {
           range: ["steelblue", "orange"],
         },

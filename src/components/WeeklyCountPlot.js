@@ -186,6 +186,7 @@ function IndexChart(
 const LinePlot = ({ data }) => {
   const ref = React.useRef(null)
   const width = 1152
+  const height = 512
 
   React.useEffect(() => {
     const plot = IndexChart(data, {
@@ -194,7 +195,7 @@ const LinePlot = ({ data }) => {
       z: (d) => d.type,
       yLabel: "↑ Change (log scale)",
       width,
-      height: 600,
+      height: height,
     })
 
     // uses a transition to change the basis date in the chart above,
