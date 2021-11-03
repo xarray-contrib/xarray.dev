@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Text } from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
 import useSWR from "swr"
 import * as d3 from "d3"
 
@@ -238,17 +238,17 @@ export const WeeklyCountPlot = () => {
   })
 
   const start = d3.min(data, (d) => d.date).toDateString()
-  const today = new Date().toDateString()
+  const end = d3.max(data, (d) => d.date).toDateString()
 
   return (
-    <Container maxW={"6xl"} mt={10} p={16}>
+    <>
       <Text fontSize={"md"} align={"center"}>
-        Weekly count of issues and pull requests from {start} to {today}{" "}
-        relative to each category&apos;s (issue and pull request) count on the
+        Weekly count of issues and pull requests from {start} to {end} relative
+        to each category&apos;s (issue and pull request) count on the
         highlighted date.
       </Text>
       <br />
       <LinePlot data={data} />
-    </Container>
+    </>
   )
 }
