@@ -98,8 +98,14 @@ export const Statistics = () => {
           icon={<GoStar size={"3em"} />}
         />
         <StatisticsCard
-          title={"Used By"}
-          stat={"2,000"}
+          title={"Dependent Projects"}
+          stat={
+            <DatasetteResult
+              query={
+                "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/dependents,dependent.json?_shape=array"
+              }
+            />
+          }
           icon={<GoPackage size={"3em"} />}
         />
         <StatisticsCard
