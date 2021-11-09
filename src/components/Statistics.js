@@ -62,11 +62,11 @@ export const Statistics = () => {
     fetcher
   )
 
-  if (releasesError || ContributorsError || starsError) {
+  if (releasesError) {
     return <div>Failed to load</div>
   }
 
-  if (!releases && !contributors && !stars) {
+  if (!releases) {
     return <div>loading...</div>
   }
 
