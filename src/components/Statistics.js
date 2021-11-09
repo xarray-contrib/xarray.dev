@@ -47,29 +47,14 @@ const StatisticsCard = ({ title, stat, icon }) => {
   )
 }
 
+const DatasetteResult = ({ query }) => {
+  const { data, error } = useSWR(query, fetcher)
+  if (error) return <Text>failed to load</Text>
+  if (!data) return <Text>loading...</Text>
+  return data[0].total_rows
+}
+
 export const Statistics = () => {
-  const { data: releases, error: releasesError } = useSWR(
-    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/releases,id.json?_shape=array",
-    fetcher
-  )
-  const { data: contributors, error: ContributorsError } = useSWR(
-    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/contributors,user_id.json?_shape=array",
-    fetcher
-  )
-
-  const { data: stars, error: starsError } = useSWR(
-    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array",
-    fetcher
-  )
-
-  if (releasesError) {
-    return <div>Failed to load</div>
-  }
-
-  if (!releases) {
-    return <div>loading...</div>
-  }
-
   return (
     <Box mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <Text
@@ -91,13 +76,25 @@ export const Statistics = () => {
 
         <StatisticsCard
           title={"Contributors"}
-          stat={contributors[0].total_rows}
+          stat={
+            <DatasetteResult
+              query={
+                "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/contributors,user_id.json?_shape=array"
+              }
+            />
+          }
           icon={<BsPeople size={"3em"} />}
         />
 
         <StatisticsCard
           title={"Stargazers"}
-          stat={stars[0].total_rows}
+          stat={
+            <DatasetteResult
+              query={
+                "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array"
+              }
+            />
+          }
           icon={<GoStar size={"3em"} />}
         />
         <StatisticsCard
@@ -112,7 +109,13 @@ export const Statistics = () => {
         />
         <StatisticsCard
           title={"Releases since 2014"}
-          stat={releases[0].total_rows}
+          stat={
+            <DatasetteResult
+              query={
+                "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/releases,id.json?_shape=array"
+              }
+            />
+          }
           icon={<GoTag size={"3em"} />}
         />
       </SimpleGrid>
