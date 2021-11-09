@@ -13,6 +13,8 @@ import {
 
 import { BsPerson, BsPeople } from "react-icons/bs"
 import { GoStar, GoTag, GoBook, GoPackage } from "react-icons/go"
+import useSWR from "swr"
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const StatisticsCard = ({ title, stat, icon }) => {
   return (
@@ -46,6 +48,28 @@ const StatisticsCard = ({ title, stat, icon }) => {
 }
 
 export const Statistics = () => {
+  const { data: releases, error: releasesError } = useSWR(
+    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/releases,id.json?_shape=array",
+    fetcher
+  )
+  const { data: contributors, error: ContributorsError } = useSWR(
+    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/contributors,user_id.json?_shape=array",
+    fetcher
+  )
+
+  const { data: stars, error: starsError } = useSWR(
+    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array",
+    fetcher
+  )
+
+  if (releasesError || ContributorsError || starsError) {
+    return <div>Failed to load</div>
+  }
+
+  if (!releases && !contributors && !stars) {
+    return <div>loading...</div>
+  }
+
   return (
     <Box mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <Text
@@ -67,13 +91,13 @@ export const Statistics = () => {
 
         <StatisticsCard
           title={"Contributors"}
-          stat={"300"}
+          stat={contributors[0].total_rows}
           icon={<BsPeople size={"3em"} />}
         />
 
         <StatisticsCard
           title={"Stargazers"}
-          stat={"1,000"}
+          stat={stars[0].total_rows}
           icon={<GoStar size={"3em"} />}
         />
         <StatisticsCard
@@ -88,7 +112,7 @@ export const Statistics = () => {
         />
         <StatisticsCard
           title={"Releases since 2014"}
-          stat={"62"}
+          stat={releases[0].total_rows}
           icon={<GoTag size={"3em"} />}
         />
       </SimpleGrid>
