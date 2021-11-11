@@ -136,8 +136,8 @@ export const Statistics = () => {
       </Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatisticsCard
-          title={"Core Contributors"}
-          stat={"12"}
+          title={"Core Maintainers"}
+          stat={"15"}
           icon={<BsPerson size={"3em"} />}
         />
         <StatisticsCard
@@ -179,7 +179,7 @@ export const Statistics = () => {
           icon={<GoBook size={"3em"} />}
         />
         <StatisticsCard
-          title={"Releases since 2014"}
+          title={"Releases"}
           stat={
             <DatasetteResult
               query={
