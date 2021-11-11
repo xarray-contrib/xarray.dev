@@ -1,6 +1,7 @@
 import React from "react"
 import useSWR from "swr"
 import * as d3 from "d3"
+import { Spinner } from "@chakra-ui/react"
 
 // Fix window is not defined issue
 // https://github.com/apexcharts/react-apexcharts/issues/240#issuecomment-765417887
@@ -16,7 +17,16 @@ export const TimelinePlot = () => {
   )
 
   if (error) return <div>failed to load data</div>
-  if (!data) return <div>loading...</div>
+  if (!data)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    )
 
   const dataSeries = data.map((item) => {
     return [item.time, item.open_issues]

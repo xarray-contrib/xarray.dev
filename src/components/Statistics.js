@@ -9,6 +9,7 @@ import {
   StatLabel,
   StatNumber,
   useColorModeValue,
+  Spinner,
 } from "@chakra-ui/react"
 
 import { BsPerson, BsPeople } from "react-icons/bs"
@@ -51,14 +52,32 @@ const StatisticsCard = ({ title, stat, icon, includeDiff = false }) => {
 const DatasetteResult = ({ query }) => {
   const { data, error } = useSWR(query, fetcher)
   if (error) return <Text>failed to load</Text>
-  if (!data) return <Text>loading...</Text>
+  if (!data)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    )
   return data[0].total_rows
 }
 
 const TimeseriesAggResult = ({ query }) => {
   const { data, error } = useSWR(query, fetcher)
   if (error) return <Text>failed to load</Text>
-  if (!data) return <Text>loading...</Text>
+  if (!data)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    )
 
   data = data.map((item) => {
     item.closed_at = new Date(item.closed_at)
