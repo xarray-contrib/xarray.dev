@@ -6,7 +6,7 @@ import { TimelinePlotContainer } from "../components/TimelinePlot"
 
 const DashboardPage = () => {
   return (
-    <Container maxW={"6xl"} mt={10} p={16}>
+    <Container maxW={"6xl"} mt={10}>
       <Statistics />
       <TimelinePlotContainer />
     </Container>

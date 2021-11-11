@@ -9,7 +9,7 @@ import {
   TabPanel,
   TabPanels,
   Box,
-  Container,
+  Text,
 } from "@chakra-ui/react"
 
 // Fix window is not defined issue
@@ -25,11 +25,7 @@ const TimelinePlot = ({ data, attr, start, end }) => {
   })
 
   const [state, setState] = React.useState({
-    series: [
-      {
-        data: dataSeries,
-      },
-    ],
+    series: [{ name: attr, data: dataSeries }],
     options: {
       chart: {
         id: `${attr}-chart`,
@@ -78,8 +74,8 @@ const TimelinePlot = ({ data, attr, start, end }) => {
         selection: {
           enabled: true,
           xaxis: {
-            min: new Date(start).getTime(),
-            max: new Date(end).getTime(),
+            min: start,
+            max: end,
           },
         },
       },
@@ -144,16 +140,32 @@ export const TimelinePlotContainer = () => {
 
   return (
     <Box mt={10}>
+      <Text
+        as={"h1"}
+        textAlign={"center"}
+        fontSize={"2xl"}
+        py={10}
+        fontWeight={"bold"}
+      >
+        Xarray Issue Tracker
+      </Text>
+      <Text fontSize={"md"} align={"center"}>
+        This is a timeline of how many open issues and pull requests Xarray has
+        on Github over time from {new Date(start).toLocaleDateString()} to{" "}
+        {new Date(end).toLocaleDateString()}.
+      </Text>
+      <br />
+      <br />
       <Tabs align="center" variant="soft-rounded" colorScheme="teal">
         <TabList>
-          <Tab>Issues</Tab>
           <Tab>Pull Requests</Tab>
+          <Tab>Issues</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
             <TimelinePlot
               data={data}
-              attr={"open_issues"}
+              attr={"open_pull_requests"}
               start={start}
               end={end}
             />
@@ -161,7 +173,7 @@ export const TimelinePlotContainer = () => {
           <TabPanel>
             <TimelinePlot
               data={data}
-              attr={"open_pull_requests"}
+              attr={"open_issues"}
               start={start}
               end={end}
             />
