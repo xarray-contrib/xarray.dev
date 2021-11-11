@@ -132,8 +132,7 @@ export const Statistics = () => {
         py={10}
         fontWeight={"bold"}
       >
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+        Xarray Project Statistics
       </Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatisticsCard
@@ -199,8 +198,7 @@ export const Statistics = () => {
         py={10}
         fontWeight={"bold"}
       >
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum.
+        Xarray Issue Tracker
       </Text>
 
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>

@@ -140,15 +140,6 @@ export const TimelinePlotContainer = () => {
 
   return (
     <Box mt={10}>
-      <Text
-        as={"h1"}
-        textAlign={"center"}
-        fontSize={"2xl"}
-        py={10}
-        fontWeight={"bold"}
-      >
-        Xarray Issue Tracker
-      </Text>
       <Text fontSize={"md"} align={"center"}>
         This is a timeline of how many open issues and pull requests Xarray has
         on Github over time from {new Date(start).toLocaleDateString()} to{" "}
