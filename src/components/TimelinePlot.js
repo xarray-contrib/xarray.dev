@@ -75,8 +75,8 @@ const TimelinePlot = ({ data, attr, start, end }) => {
         selection: {
           enabled: true,
           xaxis: {
-            min: start,
-            max: end,
+            min: getTime(new Date(start)),
+            max: getTime(new Date(end)),
           },
         },
       },
