@@ -1,5 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react"
-import theme from "../theme"
+import theme from "../components/theme"
 import Layout from "../source/components/Layout"
 import Head from "next/head"
 
