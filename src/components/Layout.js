@@ -1,5 +1,5 @@
-import { Footer } from "./Footer"
-import { Header } from "./Header"
+import { Footer } from "./footer"
+import { Header } from "./header"
 import { Container } from "@chakra-ui/react"
 import React from "react"
 

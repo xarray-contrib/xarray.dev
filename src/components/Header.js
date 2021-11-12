@@ -13,8 +13,8 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
 import { IoMoon, IoSunny } from "react-icons/io5"
 import Link from "next/link"
-import { MobileNav } from "./MobileNav"
-import { DesktopNav } from "./DesktopNav"
+import { MobileNav } from "./navbar/mobile-navbar"
+import { DesktopNav } from "./navbar/desktop-navbar"
 
 export const Header = () => {
   const navItems = React.useMemo(

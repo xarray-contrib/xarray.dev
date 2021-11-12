@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react"
 
-export const DonateSection = () => {
+export const Donate = () => {
   return (
     <Container id={"donate"} maxW={"6xl"} p={"12"}>
       <Heading textAlign={"center"} fontSize={"3xl"}>

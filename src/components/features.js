@@ -16,7 +16,7 @@ import {
 
 import { CheckIcon } from "@chakra-ui/icons"
 
-export const FeaturesSection = () => {
+export const Features = () => {
   const features = React.useMemo(
     () => [
       {

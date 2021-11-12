@@ -11,7 +11,7 @@ import {
   Image,
 } from "@chakra-ui/react"
 
-export const SponsorsSection = () => {
+export const Sponsors = () => {
   const sponsors = React.useMemo(
     () => [
       { name: "NSF", logo: "NSF.svg" },

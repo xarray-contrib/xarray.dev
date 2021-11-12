@@ -1,19 +1,13 @@
-import {
-  FeaturesSection,
-  HeroBannerSection,
-  EcosystemSection,
-  SponsorsSection,
-  DonateSection,
-} from "components"
+import { Features, HeroBanner, Ecosystem, Sponsors, Donate } from "components"
 
 export default function IndexPage() {
   return (
     <>
-      <HeroBannerSection />
-      <FeaturesSection />
-      <EcosystemSection />
-      <SponsorsSection />
-      <DonateSection />
+      <HeroBanner />
+      <Features />
+      <Ecosystem />
+      <Sponsors />
+      <Donate />
     </>
   )
 }

@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-export const HeroBannerSection = () => {
+export const HeroBanner = () => {
   return (
     <Container maxW={"6xl"}>
       <Stack
