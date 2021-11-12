@@ -12,6 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 
+import { getTime } from "date-fns"
 // Fix window is not defined issue
 // https://github.com/apexcharts/react-apexcharts/issues/240#issuecomment-765417887
 import dynamic from "next/dynamic"
@@ -21,8 +22,10 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const TimelinePlot = ({ data, attr, start, end }) => {
   const dataSeries = data.map((item) => {
-    return [item.time, item[attr]]
+    return [getTime(new Date(item.time)), item[attr]]
   })
+
+  console.log(dataSeries[0])
 
   const [state, setState] = React.useState({
     series: [{ name: attr, data: dataSeries }],
@@ -30,7 +33,6 @@ const TimelinePlot = ({ data, attr, start, end }) => {
       chart: {
         id: `${attr}-chart`,
         type: "line",
-        height: 330,
         toolbar: {
           autoSelected: "pan",
           show: false,
@@ -53,7 +55,7 @@ const TimelinePlot = ({ data, attr, start, end }) => {
         type: "datetime",
       },
       yaxis: {
-        tickAmount: 8,
+        tickAmount: 10,
       },
     },
 
@@ -65,7 +67,6 @@ const TimelinePlot = ({ data, attr, start, end }) => {
     optionsLine: {
       chart: {
         id: `${attr}-chart2`,
-        height: 130,
         type: "area",
         brush: {
           target: `${attr}-chart`,
@@ -74,8 +75,8 @@ const TimelinePlot = ({ data, attr, start, end }) => {
         selection: {
           enabled: true,
           xaxis: {
-            min: start,
-            max: end,
+            min: getTime(new Date(start)),
+            max: getTime(new Date(end)),
           },
         },
       },
@@ -105,7 +106,7 @@ const TimelinePlot = ({ data, attr, start, end }) => {
         options={state.options}
         series={state.series}
         type="line"
-        height={230}
+        height={330}
       />
       <ReactApexChart
         options={state.optionsLine}
@@ -119,7 +120,7 @@ const TimelinePlot = ({ data, attr, start, end }) => {
 
 export const TimelinePlotContainer = () => {
   const { data, error } = useSWR(
-    "https://gist.githubusercontent.com/andersy005/4f62b7b0cbf943b158cb11068e80c7c8/raw/1370342e460c7c00980a47e1e6c60dd665080132/xarray-repo-daily-data.json",
+    "https://pydata-datasette.herokuapp.com/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++open_issues%2C%0D%0A++open_pull_requests%2C%0D%0A++time%0D%0Afrom%0D%0A++%5Bpulls-and-issues%5D%0D%0Awhere+project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time",
     fetcher
   )
 
