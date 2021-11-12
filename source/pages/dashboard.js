@@ -1,6 +1,6 @@
 import React from "react"
 import { Container } from "@chakra-ui/react"
-import { Statistics } from "components"
+import { Statistics } from "../source/components"
 import { TimelinePlotContainer } from "../components/timeline-plot"
 
 const DashboardPage = () => {

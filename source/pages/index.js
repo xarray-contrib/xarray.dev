@@ -1,4 +1,10 @@
-import { Features, HeroBanner, Ecosystem, Sponsors, Donate } from "components"
+import {
+  Features,
+  HeroBanner,
+  Ecosystem,
+  Sponsors,
+  Donate,
+} from "../source/components"
 
 export default function IndexPage() {
   return (
