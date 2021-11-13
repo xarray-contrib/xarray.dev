@@ -23,7 +23,7 @@ const Library = ({ name, description, url, logo }) => {
         bg={"gray.50"}
         mb={1}
       >
-        <Image src={logo} alt={name} w={12} h={12}></Image>
+        <Image src={logo} alt={name}></Image>
       </Flex>
 
       <Heading

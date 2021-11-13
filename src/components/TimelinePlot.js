@@ -120,7 +120,7 @@ const TimelinePlot = ({ data, attr, start, end }) => {
 
 export const TimelinePlotContainer = () => {
   const { data, error } = useSWR(
-    "https://pydata-datasette.herokuapp.com/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++open_issues%2C%0D%0A++open_pull_requests%2C%0D%0A++time%0D%0Afrom%0D%0A++%5Bpulls-and-issues%5D%0D%0Awhere+project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time",
+    "https://pydata-datasette.herokuapp.com/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++time%2C%0D%0A++open_issues%2C%0D%0A++open_pull_requests%0D%0Afrom%0D%0A++open_pulls_and_issues%0D%0Awhere%0D%0A++project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time",
     fetcher
   )
 

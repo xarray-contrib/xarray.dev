@@ -8,7 +8,6 @@ import {
   Center,
   Box,
   Image,
-  Heading,
   Badge,
   Stack,
   SimpleGrid,
@@ -25,7 +24,7 @@ const ProjectProfile = ({
   return (
     <Center py={6}>
       <Box
-        maxW={"270px"}
+        maxW={"300px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
@@ -34,16 +33,13 @@ const ProjectProfile = ({
         p={4}
         textAlign={"center"}
       >
-        <Image src={logo} alt={name} h={"120px"} w={"220px"} />
-
-        <Heading fontSize={"2xl"} fontFamily={"body"}>
-          {name}
-        </Heading>
+        <Image src={logo} alt={name} w={"full"} />
 
         <Text
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
           px={3}
+          mt={8}
         >
           {description}
         </Text>
@@ -144,7 +140,8 @@ export const ScientificDomains = () => {
       },
       {
         name: "SquidPy",
-        description: "Spatial Single Cell Analysis in Python",
+        description:
+          "Collection of tools for the analysis and visualization of spatial molecular data",
         domains: ["💊 Bioinformatics"],
         repo: "https://github.com/theislab/squidpy",
         homepage: "https://squidpy.readthedocs.io/en/stable/",
