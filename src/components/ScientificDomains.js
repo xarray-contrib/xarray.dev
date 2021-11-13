@@ -7,7 +7,7 @@ import {
   useColorModeValue,
   Center,
   Box,
-  Img,
+  Image,
   Badge,
   Stack,
   SimpleGrid,
@@ -33,7 +33,7 @@ const ProjectProfile = ({
         p={4}
         textAlign={"center"}
       >
-        <Img src={logo} alt={name} w={"full"} />
+        <Image src={logo} alt={name} w={"full"} />
 
         <Text
           textAlign={"center"}
@@ -136,7 +136,7 @@ export const ScientificDomains = () => {
         domains: ["🗺️ Geographic Processing"],
         repo: "https://github.com/makepath/xarray-spatial",
         homepage: "https://xarray-spatial.org/",
-        logo: "https://raw.githubusercontent.com/makepath/xarray-spatial/master/docs/source/_static/img/Xarray-Spatial-logo.svg",
+        logo: "https://raw.githubusercontent.com/makepath/xarray-spatial/master/docs/source/_static/Image/Xarray-Spatial-logo.svg",
       },
       {
         name: "SquidPy",
