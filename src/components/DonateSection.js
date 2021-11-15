@@ -14,7 +14,7 @@ export const DonateSection = () => {
   return (
     <Box id={"donate"}>
       <Container maxW={"6xl"} py={"4"}>
-        <Heading textAlign={"center"} fontSize={"3xl"}>
+        <Heading textAlign={"center"} fontSize={"5xl"}>
           Donate
         </Heading>
         <Stack

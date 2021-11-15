@@ -57,7 +57,7 @@ export const FeaturesSection = () => {
   return (
     <Box id={"features"} p={4}>
       <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
-        <Heading fontSize={"3xl"}>Key Features & Capabilities</Heading>
+        <Heading fontSize={"5xl"}>Key Features & Capabilities</Heading>
         <Text fontSize={"lg"}>
           Xarray provides data models for working with labeled arrays and
           datasets. Its toolkit includes a broad set of domain-agnostic
