@@ -24,9 +24,9 @@ export const SponsorsSection = () => {
 
   return (
     <Box id={"sponsors"}>
-      <Container maxW={"6xl"} py={16} as={Stack} spacing={12}>
+      <Container maxW={"6xl"} py={4} as={Stack} spacing={12}>
         <Stack spacing={4}>
-          <Heading fontSize={"3xl"} textAlign={"center"}>
+          <Heading fontSize={"5xl"} textAlign={"center"}>
             Supported By
           </Heading>
           <Text
