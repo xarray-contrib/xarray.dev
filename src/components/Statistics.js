@@ -26,9 +26,15 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const StatisticsCard = ({ title, stat, icon, diff = undefined }) => {
   let diffElement
   if (diff) {
+    let color
+    if (diff.type === "increase") {
+      color = "red.500"
+    } else {
+      color = "green.500"
+    }
     diffElement = (
       <StatHelpText>
-        <StatArrow type={diff.type} />
+        <StatArrow type={diff.type} color={color} />
         {diff.value}
       </StatHelpText>
     )
