@@ -159,7 +159,7 @@ export const TimelinePlotContainer = () => {
 
       <br />
       <br />
-      <Tabs align="center" variant="soft-rounded" colorScheme="teal">
+      <Tabs align="center" variant="soft-rounded" colorScheme="teal" isFitted>
         <TabList>
           <Tab>Pull Requests</Tab>
           <Tab>Issues</Tab>
@@ -172,14 +172,14 @@ export const TimelinePlotContainer = () => {
               start={start}
               end={end}
             />
-          </TabPanel>
-          <TabPanel>
-            <TimelinePlot
-              data={data}
-              attr={"open_issues"}
-              start={start}
-              end={end}
-            />
+            <TabPanel>
+              <TimelinePlot
+                data={data}
+                attr={"open_issues"}
+                start={start}
+                end={end}
+              />
+            </TabPanel>
           </TabPanel>
         </TabPanels>
       </Tabs>
