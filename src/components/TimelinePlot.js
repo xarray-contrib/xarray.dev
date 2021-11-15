@@ -25,8 +25,6 @@ const TimelinePlot = ({ data, attr, start, end }) => {
     return [getTime(new Date(item.time)), item[attr]]
   })
 
-  console.log(dataSeries[0])
-
   const [state, setState] = React.useState({
     series: [{ name: attr, data: dataSeries }],
     options: {
@@ -142,10 +140,23 @@ export const TimelinePlotContainer = () => {
   return (
     <Box mt={10}>
       <Text fontSize={"md"} align={"center"}>
-        This is a timeline of how many open issues and pull requests Xarray has
+        This is a timeline of how many pull requests and open issues Xarray has
         on Github over time from {new Date(start).toLocaleDateString()} to{" "}
         {new Date(end).toLocaleDateString()}.
+        <br />
+        Raw data can be found{" "}
+        <Text
+          as={"a"}
+          href={
+            "https://pydata-datasette.herokuapp.com/open_pulls_and_issues/open_pulls_and_issues"
+          }
+          color={"blue.400"}
+        >
+          here
+        </Text>
+        .
       </Text>
+
       <br />
       <br />
       <Tabs align="center" variant="soft-rounded" colorScheme="teal">
