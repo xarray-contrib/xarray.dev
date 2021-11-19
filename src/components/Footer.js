@@ -84,6 +84,8 @@ export const Footer = () => {
           <Stack align={"flex-start"}>
             <ListHeader>Xarray</ListHeader>
 
+            <Link href={"/dashboard"}>Dashboard</Link>
+
             <Link
               href={
                 "https://xarray.pydata.org/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray"
