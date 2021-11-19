@@ -11,7 +11,6 @@ import {
   Image,
 } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
-import { IoMoon, IoSunny } from "react-icons/io5"
 import Link from "next/link"
 import { MobileNav } from "./MobileNav"
 import { DesktopNav } from "./DesktopNav"
@@ -119,19 +118,6 @@ export const Header = () => {
             <DesktopNav
               navItems={navItems}
               display={{ base: "none", md: "flex" }}
-            />
-            <IconButton
-              size={"sm"}
-              variant={"ghost"}
-              aria-label={"Toggle Color Mode"}
-              onClick={toggleColorMode}
-              icon={
-                colorMode == "light" ? (
-                  <IoMoon size={18} />
-                ) : (
-                  <IoSunny size={18} />
-                )
-              }
             />
           </Stack>
         </Container>
