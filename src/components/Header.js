@@ -23,7 +23,6 @@ export const Header = () => {
       { label: "Ecosystem", href: "/#ecosystem" },
       { label: "Sponsors", href: "/#sponsors" },
       { label: "Donate ❤", href: "/#donate" },
-      { label: "Dashboard", href: "/dashboard" },
       { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
       {
         label: "Community",
