@@ -63,7 +63,7 @@ export const EcosystemSection = () => {
       </Stack>
 
       <Container maxW={"6xl"} mt={10}>
-        <Tabs align="center" variant="soft-rounded" colorScheme="teal">
+        <Tabs align="center" variant="enclosed" isFitted colorScheme="teal">
           <TabList>
             <Tab>Scientific Domains</Tab>
             <Tab>Array Libraries</Tab>
