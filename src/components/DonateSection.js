@@ -8,6 +8,7 @@ import {
   Container,
   Stack,
   Box,
+  Center,
 } from "@chakra-ui/react"
 
 export const DonateSection = () => {
@@ -24,19 +25,7 @@ export const DonateSection = () => {
         >
           <Stack
             flex={1}
-            justify={"center"}
-            align={"center"}
-            position={"relative"}
-            w={"full"}
-          >
-            <Image
-              src={"NumFOCUS_sponsored_project_logo.svg"}
-              alt={"NumFocus logo"}
-              objectFit={"contain"}
-            ></Image>
-          </Stack>
-          <Stack
-            flex={1}
+            px={10}
             spacing={{ base: 5, md: 10 }}
             justify={"center"}
             align={"center"}
@@ -76,6 +65,13 @@ export const DonateSection = () => {
                 Donate ❤
               </Link>
             </Button>
+          </Stack>
+          <Stack flex={1} justify={"center"} align={"center"} w={"full"}>
+            <Center
+              as={Image}
+              src={"NumFOCUS_sponsored_project_logo.svg"}
+              alt={"NumFocus logo"}
+            ></Center>
           </Stack>
         </Stack>
       </Container>

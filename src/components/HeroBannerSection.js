@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  Flex,
   Container,
   Text,
   Stack,
@@ -57,9 +56,17 @@ export const HeroBannerSection = () => {
             functions for advanced analytics and visualization with these data
             structures.
           </Text>
+        </Stack>
+        <Stack flex={1} spacing={{ base: 10, md: 20 }}>
+          <Image
+            src={"xarray-datastructure.png"}
+            alt="xarray data structure"
+            objectFit="contain"
+          ></Image>
 
           <Stack
             spacing={{ base: 4, sm: 6 }}
+            justify={"center"}
             direction={{ base: "column", sm: "row" }}
           >
             <Button
@@ -82,19 +89,6 @@ export const HeroBannerSection = () => {
             </Button>
           </Stack>
         </Stack>
-        <Flex
-          flex={1}
-          justify={"center"}
-          align={"center"}
-          position={"relative"}
-          w={"full"}
-        >
-          <Image
-            src={"xarray-datastructure.png"}
-            alt="xarray data structure"
-            objectFit="contain"
-          ></Image>
-        </Flex>
       </Stack>
     </Container>
   )
