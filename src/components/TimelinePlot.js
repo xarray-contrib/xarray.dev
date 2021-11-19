@@ -148,7 +148,7 @@ export const TimelinePlotContainer = () => {
       </Text>
       <br />
       <br />
-      <Tabs align="center" variant="soft-rounded" colorScheme="teal">
+      <Tabs align="center" variant="enclosed" isFitted colorScheme="teal">
         <TabList>
           <Tab>Pull Requests</Tab>
           <Tab>Issues</Tab>
