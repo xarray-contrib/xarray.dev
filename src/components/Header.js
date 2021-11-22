@@ -14,35 +14,10 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
 import Link from "next/link"
 import { MobileNav } from "./MobileNav"
 import { DesktopNav } from "./DesktopNav"
+import { menuItems } from "../data/menu-items"
 
 export const Header = () => {
-  const navItems = React.useMemo(
-    () => [
-      { label: "Features", href: "/#features" },
-      { label: "Ecosystem", href: "/#ecosystem" },
-      { label: "Sponsors", href: "/#sponsors" },
-      { label: "Donate ❤", href: "/#donate" },
-      { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
-      {
-        label: "Community",
-        children: [
-          {
-            label: "GiHub Discussions",
-            href: "https://github.com/pydata/xarray/discussions",
-          },
-          {
-            label: "Stack Overflow",
-            href: "https://stackoverflow.com/questions/tagged/python-xarray",
-          },
-          {
-            label: "Mailing List",
-            href: "https://groups.google.com/forum/#!forum/xarray",
-          },
-        ],
-      },
-    ],
-    []
-  )
+  const navItems = React.useMemo(() => menuItems, [])
 
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
