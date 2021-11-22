@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react"
 import {
   Container,
@@ -10,50 +9,13 @@ import {
   HStack,
   Icon,
   VStack,
-  useColorModeValue,
-  Code,
 } from "@chakra-ui/react"
 
 import { CheckIcon } from "@chakra-ui/icons"
+import { Features } from "../data/features"
 
 export const FeaturesSection = () => {
-  const features = React.useMemo(
-    () => [
-      {
-        title: "Interoperability",
-        text: "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib.",
-      },
-      {
-        title: "Apply operations over named dimensions",
-        text: "",
-      },
-      {
-        title: "Select values by label instead of integer location",
-        text: "",
-      },
-      {
-        title: "Vectorized operations",
-        text: "Mathematical operations vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape.",
-      },
-      {
-        title: "GroupBy operations",
-        text: " Flexible split-apply-combine operations with groupby.",
-      },
-      {
-        title: "Database like operations",
-        text: "Database like alignment based on coordinate labels that smoothly handles missing values.",
-      },
-      {
-        title: "Arbitrary metadata tracking",
-        text: "Keep track of arbitrary metadata in the form of a Python dictionary.",
-      },
-      {
-        title: "Flexible and Extensible I/O backend API",
-        text: "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB.",
-      },
-    ],
-    []
-  )
+  const features = React.useMemo(() => Features, [])
   return (
     <Box id={"features"} p={4}>
       <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
@@ -75,9 +37,7 @@ export const FeaturesSection = () => {
               </Box>
               <VStack align={"start"}>
                 <Text fontWeight={600}>{feature.title}</Text>
-                <Text color={useColorModeValue("gray.800", "white")}>
-                  {feature.text}
-                </Text>
+                <Text>{feature.text}</Text>
               </VStack>
             </HStack>
           ))}

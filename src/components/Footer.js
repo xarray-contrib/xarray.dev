@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react"
 
 import { FaTwitter, FaGithub } from "react-icons/fa"
+import { footerItems } from "../data/footer-items"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -84,59 +85,48 @@ export const Footer = () => {
           <Stack align={"flex-start"}>
             <ListHeader>Xarray</ListHeader>
 
-            <Link href={"/dashboard"}>Dashboard</Link>
-
-            <Link
-              href={
-                "https://xarray.pydata.org/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray"
-              }
-            >
-              Citing Xarray
-            </Link>
-            <Link href={"https://xarray.pydata.org/en/stable/roadmap.html"}>
-              Roadmap
-            </Link>
-            <Link
-              href={"https://xarray.pydata.org/en/stable/contributing.html"}
-            >
-              Contribute
-            </Link>
-            <Link href={"https://github.com/xarray-contrib"}>
-              Compatible Projects
-            </Link>
+            {footerItems.xarray.map((item) => {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  fontSize={"sm"}
+                  _hover={{ color: "blue.500" }}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Resources</ListHeader>
-            <Link href={"https://xarray.pydata.org/en/stable"}>
-              Documentation
-            </Link>
-            <Link
-              href={
-                "https://xarray.pydata.org/en/stable/tutorials-and-videos.html"
-              }
-            >
-              Tutorials
-            </Link>
-            <Link href={"https://xarray.pydata.org/en/stable/gallery.html"}>
-              Example Gallery
-            </Link>
+            {footerItems.resources.map((item) => {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  fontSize={"sm"}
+                  _hover={{ color: "blue.500" }}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Community</ListHeader>
-            <Link href={"https://github.com/pydata/xarray/discussions"}>
-              GitHub Discussions
-            </Link>
-            <Link href={"https://github.com/pydata/xarray/issues"}>
-              Issue Tracker
-            </Link>
-            <Link
-              href={"https://stackoverflow.com/questions/tagged/python-xarray"}
-            >
-              Stack Overflow
-            </Link>
-            <Link href={"https://groups.google.com/forum/#!forum/xarray"}>
-              Mailing List
-            </Link>
+            {footerItems.community.map((item) => {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  fontSize={"sm"}
+                  _hover={{ color: "blue.500" }}
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </Stack>
         </SimpleGrid>
       </Container>

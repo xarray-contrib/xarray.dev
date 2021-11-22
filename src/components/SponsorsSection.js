@@ -11,16 +11,10 @@ import {
   Image,
 } from "@chakra-ui/react"
 
+import { Sponsors } from "../data/sponsors"
+
 export const SponsorsSection = () => {
-  const sponsors = React.useMemo(
-    () => [
-      { name: "NSF", logo: "NSF.svg" },
-      { name: "NASA", logo: "NASA_logo.svg" },
-      { name: "CZI", logo: "Chan_Zuckerberg_Initiative.svg" },
-      { name: "NVIDIA", logo: "Nvidia_logo.svg" },
-    ],
-    []
-  )
+  const sponsors = React.useMemo(() => Sponsors, [])
 
   return (
     <Box id={"sponsors"}>
