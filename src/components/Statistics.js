@@ -23,7 +23,7 @@ import * as d3 from "d3"
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-const StatisticsCard = ({ title, stat, icon, diff = undefined }) => {
+const StatisticsCard = ({ title, stat, icon, diff, link }) => {
   let diffElement
   if (diff) {
     let color
@@ -44,6 +44,8 @@ const StatisticsCard = ({ title, stat, icon, diff = undefined }) => {
   return (
     <StatGroup>
       <Stat
+        as={"a"}
+        href={link || null}
         px={{ base: 2, md: 4 }}
         py={"5"}
         shadow={"xl"}
@@ -72,7 +74,7 @@ const StatisticsCard = ({ title, stat, icon, diff = undefined }) => {
   )
 }
 
-const DatasetteStatsCard = ({ query, title, icon }) => {
+const DatasetteStatsCard = ({ query, title, icon, link }) => {
   const { data, error } = useSWR(query, fetcher)
   if (error) return <Text>failed to load</Text>
   if (!data)
@@ -85,7 +87,14 @@ const DatasetteStatsCard = ({ query, title, icon }) => {
         size="xl"
       />
     )
-  return <StatisticsCard stat={data[0].total_rows} title={title} icon={icon} />
+  return (
+    <StatisticsCard
+      stat={data[0].total_rows}
+      title={title}
+      icon={icon}
+      link={link}
+    />
+  )
 }
 
 const TimeseriesAggStatsCard = ({ query, title, icon }) => {
@@ -159,6 +168,7 @@ export const Statistics = () => {
           title={"Core Maintainers"}
           stat={"15"}
           icon={<BsPerson size={"3em"} />}
+          link={"https://xarray.pydata.org/en/stable/team.html"}
         />
         <DatasetteStatsCard
           title={"Contributors"}
@@ -166,6 +176,7 @@ export const Statistics = () => {
             "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/contributors,user_id.json?_shape=array"
           }
           icon={<BsPeople size={"3em"} />}
+          link={"https://github.com/pydata/xarray/graphs/contributors"}
         />
 
         <DatasetteStatsCard
@@ -174,6 +185,7 @@ export const Statistics = () => {
           query={
             "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array"
           }
+          link={"https://github.com/pydata/xarray/stargazers"}
         />
 
         <DatasetteStatsCard
@@ -182,6 +194,7 @@ export const Statistics = () => {
             "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/dependents,dependent.json?_shape=array"
           }
           icon={<GoPackage size={"3em"} />}
+          link={"https://github.com/pydata/xarray/network/dependents"}
         />
 
         <StatisticsCard
@@ -196,6 +209,7 @@ export const Statistics = () => {
             "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/releases,id.json?_shape=array"
           }
           icon={<GoTag size={"3em"} />}
+          link={"https://github.com/pydata/xarray/releases"}
         />
       </SimpleGrid>
 
