@@ -13,7 +13,7 @@
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
-    "apexcharts": "3.29.0",
+    "apexcharts": "3.31.0",
     "d3": "^7.1.1",
     "date-fns": "^2.26.0",
     "framer-motion": "^5.3.1",
