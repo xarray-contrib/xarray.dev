@@ -122,7 +122,7 @@ export const ScientificDomains = () => {
         bg={"red.400"}
         _hover={{ bg: "red.500" }}
       >
-        <Link href="https://xarray.pydata.org/en/stable/ecosystem.html">
+        <Link href="https://docs.xarray.dev/en/stable/ecosystem.html">
           See More
         </Link>
       </Button>

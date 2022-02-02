@@ -78,12 +78,12 @@ export const HeroBannerSection = () => {
               bg={"red.400"}
               _hover={{ bg: "red.500" }}
             >
-              <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/quick-overview.html">
+              <Link href="https://docs.xarray.dev/en/stable/getting-started-guide/quick-overview.html">
                 Get Started
               </Link>
             </Button>
             <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
-              <Link href="https://xarray.pydata.org/en/stable/getting-started-guide/why-xarray.html">
+              <Link href="https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html">
                 Why Xarray?
               </Link>
             </Button>

@@ -168,7 +168,7 @@ export const Statistics = () => {
           title={"Core Maintainers"}
           stat={"15"}
           icon={<BsPerson size={"3em"} />}
-          link={"https://xarray.pydata.org/en/stable/team.html"}
+          link={"https://docs.xarray.dev/en/stable/team.html"}
         />
         <DatasetteStatsCard
           title={"Contributors"}

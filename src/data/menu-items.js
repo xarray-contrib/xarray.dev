@@ -3,7 +3,7 @@ export const menuItems = [
   { label: "Ecosystem", href: "/#ecosystem" },
   { label: "Sponsors", href: "/#sponsors" },
   { label: "Donate ❤", href: "/#donate" },
-  { label: "Documentation", href: "https://xarray.pydata.org/en/stable/" },
+  { label: "Documentation", href: "https://docs.xarray.dev" },
   {
     label: "Community",
     children: [
