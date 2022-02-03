@@ -10,10 +10,12 @@ import {
   VisuallyHidden,
   Image,
   useColorModeValue,
+  VStack,
 } from "@chakra-ui/react"
 
 import { FaTwitter, FaGithub } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
+import { VercelCallout } from "./VercelCallout"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -129,6 +131,9 @@ export const Footer = () => {
             })}
           </Stack>
         </SimpleGrid>
+        <VStack as="footer" spacing={4} mt={12} textAlign="center">
+          <VercelCallout />
+        </VStack>
       </Container>
     </Box>
   )
