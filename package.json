@@ -11,7 +11,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^1.1.5",
     "@chakra-ui/react": "^1.8.3",
-    "@emotion/react": "^11.7.1",
+    "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "apexcharts": "3.33.1",
     "d3": "^7.3.0",
