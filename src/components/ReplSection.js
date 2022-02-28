@@ -18,12 +18,12 @@ import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
 const preRunCode = `%23%20Install%20xarray%20in%20the%20browser%0Aimport%20micropip%0Aawait%20micropip.install%28%5B%27xarray%27%5D%29%0A%0A%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport%20numpy%20as%20np%0Aimport%20pandas%20as%20pd%0A%25matplotlib%20inline`
 
 const sampleCode = `"""
-To try the examples in the browser,
-use the console 👉 or 👇:
+To try Xarray in the browser,
+use the console located 👉 or 👇:
 1. Type code in the input cell and press
    Shift + Enter to execute
 2. Or copy paste the code, and click on
-   the "Run" button in the toolbar
+   the "Run" ▶ button in the toolbar
 """.
 import xarray as xr
 import pandas as pd
@@ -47,7 +47,7 @@ data[0, :]
 # coordinate label, like pandas
 data.loc[:, 10]
 
-# isel or "integer select":  by dimension name
+# isel or "integer select": by dimension name
 # and integer label
 data.isel(lat=0)
 
@@ -57,10 +57,10 @@ data.sel(time="2020-01")
 
 # Data aggregations uses dimension names
 # instead of axis numbers
-data.mean(dim="time")
+data.mean(dim=["time", "lat"])
 
 # quick and convenient visualizations
-data.isel(lon=0).plot()
+data.isel(lon=0).plot();
 
 # Pretty neat, eh? :)
 # For more, head over to the documentation page`
@@ -74,7 +74,7 @@ export const ReplSection = () => {
             Try Xarray
           </Heading>
           <Text fontSize={"lg"}>
-            Try Xarray in a REPL directly in your browser(no installation
+            Try Xarray in a REPL directly in your browser (no installation
             needed)!
           </Text>
         </Stack>
