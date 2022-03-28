@@ -4,6 +4,7 @@ import {
   EcosystemSection,
   SponsorsSection,
   DonateSection,
+  ReplSection,
 } from "components"
 
 export default function IndexPage() {
@@ -11,6 +12,7 @@ export default function IndexPage() {
     <>
       <HeroBannerSection />
       <FeaturesSection />
+      <ReplSection />
       <EcosystemSection />
       <SponsorsSection />
       <DonateSection />
