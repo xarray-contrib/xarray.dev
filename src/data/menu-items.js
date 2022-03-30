@@ -8,7 +8,7 @@ export const menuItems = [
     label: "Community",
     children: [
       {
-        label: "GiHub Discussions",
+        label: "GitHub Discussions",
         href: "https://github.com/pydata/xarray/discussions",
       },
       {
