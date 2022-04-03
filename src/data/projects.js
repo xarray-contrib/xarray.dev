@@ -21,7 +21,7 @@ export const Projects = [
     domains: ["Bayesian Inference"],
     repo: "https://github.com/arviz-devs/arviz",
     homepage: "https://arviz-devs.github.io/arviz/",
-    logo: "https://raw.githubusercontent.com/arviz-devs/arviz/main/doc/logo/ArviZ.svg",
+    logo: "https://raw.githubusercontent.com/arviz-devs/arviz-project/main/arviz_logos/ArviZ.svg",
   },
   {
     name: "MetPy",
@@ -73,5 +73,14 @@ export const Projects = [
     homepage: "https://pangeo.io/",
     repo: "https://github.com/pangeo-data",
     logo: "https://raw.githubusercontent.com/pangeo-data/pangeo/master/docs/_static/pangeo_simple_logo.svg",
+  },
+  {
+    name: "cf-xarray",
+    description:
+      "An accessor for Xarray objects that interprets  Climate and Forecast (CF) metadata convention attributes",
+    domains: ["🌎 Geoscience"],
+    homepage: "https://cf-xarray.readthedocs.io",
+    repo: "https://github.com/xarray-contrib/cf-xarray",
+    logo: "https://raw.githubusercontent.com/xarray-contrib/cf-xarray/main/doc/_static/logo.svg",
   },
 ]
