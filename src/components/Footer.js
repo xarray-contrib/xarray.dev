@@ -13,7 +13,7 @@ import {
   VStack,
 } from "@chakra-ui/react"
 
-import { FaTwitter, FaGithub } from "react-icons/fa"
+import { FaTwitter, FaGithub, FaYoutube } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
 import { VercelCallout } from "./VercelCallout"
 
@@ -81,6 +81,14 @@ export const Footer = () => {
                 href={"https://github.com/pydata/xarray"}
               >
                 <FaGithub size={70} />
+              </SocialButton>
+              <SocialButton
+                label={"YouTube"}
+                href={
+                  "https://www.youtube.com/channel/UCBlxVSA6xQXeb-i4GgTlO7g"
+                }
+              >
+                <FaYoutube size={70} />
               </SocialButton>
             </Stack>
           </Stack>

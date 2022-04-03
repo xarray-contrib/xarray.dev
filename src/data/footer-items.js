@@ -20,7 +20,7 @@ export const footerItems = {
     { label: "Documentation", href: "https://docs.xarray.dev/en/stable/" },
     {
       label: "Tutorials",
-      href: "https://docs.xarray.dev/en/stable/tutorials.html",
+      href: "https://docs.xarray.dev/en/stable/tutorials-and-videos.html",
     },
     {
       label: "Example Gallery",
