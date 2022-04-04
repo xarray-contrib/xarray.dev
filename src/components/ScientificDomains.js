@@ -8,8 +8,6 @@ import {
   HStack,
   VStack,
   Box,
-  Grid,
-  GridItem,
   Image,
   Badge,
   Stack,
@@ -43,10 +41,17 @@ const ProjectProfile = ({
         overflow={"hidden"}
         p={4}
         textAlign={"center"}
+        px={1}
+        py={4}
       >
-        <Box w={"full"} maxH={"80px"}>
-          <Image src={logo} alt={name} />
-        </Box>
+        <Image
+          h={"55"}
+          w={"full"}
+          src={logo}
+          alt={name}
+          layout="fill"
+          objectFit="contain"
+        />
 
         <Text
           textAlign={"center"}
@@ -62,8 +67,8 @@ const ProjectProfile = ({
           align={"center"}
           justify={"center"}
           direction={"row"}
-          mt={4}
-          py={10}
+          mt={6}
+          py={4}
         >
           {domains.map((domain, key) => {
             return (
@@ -125,11 +130,14 @@ export const ScientificDomains = () => {
             ></ProjectProfile>
           ))}
       </SimpleGrid>
+
       <Button
         rounded={"full"}
         size={"lg"}
         fontWeight={"normal"}
         px={6}
+        py={6}
+        mt={10}
         colorScheme={"red"}
         bg={"red.400"}
         _hover={{ bg: "red.500" }}
