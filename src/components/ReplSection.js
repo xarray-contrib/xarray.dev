@@ -67,7 +67,7 @@ data.isel(lon=0).plot();
 
 export const ReplSection = () => {
   return (
-    <Box>
+    <Box id={"repl"}>
       <Container maxW={"6xl"} py={"4"}>
         <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
           <Heading textAlign={"center"} fontSize={"5xl"}>

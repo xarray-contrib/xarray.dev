@@ -5,7 +5,8 @@ import {
   Button,
   Text,
   useColorModeValue,
-  Center,
+  HStack,
+  VStack,
   Box,
   Image,
   Badge,
@@ -24,28 +25,51 @@ const ProjectProfile = ({
   logo,
 }) => {
   return (
-    <Center py={6}>
+    <Box
+      maxW="sm"
+      maxH="sm"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+    >
       <Box
         maxW={"300px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"2xl"}
+        boxShadow={"1xl"}
         rounded={"md"}
         overflow={"hidden"}
         p={4}
         textAlign={"center"}
+        px={1}
+        py={4}
       >
-        <Image src={logo} alt={name} w={"full"} />
+        <Image
+          h={"55"}
+          w={"full"}
+          src={logo}
+          alt={name}
+          layout="fill"
+          objectFit="contain"
+        />
 
         <Text
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
-          px={3}
-          mt={8}
+          px={1}
+          py={4}
+          h={20}
+          mt={5}
         >
           {description}
         </Text>
-        <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
+        <VStack
+          align={"center"}
+          justify={"center"}
+          direction={"row"}
+          mt={6}
+          py={4}
+        >
           {domains.map((domain, key) => {
             return (
               <Badge key={key} variant="outline" rounded="full" px={2} py={1}>
@@ -53,15 +77,8 @@ const ProjectProfile = ({
               </Badge>
             )
           })}
-        </Stack>
-
-        <Stack
-          align={"center"}
-          justify={"center"}
-          mt={6}
-          direction={"row"}
-          spacing={4}
-        >
+        </VStack>
+        <HStack>
           <Button
             flex={1}
             fontSize={"sm"}
@@ -82,9 +99,9 @@ const ProjectProfile = ({
           >
             <Link href={repo}>Repository</Link>
           </Button>
-        </Stack>
+        </HStack>
       </Box>
-    </Center>
+    </Box>
   )
 }
 
@@ -113,11 +130,14 @@ export const ScientificDomains = () => {
             ></ProjectProfile>
           ))}
       </SimpleGrid>
+
       <Button
         rounded={"full"}
         size={"lg"}
         fontWeight={"normal"}
         px={6}
+        py={6}
+        mt={10}
         colorScheme={"red"}
         bg={"red.400"}
         _hover={{ bg: "red.500" }}
