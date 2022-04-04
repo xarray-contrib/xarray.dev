@@ -5,8 +5,11 @@ import {
   Button,
   Text,
   useColorModeValue,
-  Center,
+  HStack,
+  VStack,
   Box,
+  Grid,
+  GridItem,
   Image,
   Badge,
   Stack,
@@ -24,28 +27,44 @@ const ProjectProfile = ({
   logo,
 }) => {
   return (
-    <Center py={6}>
+    <Box
+      maxW="sm"
+      maxH="sm"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+    >
       <Box
         maxW={"300px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"2xl"}
+        boxShadow={"1xl"}
         rounded={"md"}
         overflow={"hidden"}
         p={4}
         textAlign={"center"}
       >
-        <Image src={logo} alt={name} w={"full"} />
+        <Box w={"full"} maxH={"80px"}>
+          <Image src={logo} alt={name} />
+        </Box>
 
         <Text
           textAlign={"center"}
           color={useColorModeValue("gray.700", "gray.400")}
-          px={3}
-          mt={8}
+          px={1}
+          py={4}
+          h={20}
+          mt={5}
         >
           {description}
         </Text>
-        <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
+        <VStack
+          align={"center"}
+          justify={"center"}
+          direction={"row"}
+          mt={4}
+          py={10}
+        >
           {domains.map((domain, key) => {
             return (
               <Badge key={key} variant="outline" rounded="full" px={2} py={1}>
@@ -53,15 +72,8 @@ const ProjectProfile = ({
               </Badge>
             )
           })}
-        </Stack>
-
-        <Stack
-          align={"center"}
-          justify={"center"}
-          mt={6}
-          direction={"row"}
-          spacing={4}
-        >
+        </VStack>
+        <HStack>
           <Button
             flex={1}
             fontSize={"sm"}
@@ -82,9 +94,9 @@ const ProjectProfile = ({
           >
             <Link href={repo}>Repository</Link>
           </Button>
-        </Stack>
+        </HStack>
       </Box>
-    </Center>
+    </Box>
   )
 }
 
