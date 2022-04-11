@@ -14,7 +14,7 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "apexcharts": "3.35.0",
-    "d3": "^7.4.2",
+    "d3": "^7.4.3",
     "date-fns": "^2.28.0",
     "framer-motion": "^6.2.8",
     "next": "^12.1.4",
