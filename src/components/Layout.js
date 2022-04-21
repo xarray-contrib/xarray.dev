@@ -5,8 +5,10 @@ import React from "react"
 
 const Layout = ({ children }) => {
   return (
+   
     <>
       <Container maxW={"full"} maxH={"full"}>
+
         <Header />
         {children}
         <Footer />

@@ -59,7 +59,7 @@ export const HeroBannerSection = () => {
         </Stack>
         <Stack flex={1} spacing={{ base: 10, md: 20 }}>
           <Image
-            src={"xarray-datastructure.png"}
+            src={"/xarray-datastructure.png"}
             alt="xarray data structure"
             objectFit="contain"
           ></Image>

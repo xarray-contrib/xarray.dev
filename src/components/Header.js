@@ -76,7 +76,7 @@ export const Header = () => {
               >
                 <Image
                   w={28}
-                  src={"dataset-diagram-logo.png"}
+                  src={"/dataset-diagram-logo.png"}
                   alt={"xarray logo"}
                 />
               </Stack>

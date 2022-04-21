@@ -61,7 +61,7 @@ export const Footer = () => {
             <Box>
               <Image
                 w={32}
-                src={"dataset-diagram-logo.png"}
+                src={"/dataset-diagram-logo.png"}
                 alt={"xarray logo"}
               />
             </Box>
