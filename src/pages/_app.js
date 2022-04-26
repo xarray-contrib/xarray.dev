@@ -2,8 +2,8 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { MDXProvider } from "@mdx-js/react"
 import theme from "../theme"
 import { Container } from "@chakra-ui/react"
-import { Header } from "components/Header"
-import { Footer } from "components/Footer"
+import { Header } from "layouts/Header"
+import { Footer } from "layouts/Footer"
 import Head from "next/head"
 
 const Layout = ({ children }) => {
