@@ -37,8 +37,6 @@ existing.forEach((f) => {
 glob("./src/posts/**.md", async (err, filePaths) => {
   const articleContents = await Promise.all(filePaths.map(getMetadata))
 
-  console.log(articleContents)
-
   // Construct contents.js
   const sorted = articleContents
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -46,14 +44,16 @@ glob("./src/posts/**.md", async (err, filePaths) => {
   const contents = `export const Contents = ${JSON.stringify(sorted)}`
   fs.writeFileSync("./src/data/contents.js", contents)
 
-  // Construct pages/research
+  // Construct pages/blog
   sorted.forEach((meta) => {
     const { id, number } = meta
     const page = `
     import Index, {meta} from '../../posts/${id}.md'
     // import { Post } from '@carbonplan/layouts'
 
+    console.log(meta)
     const Content = () => (
+
       <>
         <Index />
       </>
@@ -69,8 +69,6 @@ async function getMetadata(path) {
   const content = fs.readFileSync(path)
   const meta = await extractMdxMeta(content)
   const id = path.match(/[^/]+(?=\.md)/)
-  console.log(`file: ${path}`)
-  console.log(`meta: ${JSON.stringify(meta)}`)
 
   if (!id || !id[0]) {
     throw new Error(`Invalid article path: ${path}`)
