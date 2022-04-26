@@ -1,8 +1,22 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { MDXProvider } from "@mdx-js/react"
 import theme from "../theme"
-import Layout from "components/Layout"
+import { Container } from "@chakra-ui/react"
+import { Header } from "components/Header"
+import { Footer } from "components/Footer"
 import Head from "next/head"
+
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Container maxW={"full"} maxH={"full"}>
+        <Header />
+        {children}
+        <Footer />
+      </Container>
+    </>
+  )
+}
 
 function MyApp({ Component, pageProps }) {
   return (
