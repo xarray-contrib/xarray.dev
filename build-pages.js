@@ -50,8 +50,6 @@ glob("./src/posts/**.md", async (err, filePaths) => {
     const page = `
     import Index, {meta} from '../../posts/${id}.md'
     // import { Post } from '@carbonplan/layouts'
-
-    console.log(meta)
     const Content = () => (
 
       <>

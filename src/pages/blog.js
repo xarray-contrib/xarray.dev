@@ -8,7 +8,10 @@ import {
   useColorModeValue,
   Link,
   Text,
+  Button,
 } from "@chakra-ui/react"
+
+import { BiRightArrowAlt } from "react-icons/bi"
 import { formatDistanceToNow, format } from "date-fns"
 import { Contents } from "../data/contents"
 
@@ -60,7 +63,18 @@ const Blog = () => {
               <Text>
                 {page.summary}
                 <br></br>
-                <Link href={`/blog/${page.id}`}>{"Read More ->"}</Link>
+
+                <Button
+                  flex={1}
+                  // fontSize={"sm"}
+                  rounded={"full"}
+                  _focus={{
+                    bg: "gray.200",
+                  }}
+                >
+                  <Link href={`/blog/${page.id}`}>{"Read More"}</Link>
+                  <BiRightArrowAlt />
+                </Button>
               </Text>
             </VStack>
           )
