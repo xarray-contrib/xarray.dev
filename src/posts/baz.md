@@ -1,9 +1,9 @@
-export const meta = {
-title: 'How to parse (read) JavaScript code into your mind in order to understand what is going on!',
-date: '2021-02-10',
-authors: ['Foo Bar'],
-summary: 'Another awesome post! This is the summary of our blog post! This is the summary of our blog post! This is the summary of our blog post!'
-}
+---
+title: How to parse (read) JavaScript code into your mind in order to understand what is going on!
+date: "2021-02-10"
+authors: Foo Bar
+summary: Another awesome post! This is the summary of our blog post! This is the summary of our blog post! This is the summary of our blog post!
+---
 
 ## I will show you how to read JavaScript code with the JavaScript engine’s eye, with the help of a piece of code that uses closures and callbacks to flatten the factor time in an asynchronous pattern!
 

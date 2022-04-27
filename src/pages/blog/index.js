@@ -14,7 +14,7 @@ import {
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 
 import { formatDistanceToNow, format } from "date-fns"
-import { Contents } from "../data/contents"
+import { Contents } from "../../data/contents"
 
 const Blog = () => {
   return (
