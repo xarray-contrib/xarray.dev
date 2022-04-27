@@ -11,7 +11,8 @@ import {
   Button,
 } from "@chakra-ui/react"
 
-import { BiRightArrowAlt } from "react-icons/bi"
+import { ExternalLinkIcon } from "@chakra-ui/icons"
+
 import { formatDistanceToNow, format } from "date-fns"
 import { Contents } from "../data/contents"
 
@@ -65,15 +66,14 @@ const Blog = () => {
                 <br></br>
 
                 <Button
+                  variant="outline"
                   flex={1}
-                  // fontSize={"sm"}
+                  fontSize={"sm"}
                   rounded={"full"}
-                  _focus={{
-                    bg: "gray.200",
-                  }}
                 >
-                  <Link href={`/blog/${page.id}`}>{"Read More"}</Link>
-                  <BiRightArrowAlt />
+                  <Link href={`/blog/${page.id}`}>
+                    {"Read More"} <ExternalLinkIcon mx="2px" />
+                  </Link>
                 </Button>
               </Text>
             </VStack>
