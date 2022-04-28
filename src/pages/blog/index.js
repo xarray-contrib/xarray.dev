@@ -15,9 +15,10 @@ import {
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 
 import { formatDistanceToNow, format } from "date-fns"
-import { Contents } from "../../data/contents"
 
-const Blog = () => {
+import { getSortedPostsMetadata } from "../../lib/posts"
+
+export default function Blog({ allPostsData }) {
   return (
     <Container
       maxW={"6xl"}
@@ -42,7 +43,7 @@ const Blog = () => {
       </Stack>
 
       <Box textAlign={"left"}>
-        {Contents.map((page) => {
+        {allPostsData.map((page) => {
           return (
             <VStack
               paddingTop="40px"
@@ -86,4 +87,11 @@ const Blog = () => {
   )
 }
 
-export default Blog
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsMetadata()
+  return {
+    props: {
+      allPostsData,
+    },
+  }
+}

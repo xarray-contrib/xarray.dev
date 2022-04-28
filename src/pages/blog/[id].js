@@ -81,7 +81,6 @@ export async function getStaticProps({ params }) {
   const filePath = path.join(process.cwd(), "src/posts", postData.file)
   const source = fs.readFileSync(filePath, "utf8")
   const { content, data } = matter(source)
-  console.log(data)
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [],
