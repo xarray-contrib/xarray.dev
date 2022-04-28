@@ -1,9 +1,8 @@
 ---
-version: 2.0.0
-title: Another Test Post
-authors: Danny Cullenward, Sadie Frank, Jeremy Freeman
+title: Iaculis platea habitasse suscipit lorem et dictum magnis hac nullam
+authors: [Gualberto Detta, Juvenal George, Manius Mstislavn]
 date: "2021-05-05"
-summary: Another awesome post! This is the summary of our blog post! This is the summary of our blog post! This is the summary of our blog post!
+summary: Proin integer vestibulum phasellus facilisi imperdiet quam conubia blandit dapibus!
 ---
 
 import {Image, Button, Stack} from "@chakra-ui/react"

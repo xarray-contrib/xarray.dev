@@ -1,7 +1,7 @@
 ---
 title: This is an MDX file!
 date: "2022-03-10"
-authors: Foo Bar
+authors: [Chetana Débora, Iudith Bruce]
 summary: Welcome to the Home page. This whole page is rendered from a single .mdx file!
 ---
 

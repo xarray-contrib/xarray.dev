@@ -9,6 +9,7 @@ import {
   Link,
   Text,
   Button,
+  Divider,
 } from "@chakra-ui/react"
 
 import { ExternalLinkIcon } from "@chakra-ui/icons"
@@ -76,6 +77,7 @@ const Blog = () => {
                   </Link>
                 </Button>
               </Text>
+              <Divider />
             </VStack>
           )
         })}
