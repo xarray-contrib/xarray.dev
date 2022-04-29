@@ -1,5 +1,5 @@
 ---
-title: This is an MDX file!
+title: Magnis molestie vestibulum ridiculus eget dictum auctor elementum porta fringilla.!
 date: "2022-03-10"
 authors: [Chetana Débora, Iudith Bruce]
 summary: Welcome to the Home page. This whole page is rendered from a single .mdx file!

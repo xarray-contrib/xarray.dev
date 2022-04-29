@@ -14,6 +14,8 @@ import {
   Flex,
 } from "@chakra-ui/react"
 
+import { ArrowBackIcon } from "@chakra-ui/icons"
+
 import { formatDistanceToNow, format } from "date-fns"
 import { MdBuild, MdCall } from "react-icons/md"
 
@@ -72,6 +74,16 @@ export default function Post({ source, frontmatter }) {
           components={{ Button, Image, Stack, MdBuild, MdCall }}
         />
       </VStack>
+      <Button
+        marginTop={20}
+        as={CustomLink}
+        href={"/blog"}
+        variant={"outline"}
+        leftIcon={<ArrowBackIcon />}
+        colorScheme={"blue"}
+      >
+        Back to Blog
+      </Button>
     </Container>
   )
 }
