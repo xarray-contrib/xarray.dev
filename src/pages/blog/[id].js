@@ -25,16 +25,24 @@ import path from "path"
 import matter from "gray-matter"
 
 import { getPostData, getAllPostsIds } from "../../lib/posts"
+import { CustomLink } from "components"
 
 export default function Post({ source, frontmatter }) {
   return (
-    <Container maxW={"3xl"} py={20} spacing={4} isInline>
+    <Container
+      py={20}
+      spacing={8}
+      justifyContent="center"
+      alignItems="flex-start"
+      m="0 auto 4rem auto"
+      maxWidth="700px"
+    >
       <VStack spacing="3" alignItems="flex-start">
-        <VStack paddingTop="40px" spacing="2" alignItems="center">
+        <VStack paddingTop="30px" spacing="2" alignItems="center">
           <Heading fontSize={"2xl"} textAlign={"center"}>
             {frontmatter.title}
           </Heading>
-          <Text fontSize={"2sm"}>
+          <Text fontSize={"sm"}>
             {format(new Date(frontmatter.date), "PPPP")} (
             {formatDistanceToNow(new Date(frontmatter.date), {
               addSuffix: true,

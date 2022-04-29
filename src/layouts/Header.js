@@ -11,10 +11,10 @@ import {
   Image,
 } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
-import Link from "next/link"
 import { MobileNav } from "../components/MobileNav"
 import { DesktopNav } from "../components/DesktopNav"
 import { menuItems } from "../data/menu-items"
+import { CustomLink } from "components"
 
 export const Header = () => {
   const navItems = React.useMemo(() => menuItems, [])
@@ -67,7 +67,7 @@ export const Header = () => {
             flex={{ base: 1, md: "auto" }}
             justify={{ base: "start", md: "start" }}
           >
-            <Link href={"/"} passHref>
+            <CustomLink href={"/"}>
               <Stack
                 as={"a"}
                 direction={"row"}
@@ -80,7 +80,7 @@ export const Header = () => {
                   alt={"xarray logo"}
                 />
               </Stack>
-            </Link>
+            </CustomLink>
           </Flex>
 
           <Stack

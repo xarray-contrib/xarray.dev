@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -16,6 +15,7 @@ import {
 import { FaTwitter, FaGithub, FaYoutube } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
 import { VercelCallout } from "../components/VercelCallout"
+import { CustomLink } from "components"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -97,14 +97,14 @@ export const Footer = () => {
 
             {footerItems.xarray.map((item) => {
               return (
-                <Link
+                <CustomLink
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </Link>
+                </CustomLink>
               )
             })}
           </Stack>
@@ -112,14 +112,14 @@ export const Footer = () => {
             <ListHeader>Resources</ListHeader>
             {footerItems.resources.map((item) => {
               return (
-                <Link
+                <CustomLink
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </Link>
+                </CustomLink>
               )
             })}
           </Stack>
@@ -127,14 +127,14 @@ export const Footer = () => {
             <ListHeader>Community</ListHeader>
             {footerItems.community.map((item) => {
               return (
-                <Link
+                <CustomLink
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </Link>
+                </CustomLink>
               )
             })}
           </Stack>

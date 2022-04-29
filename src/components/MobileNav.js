@@ -12,6 +12,7 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons"
 import NextLink from "next/link"
 
+import { CustomLink } from "components"
 const MobileNavItem = ({ href, children, label }) => {
   const { isOpen, onToggle } = useDisclosure()
 
@@ -26,8 +27,8 @@ const MobileNavItem = ({ href, children, label }) => {
     <Stack spacing={4} onClick={handleToggle}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? "#"}
+        as={CustomLink}
+        href={href ?? "/#"}
         justify={"space-between"}
         align={"center"}
         _hover={{
@@ -63,11 +64,9 @@ const MobileNavItem = ({ href, children, label }) => {
           {" "}
           {children &&
             children.map((child, index) => (
-              <NextLink key={index} href={child.href ?? "#"} passHref={true}>
-                <Link key={child.label} py={2}>
-                  {child.label}
-                </Link>
-              </NextLink>
+              <CustomLink key={index} href={child.href ?? "#"} py={2}>
+                {child.label}
+              </CustomLink>
             ))}
         </Stack>
       </Collapse>

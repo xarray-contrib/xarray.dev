@@ -12,21 +12,23 @@ import {
   Divider,
 } from "@chakra-ui/react"
 
-import { ExternalLinkIcon } from "@chakra-ui/icons"
+import { ArrowForwardIcon } from "@chakra-ui/icons"
 
 import { formatDistanceToNow, format } from "date-fns"
 
 import { getSortedPostsMetadata } from "../../lib/posts"
+import { CustomLink } from "components"
 
 export default function Blog({ allPostsData }) {
   return (
     <Container
-      maxW={"6xl"}
       py={20}
       as={Stack}
-      spacing={12}
-      align={"center"}
-      justify={"center"}
+      spacing={8}
+      justifyContent="center"
+      alignItems="flex-start"
+      m="0 auto 4rem auto"
+      maxWidth="700px"
     >
       <Stack spacing={4}>
         <Heading fontSize={"5xl"} textAlign={"center"}>
@@ -41,43 +43,39 @@ export default function Blog({ allPostsData }) {
           Xarray team.
         </Text>
       </Stack>
+      <Divider />
 
       <Box textAlign={"left"}>
         {allPostsData.map((page) => {
           return (
             <VStack
-              paddingTop="40px"
+              paddingTop="20px"
               spacing="2"
               alignItems="flex-start"
               key={page.id}
             >
-              <Link
+              <CustomLink
                 href={`/blog/${page.id}`}
                 fontSize={"xl"}
                 fontWeight={"bold"}
               >
                 {page.title}
-              </Link>
-              <Text fontSize={"3sm"}>
+              </CustomLink>
+              <Text fontSize={"sm"}>
                 {format(new Date(page.date), "PPPP")} (
                 {formatDistanceToNow(new Date(page.date), { addSuffix: true })})
               </Text>
               <br></br>
-              <Text>
-                {page.summary}
-                <br></br>
-
-                <Button
-                  variant="outline"
-                  flex={1}
-                  fontSize={"sm"}
-                  rounded={"full"}
-                >
-                  <Link href={`/blog/${page.id}`}>
-                    {"Read More"} <ExternalLinkIcon mx="2px" />
-                  </Link>
-                </Button>
-              </Text>
+              <Text noOfLines={3}>{page.summary}</Text>
+              <Button
+                as={CustomLink}
+                href={`/blog/${page.id}`}
+                variant={"outline"}
+                rightIcon={<ArrowForwardIcon />}
+                colorScheme={"blue"}
+              >
+                Read More
+              </Button>
               <Divider />
             </VStack>
           )
