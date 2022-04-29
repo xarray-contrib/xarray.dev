@@ -29,6 +29,14 @@ import matter from "gray-matter"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
 import { CustomLink } from "components"
 
+const allComponents = {
+  Button,
+  Image,
+  Stack,
+  MdBuild,
+  MdCall,
+}
+
 export default function Post({ source, frontmatter }) {
   return (
     <Container
@@ -41,7 +49,7 @@ export default function Post({ source, frontmatter }) {
     >
       <VStack spacing="3" alignItems="flex-start">
         <VStack paddingTop="30px" spacing="2" alignItems="center">
-          <Heading fontSize={"2xl"} textAlign={"center"}>
+          <Heading as={"h1"} extAlign={"center"}>
             {frontmatter.title}
           </Heading>
           <Text fontSize={"sm"}>
@@ -69,10 +77,7 @@ export default function Post({ source, frontmatter }) {
           <Divider />
         </VStack>
         <br></br>
-        <MDXRemote
-          {...source}
-          components={{ Button, Image, Stack, MdBuild, MdCall }}
-        />
+        <MDXRemote {...source} components={allComponents} />
       </VStack>
       <Button
         marginTop={20}

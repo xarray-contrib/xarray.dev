@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 
+import { MDXProvider } from "@mdx-js/react"
 const CustomLink = (props) => {
   const href = props.href
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"))
@@ -105,7 +106,7 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />
 }
 
-const MDXComponents = {
+const mdxComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
@@ -125,5 +126,12 @@ const MDXComponents = {
   blockquote: Quote,
 }
 
+function MDXComponentsProvider(props) {
+  return (
+    <MDXProvider components={mdxComponents}>
+      <Box {...props} />
+    </MDXProvider>
+  )
+}
 export { CustomLink }
-export default MDXComponents
+export default MDXComponentsProvider
