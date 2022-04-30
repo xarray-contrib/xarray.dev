@@ -45,7 +45,7 @@ export default function Post({ source, frontmatter }) {
       justifyContent="center"
       alignItems="flex-start"
       m="0 auto 4rem auto"
-      maxWidth="700px"
+      maxWidth="800px"
     >
       <VStack spacing="3" alignItems="flex-start">
         <VStack paddingTop="30px" spacing="2" alignItems="center">

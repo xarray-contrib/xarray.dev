@@ -9,6 +9,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react"
 import NextLink from "next/link"
+import SyntaxHighlighter from "react-syntax-highlighter"
 
 import { MDXProvider } from "@mdx-js/react"
 const CustomLink = (props) => {
@@ -55,7 +56,7 @@ const DocsHeading = (props) => (
   <Heading
     css={{
       scrollMarginTop: "100px",
-      scrollSnapMargin: "100px", // Safari
+      scrollSnapMargin: "100px",
       "&[id]": {
         pointerEvents: "none",
       },
@@ -106,6 +107,21 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />
 }
 
+function CustomCode({ className, ...props }) {
+  const match = /language-(\w+)/.exec(className || "")
+
+  return match ? (
+    <SyntaxHighlighter
+      language={match[1]}
+      PreTag="div"
+      {...props}
+      wrapLongLines={true}
+    />
+  ) : (
+    <code className={className} {...props} />
+  )
+}
+
 const mdxComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
@@ -113,9 +129,8 @@ const mdxComponents = {
   h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
   h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
   h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
-  inlineCode: (props) => (
-    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
-  ),
+  inlineCode: (props) => <Code fontSize="0.84em" {...props} />,
+  code: (props) => <CustomCode {...props} />,
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
   a: CustomLink,
