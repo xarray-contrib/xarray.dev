@@ -5,7 +5,7 @@ export const Projects = [
     domains: ["🌊 Oceanography"],
     repo: "https://github.com/xgcm/xgcm",
     homepage: "https://xgcm.readthedocs.io/en/latest/",
-    logo: "https://raw.githubusercontent.com/xgcm/xgcm/master/doc/_static/logo.png",
+    logo: "https://github.com/xgcm/xgcm/blob/master/doc/images/logo.png?raw=true",
   },
   {
     name: "verde",

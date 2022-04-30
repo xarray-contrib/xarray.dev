@@ -49,7 +49,7 @@ export default function Post({ source, frontmatter }) {
     >
       <VStack spacing="3" alignItems="flex-start">
         <VStack paddingTop="30px" spacing="2" alignItems="center">
-          <Heading as={"h1"} extAlign={"center"}>
+          <Heading as={"h1"} textAlign={"center"}>
             {frontmatter.title}
           </Heading>
           <Text fontSize={"sm"}>

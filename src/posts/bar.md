@@ -57,3 +57,11 @@ And ordered:
 You can even render buttons, but they won't do anything if they're not placed inside of a custom component:
 
 <Button>Hello!</Button>
+
+```javascript:hello.js
+const hello = 'Hello, world!'
+var x = 6
+
+if (x > 5)
+    console.log(hello)
+```
