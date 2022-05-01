@@ -9,7 +9,9 @@ import {
   useColorMode,
 } from "@chakra-ui/react"
 import NextLink from "next/link"
-import SyntaxHighlighter from "react-syntax-highlighter"
+
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { MDXProvider } from "@mdx-js/react"
 const CustomLink = (props) => {
@@ -115,6 +117,7 @@ function CustomCode({ className, ...props }) {
       language={match[1]}
       PreTag="div"
       {...props}
+      style={a11yDark}
       wrapLongLines={true}
     />
   ) : (
@@ -123,7 +126,7 @@ function CustomCode({ className, ...props }) {
 }
 
 const mdxComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
+  h1: (props) => <Heading as="h1" size="2xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
@@ -133,7 +136,7 @@ const mdxComponents = {
   code: (props) => <CustomCode {...props} />,
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
-  a: CustomLink,
+  a: (props) => <CustomLink color={"blue.400"} {...props} />,
   p: (props) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
