@@ -114,7 +114,7 @@ function CustomCode({ className, ...props }) {
   const match = /language-(\w+)/.exec(className || "")
 
   return match ? (
-    <Stack w={"3xl"}>
+    <Stack>
       <SyntaxHighlighter
         language={match[1]}
         PreTag="div"
@@ -125,7 +125,7 @@ function CustomCode({ className, ...props }) {
       />
     </Stack>
   ) : (
-    <Stack w={"3xl"}>
+    <Stack>
       <SyntaxHighlighter PreTag="div" {...props} wrapLongLines={true} />
     </Stack>
   )
