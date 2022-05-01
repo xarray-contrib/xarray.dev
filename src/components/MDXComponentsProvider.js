@@ -126,12 +126,7 @@ function CustomCode({ className, ...props }) {
     </Stack>
   ) : (
     <Stack w={"3xl"}>
-      <SyntaxHighlighter
-        PreTag="div"
-        {...props}
-        style={a11yDark}
-        wrapLongLines={true}
-      />
+      <SyntaxHighlighter PreTag="div" {...props} wrapLongLines={true} />
     </Stack>
   )
 }

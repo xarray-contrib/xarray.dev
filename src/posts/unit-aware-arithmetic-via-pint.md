@@ -90,7 +90,7 @@ oranges = xr.DataArray(200).pint.quantify("cm^3")
 apples + oranges
 ```
 
-```console
+```
 Out:
 DimensionalityError: Cannot convert from 'kilogram' ([mass]) to 'centimeter ** 3' ([length] ** 3)
 ```
