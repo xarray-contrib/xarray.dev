@@ -79,8 +79,9 @@ export default function Post({ source, frontmatter }) {
         <br></br>
         <MDXRemote {...source} components={allComponents} />
       </VStack>
+
       <Button
-        marginTop={20}
+        marginTop={10}
         as={CustomLink}
         href={"/blog"}
         variant={"outline"}
@@ -89,6 +90,7 @@ export default function Post({ source, frontmatter }) {
       >
         Back to Blog
       </Button>
+      <Divider marginTop={10} />
     </Container>
   )
 }
