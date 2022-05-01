@@ -15,7 +15,7 @@ time = xr.DataArray(4).pint.quantify("seconds")
 distance / time
 ```
 
-```console
+```
 Out:
 <xarray.DataArray ()>
 <Quantity(2.5, 'meter / second')>
@@ -53,7 +53,7 @@ q = np.array([6, 7]) * pint.Unit('metres')
 print(repr(q))
 ```
 
-```console
+```
 Out: <Quantity([6 7], 'meter')>
 ```
 
@@ -75,7 +75,7 @@ time = xr.DataArray(4).pint.quantify("seconds")
 distance / time
 ```
 
-```console
+```
 Out:
 <xarray.DataArray ()>
 <Quantity(2.5, 'meter / second')>
@@ -103,7 +103,7 @@ walk = xr.DataArray(500).pint.quantify('miles')
 walk.pint.to('parsecs')
 ```
 
-```console
+```
 Out:
 <xarray.DataArray ()>
 <Quantity(2.6077643524162074e-11, 'parsec')>
@@ -128,7 +128,7 @@ lockheed_impulse_value = xr.DataArray(5).pint.quantify("force_pounds * seconds")
 jpl_trajectory_code(lockheed_impulse_value)
 ```
 
-```console
+```
 Out:
 Received impulse in units of [newton * second]
 ```
@@ -150,7 +150,7 @@ ds.pint.quantify({'a': 'kg',
                   'b': pint.Unit('moles')})
 ```
 
-```console
+```
 Out:
 <xarray.Dataset>
 Dimensions:  ()
@@ -213,7 +213,7 @@ distance = distance.pint.quantify({'distance': 'metres',
 print(distance.coords['time'].attrs)
 ```
 
-```console
+```
 Out: {'units': <Unit('second')>}
 ```
 
@@ -223,7 +223,7 @@ This allows us to provide conveniently wrapped versions of common xarray methods
 distance.pint.sel(time=200 * pint.Unit('milliseconds'))
 ```
 
-```console
+```
 Out:
 <xarray.DataArray 'distance' ()>
 <Quantity(20, 'meter')>
@@ -255,7 +255,7 @@ squared_wind = ds['sfcWind'] ** 2
 squared_wind.pint.units
 ```
 
-```console
+```
 Out: <Unit('meter ** 2 / second ** 2')>
 ```
 

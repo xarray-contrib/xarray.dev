@@ -86,6 +86,7 @@ export const ReplSection = () => {
                 style={a11yDark}
                 showLineNumbers
                 wrapLongLines={false}
+                wrapLines
               >
                 {sampleCode}
               </SyntaxHighlighter>

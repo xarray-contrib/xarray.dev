@@ -7,10 +7,11 @@ import {
   Text,
   Divider,
   useColorMode,
+  Stack,
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { MDXProvider } from "@mdx-js/react"
@@ -113,15 +114,25 @@ function CustomCode({ className, ...props }) {
   const match = /language-(\w+)/.exec(className || "")
 
   return match ? (
-    <SyntaxHighlighter
-      language={match[1]}
-      PreTag="div"
-      {...props}
-      style={a11yDark}
-      wrapLongLines={true}
-    />
+    <Stack w={"3xl"}>
+      <SyntaxHighlighter
+        language={match[1]}
+        PreTag="div"
+        {...props}
+        style={a11yDark}
+        wrapLongLines={true}
+        showLineNumbers={false} // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
+      />
+    </Stack>
   ) : (
-    <code className={className} {...props} />
+    <Stack w={"3xl"}>
+      <SyntaxHighlighter
+        PreTag="div"
+        {...props}
+        style={a11yDark}
+        wrapLongLines={true}
+      />
+    </Stack>
   )
 }
 
@@ -135,7 +146,7 @@ const mdxComponents = {
   inlineCode: (props) => <Code fontSize="0.84em" {...props} />,
   code: (props) => <CustomCode {...props} />,
   br: (props) => <Box height="24px" {...props} />,
-  hr: Hr,
+  hr: (props) => <Hr {...props} />,
   a: (props) => <CustomLink color={"blue.400"} {...props} />,
   p: (props) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
