@@ -255,7 +255,7 @@ squared_wind = ds['sfcWind'] ** 2
 squared_wind.pint.units
 ```
 
-```mycustomlanguage
+```
 Out: <Unit('meter ** 2 / second ** 2')>
 ```
 
