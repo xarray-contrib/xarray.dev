@@ -243,7 +243,7 @@ But [pint is customisable](https://pint.readthedocs.io/en/stable/defining.html),
 
 If we `import cf_xarray.units` (before `import pint_xarray`) then we can `quantify` example data from a pangeo climate data store :
 
-```python
+```py-script
 import xarray as xr
 import cf_xarray.units  # must come before import pint_xarray
 import pint_xarray
@@ -255,7 +255,7 @@ squared_wind = ds['sfcWind'] ** 2
 squared_wind.pint.units
 ```
 
-```
+```mycustomlanguage
 Out: <Unit('meter ** 2 / second ** 2')>
 ```
 
@@ -278,7 +278,7 @@ p.axes.coastlines()
 plt.show()
 ```
 
-![cartopy plot of a quantified dataset ](../squared_wind.png)
+![cartopy plot of a quantified dataset ](/posts/unit-aware-arithmetic-via-pint/squared_wind.png)
 
 where `xarray.plot` has detected the pint units automatically.
 
@@ -286,8 +286,12 @@ where `xarray.plot` has detected the pint units automatically.
 
 Please have a go! You will need the latest releases of both xarray (v0.20) and pint-xarray.
 
+<br/>
+
 Please also tell us about any bugs you find, or documentation suggestions you have on the [xarray](https://github.com/pydata/xarray/issues) or [pint-xarray issue trackers](https://github.com/xarray-contrib/pint-xarray/issues).
 If you have usage questions you can raise them there, on the [xarray discussions page](https://github.com/pydata/xarray/discussions), or on the [pangeo discourse forum](https://discourse.pangeo.io/).
+
+<br/>
 
 The work here to allow xarray to wrap pint objects is part of a [broader effort to generalise xarray](http://xarray.pydata.org/en/stable/roadmap.html#flexible-arrays) to handle a wide variety of data types (so-called "duck array wrapping").
 Along with the incoming [support for flexible indexes](http://xarray.pydata.org/en/stable/roadmap.html#flexible-indexes), we are excited for all the new features that this will enable for xarray users!

@@ -1,24 +1,22 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import glob from 'glob'
 
 const postsDirectory = path.join(process.cwd(), "src/posts")
 
-
 export function getSortedPostsMetadata() {
 
-const allPosts = fs.readdirSync(postsDirectory).filter((file) => /\.md$/.test(file))
-  .map((file) => ({ file, id: file.replace(/\.md$/, "") })).map((post) => {
-    const filePath = path.join(postsDirectory, post.file)
-    const source = fs.readFileSync(filePath, "utf8")
-    const matterData = matter(source)
-    const id = post.id
+  const allPosts = glob.sync(`${postsDirectory}/**/*.md`).map((filePath) => {
+    const postId = path.basename(path.dirname(filePath))
+    const postPath = `${postId}/${path.basename(filePath)}`
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    const matterResult = matter(fileContents)
     return {
-      ...matterData.data,
-      id,
-      href: `/blog/${id}`,
-      file: post.file,
-      content: matterData.content,
+      ...matterResult.data,
+      id: postId,
+      href: `/blog/${postPath}`,
+      file: postPath,
     }
   }).sort((a, b) => {
     if (a.date < b.date) {
@@ -31,6 +29,7 @@ const allPosts = fs.readdirSync(postsDirectory).filter((file) => /\.md$/.test(fi
   return allPosts
 
 }
+
 
 
 export function getAllPostsIds() {

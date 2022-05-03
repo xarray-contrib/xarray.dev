@@ -120,8 +120,8 @@ function CustomCode({ className, ...props }) {
         PreTag="div"
         {...props}
         style={nord}
-        wrapLongLines={true}
-        showLineNumbers={false} // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
+        //wrapLongLines={true}
+        showLineNumbers={true} // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
       />
     </Stack>
   ) : (
