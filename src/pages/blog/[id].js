@@ -3,7 +3,6 @@ import {
   Button,
   Image,
   Stack,
-  Container,
   VStack,
   Heading,
   Divider,
@@ -12,6 +11,7 @@ import {
   Wrap,
   WrapItem,
   Flex,
+  Box,
 } from "@chakra-ui/react"
 
 import { ArrowBackIcon } from "@chakra-ui/icons"
@@ -39,7 +39,7 @@ const allComponents = {
 
 export default function Post({ source, frontmatter }) {
   return (
-    <Container
+    <Box
       py={20}
       spacing={8}
       justifyContent="center"
@@ -47,7 +47,7 @@ export default function Post({ source, frontmatter }) {
       m="0 auto 4rem auto"
       maxWidth="800px"
     >
-      <VStack spacing="3" alignItems="flex-start">
+      <Box spacing="3" alignItems="start">
         <VStack paddingTop="30px" spacing="2" alignItems="center">
           <Heading as={"h1"} textAlign={"center"} size="xl" my={4}>
             {frontmatter.title}
@@ -78,7 +78,7 @@ export default function Post({ source, frontmatter }) {
         </VStack>
         <br></br>
         <MDXRemote {...source} components={allComponents} />
-      </VStack>
+      </Box>
 
       <Button
         marginTop={10}
@@ -91,7 +91,7 @@ export default function Post({ source, frontmatter }) {
         Back to Blog
       </Button>
       <Divider marginTop={10} />
-    </Container>
+    </Box>
   )
 }
 

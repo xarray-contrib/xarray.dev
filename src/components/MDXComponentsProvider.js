@@ -12,7 +12,7 @@ import {
 import NextLink from "next/link"
 
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { MDXProvider } from "@mdx-js/react"
 const CustomLink = (props) => {
@@ -119,14 +119,19 @@ function CustomCode({ className, ...props }) {
         language={match[1]}
         PreTag="div"
         {...props}
-        style={a11yDark}
+        style={nord}
         wrapLongLines={true}
         showLineNumbers={false} // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
       />
     </Stack>
   ) : (
     <Stack>
-      <SyntaxHighlighter PreTag="div" {...props} wrapLongLines={true} />
+      <SyntaxHighlighter
+        PreTag="div"
+        {...props}
+        style={nord}
+        wrapLongLines={true}
+      />
     </Stack>
   )
 }
