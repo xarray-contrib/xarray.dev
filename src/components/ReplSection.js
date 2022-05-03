@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@chakra-ui/react"
 
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib

@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { MDXProvider } from "@mdx-js/react"
