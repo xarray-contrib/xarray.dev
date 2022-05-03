@@ -9,8 +9,8 @@ import {
   Stack,
 } from "@chakra-ui/react"
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter"
+import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
@@ -83,7 +83,7 @@ export const ReplSection = () => {
             <Stack direction="column">
               <SyntaxHighlighter
                 language="python"
-                style={a11yDark}
+                style={nord}
                 showLineNumbers
                 wrapLongLines={false}
                 wrapLines
