@@ -1,15 +1,17 @@
 import React from "react"
 import {
-  Container,
   VStack,
   Box,
   Stack,
+  Wrap,
+  WrapItem,
   Heading,
   useColorModeValue,
-  Link,
   Text,
   Button,
   Divider,
+  Flex,
+  Avatar,
 } from "@chakra-ui/react"
 
 import { ArrowForwardIcon } from "@chakra-ui/icons"
@@ -21,14 +23,13 @@ import { CustomLink } from "components"
 
 export default function Blog({ allPostsData }) {
   return (
-    <Container
+    <Box
       py={20}
-      as={Stack}
       spacing={8}
       justifyContent="center"
       alignItems="flex-start"
       m="0 auto 4rem auto"
-      maxWidth="700px"
+      maxWidth="800px"
     >
       <Stack spacing={4}>
         <Heading fontSize={"5xl"} textAlign={"center"}>
@@ -43,7 +44,7 @@ export default function Blog({ allPostsData }) {
           Xarray team.
         </Text>
       </Stack>
-      <Divider />
+      <Divider py={2} />
 
       <Box textAlign={"left"}>
         {allPostsData.map((page) => {
@@ -65,6 +66,24 @@ export default function Blog({ allPostsData }) {
                 {format(new Date(page.date), "PPPP")} (
                 {formatDistanceToNow(new Date(page.date), { addSuffix: true })})
               </Text>
+              <Stack>
+                <Wrap>
+                  <Text fontSize={"sm"}>By</Text>
+                  {page.authors.map((author) => {
+                    return (
+                      <WrapItem key={author}>
+                        <Flex align={"center"} mt={2} direction={"column"}>
+                          <Avatar name={author} mb={2} />
+                          <Stack spacing={-1} align={"center"}>
+                            <Text fontWeight={600}>{author}</Text>
+                          </Stack>
+                        </Flex>
+                      </WrapItem>
+                    )
+                  })}
+                </Wrap>
+              </Stack>
+
               <br></br>
               <Text noOfLines={3}>{page.summary}</Text>
               <Button
@@ -76,12 +95,12 @@ export default function Blog({ allPostsData }) {
               >
                 Read More
               </Button>
-              <Divider />
+              <Divider py={2} />
             </VStack>
           )
         })}
       </Box>
-    </Container>
+    </Box>
   )
 }
 

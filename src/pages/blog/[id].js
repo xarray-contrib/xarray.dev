@@ -74,7 +74,7 @@ export default function Post({ source, frontmatter }) {
               )
             })}
           </Wrap>
-          <Divider />
+          <Divider py={2} />
         </VStack>
         <br></br>
         <MDXRemote {...source} components={allComponents} />
