@@ -8,13 +8,11 @@ import {
   Heading,
   useColorModeValue,
   Text,
-  HStack,
   Divider,
   StackDivider,
   Flex,
   Avatar,
-  Grid,
-  GridItem,
+  Spacer,
 } from "@chakra-ui/react"
 
 import { formatDistanceToNow, format } from "date-fns"
@@ -54,52 +52,60 @@ export default function Blog({ allPostsData }) {
       >
         {allPostsData.map((page) => {
           return (
-            <Grid
-              templateColumns="repeat(4, 1fr)"
-              gap={6}
-              key={page.id}
-              spacing={4}
-              align="stretch"
-              paddingTop="20px"
-            >
-              <GridItem colSpan={3} alignItems="flex-start">
-                <CustomLink
-                  href={`/blog/${page.id}`}
-                  fontSize={"xl"}
-                  fontWeight={"bold"}
-                >
-                  {page.title}
-                </CustomLink>
+            <Stack key={page.id}>
+              <Flex
+                spacing="10"
+                align="stretch"
+                py={{ base: 5, md: 10 }}
+                direction={{ base: "column", md: "row" }}
+              >
+                <Box>
+                  <CustomLink
+                    href={`/blog/${page.id}`}
+                    fontSize={"xl"}
+                    fontWeight={"bold"}
+                  >
+                    {page.title}
+                  </CustomLink>
 
-                <Text fontSize={"sm"} color={"gray.600"} py={5}>
-                  {format(new Date(page.date), "PPPP")} (
-                  {formatDistanceToNow(new Date(page.date), {
-                    addSuffix: true,
-                  })}
-                  )
-                </Text>
-
-                <Text noOfLines={3}>{page.summary}</Text>
-              </GridItem>
-              <GridItem>
-                <Wrap spacing={2}>
-                  {page.authors.map((author) => {
-                    return (
-                      <WrapItem key={author}>
-                        <Flex
-                          align={"center"}
-                          mt={1}
-                          direction={"column"}
-                          key={author}
-                        >
-                          <Avatar name={author} mb={1} />
-                        </Flex>
-                      </WrapItem>
+                  <Text fontSize={"sm"} color={"gray.600"} py={2}>
+                    {format(new Date(page.date), "PPPP")} (
+                    {formatDistanceToNow(new Date(page.date), {
+                      addSuffix: true,
+                    })}
                     )
-                  })}
-                </Wrap>
-              </GridItem>
-            </Grid>
+                  </Text>
+                </Box>
+                <Spacer />
+                <Box>
+                  <Wrap spacing={2}>
+                    {page.authors.map((author) => {
+                      return (
+                        <WrapItem key={author}>
+                          <Flex
+                            align={"center"}
+                            mt={1}
+                            direction={"column"}
+                            key={author}
+                          >
+                            <Avatar name={author} mb={1} />
+                          </Flex>
+                        </WrapItem>
+                      )
+                    })}
+                  </Wrap>
+                </Box>
+              </Flex>
+              <Box
+                display="flex"
+                flex="1"
+                flexDirection="column"
+                justifyContent="center"
+                marginTop={{ base: "3", sm: "0" }}
+              >
+                <Text noOfLines={3}>{page.summary}</Text>
+              </Box>
+            </Stack>
           )
         })}
       </VStack>
