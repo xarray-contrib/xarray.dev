@@ -52,7 +52,7 @@ export default function Post({ source, frontmatter }) {
           <Heading as={"h1"} textAlign={"center"} size="xl" my={4}>
             {frontmatter.title}
           </Heading>
-          <Text fontSize={"sm"}>
+          <Text fontSize={"sm"} color={"gray.700"}>
             {format(new Date(frontmatter.date), "PPPP")} (
             {formatDistanceToNow(new Date(frontmatter.date), {
               addSuffix: true,
@@ -60,15 +60,15 @@ export default function Post({ source, frontmatter }) {
             )
           </Text>
 
-          <Wrap>
+          <Wrap spacing="20px">
             {frontmatter.authors.map((author) => {
               return (
                 <WrapItem key={author}>
-                  <Flex align={"center"} mt={8} direction={"column"}>
-                    <Avatar name={author} mb={2} />
-                    <Stack spacing={-1} align={"center"}>
-                      <Text fontWeight={600}>{author}</Text>
-                    </Stack>
+                  <Flex align={"center"} mt={2} direction={"column"}>
+                    <Avatar name={author} mb={1} />
+                    {/* //<Stack spacing={-1} align={"center"}> */}
+                    <Text fontWeight={600}>{author}</Text>
+                    {/* </Stack> */}
                   </Flex>
                 </WrapItem>
               )

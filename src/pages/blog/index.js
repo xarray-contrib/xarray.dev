@@ -8,13 +8,14 @@ import {
   Heading,
   useColorModeValue,
   Text,
-  Button,
+  HStack,
   Divider,
+  StackDivider,
   Flex,
   Avatar,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react"
-
-import { ArrowForwardIcon } from "@chakra-ui/icons"
 
 import { formatDistanceToNow, format } from "date-fns"
 
@@ -25,7 +26,7 @@ export default function Blog({ allPostsData }) {
   return (
     <Box
       py={20}
-      spacing={8}
+      spacing={4}
       justifyContent="center"
       alignItems="flex-start"
       m="0 auto 4rem auto"
@@ -44,52 +45,65 @@ export default function Blog({ allPostsData }) {
           Xarray team.
         </Text>
       </Stack>
-      <Divider py={2} />
+      <Divider py={2} borderColor="gray.200" />
 
-      <Box textAlign={"left"}>
+      <VStack
+        divider={<StackDivider borderColor="gray.200" />}
+        spacing={4}
+        align="stretch"
+      >
         {allPostsData.map((page) => {
           return (
-            <VStack
-              paddingTop="20px"
-              spacing="2"
-              alignItems="flex-start"
+            <Grid
+              templateColumns="repeat(4, 1fr)"
+              gap={6}
               key={page.id}
+              spacing={4}
+              align="stretch"
+              paddingTop="20px"
             >
-              <CustomLink
-                href={`/blog/${page.id}`}
-                fontSize={"xl"}
-                fontWeight={"bold"}
-              >
-                {page.title}
-              </CustomLink>
-              <Text fontSize={"sm"}>
-                {format(new Date(page.date), "PPPP")} (
-                {formatDistanceToNow(new Date(page.date), { addSuffix: true })})
-              </Text>
-              <Stack>
-                <Wrap>
-                  <Text fontSize={"sm"}>By</Text>
+              <GridItem colSpan={3} alignItems="flex-start">
+                <CustomLink
+                  href={`/blog/${page.id}`}
+                  fontSize={"xl"}
+                  fontWeight={"bold"}
+                >
+                  {page.title}
+                </CustomLink>
+
+                <Text fontSize={"sm"} color={"gray.600"} py={5}>
+                  {format(new Date(page.date), "PPPP")} (
+                  {formatDistanceToNow(new Date(page.date), {
+                    addSuffix: true,
+                  })}
+                  )
+                </Text>
+
+                <Text noOfLines={3}>{page.summary}</Text>
+              </GridItem>
+              <GridItem>
+                <Wrap spacing={2}>
                   {page.authors.map((author) => {
                     return (
                       <WrapItem key={author}>
-                        <Flex align={"center"} mt={2} direction={"column"}>
-                          <Avatar name={author} mb={2} />
-                          <Stack spacing={-1} align={"center"}>
-                            <Text fontWeight={600}>{author}</Text>
-                          </Stack>
+                        <Flex
+                          align={"center"}
+                          mt={1}
+                          direction={"column"}
+                          key={author}
+                        >
+                          <Avatar name={author} mb={1} />
                         </Flex>
                       </WrapItem>
                     )
                   })}
                 </Wrap>
-              </Stack>
-              <br></br>
-              <Text noOfLines={3}>{page.summary}</Text>
-              <Divider py={2} />
-            </VStack>
+              </GridItem>
+            </Grid>
           )
         })}
-      </Box>
+      </VStack>
+      <Divider py={2} borderColor="gray.200" />
     </Box>
   )
 }
