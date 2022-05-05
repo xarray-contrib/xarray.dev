@@ -83,18 +83,8 @@ export default function Blog({ allPostsData }) {
                   })}
                 </Wrap>
               </Stack>
-
               <br></br>
               <Text noOfLines={3}>{page.summary}</Text>
-              <Button
-                as={CustomLink}
-                href={`/blog/${page.id}`}
-                variant={"outline"}
-                rightIcon={<ArrowForwardIcon />}
-                colorScheme={"blue"}
-              >
-                Read More
-              </Button>
               <Divider py={2} />
             </VStack>
           )
