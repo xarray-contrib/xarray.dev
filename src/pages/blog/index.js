@@ -68,7 +68,7 @@ export default function Blog({ allPostsData }) {
                     {page.title}
                   </CustomLink>
 
-                  <Text fontSize={"sm"} color={"gray.600"} py={2}>
+                  <Text fontSize={"sm"} color={"gray.600"} py={4}>
                     {format(new Date(page.date), "PPPP")} (
                     {formatDistanceToNow(new Date(page.date), {
                       addSuffix: true,
@@ -76,7 +76,9 @@ export default function Blog({ allPostsData }) {
                     )
                   </Text>
 
-                  <Text noOfLines={3}>{page.summary}</Text>
+                  <Text noOfLines={3} py={4}>
+                    {page.summary}
+                  </Text>
                 </Box>
                 <Spacer />
                 <Box>
