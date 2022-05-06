@@ -53,8 +53,8 @@ export default function Blog({ allPostsData }) {
         {allPostsData.map((page) => {
           return (
             <Stack key={page.id}>
-              <Flex
-                spacing="10"
+              <Stack
+                spacing="2"
                 align="stretch"
                 py={{ base: 5, md: 10 }}
                 direction={{ base: "column", md: "row" }}
@@ -75,6 +75,8 @@ export default function Blog({ allPostsData }) {
                     })}
                     )
                   </Text>
+
+                  <Text noOfLines={3}>{page.summary}</Text>
                 </Box>
                 <Spacer />
                 <Box>
@@ -95,16 +97,7 @@ export default function Blog({ allPostsData }) {
                     })}
                   </Wrap>
                 </Box>
-              </Flex>
-              <Box
-                display="flex"
-                flex="1"
-                flexDirection="column"
-                justifyContent="center"
-                marginTop={{ base: "3", sm: "0" }}
-              >
-                <Text noOfLines={3}>{page.summary}</Text>
-              </Box>
+              </Stack>
             </Stack>
           )
         })}
