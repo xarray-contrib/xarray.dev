@@ -69,7 +69,7 @@ export const DonateSection = () => {
           <Stack flex={1} justify={"center"} align={"center"} w={"full"}>
             <Center
               as={Image}
-              src={"NumFOCUS_sponsored_project_logo.svg"}
+              src={"/NumFOCUS_sponsored_project_logo.svg"}
               alt={"NumFocus logo"}
             ></Center>
           </Stack>

@@ -25,8 +25,6 @@ const TimelinePlot = ({ data, attr, start, end }) => {
     return [getTime(new Date(item.time)), item[attr]]
   })
 
-  console.log(dataSeries[0])
-
   const [state, setState] = React.useState({
     series: [{ name: attr, data: dataSeries }],
     options: {

@@ -1,7 +1,22 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from "../theme"
-import Layout from "components/Layout"
+import { Container } from "@chakra-ui/react"
+import { Header } from "layouts/Header"
+import { Footer } from "layouts/Footer"
+import MDXComponentsProvider from "components/MDXComponentsProvider"
 import Head from "next/head"
+
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Container maxW={"full"} maxH={"full"}>
+        <Header />
+        {children}
+        <Footer />
+      </Container>
+    </>
+  )
+}
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,7 +30,9 @@ function MyApp({ Component, pageProps }) {
         <title>xarray: N-D labeled arrays and datasets in Python</title>
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        <MDXComponentsProvider>
+          <Component {...pageProps} />
+        </MDXComponentsProvider>
       </Layout>
     </ChakraProvider>
   )

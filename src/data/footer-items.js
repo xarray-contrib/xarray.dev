@@ -1,6 +1,7 @@
 export const footerItems = {
   xarray: [
     { label: "Dashboard", href: "/dashboard" },
+    { label: "Blog", href: "/blog" },
     {
       label: "Citing Xarray",
       href: "https://docs.xarray.dev/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray",
@@ -9,11 +10,6 @@ export const footerItems = {
       label: "Roadmap",
       href: "https://docs.xarray.dev/en/stable/roadmap.html",
     },
-    {
-      label: "Contribute",
-      href: "https://docs.xarray.dev/en/stable/contributing.html",
-    },
-    { label: "Compatible Projects", href: "https://github.com/xarray-contrib" },
   ],
 
   resources: [
@@ -26,9 +22,14 @@ export const footerItems = {
       label: "Example Gallery",
       href: "https://docs.xarray.dev/en/stable/gallery.html",
     },
+    { label: "Compatible Projects", href: "https://github.com/xarray-contrib" },
   ],
 
   community: [
+    {
+      label: "Contribute",
+      href: "https://docs.xarray.dev/en/stable/contributing.html",
+    },
     {
       label: "GitHub Discussions",
       href: "https://github.com/pydata/xarray/discussions",
