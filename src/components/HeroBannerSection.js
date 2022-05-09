@@ -6,9 +6,10 @@ import {
   Heading,
   Image,
   Button,
-  Link,
   useColorModeValue,
 } from "@chakra-ui/react"
+
+import { CustomLink as Link } from "components"
 
 export const HeroBannerSection = () => {
   return (
@@ -69,20 +70,12 @@ export const HeroBannerSection = () => {
             justify={"center"}
             direction={{ base: "column", sm: "row" }}
           >
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              colorScheme={"red"}
-              bg={"red.400"}
-              _hover={{ bg: "red.500" }}
-            >
+            <Button variant={"outline"} px={6} colorScheme={"blue"}>
               <Link href="https://docs.xarray.dev/en/stable/getting-started-guide/quick-overview.html">
                 Get Started
               </Link>
             </Button>
-            <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
+            <Button variant={"outline"} px={6}>
               <Link href="https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html">
                 Why Xarray?
               </Link>

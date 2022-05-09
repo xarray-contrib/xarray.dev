@@ -1,7 +1,6 @@
 import React from "react"
 import {
   Container,
-  Link,
   Button,
   Text,
   useColorModeValue,
@@ -10,10 +9,10 @@ import {
   Box,
   Image,
   Badge,
-  Stack,
   SimpleGrid,
 } from "@chakra-ui/react"
 
+import { CustomLink as Link } from "components"
 import { Projects } from "../data/projects"
 
 const ProjectProfile = ({
@@ -79,24 +78,10 @@ const ProjectProfile = ({
           })}
         </VStack>
         <HStack>
-          <Button
-            flex={1}
-            fontSize={"sm"}
-            rounded={"full"}
-            _focus={{
-              bg: "gray.200",
-            }}
-          >
+          <Button flex={1} variant={"outline"} colorScheme={"blue"}>
             <Link href={homepage}>Homepage</Link>
           </Button>
-          <Button
-            flex={1}
-            fontSize={"sm"}
-            rounded={"full"}
-            colorScheme={"teal"}
-            bg={"teal.400"}
-            _hover={{ bg: "teal.500" }}
-          >
+          <Button flex={1} variant={"outline"}>
             <Link href={repo}>Repository</Link>
           </Button>
         </HStack>
@@ -131,17 +116,7 @@ export const ScientificDomains = () => {
           ))}
       </SimpleGrid>
 
-      <Button
-        rounded={"full"}
-        size={"lg"}
-        fontWeight={"normal"}
-        px={6}
-        py={6}
-        mt={10}
-        colorScheme={"red"}
-        bg={"red.400"}
-        _hover={{ bg: "red.500" }}
-      >
+      <Button variant={"outline"} colorScheme={"blue"} px={6} py={6} mt={10}>
         <Link href="https://docs.xarray.dev/en/stable/ecosystem.html">
           See More
         </Link>
