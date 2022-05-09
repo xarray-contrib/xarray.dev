@@ -1,7 +1,6 @@
 import React from "react"
 import {
   Heading,
-  Link,
   Image,
   Text,
   Button,
@@ -10,6 +9,10 @@ import {
   Box,
   Center,
 } from "@chakra-ui/react"
+
+import { CustomLink as Link } from "components"
+
+import { BiDonateHeart } from "react-icons/bi"
 
 export const DonateSection = () => {
   return (
@@ -34,7 +37,7 @@ export const DonateSection = () => {
             <Text fontSize={"lg"}>
               Xarray is a Sponsored Project of NumFOCUS, a{" "}
               <Text
-                as={"a"}
+                as={Link}
                 href={"https://en.wikipedia.org/wiki/501(c)(3)_organization"}
                 color={"blue.400"}
               >
@@ -43,7 +46,7 @@ export const DonateSection = () => {
               in the United States. NumFOCUS provides Xarray with fiscal, legal,
               and administrative support to help ensure the health and
               sustainability of the project. Visit{" "}
-              <Text as={"a"} href={"https://numfocus.org/"} color={"blue.400"}>
+              <Text as={Link} href={"https://numfocus.org/"} color={"blue.400"}>
                 numfocus.org
               </Text>{" "}
               for more information.
@@ -53,17 +56,15 @@ export const DonateSection = () => {
               consider making a donation to support our efforts.
             </Text>
             <Button
-              rounded={"full"}
               size={"lg"}
               fontWeight={"normal"}
               px={6}
               colorScheme={"red"}
               bg={"red.400"}
               _hover={{ bg: "red.500" }}
+              rightIcon={<BiDonateHeart />}
             >
-              <Link href={"https://numfocus.org/donate-to-xarray"}>
-                Donate ❤
-              </Link>
+              <Link href={"https://numfocus.org/donate-to-xarray"}>Donate</Link>
             </Button>
           </Stack>
           <Stack flex={1} justify={"center"} align={"center"} w={"full"}>

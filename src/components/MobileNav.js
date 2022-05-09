@@ -3,14 +3,12 @@ import {
   Collapse,
   Flex,
   Icon,
-  Link,
   Stack,
   Text,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react"
 import { ChevronDownIcon } from "@chakra-ui/icons"
-import NextLink from "next/link"
 
 import { CustomLink } from "components"
 const MobileNavItem = ({ href, children, label }) => {

@@ -16,6 +16,7 @@ import {
 import { IoLogoGithub } from "react-icons/io5"
 import { ScientificDomains } from "./ScientificDomains"
 import { ArrayLibraries } from "./ArrayLibraries"
+import { CustomLink as Link } from "components"
 
 import useSWR from "swr"
 
@@ -33,7 +34,7 @@ const GitHubStats = () => {
   return (
     <Stack direction="row" spacing={4} justify="center">
       <Button
-        as={"a"}
+        as={Link}
         href={"https://github.com/pydata/xarray/stargazers"}
         rounded={"full"}
         size={"lg"}
