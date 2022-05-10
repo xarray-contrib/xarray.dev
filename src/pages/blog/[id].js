@@ -45,6 +45,9 @@ export default function Post({ source, frontmatter }) {
     authors: frontmatter.authors,
     date: frontmatter.date,
   })
+
+  if (cardError) return <div>failed to load</div>
+  if (!card) return <div>loading...</div>
   console.log(card)
   return (
     <Layout title={`Blog | ${frontmatter.title} | Xarray`} card={card}>
