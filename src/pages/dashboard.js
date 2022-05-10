@@ -2,14 +2,15 @@ import React from "react"
 import { Container } from "@chakra-ui/react"
 
 import { Statistics } from "components"
-import { TimelinePlotContainer } from "../components/TimelinePlot"
+import { TimelinePlotContainer } from "components/TimelinePlot"
+import { Layout } from "components/Layout"
 
 const DashboardPage = () => {
   return (
-    <Container maxW={"6xl"} mt={10}>
+    <Layout title={"Xarray project statistics"}>
       <Statistics />
       <TimelinePlotContainer />
-    </Container>
+    </Layout>
   )
 }
 
