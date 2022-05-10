@@ -1,6 +1,6 @@
 {
-  "name": "xarray-website",
-  "version": "0.1.0",
+  "name": "xarray.dev",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xarray-contrib/xarray.dev.git"
+  },
+  "author": "Xarray Developers & Contributors",
+  "license": "Apache 2.0",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.8",
