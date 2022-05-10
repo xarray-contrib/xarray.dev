@@ -1,45 +1,38 @@
 import { withOGImage } from "next-api-og-image"
-import {
-  Box,
-  Center,
-  Heading,
-  Text,
-  Stack,
-  Avatar,
-  Image,
-} from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 export default withOGImage({
   template: {
-    react: ({ title, description }) => (
-      <Center py={6}>
-        <Box
-          maxW={"445px"}
-          w={"full"}
-          oxShadow={"2xl"}
-          rounded={"md"}
-          p={6}
-          overflow={"hidden"}
-        >
-          <Box
-            h={"210px"}
-            bg={"gray.100"}
-            mt={-6}
-            mx={-6}
-            mb={6}
-            pos={"relative"}
-          >
-            {" "}
-            <Image
-              src={
-                "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              }
-              layout={"fill"}
-              alt={title}
-            />
+    react: ({ title, description, isBlog = true }) => (
+      <Flex
+        flexDirection={"row"}
+        px={"78px"}
+        py={"7"}
+        h={"100vh"}
+        w={"100vw"}
+        justifyContent={"space-between"}
+      >
+        <Flex flexDirection={"column"} justifyContent={"space-between"}>
+          <Box>
+            <Box
+              letterSpacing={"smallcaps"}
+              fontSize={"5"}
+              mb={"3"}
+              mt={"-10px"}
+            >
+              {isBlog ? "blog | Xarray" : "Xarray"}
+            </Box>
+            <Box
+              as={"h1"}
+              maxW={"800px"}
+              fontSize={"70px"}
+              mt={["42px", "42px", "42px", "42px"]}
+            >
+              {title}
+            </Box>
           </Box>
-        </Box>
-      </Center>
+        </Flex>
+      </Flex>
     ),
   },
   cacheControl: "public, max-age=604800, immutable",
