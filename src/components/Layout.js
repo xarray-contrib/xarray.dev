@@ -18,11 +18,7 @@ export const Layout = ({ title, description, card, children }) => {
         <meta name="twitter:image" content={card} />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon.ico" />
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
+
         <title>{title}</title>
       </Head>
       <Container maxW={"full"} maxH={"full"}>
