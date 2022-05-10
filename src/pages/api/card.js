@@ -1,9 +1,9 @@
 import { withOGImage } from "next-api-og-image"
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, Flex, Wrap, WrapItem, Avatar } from "@chakra-ui/react"
 
 export default withOGImage({
   template: {
-    react: ({ title, description, isBlog = true }) => (
+    react: ({ title, description, authors, date, isBlog = true }) => (
       <Flex
         flexDirection={"row"}
         px={"78px"}
@@ -30,6 +30,30 @@ export default withOGImage({
             >
               {title}
             </Box>
+          </Box>
+          <Box>
+            {authors
+              ? () => (
+                  <Box>
+                    <Wrap spacing={2}>
+                      {authors.map((author) => {
+                        return (
+                          <WrapItem key={author}>
+                            <Flex
+                              align={"center"}
+                              mt={1}
+                              direction={"column"}
+                              key={author}
+                            >
+                              <Avatar name={author} mb={1} />
+                            </Flex>
+                          </WrapItem>
+                        )
+                      })}
+                    </Wrap>
+                  </Box>
+                )
+              : null}
           </Box>
         </Flex>
       </Flex>
