@@ -8,6 +8,7 @@ import {
   Image,
   Text,
   Center,
+  Heading,
 } from "@chakra-ui/react"
 import { MdCalendarToday } from "react-icons/md"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
@@ -18,8 +19,6 @@ import matter from "gray-matter"
 
 const Card = ({ frontmatter, id }) => {
   const boxBackground = "white !important"
-  const secondaryBackground = "gray.50"
-  const mainText = "gray.800"
   const iconColor = "brand.200"
 
   return (
@@ -27,7 +26,7 @@ const Card = ({ frontmatter, id }) => {
       <Flex
         borderRadius="20px"
         bg={boxBackground}
-        w={{ base: "800px", md: "830px" }}
+        w={{ base: "900px", md: "930px" }}
         direction="column"
       >
         <Box p="20px">
@@ -39,53 +38,39 @@ const Card = ({ frontmatter, id }) => {
             ></Image>
           </Flex>
           <Box>
-            <Text fontWeight="600" color={mainText} w="100%" fontSize="2xl">
+            <Text as={Heading} fontWeight="600">
               {frontmatter.title}
             </Text>
-            <AvatarGroup size="md" max={4} color={iconColor} fontWeight="700">
-              {frontmatter.authors.map((author) => {
-                return <Avatar name={author} key={author} mt={1} />
-              })}
-            </AvatarGroup>
           </Box>
         </Box>
+
         <Flex
-          bg={secondaryBackground}
+          mt="auto"
+          justify="space-between"
           w="100%"
-          p="20px"
+          align="center"
           borderBottomLeftRadius="inherit"
           borderBottomRightRadius="inherit"
           height="100%"
-          direction="column"
+          direction="row"
+          p="20px"
         >
-          <Text
-            fontSize="2sm"
-            color="gray.600"
-            lineHeight="24px"
-            pe="40px"
-            fontWeight="500"
-            mb="auto"
-            noOfLines={3}
-          >
-            {
-              "Xarray now supports unit-aware operations by wrapping pint arrays"
-            }
-          </Text>
-          <br />
-          <Flex>
-            <Flex me="25px">
-              <Icon
-                as={MdCalendarToday}
-                w="20px"
-                h="20px"
-                me="6px"
-                color="green.400"
-              />
-              <Text color={mainText} fontSize="sm" my="auto" fontWeight="500">
-                {format(new Date(frontmatter.date), "PPPP")}
-              </Text>
-            </Flex>
+          <Flex me="25px">
+            <Icon
+              as={MdCalendarToday}
+              w="20px"
+              h="20px"
+              me="6px"
+              color="green.400"
+            />
+            <Text>{format(new Date(frontmatter.date), "PPPP")}</Text>
           </Flex>
+
+          <AvatarGroup size="md" max={4} color={iconColor} fontWeight="700">
+            {frontmatter.authors.map((author) => {
+              return <Avatar name={author} key={author} mt={1} />
+            })}
+          </AvatarGroup>
         </Flex>
       </Flex>
     </Center>
