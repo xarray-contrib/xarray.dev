@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "node build-cards.js",
+    "build-cards": "node build-cards.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
