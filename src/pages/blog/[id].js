@@ -29,7 +29,6 @@ import matter from "gray-matter"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
 import { CustomLink } from "components"
 import { Layout } from "components/Layout"
-import { useCard } from "../../lib/card-endpoint"
 
 const allComponents = {
   Button,
@@ -40,17 +39,8 @@ const allComponents = {
 }
 
 export default function Post({ source, frontmatter }) {
-  const { card, cardError } = useCard({
-    title: frontmatter.title,
-    authors: frontmatter.authors,
-    date: frontmatter.date,
-  })
-
-  if (cardError) return <div>failed to load</div>
-  if (!card) return <div>loading...</div>
-  console.log(card)
   return (
-    <Layout title={`Blog | ${frontmatter.title} | Xarray`} card={card}>
+    <Layout title={`Blog | ${frontmatter.title} | Xarray`}>
       <Box
         py={20}
         spacing={8}
