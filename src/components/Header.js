@@ -14,7 +14,7 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
 import { MobileNav } from "../components/MobileNav"
 import { DesktopNav } from "../components/DesktopNav"
 import { menuItems } from "../data/menu-items"
-import { CustomLink } from "components"
+import { Link } from "components/mdx"
 
 export const Header = () => {
   const navItems = React.useMemo(() => menuItems, [])
@@ -68,7 +68,7 @@ export const Header = () => {
             justify={{ base: "start", md: "start" }}
           >
             <Stack
-              as={CustomLink}
+              as={Link}
               href={"/"}
               direction={"row"}
               alignItems={"center"}

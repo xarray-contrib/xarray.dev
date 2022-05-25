@@ -9,7 +9,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 
-import { CustomLink as Link } from "components"
+import { Link } from "components/mdx"
 
 export const HeroBannerSection = () => {
   return (

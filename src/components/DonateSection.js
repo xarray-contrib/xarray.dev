@@ -10,7 +10,7 @@ import {
   Center,
 } from "@chakra-ui/react"
 
-import { CustomLink as Link } from "components"
+import { Link } from "components/mdx"
 
 import { BiDonateHeart } from "react-icons/bi"
 

@@ -18,8 +18,8 @@ import {
 import { formatDistanceToNow, format } from "date-fns"
 
 import { getSortedPostsMetadata } from "../../lib/posts"
-import { CustomLink } from "components"
 import { Layout } from "components/Layout"
+import { Link } from "components/mdx"
 
 export default function Blog({ allPostsData }) {
   return (
@@ -68,13 +68,13 @@ export default function Blog({ allPostsData }) {
                   direction={{ base: "column", md: "row" }}
                 >
                   <Box>
-                    <CustomLink
+                    <Link
                       href={`/blog/${page.id}`}
                       fontSize={"xl"}
                       fontWeight={"bold"}
                     >
                       {page.title}
-                    </CustomLink>
+                    </Link>
 
                     <Text fontSize={"sm"} color={"gray.600"} py={4}>
                       {format(new Date(page.date), "PPPP")} (

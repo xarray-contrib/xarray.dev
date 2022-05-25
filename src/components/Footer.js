@@ -15,7 +15,7 @@ import {
 import { FaTwitter, FaGithub, FaYoutube } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
 import { VercelCallout } from "./VercelCallout"
-import { CustomLink } from "components"
+import { Link } from "components/mdx"
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -97,14 +97,14 @@ export const Footer = () => {
 
             {footerItems.xarray.map((item) => {
               return (
-                <CustomLink
+                <Link
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </CustomLink>
+                </Link>
               )
             })}
           </Stack>
@@ -112,14 +112,14 @@ export const Footer = () => {
             <ListHeader>Resources</ListHeader>
             {footerItems.resources.map((item) => {
               return (
-                <CustomLink
+                <Link
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </CustomLink>
+                </Link>
               )
             })}
           </Stack>
@@ -127,14 +127,14 @@ export const Footer = () => {
             <ListHeader>Community</ListHeader>
             {footerItems.community.map((item) => {
               return (
-                <CustomLink
+                <Link
                   key={item.label}
                   href={item.href}
                   fontSize={"sm"}
                   _hover={{ color: "blue.500" }}
                 >
                   {item.label}
-                </CustomLink>
+                </Link>
               )
             })}
           </Stack>

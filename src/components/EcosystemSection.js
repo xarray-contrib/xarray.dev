@@ -16,7 +16,7 @@ import {
 import { IoLogoGithub } from "react-icons/io5"
 import { ScientificDomains } from "./ScientificDomains"
 import { ArrayLibraries } from "./ArrayLibraries"
-import { CustomLink as Link } from "components"
+import { Link } from "components/mdx"
 
 import useSWR from "swr"
 
