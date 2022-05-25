@@ -1,13 +1,20 @@
 {
-  "name": "xarray-website",
-  "version": "0.1.0",
+  "name": "xarray.dev",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build-cards": "node build-cards.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xarray-contrib/xarray.dev.git"
+  },
+  "author": "Xarray Developers & Contributors",
+  "license": "Apache 2.0",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.0",
     "@chakra-ui/react": "^2.1.0",
@@ -32,6 +39,8 @@
   },
   "devDependencies": {
     "eslint": "8.16.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "glob": "^8.0.3",
+    "playwright": "^1.22.2"
   }
 }

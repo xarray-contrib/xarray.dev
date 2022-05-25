@@ -15,6 +15,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { MDXProvider } from "@mdx-js/react"
+
 const CustomLink = (props) => {
   const href = props.href
   const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"))

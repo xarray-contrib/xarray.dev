@@ -14,7 +14,7 @@ import {
 
 import { FaTwitter, FaGithub, FaYoutube } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
-import { VercelCallout } from "../components/VercelCallout"
+import { VercelCallout } from "./VercelCallout"
 import { CustomLink } from "components"
 
 const SocialButton = ({ children, label, href }) => {
