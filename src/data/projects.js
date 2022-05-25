@@ -94,4 +94,12 @@ export const Projects = [
     repo: "https://omfit.io/install.html#get-access-to-the-omfit-source-code",
     logo: "https://omfit.io/_static/OMFIT_logo.png",
   },
+  {
+    name: "sgkit",
+    description: "Scalable statistical genetic data analysis in Python",
+    domains: ["🧬 genomics"],
+    homepage: "https://pystatgen.github.io/sgkit/latest/",
+    repo: "https://github.com/pystatgen/sgkit",
+    logo: "https://raw.githubusercontent.com/pystatgen/sgkit/main/docs/_static/sgkit_trnsprnt.png",
+  },
 ]
