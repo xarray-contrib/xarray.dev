@@ -39,7 +39,7 @@ const allComponents = {
 }
 
 const CARDS_BASE_URL =
-  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/open-graph-cards/cards"
+  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/cards"
 
 export default function Post({ source, frontmatter, postId }) {
   const card = `${CARDS_BASE_URL}/${postId}.png`
