@@ -7,6 +7,7 @@ import {
   Icon,
   Image,
   Text,
+  Center,
 } from "@chakra-ui/react"
 import { MdCalendarToday } from "react-icons/md"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
@@ -22,12 +23,11 @@ const Card = ({ frontmatter, id }) => {
   const iconColor = "brand.200"
 
   return (
-    <Flex id={id}>
+    <Center mt={40} id={id}>
       <Flex
         borderRadius="20px"
         bg={boxBackground}
-        h="345px"
-        w={{ base: "400px", md: "425px" }}
+        w={{ base: "800px", md: "830px" }}
         direction="column"
       >
         <Box p="20px">
@@ -88,7 +88,7 @@ const Card = ({ frontmatter, id }) => {
           </Flex>
         </Flex>
       </Flex>
-    </Flex>
+    </Center>
   )
 }
 

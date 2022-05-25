@@ -32,18 +32,8 @@ async function getScreenshot(postId) {
   })
   await page.goto(`${baseUrl}/cards/${postId}`)
 
-  const clipRelativeToViewport = await page.locator(`#${postId}`).boundingBox()
-
-  const clipRelativeToPage = {
-    width: clipRelativeToViewport.width * 0.6,
-    height: clipRelativeToViewport.height * 1.4,
-    x: clipRelativeToViewport.x + (await page.evaluate(() => window.scrollX)),
-    y: clipRelativeToViewport.y + (await page.evaluate(() => window.scrollY)),
-  }
-
   await page.screenshot({
     path: `./cards/${postId}.png`,
-    clip: clipRelativeToPage,
     fullPage: true,
   })
   await browser.close()

@@ -23,7 +23,7 @@ import { Layout } from "components/Layout"
 
 export default function Blog({ allPostsData }) {
   return (
-    <Layout title={"Blog | Xarray"}>
+    <Layout title={"Blog | Xarray"} url={"https://xarray.dev/blog"}>
       <Box
         py={20}
         spacing={4}

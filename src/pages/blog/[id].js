@@ -43,12 +43,13 @@ const CARDS_BASE_URL =
 
 export default function Post({ source, frontmatter, postId }) {
   const card = `${CARDS_BASE_URL}/${postId}.png`
-  console.log(frontmatter)
+
   return (
     <Layout
       title={`Blog | ${frontmatter.title} | Xarray`}
       card={card}
       description={frontmatter.summary}
+      url={`https://xarray.dev/blog/${postId}`}
     >
       <Box
         py={20}

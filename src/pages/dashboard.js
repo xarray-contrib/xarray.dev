@@ -7,7 +7,11 @@ import { Layout } from "components/Layout"
 
 const DashboardPage = () => {
   return (
-    <Layout title={"Xarray project statistics"}>
+    <Layout
+      title={"Xarray project statistics"}
+      url={"https://xarray.dev/dashboard"}
+      description={"Xarray project statistics"}
+    >
       <Statistics />
       <TimelinePlotContainer />
     </Layout>
