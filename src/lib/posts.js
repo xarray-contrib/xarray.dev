@@ -1,11 +1,16 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import glob from 'glob'
+// import fs from 'fs'
+// import path from 'path'
+// import matter from 'gray-matter'
+// import glob from 'glob'
+
+const fs = require('fs')
+const path = require('path')
+const matter = require('gray-matter')
+const glob = require('glob')
 
 const postsDirectory = path.join(process.cwd(), "src/posts")
 
-export function getSortedPostsMetadata() {
+function getSortedPostsMetadata() {
 
   const allPosts = glob.sync(`${postsDirectory}/**/*.md`).map((filePath) => {
     const postId = path.basename(path.dirname(filePath))
@@ -32,7 +37,7 @@ export function getSortedPostsMetadata() {
 
 
 
-export function getAllPostsIds() {
+function getAllPostsIds() {
   const allPosts = getSortedPostsMetadata()
   return allPosts.map((post) => {
     return {
@@ -43,9 +48,15 @@ export function getAllPostsIds() {
   })
 }
 
-export function getPostData(id) {
+function getPostData(id) {
   const allPosts = getSortedPostsMetadata()
   const post = allPosts.find((post) => post.id === id)
   return post
 
+}
+
+module.exports = {
+  getSortedPostsMetadata,
+  getAllPostsIds,
+  getPostData,
 }

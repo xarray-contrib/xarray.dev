@@ -67,20 +67,19 @@ export const Header = () => {
             flex={{ base: 1, md: "auto" }}
             justify={{ base: "start", md: "start" }}
           >
-            <CustomLink href={"/"}>
-              <Stack
-                as={"a"}
-                direction={"row"}
-                alignItems={"center"}
-                spacing={{ base: 2, sm: 4 }}
-              >
-                <Image
-                  w={28}
-                  src={"/dataset-diagram-logo.png"}
-                  alt={"xarray logo"}
-                />
-              </Stack>
-            </CustomLink>
+            <Stack
+              as={CustomLink}
+              href={"/"}
+              direction={"row"}
+              alignItems={"center"}
+              spacing={{ base: 2, sm: 4 }}
+            >
+              <Image
+                w={28}
+                src={"/dataset-diagram-logo.png"}
+                alt={"xarray logo"}
+              />
+            </Stack>
           </Flex>
 
           <Stack

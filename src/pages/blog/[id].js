@@ -28,6 +28,7 @@ import matter from "gray-matter"
 
 import { getPostData, getAllPostsIds } from "../../lib/posts"
 import { CustomLink } from "components"
+import { Layout } from "components/Layout"
 
 const allComponents = {
   Button,
@@ -37,61 +38,73 @@ const allComponents = {
   MdCall,
 }
 
-export default function Post({ source, frontmatter }) {
+const CARDS_BASE_URL =
+  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/cards"
+
+export default function Post({ source, frontmatter, postId }) {
+  const card = `${CARDS_BASE_URL}/${postId}.png`
+
   return (
-    <Box
-      py={20}
-      spacing={8}
-      justifyContent="center"
-      alignItems="flex-start"
-      m="0 auto 4rem auto"
-      maxWidth="800px"
+    <Layout
+      title={`${frontmatter.title}`}
+      card={card}
+      description={frontmatter.summary}
+      url={`https://xarray.dev/blog/${postId}`}
     >
-      <Box spacing="3" alignItems="start">
-        <VStack paddingTop="30px" spacing="2" alignItems="center">
-          <Heading as={"h1"} textAlign={"center"} size="xl" my={4}>
-            {frontmatter.title}
-          </Heading>
-          <Text fontSize={"sm"} color={"gray.700"}>
-            {format(new Date(frontmatter.date), "PPPP")} (
-            {formatDistanceToNow(new Date(frontmatter.date), {
-              addSuffix: true,
-            })}
-            )
-          </Text>
-
-          <Wrap spacing="20px">
-            {frontmatter.authors.map((author) => {
-              return (
-                <WrapItem key={author}>
-                  <Flex align={"center"} mt={2} direction={"column"}>
-                    <Avatar name={author} mb={1} />
-                    {/* //<Stack spacing={-1} align={"center"}> */}
-                    <Text fontWeight={600}>{author}</Text>
-                    {/* </Stack> */}
-                  </Flex>
-                </WrapItem>
-              )
-            })}
-          </Wrap>
-          <Divider py={2} />
-        </VStack>
-        <br></br>
-        <MDXRemote {...source} components={allComponents} />
-      </Box>
-
-      <Button
-        marginTop={10}
-        as={CustomLink}
-        href={"/blog"}
-        variant={"outline"}
-        leftIcon={<ArrowBackIcon />}
-        colorScheme={"blue"}
+      <Box
+        py={20}
+        spacing={8}
+        justifyContent="center"
+        alignItems="flex-start"
+        m="0 auto 4rem auto"
+        maxWidth="4xl"
       >
-        Back to Blog
-      </Button>
-      <Divider marginTop={10} />
-    </Box>
+        <Box spacing="3" alignItems="start">
+          <VStack paddingTop="30px" spacing="2" alignItems="center">
+            <Heading as={"h1"} textAlign={"center"} size="xl" my={4}>
+              {frontmatter.title}
+            </Heading>
+            <Text fontSize={"sm"} color={"gray.700"}>
+              {format(new Date(frontmatter.date), "PPPP")} (
+              {formatDistanceToNow(new Date(frontmatter.date), {
+                addSuffix: true,
+              })}
+              )
+            </Text>
+
+            <Wrap spacing="20px">
+              {frontmatter.authors.map((author) => {
+                return (
+                  <WrapItem key={author}>
+                    <Flex align={"center"} mt={2} direction={"column"}>
+                      <Avatar name={author} mb={1} />
+                      {/* //<Stack spacing={-1} align={"center"}> */}
+                      <Text fontWeight={600}>{author}</Text>
+                      {/* </Stack> */}
+                    </Flex>
+                  </WrapItem>
+                )
+              })}
+            </Wrap>
+            <Divider py={2} />
+          </VStack>
+          <br></br>
+          <MDXRemote {...source} components={allComponents} />
+        </Box>
+
+        <Button
+          marginTop={10}
+          as={CustomLink}
+          href={"/blog"}
+          variant={"outline"}
+          leftIcon={<ArrowBackIcon />}
+          colorScheme={"blue"}
+        >
+          Back to Blog
+        </Button>
+        <Divider marginTop={10} />
+      </Box>
+    </Layout>
   )
 }
 
@@ -115,5 +128,5 @@ export async function getStaticProps({ params }) {
     },
   })
 
-  return { props: { source: mdxSource, frontmatter: data } }
+  return { props: { source: mdxSource, frontmatter: data, postId: params.id } }
 }
