@@ -85,4 +85,21 @@ export const Projects = [
     repo: "https://github.com/xarray-contrib/cf-xarray",
     logo: "https://raw.githubusercontent.com/xarray-contrib/cf-xarray/main/doc/_static/logo.svg",
   },
+  {
+    name: "omfit",
+    description:
+      "Integrated modeling and experimental data analysis software for magnetically confined thermonuclear fusion experiments",
+    domains: ["💥 plasma physics"],
+    homepage: "https://omfit.io",
+    repo: "https://omfit.io/install.html#get-access-to-the-omfit-source-code",
+    logo: "https://omfit.io/_static/OMFIT_logo.png",
+  },
+  {
+    name: "sgkit",
+    description: "Scalable statistical genetic data analysis in Python",
+    domains: ["🧬 genomics"],
+    homepage: "https://pystatgen.github.io/sgkit/latest/",
+    repo: "https://github.com/pystatgen/sgkit",
+    logo: "https://raw.githubusercontent.com/pystatgen/sgkit/main/docs/_static/sgkit_trnsprnt.png",
+  },
 ]
