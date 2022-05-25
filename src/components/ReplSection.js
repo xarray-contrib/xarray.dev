@@ -3,7 +3,6 @@ import {
   AspectRatio,
   Box,
   Container,
-  Heading,
   Text,
   SimpleGrid,
   Stack,
@@ -11,6 +10,7 @@ import {
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import { Heading } from "components/mdx"
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
@@ -70,7 +70,7 @@ export const ReplSection = () => {
     <Box id={"repl"}>
       <Container maxW={"6xl"} py={"4"}>
         <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
-          <Heading textAlign={"center"} fontSize={"5xl"}>
+          <Heading as="h1" size="2xl" my={4}>
             Try Xarray
           </Heading>
           <Text fontSize={"lg"}>

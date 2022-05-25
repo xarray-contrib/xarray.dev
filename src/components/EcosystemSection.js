@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Stack,
-  Heading,
   Text,
   Tabs,
   TabList,
@@ -16,7 +15,7 @@ import {
 import { IoLogoGithub } from "react-icons/io5"
 import { ScientificDomains } from "./ScientificDomains"
 import { ArrayLibraries } from "./ArrayLibraries"
-import { Link } from "components/mdx"
+import { Link, Heading } from "components/mdx"
 
 import useSWR from "swr"
 
@@ -52,9 +51,11 @@ const GitHubStats = () => {
 
 export const EcosystemSection = () => {
   return (
-    <Box id={"ecosystem"} p={4}>
-      <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
-        <Heading fontSize={"5xl"}>Ecosystem</Heading>
+    <Box id={"ecosystem"}>
+      <Stack as={Container} maxW={"6xl"} textAlign={"center"}>
+        <Heading as="h1" size="2xl" my={4}>
+          Ecosystem
+        </Heading>
         <Text fontSize={"lg"}>
           Xarray is part of the larger scientific Python ecosystem. It is built
           on top of NumPy, Pandas, and Dask and supports a wide range of domain

@@ -1,6 +1,5 @@
 import React from "react"
 import {
-  Heading,
   Image,
   Text,
   Button,
@@ -10,15 +9,15 @@ import {
   Center,
 } from "@chakra-ui/react"
 
-import { Link } from "components/mdx"
+import { Link, Heading } from "components/mdx"
 
 import { BiDonateHeart } from "react-icons/bi"
 
 export const DonateSection = () => {
   return (
     <Box id={"donate"}>
-      <Container maxW={"6xl"} py={"4"}>
-        <Heading textAlign={"center"} fontSize={"5xl"}>
+      <Container maxW={"6xl"}>
+        <Heading as="h1" size="2xl" my={4} textAlign={"center"}>
           Donate
         </Heading>
         <Stack

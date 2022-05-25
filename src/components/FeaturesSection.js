@@ -5,7 +5,6 @@ import {
   Stack,
   Text,
   Box,
-  Heading,
   HStack,
   Icon,
   VStack,
@@ -13,13 +12,16 @@ import {
 
 import { CheckIcon } from "@chakra-ui/icons"
 import { Features } from "../data/features"
+import { Heading } from "components/mdx"
 
 export const FeaturesSection = () => {
   const features = React.useMemo(() => Features, [])
   return (
-    <Box id={"features"} p={4}>
-      <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
-        <Heading fontSize={"5xl"}>Key Features & Capabilities</Heading>
+    <Box id={"features"}>
+      <Stack as={Container} maxW={"6xl"} textAlign={"center"}>
+        <Heading as="h1" size="2xl" my={4}>
+          Key Features & Capabilities
+        </Heading>
         <Text fontSize={"lg"}>
           Xarray provides data models for working with labeled arrays and
           datasets. Its toolkit includes a broad set of domain-agnostic

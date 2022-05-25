@@ -11,11 +11,14 @@ import {
 } from "@chakra-ui/react"
 
 import { Libraries } from "../data/array-libraries"
+import { Link } from "components/mdx"
 
 const Library = ({ name, description, url, logo }) => {
   return (
     <Stack align="center">
       <Flex
+        as={Link}
+        href={url}
         w={32}
         h={32}
         align={"center"}
@@ -29,7 +32,7 @@ const Library = ({ name, description, url, logo }) => {
       </Flex>
 
       <Heading
-        as="a"
+        as={Link}
         href={url}
         color={"blue.400"}
         fontSize={"2xl"}
