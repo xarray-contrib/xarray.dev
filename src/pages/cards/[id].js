@@ -22,7 +22,7 @@ const Card = ({ frontmatter, id }) => {
   const iconColor = "brand.200"
 
   return (
-    <Center mt={40} id={id} bg={"teal.100"}>
+    <Center mt={40} id="post">
       <Flex
         borderRadius="20px"
         bg={boxBackground}
@@ -39,9 +39,9 @@ const Card = ({ frontmatter, id }) => {
             ></Image>
           </Flex>
           <Box>
-            <Text as={Heading} fontWeight="600">
+            <Heading as={"h1"} size="xl">
               {frontmatter.title}
-            </Text>
+            </Heading>
           </Box>
         </Box>
 
@@ -64,7 +64,7 @@ const Card = ({ frontmatter, id }) => {
               me="6px"
               color="white.500"
             />
-            <Text fontWeight={"600"}>
+            <Text fontWeight={"600"} fontSize={"xl"}>
               {format(new Date(frontmatter.date), "PPPP")}
             </Text>
           </Flex>

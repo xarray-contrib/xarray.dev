@@ -23,7 +23,13 @@ import { Layout } from "components/Layout"
 
 export default function Blog({ allPostsData }) {
   return (
-    <Layout title={"Blog | Xarray"} url={"https://xarray.dev/blog"}>
+    <Layout
+      title={"Blog | Xarray"}
+      url={"https://xarray.dev/blog"}
+      card={
+        "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png"
+      }
+    >
       <Box
         py={20}
         spacing={4}
