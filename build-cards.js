@@ -23,7 +23,7 @@ async function getScreenshot(postId) {
   const width = 1200
   const height = 630
   const browser = await chromium.launch()
-  const context = await browser.newContext({ deviceScaleFactor: 10 })
+  const context = await browser.newContext({ deviceScaleFactor: 2 })
   const page = await context.newPage()
 
   await page.setViewportSize({

@@ -46,7 +46,7 @@ export default function Post({ source, frontmatter, postId }) {
 
   return (
     <Layout
-      title={`Blog | ${frontmatter.title} | Xarray`}
+      title={`${frontmatter.title}`}
       card={card}
       description={frontmatter.summary}
       url={`https://xarray.dev/blog/${postId}`}

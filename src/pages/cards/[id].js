@@ -22,12 +22,13 @@ const Card = ({ frontmatter, id }) => {
   const iconColor = "brand.200"
 
   return (
-    <Center mt={40} id={id}>
+    <Center mt={40} id={id} bg={"teal.100"}>
       <Flex
         borderRadius="20px"
         bg={boxBackground}
         w={{ base: "900px", md: "930px" }}
         direction="column"
+        justify="space-between"
       >
         <Box p="20px">
           <Flex w="100%" mb="10px">
@@ -61,14 +62,18 @@ const Card = ({ frontmatter, id }) => {
               w="20px"
               h="20px"
               me="6px"
-              color="green.400"
+              color="white.500"
             />
-            <Text>{format(new Date(frontmatter.date), "PPPP")}</Text>
+            <Text fontWeight={"600"}>
+              {format(new Date(frontmatter.date), "PPPP")}
+            </Text>
           </Flex>
 
-          <AvatarGroup size="md" max={4} color={iconColor} fontWeight="700">
+          <AvatarGroup size="md" max={4} color={iconColor}>
             {frontmatter.authors.map((author) => {
-              return <Avatar name={author} key={author} mt={1} />
+              return (
+                <Avatar name={author} key={author} mt={1} fontWeight={"600"} />
+              )
             })}
           </AvatarGroup>
         </Flex>
