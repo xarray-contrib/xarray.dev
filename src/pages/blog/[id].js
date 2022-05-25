@@ -38,9 +38,18 @@ const allComponents = {
   MdCall,
 }
 
-export default function Post({ source, frontmatter }) {
+const CARDS_BASE_URL =
+  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/open-graph-cards/cards"
+
+export default function Post({ source, frontmatter, postId }) {
+  const card = `${CARDS_BASE_URL}/${postId}.png`
+  console.log(frontmatter)
   return (
-    <Layout title={`Blog | ${frontmatter.title} | Xarray`}>
+    <Layout
+      title={`Blog | ${frontmatter.title} | Xarray`}
+      card={card}
+      description={frontmatter.summary}
+    >
       <Box
         py={20}
         spacing={8}
@@ -118,5 +127,5 @@ export async function getStaticProps({ params }) {
     },
   })
 
-  return { props: { source: mdxSource, frontmatter: data } }
+  return { props: { source: mdxSource, frontmatter: data, postId: params.id } }
 }
