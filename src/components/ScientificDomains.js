@@ -12,8 +12,8 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react"
 
-import { CustomLink as Link } from "components"
 import { Projects } from "../data/projects"
+import { Link } from "components/mdx"
 
 const ProjectProfile = ({
   name,

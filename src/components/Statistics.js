@@ -21,6 +21,8 @@ import { GiDuration } from "react-icons/gi"
 import useSWR from "swr"
 import * as d3 from "d3"
 
+import { Heading } from "components/mdx"
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const StatisticsCard = ({ title, stat, icon, diff, link }) => {
@@ -154,15 +156,9 @@ const TimeseriesAggStatsCard = ({ query, title, icon }) => {
 export const Statistics = () => {
   return (
     <Box mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-      <Text
-        as={"h1"}
-        textAlign={"center"}
-        fontSize={"2xl"}
-        py={10}
-        fontWeight={"bold"}
-      >
+      <Heading as="h1" size="2xl" my={4} textAlign={"center"}>
         Xarray Project Statistics
-      </Text>
+      </Heading>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
         <StatisticsCard
           title={"Core Maintainers"}
@@ -213,15 +209,9 @@ export const Statistics = () => {
         />
       </SimpleGrid>
 
-      <Text
-        as={"h1"}
-        textAlign={"center"}
-        fontSize={"2xl"}
-        py={10}
-        fontWeight={"bold"}
-      >
+      <Heading as="h1" size="2xl" my={4} textAlign={"center"}>
         Xarray Issue Tracker
-      </Text>
+      </Heading>
 
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
         {" "}

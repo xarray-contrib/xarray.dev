@@ -10,7 +10,8 @@ import {
 } from "@chakra-ui/react"
 import { ChevronDownIcon } from "@chakra-ui/icons"
 
-import { CustomLink } from "components"
+import { Link } from "components/mdx"
+
 const MobileNavItem = ({ href, children, label }) => {
   const { isOpen, onToggle } = useDisclosure()
 
@@ -25,7 +26,7 @@ const MobileNavItem = ({ href, children, label }) => {
     <Stack spacing={4} onClick={handleToggle}>
       <Flex
         py={2}
-        as={CustomLink}
+        as={Link}
         href={href ?? "/#"}
         justify={"space-between"}
         align={"center"}
@@ -62,9 +63,9 @@ const MobileNavItem = ({ href, children, label }) => {
           {" "}
           {children &&
             children.map((child, index) => (
-              <CustomLink key={index} href={child.href ?? "#"} py={2}>
+              <Link key={index} href={child.href ?? "#"} py={2}>
                 {child.label}
-              </CustomLink>
+              </Link>
             ))}
         </Stack>
       </Collapse>

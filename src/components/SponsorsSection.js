@@ -7,20 +7,20 @@ import {
   Container,
   useColorModeValue,
   Stack,
-  Heading,
   Image,
 } from "@chakra-ui/react"
 
 import { Sponsors } from "../data/sponsors"
+import { Heading } from "components/mdx"
 
 export const SponsorsSection = () => {
   const sponsors = React.useMemo(() => Sponsors, [])
 
   return (
     <Box id={"sponsors"}>
-      <Container maxW={"6xl"} py={4} as={Stack} spacing={12}>
-        <Stack spacing={4}>
-          <Heading fontSize={"5xl"} textAlign={"center"}>
+      <Container maxW={"6xl"} as={Stack}>
+        <Stack>
+          <Heading as="h1" size="2xl" my={4} textAlign={"center"}>
             Supported By
           </Heading>
           <Text

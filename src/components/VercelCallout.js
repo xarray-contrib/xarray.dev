@@ -1,4 +1,5 @@
-import { Box, Link } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
+import { Link } from "components/mdx"
 
 export function VercelCallout() {
   return (

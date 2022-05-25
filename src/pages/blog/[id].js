@@ -27,8 +27,8 @@ import path from "path"
 import matter from "gray-matter"
 
 import { getPostData, getAllPostsIds } from "../../lib/posts"
-import { CustomLink } from "components"
 import { Layout } from "components/Layout"
+import { Link } from "components/mdx"
 
 const allComponents = {
   Button,
@@ -94,7 +94,7 @@ export default function Post({ source, frontmatter, postId }) {
 
         <Button
           marginTop={10}
-          as={CustomLink}
+          as={Link}
           href={"/blog"}
           variant={"outline"}
           leftIcon={<ArrowBackIcon />}

@@ -9,7 +9,7 @@ import {
   Flex,
   Icon,
 } from "@chakra-ui/react"
-import { CustomLink } from "components"
+import { Link } from "components/mdx"
 import { ChevronRightIcon } from "@chakra-ui/icons"
 
 export const DesktopNav = ({ navItems, ...props }) => {
@@ -19,7 +19,7 @@ export const DesktopNav = ({ navItems, ...props }) => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <CustomLink
+              <Link
                 p={2}
                 href={navItem.href ?? "/#"}
                 fontSize={"sm"}
@@ -33,7 +33,7 @@ export const DesktopNav = ({ navItems, ...props }) => {
                 }}
               >
                 {navItem.label}
-              </CustomLink>
+              </Link>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -62,7 +62,7 @@ export const DesktopNav = ({ navItems, ...props }) => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <CustomLink
+    <Link
       href={href ?? "#"}
       role={"group"}
       display={"block"}
@@ -93,6 +93,6 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           <Icon color={"blue.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </CustomLink>
+    </Link>
   )
 }
