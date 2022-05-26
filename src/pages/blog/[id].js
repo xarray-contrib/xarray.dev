@@ -30,6 +30,7 @@ import matter from "gray-matter"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
+import { Giscus } from "components"
 
 const allComponents = {
   Button,
@@ -104,6 +105,8 @@ export default function Post({ source, frontmatter, postId }) {
           Back to Blog
         </Button>
         <Divider marginTop={10} />
+        <br />
+        <Giscus />
       </Box>
     </Layout>
   )
