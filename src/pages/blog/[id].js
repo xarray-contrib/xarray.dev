@@ -21,6 +21,7 @@ import { MdBuild, MdCall } from "react-icons/md"
 
 import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from "next-mdx-remote"
+import rehypeSlug from "rehype-slug"
 
 import fs from "fs"
 import path from "path"
@@ -124,7 +125,7 @@ export async function getStaticProps({ params }) {
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [],
+      rehypePlugins: [rehypeSlug],
     },
   })
 

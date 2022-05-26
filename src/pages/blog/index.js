@@ -27,7 +27,7 @@ export default function Blog({ allPostsData }) {
       title={"Blog | Xarray"}
       url={"https://xarray.dev/blog"}
       card={
-        "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-square-logo.png"
+        "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png"
       }
     >
       <Box
