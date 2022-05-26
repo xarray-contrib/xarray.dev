@@ -10,7 +10,7 @@ import {
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
-import { Heading } from "components/mdx"
+import { Heading, Code } from "components/mdx"
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
@@ -24,7 +24,7 @@ use the console located 👉 or 👇:
    Shift + Enter to execute
 2. Or copy paste the code, and click on
    the "Run" ▶ button in the toolbar
-""".
+"""
 import xarray as xr
 import pandas as pd
 import numpy as np
@@ -81,7 +81,7 @@ export const ReplSection = () => {
         <SimpleGrid minChildWidth="400px" spacing="40px" mt={10}>
           <Stack>
             <Stack direction="column">
-              <SyntaxHighlighter
+              <Code
                 language="python"
                 style={nord}
                 showLineNumbers
@@ -89,7 +89,7 @@ export const ReplSection = () => {
                 wrapLines
               >
                 {sampleCode}
-              </SyntaxHighlighter>
+              </Code>
             </Stack>
           </Stack>
 
