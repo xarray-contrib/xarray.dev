@@ -10,6 +10,13 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css?family=Inter&display=optional"
             crossOrigin="anonymous"
           />
+          <link
+            rel="prefetch"
+            href={"https://giscus.app/themes/light.css"}
+            as="style"
+            type="text/css"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
