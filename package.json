@@ -27,7 +27,7 @@
     "apexcharts": "3.35.2",
     "d3": "^7.4.4",
     "date-fns": "^2.28.0",
-    "framer-motion": "^6.3.3",
+    "framer-motion": "^6.3.5",
     "gray-matter": "^4.0.3",
     "next": "^12.1.6",
     "next-mdx-remote": "^3.0.8",
