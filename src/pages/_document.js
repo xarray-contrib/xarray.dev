@@ -1,4 +1,6 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document"
+import Script from "next/script"
+
 import { ColorModeScript } from "@chakra-ui/react"
 export default class Document extends NextDocument {
   render() {
@@ -18,22 +20,21 @@ export default class Document extends NextDocument {
             crossOrigin="anonymous"
           />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script
-            async
+          <Script
+            strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+
+          <Script id="google-analytics" strategy="lazyOnload">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
               page_path: window.location.pathname,
             });
-          `,
-            }}
-          />
+                `}
+          </Script>
         </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
