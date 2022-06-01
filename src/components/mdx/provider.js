@@ -8,6 +8,7 @@ import { Code } from "./code"
 import { Hr } from "./hr"
 import { Link } from "./link"
 import { Heading } from "./heading"
+import { Image } from "./image"
 
 const mapping = {
   h1: (props) => <Heading as="h1" size="2xl" my={4} {...props} />,
@@ -26,6 +27,7 @@ const mapping = {
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
   blockquote: (props) => <Quote {...props} />,
+  img: (props) => <Image {...props} alt={props.alt} />,
 }
 
 export const MDXComponentsProvider = (props) => {

@@ -7,13 +7,12 @@ import {
   HStack,
   VStack,
   Box,
-  Image,
   Badge,
   SimpleGrid,
 } from "@chakra-ui/react"
 
 import { Projects } from "../data/projects"
-import { Link } from "components/mdx"
+import { Link, Image } from "components/mdx"
 
 const ProjectProfile = ({
   name,
@@ -116,10 +115,16 @@ export const ScientificDomains = () => {
           ))}
       </SimpleGrid>
 
-      <Button variant={"outline"} colorScheme={"blue"} px={6} py={6} mt={10}>
-        <Link href="https://docs.xarray.dev/en/stable/ecosystem.html">
-          See More
-        </Link>
+      <Button
+        as={Link}
+        href="https://docs.xarray.dev/en/stable/ecosystem.html"
+        variant={"outline"}
+        colorScheme={"blue"}
+        px={6}
+        py={6}
+        mt={10}
+      >
+        See More
       </Button>
     </Container>
   )

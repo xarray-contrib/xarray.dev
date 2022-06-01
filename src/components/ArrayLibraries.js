@@ -1,7 +1,6 @@
 import React from "react"
 import {
   Text,
-  Image,
   Stack,
   Flex,
   Box,
@@ -11,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 
 import { Libraries } from "../data/array-libraries"
-import { Link } from "components/mdx"
+import { Link, Image } from "components/mdx"
 
 const Library = ({ name, description, url, logo }) => {
   return (

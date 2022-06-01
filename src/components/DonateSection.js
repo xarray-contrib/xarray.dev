@@ -1,15 +1,7 @@
 import React from "react"
-import {
-  Image,
-  Text,
-  Button,
-  Container,
-  Stack,
-  Box,
-  Center,
-} from "@chakra-ui/react"
+import { Text, Button, Container, Stack, Box, Center } from "@chakra-ui/react"
 
-import { Link, Heading } from "components/mdx"
+import { Link, Heading, Image } from "components/mdx"
 
 import { BiDonateHeart } from "react-icons/bi"
 

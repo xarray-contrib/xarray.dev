@@ -7,11 +7,10 @@ import {
   Container,
   useColorModeValue,
   Stack,
-  Image,
 } from "@chakra-ui/react"
 
 import { Sponsors } from "../data/sponsors"
-import { Heading } from "components/mdx"
+import { Heading, Image } from "components/mdx"
 
 export const SponsorsSection = () => {
   const sponsors = React.useMemo(() => Sponsors, [])

@@ -4,12 +4,11 @@ import {
   Text,
   Stack,
   Heading,
-  Image,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react"
 
-import { Link } from "components/mdx"
+import { Link, Image } from "components/mdx"
 
 export const HeroBannerSection = () => {
   return (
