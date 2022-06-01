@@ -95,6 +95,7 @@ export const ReplSection = () => {
 
           <AspectRatio ratio={4 / 3}>
             <iframe
+              title="repl"
               src={`https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=${preRunCode}`}
               alt="demo"
             />

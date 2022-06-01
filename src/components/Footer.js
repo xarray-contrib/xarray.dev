@@ -7,7 +7,6 @@ import {
   Stack,
   Text,
   VisuallyHidden,
-  Image,
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react"
@@ -15,7 +14,7 @@ import {
 import { FaTwitter, FaGithub, FaYoutube } from "react-icons/fa"
 import { footerItems } from "../data/footer-items"
 import { VercelCallout } from "./VercelCallout"
-import { Link } from "components/mdx"
+import { Link, Image } from "components/mdx"
 
 const SocialButton = ({ children, label, href }) => {
   return (

@@ -8,7 +8,7 @@ import { Code } from "./code"
 import { Hr } from "./hr"
 import { Link } from "./link"
 import { Heading } from "./heading"
-import { Image } from "@chakra-ui/react"
+import { Image } from "./image"
 
 const mapping = {
   h1: (props) => <Heading as="h1" size="2xl" my={4} {...props} />,
