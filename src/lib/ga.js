@@ -1,11 +1,8 @@
-// log the pageview with their URL
-export const pageview = (url) => {
-  window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-    page_path: url,
-  })
-}
+export const GTM_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
 
-// log specific events happening.
-export const event = ({ action, params }) => {
-  window.gtag('event', action, params)
+export const pageview = (url) => {
+  window.dataLayer.push({
+    event: 'pageview',
+    page: url,
+  })
 }
