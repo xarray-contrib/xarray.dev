@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import Script from "next/script"
 import theme from "../theme"
 import { MDXComponentsProvider } from "components/mdx"
-import { GTM_ID, pageview } from "../lib/gtm"
+import { GTM_ID, pageview } from "../lib/ga"
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
