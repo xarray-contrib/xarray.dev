@@ -46,7 +46,7 @@ export const StatisticsCard = ({ title, stat, icon, diff, link }) => {
           <Box pl={{ base: 2, md: 4 }}>
             <StatLabel fontWeight={"medium"}>{title}</StatLabel>
             <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
-              {stat}
+              {stat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </StatNumber>
             {diffElement}
           </Box>

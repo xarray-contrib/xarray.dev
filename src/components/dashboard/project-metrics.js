@@ -1,13 +1,38 @@
 import React from "react"
-import { SimpleGrid } from "@chakra-ui/react"
+import { SimpleGrid, Spinner } from "@chakra-ui/react"
 import { BsPerson, BsPeople } from "react-icons/bs"
+import useSWR from "swr"
 import { GoStar, GoTag, GoBook, GoPackage } from "react-icons/go"
-import { GiDuration } from "react-icons/gi"
 import { Heading } from "../mdx"
 import { StatisticsCard } from "./statistics-card"
 import { DatasetteStatsCard } from "./datasette-stats-card"
+import { fetcher } from "../../lib/data-fetching"
+import * as d3 from "d3"
 
 export const ProjectMetrics = () => {
+  const { data, error } = useSWR(
+    "https://raw.githubusercontent.com/andersy005/pydata-issue-tracker-datasette/main/data/docs-monthly-views.json",
+    fetcher
+  )
+
+  if (error) return <div>failed to load data</div>
+  if (!data)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    )
+
+  const monthlyViews = data.sort((a, b) => new Date(b.end) - new Date(a.end))[0]
+
+  const dateObj = new Date(monthlyViews.end)
+  const month = dateObj.toLocaleString("default", { month: "short" })
+  const year = dateObj.getFullYear()
+
   return (
     <>
       {" "}
@@ -49,8 +74,8 @@ export const ProjectMetrics = () => {
         />
 
         <StatisticsCard
-          title={"Docs Views"}
-          stat={"7,000"}
+          title={`${month}/${year} Docs Visitors`}
+          stat={monthlyViews.users}
           icon={<GoBook size={"3em"} />}
         />
 
