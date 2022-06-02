@@ -28,20 +28,12 @@ import matter from "gray-matter"
 
 import { getPostData, getAllPostsIds } from "../../lib/posts"
 import { formatDate, distanceToNow } from "../../lib/date-formatting"
+import { MDXElements } from "../../lib/mdx-elements"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
 import { Giscus } from "components"
 
-const allComponents = {
-  Button,
-  Image,
-  Stack,
-  MdBuild,
-  MdCall,
-}
-
-const CARDS_BASE_URL =
-  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/cards"
+const CARDS_BASE_URL = "https://xarray.dev/cards"
 
 export default function Post({ source, frontmatter, postId }) {
   const card = `${CARDS_BASE_URL}/${postId}.png`
@@ -88,7 +80,7 @@ export default function Post({ source, frontmatter, postId }) {
             <Divider py={2} />
           </VStack>
           <br></br>
-          <MDXRemote {...source} components={allComponents} />
+          <MDXRemote {...source} components={MDXElements} />
         </Box>
 
         <Button
