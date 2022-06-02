@@ -15,9 +15,8 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 
-import { formatDistanceToNow, format } from "date-fns"
-
 import { getSortedPostsMetadata } from "../../lib/posts"
+import { distanceToNow, formatDate } from "lib/date-formatting"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
 
@@ -59,6 +58,7 @@ export default function Blog({ allPostsData }) {
           align="stretch"
         >
           {allPostsData.map((page) => {
+            const date = new Date(page.date)
             return (
               <Stack key={page.id}>
                 <Stack
@@ -77,11 +77,7 @@ export default function Blog({ allPostsData }) {
                     </Link>
 
                     <Text fontSize={"sm"} color={"gray.600"} py={4}>
-                      {format(new Date(page.date), "PPPP")} (
-                      {formatDistanceToNow(new Date(page.date), {
-                        addSuffix: true,
-                      })}
-                      )
+                      {formatDate(date)} ({distanceToNow(date)})
                     </Text>
 
                     <Text noOfLines={3} py={4}>

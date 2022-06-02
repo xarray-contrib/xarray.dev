@@ -16,7 +16,6 @@ import {
 
 import { ArrowBackIcon } from "@chakra-ui/icons"
 
-import { formatDistanceToNow, format } from "date-fns"
 import { MdBuild, MdCall } from "react-icons/md"
 
 import { serialize } from "next-mdx-remote/serialize"
@@ -28,23 +27,17 @@ import path from "path"
 import matter from "gray-matter"
 
 import { getPostData, getAllPostsIds } from "../../lib/posts"
+import { formatDate, distanceToNow } from "../../lib/date-formatting"
+import { MDXElements } from "../../lib/mdx-elements"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
 import { Giscus } from "components"
 
-const allComponents = {
-  Button,
-  Image,
-  Stack,
-  MdBuild,
-  MdCall,
-}
-
-const CARDS_BASE_URL =
-  "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/cards"
+const CARDS_BASE_URL = "https://xarray.dev/cards"
 
 export default function Post({ source, frontmatter, postId }) {
   const card = `${CARDS_BASE_URL}/${postId}.png`
+  const date = new Date(frontmatter.date)
 
   return (
     <Layout
@@ -67,11 +60,7 @@ export default function Post({ source, frontmatter, postId }) {
               {frontmatter.title}
             </Heading>
             <Text fontSize={"sm"} color={"gray.700"}>
-              {format(new Date(frontmatter.date), "PPPP")} (
-              {formatDistanceToNow(new Date(frontmatter.date), {
-                addSuffix: true,
-              })}
-              )
+              {formatDate(date)} ({distanceToNow(date)})
             </Text>
 
             <Wrap spacing="20px">
@@ -91,7 +80,7 @@ export default function Post({ source, frontmatter, postId }) {
             <Divider py={2} />
           </VStack>
           <br></br>
-          <MDXRemote {...source} components={allComponents} />
+          <MDXRemote {...source} components={MDXElements} />
         </Box>
 
         <Button
