@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react"
 import { MdCalendarToday } from "react-icons/md"
 import { getPostData, getAllPostsIds } from "../../lib/posts"
-import { format } from "date-fns"
+import { formatDate } from "../../lib/date-formatting"
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
@@ -20,6 +20,7 @@ import matter from "gray-matter"
 const Card = ({ frontmatter, id }) => {
   const boxBackground = "white !important"
   const iconColor = "brand.200"
+  const date = new Date(frontmatter.date)
 
   return (
     <Center mt={40} id="post">
@@ -65,7 +66,7 @@ const Card = ({ frontmatter, id }) => {
               color="white.500"
             />
             <Text fontWeight={"600"} fontSize={"xl"}>
-              {format(new Date(frontmatter.date), "PPPP")}
+              {formatDate(date)}
             </Text>
           </Flex>
 
