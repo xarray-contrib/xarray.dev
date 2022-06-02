@@ -1,7 +1,6 @@
 import React from "react"
-import { Statistics } from "components"
-import { TimelinePlotContainer } from "components/TimelinePlot"
 import { Layout } from "components/Layout"
+import { IssueTracker, ProjectMetrics } from "components/dashboard"
 
 const DashboardPage = () => {
   return (
@@ -13,8 +12,8 @@ const DashboardPage = () => {
         "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png"
       }
     >
-      <Statistics />
-      <TimelinePlotContainer />
+      <ProjectMetrics />
+      <IssueTracker />
     </Layout>
   )
 }
