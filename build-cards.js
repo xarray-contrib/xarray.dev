@@ -3,11 +3,13 @@ const glob = require("glob")
 const { chromium } = require("playwright")
 
 const { getAllPostsIds } = require("./src/lib/posts")
+const cardsDir = "./public/cards/"
 
 glob("./cards/**.png", async (err, files) => {
   const contents = getAllPostsIds()
-  if (!fs.existsSync("./cards")) {
-    fs.mkdirSync("./cards")
+
+  if (!fs.existsSync(cardsDir)) {
+    fs.mkdirSync(cardsDir)
   }
 
   for (const post of contents) {
@@ -33,7 +35,7 @@ async function getScreenshot(postId) {
   await page.goto(`${baseUrl}/cards/${postId}`)
 
   await page.screenshot({
-    path: `./cards/${postId}.png`,
+    path: `${cardsDir}/${postId}.png`,
     fullPage: true,
   })
   await browser.close()
