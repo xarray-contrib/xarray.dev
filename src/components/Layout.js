@@ -16,7 +16,7 @@ export const Layout = ({
   const bannerDescription = ""
   const bannerChildren = (
     <Text fontWeight="medium">
-      <Link href="/blog">
+      <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfnMd8UsC1XP1lPuFczl148VfpmwnFu4a0Z94odt1L6U0R0Pw/viewform">
         The 2022 Xarray User Survey is out! Please take ~5 minutes to help
         improve Xarray!
       </Link>
