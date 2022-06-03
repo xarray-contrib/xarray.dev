@@ -7,11 +7,6 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Inter&display=optional"
-            crossOrigin="anonymous"
-          />
-          <link
             rel="prefetch"
             href={"https://giscus.app/themes/light.css"}
             as="style"
