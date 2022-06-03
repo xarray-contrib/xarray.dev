@@ -2,7 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 import Script from "next/script"
-import theme from "../theme"
+import { customTheme } from "../theme"
 import { MDXComponentsProvider } from "components/mdx"
 import * as gtag from "../lib/ga"
 
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events])
 
   return (
-    <ChakraProvider resetCSS theme={theme}>
+    <ChakraProvider resetCSS theme={customTheme}>
       {/* Google Tag Manager - Global base code */}
       <Script
         strategy="afterInteractive"
