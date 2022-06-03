@@ -11,6 +11,7 @@ export const Layout = ({
   card,
   children,
   url = "https://xarray.dev",
+  enableBanner = true,
 }) => {
   const bannerTitle = ""
   const bannerDescription = ""
@@ -44,9 +45,11 @@ export const Layout = ({
         <Header />
 
         <Container maxW={"6xl"} mt={10}>
-          <Banner title={bannerTitle} description={bannerDescription}>
-            {bannerChildren}
-          </Banner>
+          {enableBanner && (
+            <Banner title={bannerTitle} description={bannerDescription}>
+              {bannerChildren}
+            </Banner>
+          )}
           {children}
         </Container>
         <Footer />
