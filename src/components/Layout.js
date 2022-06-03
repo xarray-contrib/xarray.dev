@@ -1,6 +1,8 @@
-import { Container } from "@chakra-ui/react"
+import { Container, Text } from "@chakra-ui/react"
 import { Footer } from "./Footer"
 import { Header } from "./Header"
+import { Banner } from "./banner"
+import { Link } from "./mdx"
 import Head from "next/head"
 
 export const Layout = ({
@@ -9,7 +11,18 @@ export const Layout = ({
   card,
   children,
   url = "https://xarray.dev",
+  enableBanner = true,
 }) => {
+  const bannerTitle = ""
+  const bannerDescription = ""
+  const bannerChildren = (
+    <Text fontWeight="medium">
+      <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfnMd8UsC1XP1lPuFczl148VfpmwnFu4a0Z94odt1L6U0R0Pw/viewform">
+        The 2022 Xarray User Survey is out! Please take ~5 minutes to help
+        improve Xarray!
+      </Link>
+    </Text>
+  )
   return (
     <>
       <Head>
@@ -30,7 +43,13 @@ export const Layout = ({
       </Head>
       <Container maxW={"full"} maxH={"full"}>
         <Header />
+
         <Container maxW={"6xl"} mt={10}>
+          {enableBanner && (
+            <Banner title={bannerTitle} description={bannerDescription}>
+              {bannerChildren}
+            </Banner>
+          )}
           {children}
         </Container>
         <Footer />

@@ -11,8 +11,9 @@ import {
   Image,
 } from "@chakra-ui/react"
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
-import { MobileNav } from "../components/MobileNav"
-import { DesktopNav } from "../components/DesktopNav"
+import { MobileNav } from "./MobileNav"
+import { DesktopNav } from "./DesktopNav"
+import { Banner } from "./banner"
 import { menuItems } from "../data/menu-items"
 import { Link } from "components/mdx"
 
