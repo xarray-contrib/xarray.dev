@@ -84,9 +84,9 @@ export const ReplSection = () => {
               <Code
                 language="python"
                 style={nord}
-                showLineNumbers
+                showLineNumbers={true}
                 wrapLongLines={false}
-                wrapLines
+                //wrapLines
               >
                 {sampleCode}
               </Code>
