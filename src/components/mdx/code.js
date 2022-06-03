@@ -16,7 +16,7 @@ export const Code = ({ className, ...props }) => {
           {...props}
           style={nord}
           wrapLongLines={
-            props.wrapLongLines ? props.wrapLongLines : match ? false : true
+            !props.wrapLongLines ? props.wrapLongLines : match ? false : true
           } // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
           showLineNumbers={
             props.showLineNumbers ? props.showLineNumbers : match ? true : false

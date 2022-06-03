@@ -20,6 +20,7 @@
     "@chakra-ui/react": "^2.1.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@fontsource/inter": "^4.5.10",
     "@giscus/react": "^2.0.5",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
