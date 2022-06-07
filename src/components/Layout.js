@@ -41,7 +41,11 @@ export const Layout = ({
 
         <title>{title}</title>
       </Head>
-      <Container maxW={"full"} maxH={"full"}>
+      <Container
+        maxW={"full"}
+        maxH={"full"}
+        backgroundImage={"/background.svg"}
+      >
         <Header />
 
         <Container maxW={"6xl"} mt={10}>
