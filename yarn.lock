@@ -971,10 +971,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/inter@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.10.tgz#c4e6839197dc4c77842eae9475ff0e036ff87fc9"
-  integrity sha512-YOt2/K8yo25MVBjrTImHxVimmyZEt0GcrWp2w7O29sdFX9SJqbGlOqjFJ1wI5yBbP6AmTeimyPE0UC/jjFRoIA==
+"@fontsource/inter@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.11.tgz#3c45014821e8c82b247a291f1944dd2764a2d1ed"
+  integrity sha512-toizzQkfXL8YJcG/f8j3EYXYGQe4OxiDEItThSigvHU+cYNDw8HPp3wLYQX745hddsnHqOGCM4exitFSBOU8+w==
 
 "@giscus/react@^2.0.5":
   version "2.0.5"
@@ -2189,10 +2189,10 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@8.16.0:
-  version "8.16.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.16.0.tgz#6d936e2d524599f2a86c708483b4c372c5d3bbae"
-  integrity sha512-MBndsoXY/PeVTDJeWsYj7kLZ5hQpJOfMYLsF6LicLHQWbRDG19lK5jOix4DPl8yY4SUFcE3txy86OzFLWT+yoA==
+eslint@8.17.0:
+  version "8.17.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.17.0.tgz#1cfc4b6b6912f77d24b874ca1506b0fe09328c21"
+  integrity sha512-gq0m0BTJfci60Fz4nczYxNAlED+sMcihltndR8t9t1evnU/azx53x3t2UHXC/uRjcbvRw/XctpaNygSTcQD+Iw==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.9.2"
@@ -2384,10 +2384,10 @@ format@^0.2.0:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-framer-motion@^6.3.5:
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.5.tgz#d4e90a3c5189eaff78ba0fe302d18481f6514644"
-  integrity sha512-yr4VCmoORAusjZi2n91C9LaymXv1ok7ZucCJ8wma7UwyktI8/SMBDBOV0ypISFWcdadgGOfCWDIe0ELk+/1jpQ==
+framer-motion@^6.3.10:
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.10.tgz#e71f8c4ee09612de8328725c4fb1a1c204ae451f"
+  integrity sha512-modFplFb1Fznsm0MrmRAJUC32UDA5jbGU9rDvkGzhAHksru2tnoKbU/Pa3orzdsJI0CJviG4NGBrmwGveU98Cg==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"
