@@ -19,7 +19,7 @@
     "@chakra-ui/icons": "^2.0.2",
     "@chakra-ui/react": "^2.1.2",
     "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/styled": "^11.9.3",
     "@fontsource/inter": "^4.5.11",
     "@giscus/react": "^2.0.5",
     "@mdx-js/loader": "^1.6.22",
