@@ -280,7 +280,7 @@ p.axes.coastlines()
 plt.show()
 ```
 
-![cartopy plot of a quantified dataset](squared_wind.png)
+![cartopy plot of a quantified dataset](/posts/introducing-pint-xarray/squared_wind.png)
 
 where `xarray.plot` has detected the pint units automatically.
 
