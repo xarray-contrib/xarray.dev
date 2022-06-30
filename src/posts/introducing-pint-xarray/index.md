@@ -34,11 +34,11 @@ The most famous example of a units error has to be NASA's $125 million [Mars Cli
 A trajectory course correction had gone wrong, and the error was eventually traced back to a units mismatch: the engineers at Lockheed Martin expressed impulse in [pound-force](<https://en.wikipedia.org/wiki/Pound_(force)>) seconds, whereas the engineers at JPL assumed the impulse value their part of the software received was in SI newton seconds.
 
 <p align = "center">
-<img src = "https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg" />
+  <img src = "https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg" />
 </p>
 
 <p align = "center">
-Newspaper cartoon depicting the incongruence in the units used by NASA and Lockheed Martin scientists that led to the Mars Climate Orbiter disaster.
+  Newspaper cartoon depicting the incongruence in the units used by NASA and Lockheed Martin scientists that led to the Mars Climate Orbiter disaster.
 </p>
 
 We should take stories like this seriously: If we can automatically track units we can potentially eliminate a whole class of possible errors in our scientific work...
@@ -280,7 +280,7 @@ p.axes.coastlines()
 plt.show()
 ```
 
-![cartopy plot of a quantified dataset ](squared_wind.png)
+![cartopy plot of a quantified dataset](squared_wind.png)
 
 where `xarray.plot` has detected the pint units automatically.
 
