@@ -8,6 +8,7 @@ time = xr.DataArray(4).pint.quantify("seconds")
 
 distance / time
 ```
+
 ```
 Out:
 <xarray.DataArray ()>
@@ -23,7 +24,7 @@ Getting our units right is finicky, and can very easily go unnoticed in our code
 Even worse, the consequences of getting units wrong can be huge!
 
 The most famous example of a units error has to be NASA's $125 million [Mars Climate Orbiter](https://www.simscale.com/blog/2017/12/nasa-mars-climate-orbiter-metric/), which in 1999 burned up in the Martian atmosphere instead of successfully entering orbit around Mars.
-A trajectory course correction had gone wrong, and the error was eventually traced back to a units mismatch: the engineers at Lockheed Martin expressed impulse in [pound-force](https://en.wikipedia.org/wiki/Pound_(force)) seconds, whereas the engineers at JPL assumed the impulse value their part of the software received was in SI newton seconds.
+A trajectory course correction had gone wrong, and the error was eventually traced back to a units mismatch: the engineers at Lockheed Martin expressed impulse in [pound-force](<https://en.wikipedia.org/wiki/Pound_(force)>) seconds, whereas the engineers at JPL assumed the impulse value their part of the software received was in SI newton seconds.
 
 <p align = "center">
 <img src = "https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg">
@@ -46,12 +47,12 @@ Pint provides the `Quantity` object, which is a normal numpy array combined with
 q = np.array([6, 7]) * pint.Unit('metres')
 print(repr(q))
 ```
+
 ```
 Out: <Quantity([6 7], 'meter')>
 ```
 
 Pint Quantities act like numpy arrays, except that the units are carried around with the arrays, propagated through operations, and checked during operations involving multiple quantities.
-
 
 ## Xarray now wraps Pint
 
@@ -60,69 +61,72 @@ Thanks to the [tireless work](https://github.com/pydata/xarray/issues/3594) of x
 Once you create a unit-aware xarray object (see below for how) you can see the units of the data variables displayed as part of the printable representation.
 You also immediately get the key benefits of pint:
 
-1) Units are propagated through arithmetic, and new quantities are built using the units of the inputs:
+1. Units are propagated through arithmetic, and new quantities are built using the units of the inputs:
 
-    ```python
-    distance = xr.DataArray(10).pint.quantify("metres")
-    time = xr.DataArray(4).pint.quantify("seconds")
+   ```python
+   distance = xr.DataArray(10).pint.quantify("metres")
+   time = xr.DataArray(4).pint.quantify("seconds")
 
-    distance / time
-    ```
-    ```
-    Out:
-    <xarray.DataArray ()>
-    <Quantity(2.5, 'meter / second')>
-    ```
+   distance / time
+   ```
 
-2) Dimensionally inconsistent units are caught automatically:
+   ```
+   Out:
+   <xarray.DataArray ()>
+   <Quantity(2.5, 'meter / second')>
+   ```
 
-    ```python
-    apples = xr.DataArray(10).pint.quantify("kg")
-    oranges = xr.DataArray(200).pint.quantify("cm^3")
+2. Dimensionally inconsistent units are caught automatically:
 
-    apples + oranges
-    ```
-    ```
-    Out:
-    DimensionalityError: Cannot convert from 'kilogram' ([mass]) to 'centimeter ** 3' ([length] ** 3)
-    ```
+   ```python
+   apples = xr.DataArray(10).pint.quantify("kg")
+   oranges = xr.DataArray(200).pint.quantify("cm^3")
 
-3) Unit conversions become simple:
+   apples + oranges
+   ```
 
-    ```python
-    walk = xr.DataArray(500).pint.quantify('miles')
+   ```
+   Out:
+   DimensionalityError: Cannot convert from 'kilogram' ([mass]) to 'centimeter ** 3' ([length] ** 3)
+   ```
 
-    walk.pint.to('parsecs')
-    ```
-    ```
-    Out:
-    <xarray.DataArray ()>
-    <Quantity(2.6077643524162074e-11, 'parsec')>
-    ```
+3. Unit conversions become simple:
 
-4) You can specify that custom functions should expect certain units, and convert them if needed:
+   ```python
+   walk = xr.DataArray(500).pint.quantify('miles')
 
-    ```python
-    def jpl_trajectory_code(impulse):
-        """This function will only compute the correct result if supplied input in units of Newton-seconds."""
+   walk.pint.to('parsecs')
+   ```
 
-        if impulse.pint.units != "newton * second":
-            impulse = impulse.pint.to("Newton * seconds")
+   ```
+   Out:
+   <xarray.DataArray ()>
+   <Quantity(2.6077643524162074e-11, 'parsec')>
+   ```
 
-        # do some rocket science
-        ...
+4. You can specify that custom functions should expect certain units, and convert them if needed:
 
-    lockheed_impulse_value = xr.DataArray(5).pint.quantify("force_pounds * seconds")
+   ```python
+   def jpl_trajectory_code(impulse):
+       """This function will only compute the correct result if supplied input in units of Newton-seconds."""
 
-    jpl_trajectory_code(lockheed_impulse_value)
-    ```
-    ```
-    Out:
-    pint.DimensionalityError
-    ```
+       if impulse.pint.units != "newton * second":
+           impulse = impulse.pint.to("Newton * seconds")
 
-    (Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make unit specification of function arguments more slick.)
+       # do some rocket science
+       ...
 
+   lockheed_impulse_value = xr.DataArray(5).pint.quantify("force_pounds * seconds")
+
+   jpl_trajectory_code(lockheed_impulse_value)
+   ```
+
+   ```
+   Out:
+   pint.DimensionalityError
+   ```
+
+   (Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make unit specification of function arguments more slick.)
 
 In the abstract, tracking units like this is useful in the same way that labelling dimensions with xarray is useful: it helps us avoid errors by relieving us of the burden of remembering arbitrary information about our data.
 
@@ -133,12 +137,14 @@ Once you `import pint_xarray` you can access unit-related functionality via `.pi
 
 Above we have seen examples of quantifying explicitly, where we specify the units in the call to `.quantify()`.
 We can do this for multiple variables too, and we can also pass `pint.Unit` instances:
+
 ```python
 ds = xr.Dataset({'a': 2, 'b': 10})
 
 ds.pint.quantify({'a': 'kg',
                   'b': pint.Unit('moles')})
 ```
+
 ```
 Out:
 <xarray.Dataset>
@@ -159,13 +165,11 @@ import pint_xarray
 ds = open_dataset(filepath).pint.quantify()
 ```
 
-
 ## Dequantifying
 
 To convert our pint arrays back into numpy arrays, we can use `.dequantify`.
 This will strip the units from the arrays and replace them into the `.attrs['units']` of each variable.
 This is useful when we want to save our data back to a file, as it means that the current units will be preserved in the attributes of a netcdf file (or zarr store etc.), as long as we just do `ds.pint.dequantify().to_netcdf()`.
-
 
 ## Dask integration
 
@@ -181,12 +185,14 @@ This "multi-nested duck array" approach can be generalised to include other arra
 ## Unit-aware indexes
 
 We would love to be able to promote xarray indexes to pint Quantities, as that would allow you to select data subsets in a unit-aware manner like
+
 ```python
 da = xr.DataArray(name='a', data=[0, 1, 2], dims='x', coords={'x': [1000, 2000, 3000]})
 da = da.pint.quantify({'a': 'Pa', 'x': 'm'})
 
 da.pint.sel(x=2 * 'km')
 ```
+
 Unfortunately this will not possible until the ongoing work to extend xarray to support [explicit indexes](https://github.com/pydata/xarray/issues/1603) is complete.
 
 In the meantime pint-xarray offers a workaround. If you tell `.quantify` the units you wish an index to have, it will store those in `.attrs["units"]` instead.
@@ -201,6 +207,7 @@ distance = distance.pint.quantify({'distance': 'metres',
                                    'time': 'seconds'})
 print(distance.coords['time'].attrs)
 ```
+
 ```
 Out: {'units': <Unit('second')>}
 ```
@@ -210,6 +217,7 @@ This allows us to provide conveniently wrapped versions of common xarray methods
 ```python
 distance.pint.sel(time=200 * pint.Unit('milliseconds'))
 ```
+
 ```
 Out:
 <xarray.DataArray 'distance' ()>
@@ -217,11 +225,13 @@ Out:
 Coordinates:
     time     float64 200.0
 ```
+
 Observe how the `.pint.sel` operation has first converted 200 milliseconds to 0.2 seconds, before finding the distance value that occurs at a time position of 0.2 seconds.
 
 [This wrapping is currently necessary](https://xarray.pydata.org/en/stable/user-guide/duckarrays.html#missing-features) for any operation which needs to be aware of the units of a dimension coordinate of the dataarray, or any xarray operation which relies on an external library (such as calling `scipy` in `.integrate`).
 
 ## CF-compliant units for geosciences with cf-xarray
+
 Different fields tend to have different niche conventions about how certain units are defined.
 By default, pint doesn't understand all the unusual units and conventions we use in geosciences.
 But [pint is customisable](https://pint.readthedocs.io/en/stable/defining.html), and with the help of [cf-xarray](https://github.com/xarray-contrib/cf-xarray) we can teach it about these geoscience-specific units.
@@ -239,9 +249,11 @@ ds = ds.pint.quantify()
 squared_wind = ds['sfcWind'] ** 2
 squared_wind.pint.units
 ```
+
 ```
 Out: <Unit('meter ** 2 / second ** 2')>
 ```
+
 Here (thanks to `cf_xarray`) pint has successfully interpreted the CF-style units `'m s-1'`, then automatically changed them when we squared the wind speed.
 
 ## Plotting
@@ -260,6 +272,7 @@ p.axes.set_global()
 p.axes.coastlines()
 plt.show()
 ```
+
 ![cartopy plot of a quantified dataset ](squared_wind.png)
 
 where `xarray.plot` has detected the pint units automatically.
