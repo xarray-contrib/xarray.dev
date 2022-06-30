@@ -1,4 +1,11 @@
-# Unit-aware arithmetic in xarray, via pint
+---
+title: "Unit-aware arithmetic in Xarray, via pint"
+date: "2022-07-06"
+authors:
+  - Justus Margin
+  - Tom Nicholas
+summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
+---
 
 _TLDR: Xarray now supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
 
