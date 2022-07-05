@@ -17,9 +17,7 @@ export const Layout = ({
   const bannerDescription = ""
   const bannerChildren = (
     <Text fontWeight="medium">
-      <Link href="/href-placeholder">
-        Text for a future announcement
-      </Link>
+      <Link href="/href-placeholder">Text for a future announcement</Link>
     </Text>
   )
   return (
