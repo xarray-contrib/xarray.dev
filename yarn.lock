@@ -417,13 +417,6 @@
     compute-scroll-into-view "1.0.14"
     copy-to-clipboard "3.3.1"
 
-"@chakra-ui/icon@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-3.0.2.tgz#e8b380981690a543382f56f9d184f6b28f4b3d83"
-  integrity sha512-sas37byldn5O/TTIKHzxHBujEYqVPXegisoMqutLtF60fpXnb62aG1JTyorXSG3zJxJWQW7+AvjbOGyWKHXc0Q==
-  dependencies:
-    "@chakra-ui/utils" "2.0.2"
-
 "@chakra-ui/icon@3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icon/-/icon-3.0.3.tgz#5620f01f0dbfcb16f2f051ab87192e6bf532e1c5"
@@ -431,12 +424,12 @@
   dependencies:
     "@chakra-ui/utils" "2.0.3"
 
-"@chakra-ui/icons@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.0.2.tgz#4ef4c3e1c6eb7a8f7d5de59635811f0c68104d4b"
-  integrity sha512-UY7vP8E5pv2a4sd1SiezgVbmq1/tRfnehk6PatunrTvGMxQNhSKJJoiRI/wCtUfMoMz+yp9+ekc1ksJVCnokRg==
+"@chakra-ui/icons@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.0.3.tgz#b9e0b4a149d0aa81172ccb40bf4ca32e89ce42ad"
+  integrity sha512-CAUYILVvbT89bP+vHTpWMz+TnGGFkcN0nzyY/2VuWtDR0wjYf5SjGtp8BixroXLPap1CvDiRmTxmGq+FAU4LzA==
   dependencies:
-    "@chakra-ui/icon" "3.0.2"
+    "@chakra-ui/icon" "3.0.3"
     "@types/react" "^18.0.1"
 
 "@chakra-ui/image@2.0.4":
