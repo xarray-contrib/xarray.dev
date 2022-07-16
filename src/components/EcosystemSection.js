@@ -61,7 +61,7 @@ export const EcosystemSection = () => {
           on top of NumPy, Pandas, and Dask and supports a wide range of domain
           specific scientific applications.
         </Text>
-        <GitHubStats />
+        {/* <GitHubStats /> */}
       </Stack>
 
       <Container maxW={"6xl"} mt={10}>
