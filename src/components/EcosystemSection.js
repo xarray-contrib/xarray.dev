@@ -23,7 +23,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const GitHubStats = () => {
   const { data, error } = useSWR(
-    "https://api.github.com/repos/pydata/xarray",
+    "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array",
     fetcher
   )
 
@@ -40,7 +40,7 @@ const GitHubStats = () => {
         leftIcon={<IoLogoGithub />}
         variant="outline"
       >
-        {data.stargazers_count.toLocaleString(undefined, {
+        {data[0].total_rows.toLocaleString(undefined, {
           minimumFractionDigits: 0,
         })}{" "}
         Stars
@@ -61,7 +61,7 @@ export const EcosystemSection = () => {
           on top of NumPy, Pandas, and Dask and supports a wide range of domain
           specific scientific applications.
         </Text>
-        {/* <GitHubStats /> */}
+        <GitHubStats />
       </Stack>
 
       <Container maxW={"6xl"} mt={10}>
