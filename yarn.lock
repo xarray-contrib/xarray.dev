@@ -1105,17 +1105,17 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.2.2.tgz#cc1a0a445bd254499e30f632968c03192455f4cc"
   integrity sha512-BqDwE4gDl1F608TpnNxZqrCn6g48MBjvmWFEmeX5wEXDXh3IkAOw6ASKUgjT8H4OUePYFqghDFUss5ZhnbOUjw==
 
-"@next/eslint-plugin-next@12.2.2":
-  version "12.2.2"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.2.2.tgz#b4a22c06b6454068b54cc44502168d90fbb29a6d"
-  integrity sha512-XOi0WzJhGH3Lk51SkSu9eZxF+IY1ZZhWcJTIGBycAbWU877IQa6+6KxMATWCOs7c+bmp6Sd8KywXJaDRxzu0JA==
+"@next/eslint-plugin-next@12.2.3":
+  version "12.2.3"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.2.3.tgz#63726691aac6a7f01b64190a0323d590a0e8154d"
+  integrity sha512-B2e8Yg1MpuLsGxhCx4rU8/Tcnr5wFmCx1O2eyLXBPnaCcsFXfGCo067ujagtDLtWASL3GNgzg78U1SB0dbc38A==
   dependencies:
     glob "7.1.7"
 
-"@next/mdx@^12.2.2":
-  version "12.2.2"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-12.2.2.tgz#1cb24269a7871a728becf7854286f505b667acf3"
-  integrity sha512-d+yHApu6weFYrAbDj+2vMY3uE8kAnoNu5g3w8B3m3skUh6r1ekkKM2YTktlpNpum/XMnKGiPrIdAX4L4KuVdYg==
+"@next/mdx@^12.2.3":
+  version "12.2.3"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-12.2.3.tgz#6648292ff158f097682ff2320702d6d76e255ce3"
+  integrity sha512-ALZ6F8A/YtIHxPV02R/y2nTdudyWrZjgftlNhP9o96V6llX45X7mnv7mHERd7b4ByrbXDmaWeD9Lbpljmzycvg==
 
 "@next/swc-android-arm-eabi@12.2.2":
   version "12.2.2"
@@ -1962,10 +1962,10 @@ date-fns-tz@^1.3.6:
   resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.3.6.tgz#4195a58a2f86eda55ea69fb477f3ed8a6e2188ac"
   integrity sha512-C8q7mErvG4INw1ZwAFmPlGjEo5Sv4udjKVbTc03zpP9cu6cp5AemFzKhz0V68LGcWEtX5mJudzzg3G04emIxLA==
 
-date-fns@^2.28.0:
-  version "2.28.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
-  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
+date-fns@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.1.tgz#9667c2615525e552b5135a3116b95b1961456e60"
+  integrity sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==
 
 debug@^2.6.9:
   version "2.6.9"
@@ -2131,12 +2131,12 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-next@12.2.2:
-  version "12.2.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.2.2.tgz#4bb996026e118071849bc4011283a160ad5bde46"
-  integrity sha512-oJhWBLC4wDYYUFv/5APbjHUFd0QRFCojMdj/QnMoOEktmeTvwnnoA8F8uaXs0fQgsaTK0tbUxBRv9/Y4/rpxOA==
+eslint-config-next@12.2.3:
+  version "12.2.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.2.3.tgz#468fe9756ccbf7e4452139062db5b4e6557dc885"
+  integrity sha512-xAQqAqwa2bu9ZMRypz58ym4tNCo22Wc6LuoLpbpf3yW5c4ZkVib9934AgGDDvh2zKrP56Z6X0Pp6gNnuuZzcRw==
   dependencies:
-    "@next/eslint-plugin-next" "12.2.2"
+    "@next/eslint-plugin-next" "12.2.3"
     "@rushstack/eslint-patch" "^1.1.3"
     "@typescript-eslint/parser" "^5.21.0"
     eslint-import-resolver-node "^0.3.6"
@@ -3498,17 +3498,17 @@ pkg-dir@^5.0.0:
   dependencies:
     find-up "^5.0.0"
 
-playwright-core@1.23.4:
-  version "1.23.4"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.23.4.tgz#e8a45e549faf6bfad24a0e9998e451979514d41e"
-  integrity sha512-h5V2yw7d8xIwotjyNrkLF13nV9RiiZLHdXeHo+nVJIYGVlZ8U2qV0pMxNJKNTvfQVT0N8/A4CW6/4EW2cOcTiA==
+playwright-core@1.24.0:
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.24.0.tgz#ece821ceaf241bb7206329b1242b0cf6c1c60bdb"
+  integrity sha512-BkDWdVsoEEC8m2glQlfNu1EN2qvjBsLIg5bD0wjrfwv9zVHktIsp80yYFObAcWreLNYhfRP4PlXE04lr5R4DFQ==
 
-playwright@^1.23.4:
-  version "1.23.4"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.23.4.tgz#a9641a8d523fafdc58a5a2b59efe3496dec49c8d"
-  integrity sha512-NUPOLMpd8WydmwZFllST/YZ7cImgDDDrvcaq7Gj2vAjNg0jYCndFJt6HHtbkOPSIlRo4BaQYlbFx6meq1r1FXQ==
+playwright@^1.24.0:
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.24.0.tgz#b1599b992bad4221e87b19a430817316fef644db"
+  integrity sha512-oA9HzuYhskm9iEm9DeiWoLuJps+yzZ35zwR0EHhGFUd9ikUVMN5NqNAORvq+JesgoMlEu4IUdKK9jigFWm7olA==
   dependencies:
-    playwright-core "1.23.4"
+    playwright-core "1.24.0"
 
 popmotion@11.0.3:
   version "11.0.3"
