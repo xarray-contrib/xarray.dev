@@ -237,8 +237,8 @@ Observe how the `.pint.sel` operation has first converted 200 milliseconds to 0.
 ## CF-compliant units for geosciences with cf-xarray
 
 Different fields tend to have different niche conventions about how certain units are defined.
-By default, pint doesn't understand all the unusual units and conventions we use in geosciences.
-But [pint is customisable](https://pint.readthedocs.io/en/stable/defining.html), and with the help of [cf-xarray](https://github.com/xarray-contrib/cf-xarray) we can teach it about these geoscience-specific units.
+By default, Pint doesn't understand all the unusual units and conventions we use in geosciences.
+But [Pint is customisable](https://pint.readthedocs.io/en/stable/defining.html), and with the help of [cf-xarray](https://github.com/xarray-contrib/cf-xarray) we can teach it about these geoscience-specific units.
 
 If we `import cf_xarray.units` (before `import pint_xarray`) then we can `quantify` example climate data from the [Pangeo Project's CMIP6 catalog](https://pangeo-data.github.io/pangeo-cmip6-cloud/):
 
@@ -288,5 +288,5 @@ Please have a go! You will need xarray (v0.20+) and pint-xarray.
 Please also tell us about any bugs you find, or documentation suggestions you have on the [Xarray](https://github.com/pydata/xarray/issues) or [pint-xarray issue trackers](https://github.com/xarray-contrib/pint-xarray/issues).
 If you have usage questions you can raise them there, on the [Xarray discussions page](https://github.com/pydata/xarray/discussions), or on the [Pangeo Discourse forum](https://discourse.pangeo.io/).
 
-The work here to allow xarray to wrap pint objects is part of a [broader effort to generalise xarray](http://xarray.pydata.org/en/stable/roadmap.html#flexible-arrays) to handle a wide variety of data types (so-called "duck array wrapping").
-Along with the incoming [support for flexible indexes](http://xarray.pydata.org/en/stable/roadmap.html#flexible-indexes), we are excited for all the new features that this will enable for xarray users!
+The work here to allow Xarray to wrap Pint objects is part of a [broader effort to generalise Xarray](http://xarray.pydata.org/en/stable/roadmap.html#flexible-arrays) to handle a wide variety of data types (so-called "duck array wrapping").
+Along with the incoming [support for flexible indexes](http://xarray.pydata.org/en/stable/roadmap.html#flexible-indexes), we are excited for all the new features that this will enable for Xarray users!
