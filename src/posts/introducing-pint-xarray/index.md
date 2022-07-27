@@ -7,7 +7,7 @@ authors:
 summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
 ---
 
-_TLDR: Xarray now supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
+_TLDR: Pint-Xarray supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
 
 ```ipython
 In [2]: distance = xr.DataArray(10).pint.quantify("metres")
@@ -42,8 +42,8 @@ We should take stories like this seriously: If we can automatically track units 
 
 ## Pint tracks units
 
-There are a few packages for handling units in python (notably [unyt](https://github.com/yt-project/unyt) and [astropy.units](https://docs.astropy.org/en/stable/units/)), but for technical reasons we began units integration in xarray with [pint](https://pint.readthedocs.io/en/stable/).
-These various packages work by providing a numerical array type that acts similarly to a numpy array, and is intended to plug in and replace the raw numpy array (a so-called "duck array type").
+There are a few packages for handling units in python (notably [unyt](https://github.com/yt-project/unyt) and [astropy.units](https://docs.astropy.org/en/stable/units/)), but for technical reasons we began units integration in Xarray with [pint](https://pint.readthedocs.io/en/stable/).
+These various packages work by providing a numerical array type that acts similarly to a NumPy array, and is intended to plug in and replace the raw NumPy array (a so-called "duck array type").
 
 Pint provides the `Quantity` object, which is a normal numpy array combined with a `pint.Unit`:
 
@@ -56,14 +56,14 @@ print(repr(q))
 Out: <Quantity([6 7], 'meter')>
 ```
 
-Pint Quantities act like numpy arrays, except that the units are carried around with the arrays, propagated through operations, and checked during operations involving multiple quantities.
+Pint Quantities act like NumPy arrays, except that the units are carried around with the arrays, propagated through operations, and checked during operations involving multiple quantities.
 
 ## Xarray now wraps Pint
 
 Thanks to the [tireless work](https://github.com/pydata/xarray/issues/3594) of xarray core developer Justus Magin, you can now enjoy this automatic unit-handling in xarray!
 
-Once you create a unit-aware xarray object (see below for how) you can see the units of the data variables displayed as part of the printable representation.
-You also immediately get the key benefits of pint:
+Once you create a unit-aware Xarray object (see below for how) you can see the units of the data variables displayed as part of the printable representation.
+You also immediately get the key benefits of Pint:
 
 1. Units are propagated through arithmetic, and new quantities are built using the units of the inputs:
 
@@ -132,12 +132,12 @@ You also immediately get the key benefits of pint:
 
    (Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make unit specification of function arguments more slick.)
 
-In the abstract, tracking units like this is useful in the same way that labelling dimensions with xarray is useful: it helps us avoid errors by relieving us of the burden of remembering arbitrary information about our data.
+In the abstract, tracking units like this is useful in the same way that labelling dimensions with Xarray is useful: it helps us avoid errors by relieving us of the burden of remembering arbitrary information about our data.
 
 ## Quantifying with pint-xarray
 
-The easiest way to create a unit-aware xarray object is to use the helper package we made: [pint-xarray](https://github.com/xarray-contrib/pint-xarray).
-Once you `import pint_xarray` you can access unit-related functionality via `.pint` on any xarray DataArray or Dataset (this works via [xarray's accessor interface](https://xarray.pydata.org/en/stable/internals/extending-xarray.html)).
+The easiest way to create a unit-aware Xarray object is to use the helper package we made: [pint-xarray](https://github.com/xarray-contrib/pint-xarray).
+Once you `import pint_xarray` you can access unit-related functionality via `.pint` on any `DataArray` or `Dataset` (this works via [Xarray's accessor interface](https://xarray.pydata.org/en/stable/internals/extending-xarray.html)).
 
 Above we have seen examples of quantifying explicitly, where we specify the units in the call to `.quantify()`.
 We can do this for multiple variables too, and we can also pass `pint.Unit` instances:
@@ -161,7 +161,7 @@ Data variables:
 Alternatively, we can quantify from the object's `.attrs`, automatically reading the metadata which xarray objects carry around.
 If nothing is passed to `.quantify()`, it will attempt to parse the `.attrs['units']` entry for each data variable.
 
-This means that for scientific datasets which are stored as files with units in their attributes (which netCDF and Zarr can do for example), using pint with xarray becomes as simple as
+This means that for scientific datasets which are stored as files with units in their attributes (which netCDF and Zarr can do for example), using Pint with Xarray becomes as simple as:
 
 ```python
 import pint_xarray
@@ -171,24 +171,24 @@ ds = open_dataset(filepath).pint.quantify()
 
 ## Dequantifying
 
-To convert our pint arrays back into numpy arrays, we can use `.dequantify`.
+To convert our pint arrays back into NumPy arrays, we can use `.dequantify`.
 This will strip the units from the arrays and replace them into the `.attrs['units']` of each variable.
-This is useful when we want to save our data back to a file, as it means that the current units will be preserved in the attributes of a netcdf file (or zarr store etc.), as long as we just do `ds.pint.dequantify().to_netcdf()`.
+This is useful when we want to save our data back to a file, as it means that the current units will be preserved in the attributes of a netCDF file (or Zarr store etc.), as long as we just do `ds.pint.dequantify().to_netcdf(...)`.
 
 ## Dask integration
 
-So xarray can wrap dask arrays, and now it can wrap pint quantities… Can we use both together? Yes!
+So Xarray can wrap Dask arrays, and now it can wrap Pint quantities… Can we use both together? Yes!
 
-You can get a unit-aware, dask-backed array either by `.pint.quantify()`-ing a chunked array, or you can `.pint.chunk()` a quantified array.
-(If you have dask installed, then `open_dataset(f).pint.quantify()` will already give you a dask-backed, quantified array.)
-From there you can `.compute()` the dask-backed objects as normal, and the units will be retained.
+You can get a unit-aware, Dask-backed array either by `.pint.quantify()`-ing a chunked array, or you can `.pint.chunk()` a quantified array.
+(If you have Dask installed, then `open_dataset(f).pint.quantify()` will already give you a Dask-backed, quantified array.)
+From there you can `.compute()` the Dask-backed objects as normal, and the units will be retained.
 
 (Under the hood we now have an `xarray.DataArray` wrapping a `pint.Quantity`, which wraps a `dask.array.Array`, which wraps a `numpy.ndarray`.
-This "multi-nested duck array" approach can be generalised to include other array libraries (e.g. `scipy.sparse`), but requires [co-ordination](https://github.com/pydata/duck-array-discussion) between the maintainers of the libraries involved.)
+This "multi-nested duck array" approach can be generalised to include other array libraries (e.g. `scipy.sparse`), but requires [coordination](https://github.com/pydata/duck-array-discussion) between the maintainers of the libraries involved.)
 
 ## Unit-aware indexes
 
-We would love to be able to promote xarray indexes to pint Quantities, as that would allow you to select data subsets in a unit-aware manner like
+We would love to be able to promote Xarray indexes to Pint Quantities, as that would allow you to select data subsets in a unit-aware manner like:
 
 ```python
 da = xr.DataArray(name='a', data=[0, 1, 2], dims='x', coords={'x': [1000, 2000, 3000]})
@@ -197,7 +197,7 @@ da = da.pint.quantify({'a': 'Pa', 'x': 'm'})
 da.pint.sel(x=2 * 'km')
 ```
 
-Unfortunately this will not possible until the ongoing work to extend xarray to support [explicit indexes](https://github.com/pydata/xarray/issues/1603) is complete.
+Unfortunately this will not possible until the ongoing work to extend Xarray to support [explicit indexes](https://github.com/pydata/xarray/issues/1603) is complete.
 
 In the meantime pint-xarray offers a workaround. If you tell `.quantify` the units you wish an index to have, it will store those in `.attrs["units"]` instead.
 
@@ -262,7 +262,7 @@ Here (thanks to `cf_xarray`) pint has successfully interpreted the CF-style unit
 
 ## Plotting
 
-We can complete our real-world example by plotting the data in its new units
+We can complete our real-world example by plotting the data in its new units:
 
 ```python
 import cartopy.crs as ccrs
@@ -279,14 +279,14 @@ plt.show()
 
 ![cartopy plot of a quantified dataset](/posts/introducing-pint-xarray/squared_wind.png)
 
-where `xarray.plot` has detected the pint units automatically.
+where `xarray.plot` has detected the Pint units automatically.
 
 ## Conclusion
 
 Please have a go! You will need xarray (v0.20+) and pint-xarray.
 
-Please also tell us about any bugs you find, or documentation suggestions you have on the [xarray](https://github.com/pydata/xarray/issues) or [pint-xarray issue trackers](https://github.com/xarray-contrib/pint-xarray/issues).
-If you have usage questions you can raise them there, on the [xarray discussions page](https://github.com/pydata/xarray/discussions), or on the [pangeo discourse forum](https://discourse.pangeo.io/).
+Please also tell us about any bugs you find, or documentation suggestions you have on the [Xarray](https://github.com/pydata/xarray/issues) or [pint-xarray issue trackers](https://github.com/xarray-contrib/pint-xarray/issues).
+If you have usage questions you can raise them there, on the [Xarray discussions page](https://github.com/pydata/xarray/discussions), or on the [Pangeo Discourse forum](https://discourse.pangeo.io/).
 
 The work here to allow xarray to wrap pint objects is part of a [broader effort to generalise xarray](http://xarray.pydata.org/en/stable/roadmap.html#flexible-arrays) to handle a wide variety of data types (so-called "duck array wrapping").
 Along with the incoming [support for flexible indexes](http://xarray.pydata.org/en/stable/roadmap.html#flexible-indexes), we are excited for all the new features that this will enable for xarray users!
