@@ -240,7 +240,7 @@ Different fields tend to have different niche conventions about how certain unit
 By default, pint doesn't understand all the unusual units and conventions we use in geosciences.
 But [pint is customisable](https://pint.readthedocs.io/en/stable/defining.html), and with the help of [cf-xarray](https://github.com/xarray-contrib/cf-xarray) we can teach it about these geoscience-specific units.
 
-If we `import cf_xarray.units` (before `import pint_xarray`) then we can `quantify` example data from a pangeo climate data store :
+If we `import cf_xarray.units` (before `import pint_xarray`) then we can `quantify` example climate data from the [Pangeo Project's CMIP6 catalog](https://pangeo-data.github.io/pangeo-cmip6-cloud/):
 
 ```python
 import xarray as xr
