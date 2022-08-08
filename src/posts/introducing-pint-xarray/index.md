@@ -2,8 +2,10 @@
 title: "Unit-aware arithmetic in Xarray, via pint"
 date: "2022-07-06"
 authors:
-  - Tom Nicholas
-  - Justus Magin
+  - name: Tom Nicholas
+    github: TomNicholas
+  - name: Justus Magin
+    github: keewis
 summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
 ---
 
