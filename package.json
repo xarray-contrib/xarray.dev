@@ -18,8 +18,8 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/react": "^2.2.4",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@fontsource/inter": "^4.5.11",
     "@giscus/react": "^2.2.0",
     "@mdx-js/loader": "^1.6.22",
@@ -45,6 +45,6 @@
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.3",
     "glob": "^8.0.3",
-    "playwright": "^1.24.0"
+    "playwright": "^1.24.2"
   }
 }
