@@ -2,7 +2,8 @@
 title: "Reflecting on Xarray’s first development grant"
 date: "2022-06-09"
 authors:
-  - Joe Hamman
+  - name: Joe Hamman
+    github: jhamman
 summary: "A brief recap of our CZI EOSS grant, accomplishments and learnings."
 ---
 
