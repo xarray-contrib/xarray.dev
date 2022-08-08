@@ -2,8 +2,8 @@
 title: "Unit-aware arithmetic in Xarray, via pint"
 date: "2022-07-06"
 authors:
-  - Justus Margin
   - Tom Nicholas
+  - Justus Magin
 summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
 ---
 
@@ -60,7 +60,7 @@ Pint Quantities act like NumPy arrays, except that the units are carried around 
 
 ## Xarray now wraps Pint
 
-Thanks to the [tireless work](https://github.com/pydata/xarray/issues/3594) of xarray core developer Justus Magin, you can now enjoy this automatic unit-handling in xarray!
+Thanks to the [tireless work](https://github.com/pydata/xarray/issues/3594) of Xarray core developer [Justus Magin](https://github.com/keewis), you can now enjoy this automatic unit-handling in Xarray!
 
 Once you create a unit-aware Xarray object (see below for how) you can see the units of the data variables displayed as part of the printable representation.
 You also immediately get the key benefits of Pint:
