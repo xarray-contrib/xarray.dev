@@ -1,37 +1,32 @@
-import React from "react"
 import {
-  Button,
-  Image,
-  Stack,
-  VStack,
-  Heading,
-  Divider,
-  Text,
   Avatar,
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Heading,
+  Text,
+  VStack,
   Wrap,
   WrapItem,
-  Flex,
-  Box,
 } from "@chakra-ui/react"
 
 import { ArrowBackIcon } from "@chakra-ui/icons"
 
-import { MdBuild, MdCall } from "react-icons/md"
-
-import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from "next-mdx-remote"
+import { serialize } from "next-mdx-remote/serialize"
 import rehypeSlug from "rehype-slug"
 
 import fs from "fs"
-import path from "path"
 import matter from "gray-matter"
+import path from "path"
 
-import { getPostData, getAllPostsIds } from "../../lib/posts"
-import { formatDate, distanceToNow } from "../../lib/date-formatting"
-import { MDXElements } from "../../lib/mdx-elements"
+import { Giscus } from "components"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
-import { Giscus } from "components"
+import { distanceToNow, formatDate } from "../../lib/date-formatting"
+import { MDXElements } from "../../lib/mdx-elements"
+import { getAllPostsIds, getPostData } from "../../lib/posts"
 
 const CARDS_BASE_URL = "https://xarray.dev/cards"
 
@@ -47,7 +42,7 @@ export default function Post({ source, frontmatter, postId }) {
       url={`https://xarray.dev/blog/${postId}`}
     >
       <Box
-        py={20}
+        py={10}
         spacing={8}
         justifyContent="center"
         alignItems="flex-start"
@@ -66,25 +61,36 @@ export default function Post({ source, frontmatter, postId }) {
             <Wrap spacing="20px">
               {frontmatter.authors.map((author) => {
                 return (
-                  <WrapItem key={author}>
-                    <Flex align={"center"} mt={2} direction={"column"}>
-                      <Avatar name={author} mb={1} />
-                      {/* //<Stack spacing={-1} align={"center"}> */}
-                      <Text fontWeight={600}>{author}</Text>
-                      {/* </Stack> */}
+                  <WrapItem key={author.name}>
+                    <Flex
+                      as={Link}
+                      href={`https://github.com/${author.github}`}
+                      align={"center"}
+                      my={2}
+                      direction={"column"}
+                      _hover={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Avatar
+                        src={`https://github.com/${author.github}.png`}
+                        name={author.name}
+                        my={2}
+                      />
+                      <Text fontWeight={600}>{author.name}</Text>
                     </Flex>
                   </WrapItem>
                 )
               })}
             </Wrap>
-            <Divider py={2} />
+            <Divider my={2} />
           </VStack>
           <br></br>
           <MDXRemote {...source} components={MDXElements} />
         </Box>
 
         <Button
-          marginTop={10}
+          my={8}
           as={Link}
           href={"/blog"}
           variant={"outline"}
@@ -93,7 +99,7 @@ export default function Post({ source, frontmatter, postId }) {
         >
           Back to Blog
         </Button>
-        <Divider marginTop={10} />
+        <Divider my={8} />
         <br />
         <Giscus />
       </Box>
