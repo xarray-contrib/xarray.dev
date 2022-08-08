@@ -1,24 +1,23 @@
-import React from "react"
 import {
-  VStack,
+  Avatar,
   Box,
+  Divider,
+  Flex,
+  Heading,
+  Spacer,
   Stack,
+  StackDivider,
+  Text,
+  useColorModeValue,
+  VStack,
   Wrap,
   WrapItem,
-  Heading,
-  useColorModeValue,
-  Text,
-  Divider,
-  StackDivider,
-  Flex,
-  Avatar,
-  Spacer,
 } from "@chakra-ui/react"
 
-import { getSortedPostsMetadata } from "../../lib/posts"
-import { distanceToNow, formatDate } from "lib/date-formatting"
 import { Layout } from "components/Layout"
 import { Link } from "components/mdx"
+import { distanceToNow, formatDate } from "lib/date-formatting"
+import { getSortedPostsMetadata } from "../../lib/posts"
 
 export default function Blog({ allPostsData }) {
   return (
@@ -89,14 +88,18 @@ export default function Blog({ allPostsData }) {
                     <Wrap spacing={2}>
                       {page.authors.map((author) => {
                         return (
-                          <WrapItem key={author}>
+                          <WrapItem key={author.name}>
                             <Flex
                               align={"center"}
                               mt={1}
                               direction={"column"}
-                              key={author}
+                              key={author.name}
                             >
-                              <Avatar name={author} mb={1} />
+                              <Avatar
+                                src={`https://github.com/${author.github}.png`}
+                                name={author.name}
+                                mb={1}
+                              />
                             </Flex>
                           </WrapItem>
                         )

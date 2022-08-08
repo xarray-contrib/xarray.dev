@@ -1,21 +1,20 @@
-import React from "react"
 import {
   Avatar,
   AvatarGroup,
   Box,
+  Center,
   Flex,
+  Heading,
   Icon,
   Image,
   Text,
-  Center,
-  Heading,
 } from "@chakra-ui/react"
-import { MdCalendarToday } from "react-icons/md"
-import { getPostData, getAllPostsIds } from "../../lib/posts"
-import { formatDate } from "../../lib/date-formatting"
 import fs from "fs"
-import path from "path"
 import matter from "gray-matter"
+import path from "path"
+import { MdCalendarToday } from "react-icons/md"
+import { formatDate } from "../../lib/date-formatting"
+import { getAllPostsIds, getPostData } from "../../lib/posts"
 
 const Card = ({ frontmatter, id }) => {
   const boxBackground = "white !important"
@@ -73,7 +72,13 @@ const Card = ({ frontmatter, id }) => {
           <AvatarGroup size="md" max={4} color={iconColor}>
             {frontmatter.authors.map((author) => {
               return (
-                <Avatar name={author} key={author} mt={1} fontWeight={"600"} />
+                <Avatar
+                  key={author.name}
+                  src={`https://github.com/${author.github}.png`}
+                  name={author.name}
+                  mt={1}
+                  fontWeight={"600"}
+                />
               )
             })}
           </AvatarGroup>
