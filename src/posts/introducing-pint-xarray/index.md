@@ -180,7 +180,7 @@ This is useful when we want to save our data back to a file, as it means that th
 So Xarray can wrap Dask arrays, and now it can wrap Pint quantities… Can we use both together? Yes!
 
 You can get a unit-aware, Dask-backed array either by `.pint.quantify()`-ing a chunked array, or you can `.pint.chunk()` a quantified array.
-(If you have Dask installed, then `open_dataset(f).pint.quantify()` will already give you a Dask-backed, quantified array.)
+(If you have Dask installed, then `open_dataset(f, chunks={}).pint.quantify()` will already give you a Dask-backed, quantified array.)
 From there you can `.compute()` the Dask-backed objects as normal, and the units will be retained.
 
 (Under the hood we now have an `xarray.DataArray` wrapping a `pint.Quantity`, which wraps a `dask.array.Array`, which wraps a `numpy.ndarray`.
