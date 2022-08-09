@@ -136,7 +136,7 @@ You also immediately get the key benefits of Pint:
    pint.DimensionalityError
    ```
 
-Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make specifying the units of parameters of existing library functions for more slick.
+Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make specifying the units of parameters of existing library functions more slick.
 
 In the abstract, tracking units like this is useful in the same way that labelling dimensions with Xarray is useful: it helps us avoid errors by relieving us of the burden of remembering arbitrary information about our data.
 
