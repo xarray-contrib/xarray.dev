@@ -19,6 +19,7 @@ distance / time
 ```
 
 ```
+Out:
 <xarray.DataArray ()>
 <Quantity(2.5, 'meter / second')>
 ```
@@ -57,7 +58,8 @@ print(repr(q))
 ```
 
 ```
-Out: <Quantity([6 7], 'meter')>
+Out:
+<Quantity([6 7], 'meter')>
 ```
 
 Pint Quantities act like NumPy arrays, except that the units are carried around with the arrays, propagated through operations, and checked during operations involving multiple quantities.
@@ -217,7 +219,8 @@ print(distance.coords['time'].attrs)
 ```
 
 ```
-Out: {'units': <Unit('second')>}
+Out:
+{'units': <Unit('second')>}
 ```
 
 This allows us to provide conveniently wrapped versions of common xarray methods like `.sel`, so that you can still select subsets of data in a unit-aware fashion like this:
@@ -259,7 +262,8 @@ squared_wind.pint.units
 ```
 
 ```
-Out: <Unit('meter ** 2 / second ** 2')>
+Out:
+<Unit('meter ** 2 / second ** 2')>
 ```
 
 Here (thanks to `cf_xarray`) pint has successfully interpreted the CF-style units `'m s-1'`, then automatically changed them when we squared the wind speed.
