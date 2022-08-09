@@ -11,12 +11,14 @@ summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
 
 _TLDR: Pint-Xarray supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
 
-```ipython
-In [2]: distance = xr.DataArray(10).pint.quantify("metres")
-   ...: time = xr.DataArray(4).pint.quantify("seconds")
-   ...:
-   ...: distance / time
-Out[2]:
+```python
+distance = xr.DataArray(10).pint.quantify("metres")
+time = xr.DataArray(4).pint.quantify("seconds")
+
+distance / time
+```
+
+```
 <xarray.DataArray ()>
 <Quantity(2.5, 'meter / second')>
 ```
