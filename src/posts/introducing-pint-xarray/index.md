@@ -251,7 +251,7 @@ If we `import cf_xarray.units` (before `import pint_xarray`) then we can `quanti
 
 ```python
 import xarray as xr
-import cf_xarray.units  # must come before import pint_xarray
+import cf_xarray.units
 import pint_xarray
 
 ds = xr.open_dataset('gs://cmip6/CMIP6/CMIP/NCAR/CESM2-FV2/historical/r2i1p1f1/Amon/sfcWind/gn/v20200226/', engine='zarr')
