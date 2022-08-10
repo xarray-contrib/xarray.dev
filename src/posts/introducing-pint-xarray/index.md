@@ -291,7 +291,7 @@ where `xarray.plot` has detected the Pint units automatically.
 
 ## Conclusion
 
-Please have a go! You will need xarray (v0.20+), pint-xarray, and pint (0.18+).
+Please have a go! You will need xarray (v2022.03.0+), pint (0.18+), and pint-xarray (0.3+).
 
 Please also tell us about any bugs you find, or documentation suggestions you have on the [Xarray](https://github.com/pydata/xarray/issues) or [pint-xarray issue trackers](https://github.com/xarray-contrib/pint-xarray/issues).
 If you have usage questions you can raise them there, on the [Xarray discussions page](https://github.com/pydata/xarray/discussions), or on the [Pangeo Discourse forum](https://discourse.pangeo.io/).
