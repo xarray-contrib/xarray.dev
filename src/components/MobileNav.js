@@ -91,7 +91,7 @@ export const MobileNav = ({ navItems, isOpen }) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         backgroundColor: useColorModeValue(
           "rgba(255, 255, 255, 0.8)",
-          "rgba(26, 32, 44, 0.8)"
+          "rgba(26, 32, 44, 0.8)",
         ),
       }}
     >
