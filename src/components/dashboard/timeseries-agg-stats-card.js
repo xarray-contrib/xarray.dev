@@ -35,7 +35,7 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
     isWithinInterval(d.closed_at, {
       start: d3.min(data, (d) => d.closed_at),
       end: previousMonthEnd,
-    })
+    }),
   )
 
   const result = d3.median(data, (d) => d.age_in_days)

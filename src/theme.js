@@ -24,5 +24,5 @@ export const customTheme = extendTheme(
       },
     },
   },
-  theme
+  theme,
 )

@@ -24,7 +24,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const GitHubStats = () => {
   const { data, error } = useSWR(
     "https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array",
-    fetcher
+    fetcher,
   )
 
   if (error) return <div>failed to load</div>

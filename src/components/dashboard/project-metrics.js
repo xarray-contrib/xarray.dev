@@ -12,7 +12,7 @@ import * as d3 from "d3"
 export const ProjectMetrics = () => {
   const { data, error } = useSWR(
     "https://raw.githubusercontent.com/andersy005/pydata-issue-tracker-datasette/main/data/docs-monthly-views.json",
-    fetcher
+    fetcher,
   )
 
   if (error) return <div>failed to load data</div>
