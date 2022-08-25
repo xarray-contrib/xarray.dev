@@ -122,7 +122,7 @@ Xarray integrates [decently well](https://cupy-xarray.readthedocs.io/quickstart.
 
 We don't have a cool demo yet but are looking to develop one very soon!
 
-Reach out if you have ideas. We would love to hear from you.
+[Reach out](https://discourse.pangeo.io/tag/machine-learning) if you have ideas. We would love to hear from you.
 
 ## Summary
 
