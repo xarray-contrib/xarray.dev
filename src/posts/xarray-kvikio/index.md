@@ -22,7 +22,9 @@ Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-stora
 > Both GPUDirect RDMA and GPUDirect Storage avoid extra copies through a bounce buffer in the CPU’s memory and enable a direct memory access (DMA) engine near the NIC or storage to move data on a direct path into or out of GPU memory, all without burdening the CPU or GPU
 > For GPUDirect Storage, storage location doesn’t matter; it could be inside an enclosure, within the rack, or connected over the network.
 
-Insert https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png somehow
+<p align = "center">
+  <img src = "https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png" />
+</p>
 
 ### What is Kvikio
 
