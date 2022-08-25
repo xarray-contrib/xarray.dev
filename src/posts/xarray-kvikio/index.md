@@ -15,42 +15,52 @@ We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) register
 
 ### What is GPU Direct Storage
 
+Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-storage/)
+
+> I/O, the process of loading data from storage to GPUs for processing, has historically been controlled by the CPU. As computation shifts from slower CPUs to faster GPUs, I/O becomes more of a bottleneck to overall application performance.
+> Just as GPUDirect RDMA (Remote Direct Memory Address) improved bandwidth and latency when moving data directly between a network interface card (NIC) and GPU memory, a new technology called GPUDirect Storage enables a direct data path between local or remote storage, like NVMe or NVMe over Fabric (NVMe-oF), and GPU memory.
+> Both GPUDirect RDMA and GPUDirect Storage avoid extra copies through a bounce buffer in the CPU’s memory and enable a direct memory access (DMA) engine near the NIC or storage to move data on a direct path into or out of GPU memory, all without burdening the CPU or GPU
+> For GPUDirect Storage, storage location doesn’t matter; it could be inside an enclosure, within the rack, or connected over the network.
+
 Insert https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png somehow
 
 ### What is Kvikio
 
 > kvikIO is a Python library providing bindings to cuFile, which enables GPUDirectStorage (GDS).
 
-For Xarray, the key bit is that kvikio exposes a zarr store [kvikio.zarr.GDSStore](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt that in a new storage backend. And thanks to recent work funded by the Chan Zuckerberg Initiative, adding a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
+For Xarray, the key bit is that kvikio exposes a zarr store [`kvikio.zarr.GDSStore`](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt that to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the Chan Zuckerberg Initiative, adding a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
 
 ## Integrating with Xarray
 
 Getting all this to work nicely requires using three in-progress pull requests that
+
 1. [Teach Zarr to handle alternative array classes](https://github.com/zarr-developers/zarr-python/pull/934)
 2. [Rewrite a small bit of Xarray to not cast all data to a numpy array after read from disk](https://github.com/pydata/xarray/pull/6874)
 3. [Make a backend that connects Xarray to Kvikio](https://github.com/xarray-contrib/cupy-xarray/pull/10)
 
 Writing the backend for Xarray was relatively easily. Most of the code was copied over from the existing Zarr backend. Most of the effort was in ensuring that dimension coordinates could be read in directly to host memory without raising an error. This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
 
-## Usage 
+## Usage
 
 Assuming you have all the pieces together (see [Appendix I]() and [Appendix II]() for step-by-step instructions), then using all this cool technology only requires adding `engine="kvikio"` to your `open_dataset` line (!)
 
-``` python
+```python
 import xarray as xr
 
 ds = xr.open_dataset("file.zarr", engine="kvikio", consolidated=False)
 ```
 
-With this `ds.load()` will load directly to GPU memory and `ds` will now contain CuPy arrays.
+Notice that importing `cupy_xarray` was not needed. `cupy_xarray` uses entrypoints to register the Kvikio backend with Xarray.
 
-At present there are a few limitations:
-1. stores cannot be read with consolidated metadata, and 
+With this `ds.load()` will load directly to GPU memory and `ds` will now contain CuPy arrays. At present there are a few limitations:
+
+1. stores cannot be read with consolidated metadata, and
 2. compression is unsupported by the backend.
 
 ## Quick demo
 
 First create an example uncompressed dataset to read from
+
 ```
 import xarray as xr
 
@@ -64,23 +74,49 @@ airt.to_zarr(store, mode="w", consolidated=True)
 ```
 
 Now read
+
 ```
 # consolidated must be False
 ds = xr.open_dataset(store, engine="kvikio", consolidated=False)
-ds
+ds.air
 ```
 
+```
+<xarray.DataArray 'air' (time: 2920, lat: 25, lon: 53)>
+[3869000 values with dtype=float32]
+Coordinates:
+  * lat      (lat) float32 75.0 72.5 70.0 67.5 65.0 ... 25.0 22.5 20.0 17.5 15.0
+  * lon      (lon) float32 200.0 202.5 205.0 207.5 ... 322.5 325.0 327.5 330.0
+  * time     (time) datetime64[ns] 2013-01-01 ... 2014-12-31T18:00:00
+Attributes:
+    GRIB_id:       11
+    GRIB_name:     TMP
+    actual_range:  [185.16000366210938, 322.1000061035156]
+    dataset:       NMC Reanalysis
+    level_desc:    Surface
+    long_name:     4xDaily Air temperature at sigma level 995
+    parent_stat:   Other
+    precision:     2
+    statistic:     Individual Obs
+    units:         degK
+    var_desc:      Air temperature
+```
+
+Note that we get Xarray's lazy backend arrays by default, and that dimension coordinate variables `lat`, `lon`, `time` were read. At this point this looks identical to what we get with a standard `xr.open_dataset(store, engine="zarr")` command.
+
 Now load a small subset
-``` python
+
+```python
 type(ds["air"].isel(time=0, lat=10).load().data)
 ```
+
 ```
 cupy._core.core.ndarray
 ```
 
 Success!
 
-Xarray integrates [decently well](https://cupy-xarray.readthedocs.io/quickstart.html) with CuPy arrays so you should be able to test out analysis pipelines pretty seamlessly.
+Xarray integrates [decently well](https://cupy-xarray.readthedocs.io/quickstart.html) with CuPy arrays so you should be able to test out analysis pipelines pretty easily.
 
 ## Cool demo
 
@@ -94,7 +130,7 @@ We demonstrate integrating the Kvikio library using Xarray's new backend entrypo
 
 ## Appendix I : Step-by-step install instructions
 
-Wei Ji Leong (@weiji14) helpfully [provided steps](https://discourse.pangeo.io/t/favorite-way-to-go-from-netcdf-xarray-to-torch-tf-jax-et-al/2663/2) to get started on your machine:
+[Wei Ji Leong](https://github.com/weiji14) helpfully [provided steps](https://discourse.pangeo.io/t/favorite-way-to-go-from-netcdf-xarray-to-torch-tf-jax-et-al/2663/2) to get started on your machine:
 
 ```
 # May need to install nvidia-gds first
@@ -123,7 +159,8 @@ jupyter lab --no-browser
 
 ## Appendix II : making sure GDS is working
 
-Scott Henderson (@scottyhq) pointed out that running `python kvikio/python/benchmarks/single-node-io.py` prints nice diagnostic information that lets you check whether GDS is set up. Note that on our system, we have "compatibility mode" enabled. So we don't see the benefits now but this was enough to wire everything up.
+[Scott Henderson](https://github.com/scottyhq) pointed out that running `python kvikio/python/benchmarks/single-node-io.py` prints nice diagnostic information that lets you check whether GDS is set up. Note that on our system, we have "compatibility mode" enabled. So we don't see the benefits now but this was enough to wire everything up.
+
 ```
 ----------------------------------
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
