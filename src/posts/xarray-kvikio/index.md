@@ -28,7 +28,7 @@ Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-stora
 
 ### What is kvikIO
 
-> kvikIO is a Python library providing bindings to cuFile, which enables GPUDirectStorage (GDS).
+> [kvikIO](https://github.com/rapidsai/kvikio) is a Python library providing bindings to [cuFile](https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html#introduction), which enables GPUDirectStorage (GDS).
 
 For Xarray, the key bit is that kvikIO exposes a zarr store [`kvikio.zarr.GDSStore`](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt that to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the Chan Zuckerberg Initiative, creating and registering a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
 
