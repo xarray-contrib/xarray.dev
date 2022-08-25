@@ -1,6 +1,6 @@
 ---
 title: "Enabling GPU-native analytics with Xarray and Kvikio"
-date: "2022-06-09"
+date: "2022-08-25"
 authors:
   - name: Deepak Cherian
     github: dcherian
