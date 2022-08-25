@@ -1,5 +1,5 @@
 ---
-title: "Enabling GPU-native analytics with Xarray and Kvikio"
+title: "Enabling GPU-native analytics with Xarray and kvikIO"
 date: "2022-08-25"
 authors:
   - name: Deepak Cherian
@@ -9,7 +9,7 @@ summary: "An experiment with direct-to-GPU reads from a Zarr store using Xarray.
 
 ## TLDR
 
-We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) registering an Xarray backend that reads data from a Zarr store directly to GPU memory as [CuPy arrays](https://cupy.dev) using the new [Kvikio library](https://docs.rapids.ai/api/kvikio/stable/) and [GPU Direct Storage](https://developer.nvidia.com/blog/gpudirect-storage/) technology.
+We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) registering an Xarray backend that reads data from a Zarr store directly to GPU memory as [CuPy arrays](https://cupy.dev) using the new [kvikIO library](https://docs.rapids.ai/api/kvikio/stable/) and [GPU Direct Storage](https://developer.nvidia.com/blog/gpudirect-storage/) technology.
 
 ## Background
 
@@ -26,11 +26,11 @@ Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-stora
   <img src = "https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png" />
 </p>
 
-### What is Kvikio
+### What is kvikIO
 
 > kvikIO is a Python library providing bindings to cuFile, which enables GPUDirectStorage (GDS).
 
-For Xarray, the key bit is that kvikio exposes a zarr store [`kvikio.zarr.GDSStore`](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt that to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the Chan Zuckerberg Initiative, adding a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
+For Xarray, the key bit is that kvikIO exposes a zarr store [`kvikio.zarr.GDSStore`](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt that to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the Chan Zuckerberg Initiative, creating and registering a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
 
 ## Integrating with Xarray
 
@@ -38,7 +38,7 @@ Getting all this to work nicely requires using three in-progress pull requests t
 
 1. [Teach Zarr to handle alternative array classes](https://github.com/zarr-developers/zarr-python/pull/934)
 2. [Rewrite a small bit of Xarray to not cast all data to a numpy array after read from disk](https://github.com/pydata/xarray/pull/6874)
-3. [Make a backend that connects Xarray to Kvikio](https://github.com/xarray-contrib/cupy-xarray/pull/10)
+3. [Make a backend that connects Xarray to kvikIO](https://github.com/xarray-contrib/cupy-xarray/pull/10)
 
 Writing the backend for Xarray was relatively easily. Most of the code was copied over from the existing Zarr backend. Most of the effort was in ensuring that dimension coordinates could be read in directly to host memory without raising an error. This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
 
@@ -52,7 +52,7 @@ import xarray as xr
 ds = xr.open_dataset("file.zarr", engine="kvikio", consolidated=False)
 ```
 
-Notice that importing `cupy_xarray` was not needed. `cupy_xarray` uses entrypoints to register the Kvikio backend with Xarray.
+Notice that importing `cupy_xarray` was not needed. `cupy_xarray` uses [entrypoints](https://packaging.python.org/en/latest/specifications/entry-points/) to register the kvikIO backend with Xarray.
 
 With this `ds.load()` will load directly to GPU memory and `ds` will now contain CuPy arrays. At present there are a few limitations:
 
@@ -128,7 +128,7 @@ Reach out if you have ideas. We would love to hear from you.
 
 ## Summary
 
-We demonstrate integrating the Kvikio library using Xarray's new backend entrypoints. With everything set up, simply adding `engine="kvikio"` enables direct-to-GPU reads from disk or over the network.
+We demonstrate integrating the kvikIO library using Xarray's new backend entrypoints. With everything set up, simply adding `engine="kvikio"` enables direct-to-GPU reads from disk or over the network.
 
 ## Appendix I : Step-by-step install instructions
 
