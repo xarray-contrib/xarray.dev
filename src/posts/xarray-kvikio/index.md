@@ -130,6 +130,10 @@ Reach out if you have ideas. We would love to hear from you.
 
 We demonstrate integrating the kvikIO library using Xarray's new backend entrypoints. With everything set up, simply adding `engine="kvikio"` enables direct-to-GPU reads from disk or over the network.
 
+## Acknowledgments
+
+My time on this project was funded by NASA-OSTFL 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library"
+
 ## Appendix I : Step-by-step install instructions
 
 [Wei Ji Leong](https://github.com/weiji14) helpfully [provided steps](https://discourse.pangeo.io/t/favorite-way-to-go-from-netcdf-xarray-to-torch-tf-jax-et-al/2663/2) to get started on your machine:
