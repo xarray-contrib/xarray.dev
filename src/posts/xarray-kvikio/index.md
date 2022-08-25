@@ -38,7 +38,7 @@ Getting all this to work nicely requires using three in-progress pull requests t
 2. [Rewrite a small bit of Xarray to not cast all data to a numpy array after read from disk](https://github.com/pydata/xarray/pull/6874)
 3. [Make a backend that connects Xarray to kvikIO](https://github.com/xarray-contrib/cupy-xarray/pull/10)
 
-Writing the backend for Xarray was relatively easily. Most of the code was copied over from the existing Zarr backend. Most of the effort was in ensuring that dimension coordinates could be read in directly to host memory without raising an error. This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
+Writing the backend for Xarray was relatively easy with most of the code copied over or inherited from the existing Zarr backend. We did have to ensure that dimension coordinates could be read in directly to host memory without raising an error (by default kvikIO loads all data to device memory). This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
 
 ## Usage
 
