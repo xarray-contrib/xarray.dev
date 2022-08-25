@@ -54,8 +54,8 @@ Notice that importing `cupy_xarray` was not needed. `cupy_xarray` uses [entrypoi
 
 With this `ds.load()` will load directly to GPU memory and `ds` will now contain CuPy arrays. At present there are a few limitations:
 
-1. stores cannot be read with consolidated metadata, and
-2. compression is unsupported by the backend.
+1. Zarr stores cannot be read with consolidated metadata, and
+2. compression is unsupported by the kvikIO backend.
 
 ## Quick demo
 
@@ -134,7 +134,7 @@ My time on this project was funded by NASA-OSTFL 80NSSC22K0345 "Enhancing analys
 
 ## Appendix I : Step-by-step install instructions
 
-[Wei Ji Leong](https://github.com/weiji14) helpfully [provided steps](https://discourse.pangeo.io/t/favorite-way-to-go-from-netcdf-xarray-to-torch-tf-jax-et-al/2663/2) to get started on your machine:
+[Wei Ji Leong](https://github.com/weiji14) helpfully [provided steps](https://github.com/xarray-contrib/cupy-xarray/pull/10#issuecomment-1218374773) to get started on your machine:
 
 ```
 # May need to install nvidia-gds first
