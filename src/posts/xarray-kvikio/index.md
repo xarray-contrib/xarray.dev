@@ -42,7 +42,7 @@ Writing the backend for Xarray was relatively easy with most of the code copied 
 
 ## Usage
 
-Assuming you have all the pieces together (see [Appendix I]() and [Appendix II]() for step-by-step instructions), then using all this cool technology only requires adding `engine="kvikio"` to your `open_dataset` line (!)
+Assuming you have all the pieces together (see [Appendix I](#appendix-i--step-by-step-install-instructions) and [Appendix II](#appendix-ii--making-sure-gds-is-working) for step-by-step instructions), then using all this cool technology only requires adding `engine="kvikio"` to your `open_dataset` line (!)
 
 ```python
 import xarray as xr
