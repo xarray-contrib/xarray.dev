@@ -9,11 +9,11 @@ summary: "An experiment with direct-to-GPU reads from a Zarr store using Xarray.
 
 ## TLDR
 
-We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) registering an Xarray backend that reads data from a Zarr store directly to GPU memory as [CuPy arrays](https://cupy.dev) using the new [kvikIO library](https://docs.rapids.ai/api/kvikio/stable/) and [GPU Direct Storage](https://developer.nvidia.com/blog/gpudirect-storage/) technology.
+We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) registering an Xarray backend that reads data from a Zarr store directly to GPU memory as [CuPy arrays](https://cupy.dev) using the new [kvikIO library](https://docs.rapids.ai/api/kvikio/stable/) and [GPU Direct Storage](https://developer.nvidia.com/blog/gpudirect-storage/) technology. This allows direct-to-GPU reads and GPU-native analytics on existing pipelines 🎉 😱 🤯 🥳.
 
 ## Background
 
-### What is GPU Direct Storage
+### What is GPU Direct Storage?
 
 Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-storage/)
 
@@ -24,21 +24,21 @@ Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-stora
 
 ![Diagram showing standard path between GPU memory and CPU memory on the left, versus a direct data path between GPU memory and storage on the right](https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png)
 
-### What is kvikIO
+### What is kvikIO?
 
 > [kvikIO](https://github.com/rapidsai/kvikio) is a Python library providing bindings to [cuFile](https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html#introduction), which enables GPUDirectStorage (GDS).
 
-For Xarray, the key bit is that kvikIO exposes a zarr store [`kvikio.zarr.GDSStore`](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt it to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the [Chan Zuckerberg Initiative](https://xarray.dev/blog/czi-eoss-grant-conclusion), creating and registering a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
+For Xarray, the key bit is that kvikIO exposes a [a zarr store](https://docs.rapids.ai/api/kvikio/stable/api.html#zarr) called `GDSStore` that does all the hard work for us. Since Xarray knows how to read Zarr stores, we can adapt it to create a new storage backend that uses `kvikio`. And thanks to recent work funded by the [Chan Zuckerberg Initiative](https://xarray.dev/blog/czi-eoss-grant-conclusion), creating and registering a [new backend](https://docs.xarray.dev/en/stable/internals/how-to-add-new-backend.html) is quite easy!
 
 ## Integrating with Xarray
 
-Getting all this to work nicely requires using three in-progress pull requests that
+Getting all these pieces to work together requires using three in-progress pull requests that
 
 1. [Teach Zarr to handle alternative array classes](https://github.com/zarr-developers/zarr-python/pull/934)
 2. [Rewrite a small bit of Xarray to not cast all data to a numpy array after read from disk](https://github.com/pydata/xarray/pull/6874)
 3. [Make a backend that connects Xarray to kvikIO](https://github.com/xarray-contrib/cupy-xarray/pull/10)
 
-Writing the backend for Xarray was relatively easy with most of the code copied over or inherited from the existing Zarr backend. We did have to ensure that dimension coordinates could be read in directly to host memory without raising an error (by default kvikIO loads all data to device memory). This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
+Writing the backend for Xarray was relatively easy with most of the code copied over or inherited from the existing Zarr backend. We did have to ensure that dimension coordinates (for example, a `time` dimension with timestamps for a timeseries dataset) could be read in directly to host memory (RAM) without raising an error (by default kvikIO loads all data to device memory). This is required because Xarrays creates `pandas.Index` objects for such variables. In the future, we could consider using `cudf.Index` instead to allow a fully GPU-backed Xarray object.
 
 ## Usage
 
@@ -114,15 +114,15 @@ type(ds["air"].isel(time=0, lat=10).load().data)
 cupy._core.core.ndarray
 ```
 
-Success!
+Success! 🎉 😱 🤯 🥳
 
-Xarray integrates [decently well](https://cupy-xarray.readthedocs.io/quickstart.html) with CuPy arrays so you should be able to test out analysis pipelines pretty easily.
+Xarray integrates [decently well](https://cupy-xarray.readthedocs.io/quickstart.html) with CuPy arrays so you should be able to test out existing analysis pipelines pretty easily.
 
 ## Cool demo
 
-We don't have a cool demo yet but are looking to develop one very soon!
+See above! 😆 We don't have a more extensive analysis demo yet but are looking to develop one very soon! The limiting step here is access to capable hardware.
 
-[Reach out](https://discourse.pangeo.io/tag/machine-learning) if you have ideas. We would love to hear from you.
+Reach out [on the Pangeo discourse forum](https://discourse.pangeo.io/tag/machine-learning) or over at [cupy-xarray](https://github.com/xarray-contrib/cupy-xarray) if you have ideas. We would love to hear from you.
 
 ## Summary
 
@@ -130,7 +130,7 @@ We demonstrate integrating the kvikIO library using Xarray's new backend entrypo
 
 ## Acknowledgments
 
-My time on this project was funded by NASA-OSTFL 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library"
+This experiment was supported by funding from NASA-OSTFL 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library".
 
 ## Appendix I : Step-by-step install instructions
 
