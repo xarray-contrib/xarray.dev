@@ -18,8 +18,11 @@ We [demonstrate](https://github.com/xarray-contrib/cupy-xarray/pull/10) register
 Quoting [this nVIDIA blogpost](https://developer.nvidia.com/blog/gpudirect-storage/)
 
 > I/O, the process of loading data from storage to GPUs for processing, has historically been controlled by the CPU. As computation shifts from slower CPUs to faster GPUs, I/O becomes more of a bottleneck to overall application performance.
+>
 > Just as GPUDirect RDMA (Remote Direct Memory Address) improved bandwidth and latency when moving data directly between a network interface card (NIC) and GPU memory, a new technology called GPUDirect Storage enables a direct data path between local or remote storage, like NVMe or NVMe over Fabric (NVMe-oF), and GPU memory.
+>
 > Both GPUDirect RDMA and GPUDirect Storage avoid extra copies through a bounce buffer in the CPU’s memory and enable a direct memory access (DMA) engine near the NIC or storage to move data on a direct path into or out of GPU memory, all without burdening the CPU or GPU
+>
 > For GPUDirect Storage, storage location doesn’t matter; it could be inside an enclosure, within the rack, or connected over the network.
 
 ![Diagram showing standard path between GPU memory and CPU memory on the left, versus a direct data path between GPU memory and storage on the right](https://developer.nvidia.com/blog/wp-content/uploads/2019/08/GPUDirect-Fig-1-New.png)
