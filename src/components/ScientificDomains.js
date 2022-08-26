@@ -1,18 +1,18 @@
-import React from "react"
 import {
-  Container,
+  Badge,
+  Box,
   Button,
+  Container,
+  HStack,
+  SimpleGrid,
   Text,
   useColorModeValue,
-  HStack,
   VStack,
-  Box,
-  Badge,
-  SimpleGrid,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react'
+import React from 'react'
 
-import { Projects } from "../data/projects"
-import { Link, Image } from "components/mdx"
+import { Image, Link } from '@/components/mdx'
+import { Projects } from '@/data/projects'
 
 const ProjectProfile = ({
   name,
@@ -24,36 +24,36 @@ const ProjectProfile = ({
 }) => {
   return (
     <Box
-      maxW="sm"
-      maxH="sm"
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
+      maxW='sm'
+      maxH='sm'
+      borderWidth='1px'
+      borderRadius='lg'
+      overflow='hidden'
     >
       <Box
-        maxW={"300px"}
-        w={"full"}
-        bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"1xl"}
-        rounded={"md"}
-        overflow={"hidden"}
+        maxW={'300px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'1xl'}
+        rounded={'md'}
+        overflow={'hidden'}
         p={4}
-        textAlign={"center"}
+        textAlign={'center'}
         px={1}
         py={4}
       >
         <Image
-          h={"55"}
-          w={"full"}
+          h={'55'}
+          w={'full'}
           src={logo}
           alt={name}
-          layout="fill"
-          objectFit="contain"
+          layout='fill'
+          objectFit='contain'
         />
 
         <Text
-          textAlign={"center"}
-          color={useColorModeValue("gray.700", "gray.400")}
+          textAlign={'center'}
+          color={useColorModeValue('gray.700', 'gray.400')}
           px={1}
           py={4}
           h={20}
@@ -62,25 +62,25 @@ const ProjectProfile = ({
           {description}
         </Text>
         <VStack
-          align={"center"}
-          justify={"center"}
-          direction={"row"}
+          align={'center'}
+          justify={'center'}
+          direction={'row'}
           mt={6}
           py={4}
         >
           {domains.map((domain, key) => {
             return (
-              <Badge key={key} variant="outline" rounded="full" px={2} py={1}>
+              <Badge key={key} variant='outline' rounded='full' px={2} py={1}>
                 {domain}
               </Badge>
             )
           })}
         </VStack>
         <HStack>
-          <Button flex={1} variant={"outline"} colorScheme={"blue"}>
+          <Button flex={1} variant={'outline'} colorScheme={'blue'}>
             <Link href={homepage}>Homepage</Link>
           </Button>
-          <Button flex={1} variant={"outline"}>
+          <Button flex={1} variant={'outline'}>
             <Link href={repo}>Repository</Link>
           </Button>
         </HStack>
@@ -93,8 +93,8 @@ export const ScientificDomains = () => {
   const projects = React.useMemo(() => Projects, [])
 
   return (
-    <Container maxW={"6xl"} mt={10}>
-      <Text color={useColorModeValue("gray.800", "white")} fontSize={"lg"}>
+    <Container maxW={'6xl'} mt={10}>
+      <Text color={useColorModeValue('gray.800', 'white')} fontSize={'lg'}>
         This section lists some of the standalone packages, projects developed
         with xarray.
       </Text>
@@ -117,9 +117,9 @@ export const ScientificDomains = () => {
 
       <Button
         as={Link}
-        href="https://docs.xarray.dev/en/stable/ecosystem.html"
-        variant={"outline"}
-        colorScheme={"blue"}
+        href='https://docs.xarray.dev/en/stable/ecosystem.html'
+        variant={'outline'}
+        colorScheme={'blue'}
         px={6}
         py={6}
         mt={10}

@@ -1,6 +1,6 @@
-export { DatasetteStatsCard } from "./datasette-stats-card"
-export { StatisticsCard } from "./statistics-card"
-export { TimeseriesAggStatsCard } from "./timeseries-agg-stats-card"
-export { IssueTracker } from "./issue-tracker"
-export { TimelinePlotContainer } from "./timeline-plot-container"
-export { ProjectMetrics } from "./project-metrics"
+export { DatasetteStatsCard } from '@/components/dashboard/datasette-stats-card'
+export { IssueTracker } from '@/components/dashboard/issue-tracker'
+export { ProjectMetrics } from '@/components/dashboard/project-metrics'
+export { StatisticsCard } from '@/components/dashboard/statistics-card'
+export { TimelinePlotContainer } from '@/components/dashboard/timeline-plot-container'
+export { TimeseriesAggStatsCard } from '@/components/dashboard/timeseries-agg-stats-card'
