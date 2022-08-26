@@ -1,16 +1,14 @@
-import React from "react"
 import {
   AspectRatio,
   Box,
   Container,
-  Text,
   SimpleGrid,
   Stack,
-} from "@chakra-ui/react"
+  Text,
+} from '@chakra-ui/react'
 
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism"
-import { Heading, Code } from "components/mdx"
+import { Code, Heading } from '@/components/mdx'
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
@@ -67,22 +65,22 @@ data.isel(lon=0).plot();
 
 export const ReplSection = () => {
   return (
-    <Box id={"repl"}>
-      <Container maxW={"6xl"} py={"4"}>
-        <Stack spacing={4} as={Container} maxW={"6xl"} textAlign={"center"}>
-          <Heading as="h1" size="2xl" my={4}>
+    <Box id={'repl'}>
+      <Container maxW={'6xl'} py={'4'}>
+        <Stack spacing={4} as={Container} maxW={'6xl'} textAlign={'center'}>
+          <Heading as='h1' size='2xl' my={4}>
             Try Xarray
           </Heading>
-          <Text fontSize={"lg"}>
+          <Text fontSize={'lg'}>
             Try Xarray in a REPL directly in your browser (no installation
             needed)!
           </Text>
         </Stack>
-        <SimpleGrid minChildWidth="400px" spacing="40px" mt={10}>
+        <SimpleGrid minChildWidth='400px' spacing='40px' mt={10}>
           <Stack>
-            <Stack direction="column">
+            <Stack direction='column'>
               <Code
-                language="python"
+                language='python'
                 style={nord}
                 showLineNumbers={true}
                 wrapLongLines={false}
@@ -95,9 +93,9 @@ export const ReplSection = () => {
 
           <AspectRatio ratio={4 / 3}>
             <iframe
-              title="repl"
+              title='repl'
               src={`https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=${preRunCode}`}
-              alt="demo"
+              alt='demo'
             />
           </AspectRatio>
         </SimpleGrid>

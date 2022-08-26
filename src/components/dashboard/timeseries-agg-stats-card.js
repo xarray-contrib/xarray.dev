@@ -1,10 +1,9 @@
-import React from "react"
-import useSWR from "swr"
-import { Text, Spinner } from "@chakra-ui/react"
-import { lastDayOfMonth, isWithinInterval, startOfMonth } from "date-fns"
-import * as d3 from "d3"
-import { StatisticsCard } from "./statistics-card"
-import { fetcher } from "../../lib/data-fetching"
+import { StatisticsCard } from '@/components/dashboard/statistics-card'
+import { fetcher } from '@/lib/data-fetching'
+import { Spinner, Text } from '@chakra-ui/react'
+import * as d3 from 'd3'
+import { isWithinInterval, lastDayOfMonth, startOfMonth } from 'date-fns'
+import useSWR from 'swr'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
   const { data, error } = useSWR(query, fetcher)
@@ -12,11 +11,11 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
   if (!data)
     return (
       <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="xl"
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
       />
     )
 
@@ -43,8 +42,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
   const diffPercentage = ((previousMonthResult - result) / result) * 100
 
   const change = {
-    type: diffPercentage < 0 ? "increase" : "decrease",
-    value: `${d3.format(".2f")(Math.abs(diffPercentage))}% since last month`,
+    type: diffPercentage < 0 ? 'increase' : 'decrease',
+    value: `${d3.format('.2f')(Math.abs(diffPercentage))}% since last month`,
   }
   return (
     <StatisticsCard
@@ -52,8 +51,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
       icon={icon}
       stat={
         result <= 2
-          ? `${d3.format(".1f")(result * 24)} hours`
-          : `${d3.format(".1f")(result)} days`
+          ? `${d3.format('.1f')(result * 24)} hours`
+          : `${d3.format('.1f')(result)} days`
       }
       diff={change}
     />

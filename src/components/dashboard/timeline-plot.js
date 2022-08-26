@@ -1,25 +1,12 @@
-import React from "react"
-import useSWR from "swr"
-import * as d3 from "d3"
-import {
-  Spinner,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanel,
-  TabPanels,
-  Box,
-  Text,
-} from "@chakra-ui/react"
+import { Box } from '@chakra-ui/react'
+import React from 'react'
 
-import { getTime } from "date-fns"
-
-import { fetcher } from "../../lib/data-fetching"
+import { getTime } from 'date-fns'
 
 // Fix window is not defined issue
 // https://github.com/apexcharts/react-apexcharts/issues/240#issuecomment-765417887
-import dynamic from "next/dynamic"
-const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false })
+import dynamic from 'next/dynamic'
+const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 export const TimelinePlot = ({ data, attr, start, end }) => {
   const dataSeries = data.map((item) => {
@@ -31,13 +18,13 @@ export const TimelinePlot = ({ data, attr, start, end }) => {
     options: {
       chart: {
         id: `${attr}-chart`,
-        type: "line",
+        type: 'line',
         toolbar: {
-          autoSelected: "pan",
+          autoSelected: 'pan',
           show: false,
         },
       },
-      colors: ["#546E7A"],
+      colors: ['#546E7A'],
       stroke: {
         width: 3,
       },
@@ -51,7 +38,7 @@ export const TimelinePlot = ({ data, attr, start, end }) => {
         size: 0,
       },
       xaxis: {
-        type: "datetime",
+        type: 'datetime',
       },
       yaxis: {
         tickAmount: 10,
@@ -66,7 +53,7 @@ export const TimelinePlot = ({ data, attr, start, end }) => {
     optionsLine: {
       chart: {
         id: `${attr}-chart2`,
-        type: "area",
+        type: 'area',
         brush: {
           target: `${attr}-chart`,
           enabled: true,
@@ -79,16 +66,16 @@ export const TimelinePlot = ({ data, attr, start, end }) => {
           },
         },
       },
-      colors: ["#008FFB"],
+      colors: ['#008FFB'],
       fill: {
-        type: "gradient",
+        type: 'gradient',
         gradient: {
           opacityFrom: 0.91,
           opacityTo: 0.1,
         },
       },
       xaxis: {
-        type: "datetime",
+        type: 'datetime',
         tooltip: {
           enabled: false,
         },
@@ -100,17 +87,17 @@ export const TimelinePlot = ({ data, attr, start, end }) => {
   })
 
   return (
-    <Box mx={"auto"}>
+    <Box mx={'auto'}>
       <ReactApexChart
         options={state.options}
         series={state.series}
-        type="line"
+        type='line'
         height={330}
       />
       <ReactApexChart
         options={state.optionsLine}
         series={state.seriesLine}
-        type="area"
+        type='area'
         height={130}
       />
     </Box>

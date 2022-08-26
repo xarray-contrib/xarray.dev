@@ -1,0 +1,11 @@
+{
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 80,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": true,
+  "importOrder": ["^components/(.*)$", "^data/(.*)$", "^lib/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
