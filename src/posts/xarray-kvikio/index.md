@@ -2,8 +2,10 @@
 title: "Enabling GPU-native analytics with Xarray and kvikIO"
 date: "2022-08-25"
 authors:
-  - name: Deepak Cherian, Wei Ji Leong
-    github: dcherian, weiji14
+  - name: Deepak Cherian
+    github: dcherian
+  - name: Wei Ji Leong
+    github: weiji14
 summary: "An experiment with direct-to-GPU reads from a Zarr store using Xarray."
 ---
 
