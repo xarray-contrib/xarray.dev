@@ -61,7 +61,7 @@ With this `ds.load()` will load directly to GPU memory and `ds` will now contain
 
 First create an example uncompressed dataset to read from
 
-```
+```python
 import xarray as xr
 
 store = "./air-temperature.zarr"
@@ -75,13 +75,13 @@ airt.to_zarr(store, mode="w", consolidated=True)
 
 Now read
 
-```
+```python
 # consolidated must be False
 ds = xr.open_dataset(store, engine="kvikio", consolidated=False)
 ds.air
 ```
 
-```
+```python
 <xarray.DataArray 'air' (time: 2920, lat: 25, lon: 53)>
 [3869000 values with dtype=float32]
 Coordinates:
@@ -136,7 +136,7 @@ This experiment was supported by funding from NASA-OSTFL 80NSSC22K0345 "Enhancin
 
 [Wei Ji Leong](https://github.com/weiji14) helpfully [provided steps](https://github.com/xarray-contrib/cupy-xarray/pull/10#issuecomment-1218374773) to get started on your machine:
 
-```
+```bash
 # May need to install nvidia-gds first
 # https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#ubuntu-installation-common
 sudo apt install nvidia-gds
