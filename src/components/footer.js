@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 
 import { Image, Link } from '@/components/mdx'
-import { VercelCallout } from '@/components/VercelCallout'
+import { VercelCallout } from '@/components/vercel'
 import { footerItems } from '@/data/footer-items'
 import { FaGithub, FaTwitter, FaYoutube } from 'react-icons/fa'
 

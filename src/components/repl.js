@@ -63,7 +63,7 @@ data.isel(lon=0).plot();
 # Pretty neat, eh? :)
 # For more, head over to the documentation page`
 
-export const ReplSection = () => {
+export const Repl = () => {
   return (
     <Box id={'repl'}>
       <Container maxW={'6xl'} py={'4'}>

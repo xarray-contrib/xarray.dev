@@ -11,9 +11,9 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-import { ArrayLibraries } from '@/components/ArrayLibraries'
+import { ArrayLibraries } from '@/components/array-libraries'
 import { Heading, Link } from '@/components/mdx'
-import { ScientificDomains } from '@/components/ScientificDomains'
+import { ScientificDomains } from '@/components/scientific-domains'
 import { IoLogoGithub } from 'react-icons/io5'
 
 import useSWR from 'swr'
@@ -48,7 +48,7 @@ const GitHubStats = () => {
   )
 }
 
-export const EcosystemSection = () => {
+export const Ecosystem = () => {
   return (
     <Box id={'ecosystem'}>
       <Stack as={Container} maxW={'6xl'} textAlign={'center'}>

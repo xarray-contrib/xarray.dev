@@ -1,6 +1,6 @@
-import { DesktopNav } from '@/components/DesktopNav'
+import { DesktopNav } from '@/components/desktop-nav'
 import { Link } from '@/components/mdx'
-import { MobileNav } from '@/components/MobileNav'
+import { MobileNav } from '@/components/mobile-nav'
 import { menuItems } from '@/data/menu-items'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {

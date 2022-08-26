@@ -10,10 +10,10 @@ import {
 } from '@chakra-ui/react'
 
 import { Heading, Image } from '@/components/mdx'
-import { Sponsors } from '@/data/sponsors'
+import { Sponsors as data } from '@/data/sponsors'
 
-export const SponsorsSection = () => {
-  const sponsors = React.useMemo(() => Sponsors, [])
+export const Sponsors = () => {
+  const sponsors = React.useMemo(() => data, [])
 
   return (
     <Box id={'sponsors'}>
