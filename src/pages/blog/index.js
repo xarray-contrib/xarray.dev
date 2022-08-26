@@ -14,7 +14,7 @@ import {
   WrapItem,
 } from '@chakra-ui/react'
 
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layout'
 import { Link } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { getSortedPostsMetadata } from '@/lib/posts'

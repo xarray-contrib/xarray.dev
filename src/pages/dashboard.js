@@ -1,5 +1,5 @@
 import { IssueTracker, ProjectMetrics } from '@/components/dashboard'
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layout'
 
 const DashboardPage = () => {
   return (

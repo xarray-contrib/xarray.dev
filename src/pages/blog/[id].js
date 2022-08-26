@@ -22,7 +22,7 @@ import matter from 'gray-matter'
 import path from 'path'
 
 import { Giscus } from '@/components'
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layout'
 import { Link } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
