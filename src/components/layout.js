@@ -1,6 +1,6 @@
 import { Banner } from '@/components/banner'
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
 import { Container, Text } from '@chakra-ui/react'
 import Head from 'next/head'

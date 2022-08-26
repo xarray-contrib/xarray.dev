@@ -1,13 +1,13 @@
 import {
-  DonateSection,
-  EcosystemSection,
-  FeaturesSection,
-  HeroBannerSection,
-  ReplSection,
-  SponsorsSection,
+  Donate,
+  Ecosystem,
+  Features,
+  HeroBanner,
+  Repl,
+  Sponsors,
 } from '@/components'
 
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layout'
 
 export default function IndexPage() {
   return (
@@ -17,12 +17,12 @@ export default function IndexPage() {
         'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png'
       }
     >
-      <HeroBannerSection />
-      <FeaturesSection />
-      <ReplSection />
-      <EcosystemSection />
-      <SponsorsSection />
-      <DonateSection />
+      <HeroBanner />
+      <Features />
+      <Repl />
+      <Ecosystem />
+      <Sponsors />
+      <Donate />
     </Layout>
   )
 }

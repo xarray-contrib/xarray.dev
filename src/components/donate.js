@@ -4,7 +4,7 @@ import { Heading, Image, Link } from '@/components/mdx'
 
 import { BiDonateHeart } from 'react-icons/bi'
 
-export const DonateSection = () => {
+export const Donate = () => {
   return (
     <Box id={'donate'}>
       <Container maxW={'6xl'}>

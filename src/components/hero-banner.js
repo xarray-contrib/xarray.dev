@@ -9,7 +9,7 @@ import {
 
 import { Image, Link } from '@/components/mdx'
 
-export const HeroBannerSection = () => {
+export const HeroBanner = () => {
   return (
     <Container maxW={'6xl'}>
       <Stack

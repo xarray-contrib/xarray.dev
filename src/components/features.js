@@ -11,11 +11,11 @@ import {
 import React from 'react'
 
 import { Heading } from '@/components/mdx'
-import { Features } from '@/data/features'
+import { Features as data } from '@/data/features'
 import { CheckIcon } from '@chakra-ui/icons'
 
-export const FeaturesSection = () => {
-  const features = React.useMemo(() => Features, [])
+export const Features = () => {
+  const features = React.useMemo(() => data, [])
   return (
     <Box id={'features'}>
       <Stack as={Container} maxW={'6xl'} textAlign={'center'}>
