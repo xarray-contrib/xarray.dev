@@ -2,7 +2,7 @@ export const Projects = [
   {
     name: 'xgcm',
     description: 'General Circulation Model Postprocessing with xarray',
-    domains: ['🌊 Oceanography', '🌊 Oceanography', '🌊 Oceanography'],
+    domains: ['🌊 Oceanography'],
     repo: 'https://github.com/xgcm/xgcm',
     homepage: 'https://xgcm.readthedocs.io/en/latest/',
     logo: '/projects/xgcm-logo.png',
@@ -101,5 +101,14 @@ export const Projects = [
     homepage: 'https://pystatgen.github.io/sgkit/latest/',
     repo: 'https://github.com/pystatgen/sgkit',
     logo: '/projects/sgkit_trnsprnt.png',
+  },
+  {
+    name: 'xmip',
+    description:
+      'Analysis ready CMIP6 data in Python the easy way with pangeo tools.',
+    domains: ['🌎 Geoscience'],
+    homepage: 'https://cmip6-preprocessing.readthedocs.io/',
+    repo: 'https://github.com/jbusecke/xmip',
+    logo: '/projects/xmip.png',
   },
 ]
