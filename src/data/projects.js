@@ -2,7 +2,7 @@ export const Projects = [
   {
     name: 'xgcm',
     description: 'General Circulation Model Postprocessing with xarray',
-    domains: ['🌊 Oceanography'],
+    domains: ['🌊 Oceanography', '🌊 Oceanography', '🌊 Oceanography'],
     repo: 'https://github.com/xgcm/xgcm',
     homepage: 'https://xgcm.readthedocs.io/en/latest/',
     logo: '/projects/xgcm-logo.png',
@@ -29,7 +29,7 @@ export const Projects = [
     name: 'MetPy',
     description:
       'Collection of tools for reading, visualizing and performing calculations with weather data',
-    domains: ['🌪🌡☔ Meteorology'],
+    domains: ['🌪🌡 Meteorology'],
     repo: 'https://github.com/Unidata/MetPy',
     homepage: 'https://unidata.github.io/MetPy',
     logo: '/projects/metpy_horizontal.png',

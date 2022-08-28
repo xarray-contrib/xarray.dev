@@ -10,7 +10,7 @@ import {
 import React from 'react'
 
 import { Image, Link } from '@/components/mdx'
-import { Libraries } from '@/data/array-libraries'
+import { Libraries as data } from '@/data/array-libraries'
 
 const Library = ({ name, description, url, logo }) => {
   return (
@@ -45,14 +45,14 @@ const Library = ({ name, description, url, logo }) => {
 }
 
 export const ArrayLibraries = () => {
-  const libraries = React.useMemo(() => Libraries, [])
+  const libraries = React.useMemo(() => data, [])
   return (
     <Box p={4}>
       <Text color={useColorModeValue('gray.800', 'white')} fontSize={'lg'}>
         Xarray supports multiple array backends, allowing users to choose array
         types that work best for their application.
       </Text>
-      <br />
+
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         {libraries.map((library, index) => (
           <Library
