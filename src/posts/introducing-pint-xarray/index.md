@@ -1,6 +1,6 @@
 ---
 title: 'Unit-aware arithmetic in Xarray, via pint'
-date: '2022-07-06'
+date: '2022-08-30'
 authors:
   - name: Tom Nicholas
     github: TomNicholas
