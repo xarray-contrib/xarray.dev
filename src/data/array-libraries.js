@@ -4,6 +4,7 @@ export const Libraries = [
     description:
       'NumPy is the fundamental package for array computing with Python.',
     url: 'https://numpy.org',
+    repo: 'https://github.com/numpy/numpy',
     logo: '/libraries/numpy_logo.svg',
   },
   {
@@ -11,6 +12,7 @@ export const Libraries = [
     description:
       'Distributed arrays and advanced parallelism for analytics, enabling performance at scale.',
     url: 'https://dask.org/',
+    repo: 'https://github.com/dask/dask',
     logo: '/libraries/dask_horizontal.svg',
   },
   {
@@ -18,6 +20,7 @@ export const Libraries = [
     description:
       'NumPy-compatible array library for GPU-accelerated computing with Python.',
     url: 'https://cupy.chainer.org/',
+    repo: 'https://github.com/cupy/cupy/',
     logo: '/libraries/cupy_logo_1000px.png',
   },
   {
@@ -25,6 +28,7 @@ export const Libraries = [
     description:
       'An implementation of chunked, compressed, N-dimensional arrays for Python.',
     url: 'http://zarr.readthedocs.io/',
+    repo: 'https://github.com/zarr-developers/zarr-python',
     logo: '/libraries/zarr-pink-stacked.svg',
   },
   {
@@ -37,6 +41,7 @@ export const Libraries = [
     name: 'Pint',
     description: 'Operate and manipulate physical quantities in Python',
     url: 'http://pint.readthedocs.org/',
+    repo: 'https://github.com/pydata/sparse',
     logo: '/libraries/pint-logo-full.jpg',
   },
 ]

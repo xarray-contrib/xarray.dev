@@ -1,45 +1,65 @@
 import {
   Box,
+  Circle,
   Flex,
-  Heading,
+  Icon,
   SimpleGrid,
   Stack,
   Text,
   useColorModeValue,
+  VisuallyHidden,
 } from '@chakra-ui/react'
 import React from 'react'
+import { IoIosGlobe, IoLogoGithub } from 'react-icons/io'
 
 import { Image, Link } from '@/components/mdx'
 import { Libraries as data } from '@/data/array-libraries'
 
-const Library = ({ name, description, url, logo }) => {
+const SocialLink = ({ icon, href, label }) => {
   return (
-    <Stack align='center'>
-      <Flex
-        as={Link}
-        href={url}
-        w={32}
-        h={32}
-        align={'center'}
-        justify={'center'}
-        color={'white'}
-        rounded={'full'}
-        bg={'gray.50'}
-        mb={1}
-      >
-        <Image src={logo} alt={name}></Image>
-      </Flex>
+    <Link
+      display='inline-flex'
+      alignItems='center'
+      justifyContent='center'
+      rounded='full'
+      href={href}
+      isExternal
+    >
+      <VisuallyHidden>{label}</VisuallyHidden>
+      <Icon as={icon} fontSize='xl' color='accent' />
+    </Link>
+  )
+}
 
-      <Heading
-        as={Link}
-        href={url}
-        color={'blue.400'}
-        fontSize={'2xl'}
-        fontFamily={'body'}
-      >
-        {name}
-      </Heading>
-      <Text color={useColorModeValue('gray.800', 'white')}>{description}</Text>
+const Library = ({ name, description, repo, url, logo }) => {
+  return (
+    <Stack direction='row' spacing={6} align='flex-start'>
+      <Circle overflow='hidden'>
+        <Flex w={32} h={32} align={'center'} justify={'center'}>
+          {' '}
+          <Image src={logo} alt={name} />
+        </Flex>
+      </Circle>
+      <Stack spacing={4}>
+        <Text fontWeight={'bold'}>{name}</Text>
+        <Stack direction={'row'} align='center' spacing={2}>
+          <SocialLink
+            href={repo}
+            icon={IoLogoGithub}
+            label={`View ${name}'s Github`}
+          />
+          {url && (
+            <SocialLink
+              href={url}
+              icon={IoIosGlobe}
+              label={`View ${name}'s website`}
+            />
+          )}
+        </Stack>
+        <Text fontSize='sm' color='fg-muted'>
+          {description}
+        </Text>
+      </Stack>
     </Stack>
   )
 }
@@ -47,13 +67,18 @@ const Library = ({ name, description, url, logo }) => {
 export const ArrayLibraries = () => {
   const libraries = React.useMemo(() => data, [])
   return (
-    <Box p={4}>
+    <Box my={4}>
       <Text color={useColorModeValue('gray.800', 'white')} fontSize={'lg'}>
         Xarray supports multiple array backends, allowing users to choose array
         types that work best for their application.
       </Text>
 
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <SimpleGrid
+        columns={{ base: 1, md: 3 }}
+        spacing={8}
+        my={8}
+        align={'left'}
+      >
         {libraries.map((library, index) => (
           <Library
             key={index}
