@@ -1,12 +1,12 @@
 ---
-title: "Unit-aware arithmetic in Xarray, via pint"
-date: "2022-07-06"
+title: 'Unit-aware arithmetic in Xarray, via pint'
+date: '2022-07-06'
 authors:
   - name: Tom Nicholas
     github: TomNicholas
   - name: Justus Magin
     github: keewis
-summary: "Xarray now supports unit-aware operations by wrapping pint arrays"
+summary: 'Xarray now supports unit-aware operations by wrapping pint arrays'
 ---
 
 _TLDR: Pint-Xarray supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
@@ -35,12 +35,13 @@ Even worse, the consequences of getting units wrong can be huge!
 The most famous example of a units error has to be NASA's $125 million [Mars Climate Orbiter](https://www.simscale.com/blog/2017/12/nasa-mars-climate-orbiter-metric/), which in 1999 burned up in the Martian atmosphere instead of successfully entering orbit around Mars.
 A trajectory course correction had gone wrong, and the error was eventually traced back to a units mismatch: the engineers at Lockheed Martin expressed impulse in [pound-force](<https://en.wikipedia.org/wiki/Pound_(force)>) seconds, whereas the engineers at JPL assumed the impulse value their part of the software received was in SI newton seconds.
 
-<p align = "center">
-  <img src = "https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg" />
+<p align='center'>
+  <img src='https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg' />
 </p>
 
-<p align = "center">
-  Newspaper cartoon depicting the incongruence in the units used by NASA and Lockheed Martin scientists that led to the Mars Climate Orbiter disaster.
+<p align='center'>
+  Newspaper cartoon depicting the incongruence in the units used by NASA and
+  Lockheed Martin scientists that led to the Mars Climate Orbiter disaster.
 </p>
 
 We should take stories like this seriously: If we can automatically track units we can potentially eliminate a whole class of possible errors in our scientific work...
