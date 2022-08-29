@@ -1,10 +1,10 @@
 ---
-title: "Reflecting on Xarray’s first development grant"
-date: "2022-06-09"
+title: 'Reflecting on Xarray’s first development grant'
+date: '2022-06-09'
 authors:
   - name: Joe Hamman
     github: jhamman
-summary: "A brief recap of our CZI EOSS grant, accomplishments and learnings."
+summary: 'A brief recap of our CZI EOSS grant, accomplishments and learnings.'
 ---
 
 In early 2020, we submitted a [proposal](https://doi.org/10.6084/m9.figshare.12709556.v1) to the [Chan Zuckerberg Initiative’s (CZI) Essential Open Source Software for Science (EOSS)](https://chanzuckerberg.com/eoss/) grant program. The goal of the proposal was to accelerate progress on key parts of our [roadmap](https://docs.xarray.dev/en/v2022.03.0/roadmap.html), providing dedicated support to augment regular volunteer contributions, enabling work on issues that are often too large to tackle by through volunteer-only contributions. The proposal was funded in late 2020 and our team spent the last year and a half working on a handful of new features and complex internal refactors. Having just closed out the grant, this blog post takes a look at what we proposed and how the development turned out.

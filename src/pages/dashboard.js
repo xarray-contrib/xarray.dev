@@ -1,15 +1,14 @@
-import React from "react"
-import { Layout } from "components/Layout"
-import { IssueTracker, ProjectMetrics } from "components/dashboard"
+import { IssueTracker, ProjectMetrics } from '@/components/dashboard'
+import { Layout } from '@/components/layout'
 
 const DashboardPage = () => {
   return (
     <Layout
-      title={"Xarray project statistics"}
-      url={"https://xarray.dev/dashboard"}
-      description={"Xarray project statistics"}
+      title={'Xarray project statistics'}
+      url={'https://xarray.dev/dashboard'}
+      description={'Xarray project statistics'}
       card={
-        "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png"
+        'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png'
       }
     >
       <ProjectMetrics />
