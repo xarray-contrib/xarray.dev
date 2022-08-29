@@ -33,7 +33,7 @@ export const ProjectMetrics = () => {
 
   return (
     <Box as='section'>
-      <Container maxW='container.xl'>
+      <Container maxW='container.lg'>
         {' '}
         <Heading as='h1' size='2xl' textAlign={'center'}>
           Xarray Project Metrics

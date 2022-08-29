@@ -35,7 +35,7 @@ export const TimelinePlotContainer = () => {
   const end = d3.max(data, (d) => d.time)
 
   return (
-    <Box mt={10}>
+    <Box my={8}>
       <Text fontSize={'md'} align={'center'}>
         This is a timeline of how many open issues and pull requests Xarray has
         on Github over time from {new Date(start).toLocaleDateString()} to{' '}
@@ -45,8 +45,10 @@ export const TimelinePlotContainer = () => {
       <br />
       <Tabs align='center' variant='enclosed' isFitted colorScheme='teal'>
         <TabList>
-          <Tab>Pull Requests</Tab>
-          <Tab>Issues</Tab>
+          <Tab _selected={{ color: 'white', bg: 'teal.500' }}>
+            Pull Requests
+          </Tab>
+          <Tab _selected={{ color: 'white', bg: 'teal.500' }}>Issues</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>

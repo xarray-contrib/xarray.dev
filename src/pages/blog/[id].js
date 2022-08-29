@@ -43,7 +43,7 @@ export default function Post({ source, frontmatter, postId }) {
       url={`https://xarray.dev/blog/${postId}`}
     >
       <Box as={'section'}>
-        <Container maxW='container.xl' py={10}>
+        <Container maxW='container.lg' py={10}>
           <Box spacing='3' alignItems='start'>
             <VStack paddingTop='30px' spacing='2' alignItems='center'>
               <Heading as={'h1'} textAlign={'center'} size='xl' my={4}>

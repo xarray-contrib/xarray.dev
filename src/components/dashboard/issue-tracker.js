@@ -8,7 +8,7 @@ import { Heading } from '@/components/mdx'
 export const IssueTracker = () => {
   return (
     <Box as='section'>
-      <Container maxW='container.xl'>
+      <Container maxW='container.lg'>
         <Heading as='h1' size='2xl' textAlign={'center'}>
           Xarray Issue Tracker
         </Heading>

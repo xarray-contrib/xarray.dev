@@ -30,7 +30,7 @@ export default function Blog({ allPostsData }) {
       }
     >
       <Box as='section'>
-        <Container maxW='container.xl' py={20}>
+        <Container maxW='container.lg' py={20}>
           <Heading as='h1' size='2xl' textAlign={'center'} my={4}>
             Blog
           </Heading>
