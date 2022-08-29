@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Button, Container, Heading, Stack, Text } from '@chakra-ui/react'
 
 import { Image, Link } from '@/components/mdx'
 
@@ -46,10 +38,7 @@ export const HeroBanner = () => {
                 N-D labeled arrays and datasets in Python
               </Text>
             </Heading>
-            <Text
-              color={useColorModeValue('gray.800', 'white')}
-              fontSize={'lg'}
-            >
+            <Text fontSize={'lg'}>
               <strong>Xarray</strong> is an open source project and Python
               package that introduces labels in the form of dimensions,
               coordinates, and attributes on top of raw NumPy-like arrays, which

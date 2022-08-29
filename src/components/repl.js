@@ -1,11 +1,4 @@
-import {
-  AspectRatio,
-  Box,
-  Container,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { AspectRatio, Box, Container, SimpleGrid, Text } from '@chakra-ui/react'
 
 import { Code, Heading } from '@/components/mdx'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -65,31 +58,26 @@ data.isel(lon=0).plot();
 
 export const Repl = () => {
   return (
-    <Box id={'repl'}>
-      <Container maxW={'6xl'} py={'4'}>
-        <Stack spacing={4} as={Container} maxW={'6xl'} textAlign={'center'}>
-          <Heading as='h1' size='2xl' my={4}>
-            Try Xarray
-          </Heading>
-          <Text fontSize={'lg'}>
-            Try Xarray in a REPL directly in your browser (no installation
-            needed)!
-          </Text>
-        </Stack>
-        <SimpleGrid minChildWidth='400px' spacing='40px' mt={10}>
-          <Stack>
-            <Stack direction='column'>
-              <Code
-                language='python'
-                style={nord}
-                showLineNumbers={true}
-                wrapLongLines={false}
-                //wrapLines
-              >
-                {sampleCode}
-              </Code>
-            </Stack>
-          </Stack>
+    <Box id={'repl'} as='section'>
+      <Container maxW='container.xl' centerContent>
+        <Heading as='h1' size='2xl'>
+          Try Xarray
+        </Heading>
+        <Text fontSize={'lg'}>
+          Try Xarray in a REPL directly in your browser (no installation
+          needed)!
+        </Text>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} my={8}>
+          <Code
+            language='python'
+            style={nord}
+            showLineNumbers={true}
+            wrapLongLines={false}
+            //wrapLines
+          >
+            {sampleCode}
+          </Code>
 
           <AspectRatio ratio={4 / 3}>
             <iframe
