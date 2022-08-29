@@ -9,7 +9,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 
-import { Heading, Image } from '@/components/mdx'
+import { Heading, Image, Link } from '@/components/mdx'
 import { Sponsors as data } from '@/data/sponsors'
 
 export const Sponsors = () => {
@@ -33,19 +33,20 @@ export const Sponsors = () => {
         </Stack>
         <Stack
           direction={{ base: 'column', md: 'row' }}
-          spacing={-4}
+          spacing={2}
           align={'center'}
           justify={'center'}
         >
           {sponsors.map((sponsor, index) => (
             <Flex
+              as={Link}
+              href={sponsor.url}
               key={index}
               w={64}
               h={64}
               align={'center'}
               justify={'center'}
               rounded={'full'}
-              mb={1}
             >
               <Image w={36} h={36} src={sponsor.logo} alt={sponsor.name} />
             </Flex>

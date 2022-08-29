@@ -29,7 +29,7 @@ export const Projects = [
     name: 'MetPy',
     description:
       'Collection of tools for reading, visualizing and performing calculations with weather data',
-    domains: ['🌪🌡☔ Meteorology'],
+    domains: ['🌪🌡 Meteorology'],
     repo: 'https://github.com/Unidata/MetPy',
     homepage: 'https://unidata.github.io/MetPy',
     logo: '/projects/metpy_horizontal.png',
@@ -101,5 +101,14 @@ export const Projects = [
     homepage: 'https://pystatgen.github.io/sgkit/latest/',
     repo: 'https://github.com/pystatgen/sgkit',
     logo: '/projects/sgkit_trnsprnt.png',
+  },
+  {
+    name: 'xmip',
+    description:
+      'Analysis ready CMIP6 data in Python the easy way with pangeo tools.',
+    domains: ['🌎 Geoscience'],
+    homepage: 'https://cmip6-preprocessing.readthedocs.io/',
+    repo: 'https://github.com/jbusecke/xmip',
+    logo: '/projects/xmip.png',
   },
 ]
