@@ -23,7 +23,7 @@ export const DesktopNav = ({ navItems, ...props }) => {
                 p={2}
                 href={navItem.href ?? '/#'}
                 fontSize={'sm'}
-                fontWeight={500}
+                fontWeight={'bold'}
                 // eslint-disable-next-line react-hooks/rules-of-hooks
                 color={useColorModeValue('gray.600', 'gray.200')}
                 _hover={{

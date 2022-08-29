@@ -41,7 +41,7 @@ export const Header = () => {
           ),
         }}
       >
-        <Container as={Flex} maxW={'6xl'} align={'center'}>
+        <Container as={Flex} maxW={'container.xl'} align={'center'}>
           <Flex
             flex={{ base: '0', md: 'auto' }}
             ml={{ base: -2 }}
