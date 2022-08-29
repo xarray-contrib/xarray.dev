@@ -2,7 +2,7 @@ import { Banner } from '@/components/banner'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
-import { Container, Text } from '@chakra-ui/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 
 export const Layout = ({
@@ -38,23 +38,25 @@ export const Layout = ({
 
         <title>{title}</title>
       </Head>
-      <Container
-        maxW={'full'}
-        maxH={'full'}
+      <Flex
+        direction={'column'}
+        justify={'space-between'}
+        gap={0}
+        minHeight={'100vh'}
         backgroundImage={'/background.svg'}
       >
-        <Header />
-
-        <Container maxW={'6xl'} mt={10}>
+        <Box>
+          <Header />
           {enableBanner && (
             <Banner title={bannerTitle} description={bannerDescription}>
               {bannerChildren}
             </Banner>
           )}
           {children}
-        </Container>
+        </Box>
+
         <Footer />
-      </Container>
+      </Flex>
     </>
   )
 }
