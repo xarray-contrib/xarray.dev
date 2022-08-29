@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react'
 export function VercelCallout() {
   return (
     <Box
-      mt='6'
+      my='6'
       fontSize='sm'
       fontWeight='semibold'
       display='inline-block'

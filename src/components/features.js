@@ -4,7 +4,6 @@ import {
   HStack,
   Icon,
   SimpleGrid,
-  Stack,
   Text,
   VStack,
 } from '@chakra-ui/react'
@@ -17,9 +16,9 @@ import { CheckIcon } from '@chakra-ui/icons'
 export const Features = () => {
   const features = React.useMemo(() => data, [])
   return (
-    <Box id={'features'}>
-      <Stack as={Container} maxW={'6xl'} textAlign={'center'}>
-        <Heading as='h1' size='2xl' my={4}>
+    <Box id={'features'} as='section'>
+      <Container maxW='container.lg' centerContent>
+        <Heading as='h1' size='2xl'>
           Key Features & Capabilities
         </Heading>
         <Text fontSize={'lg'}>
@@ -28,13 +27,11 @@ export const Features = () => {
           functions for advanced analytics and visualization with these data
           structures.
         </Text>
-      </Stack>
 
-      <Container maxW={'6xl'} mt={10}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} my={8}>
           {features.map((feature, index) => (
-            <HStack key={index} align={'top'}>
-              <Box color={'green.400'} px={2}>
+            <HStack key={index} align={'top'} my={2}>
+              <Box color={'green.400'}>
                 <Icon as={CheckIcon} />
               </Box>
               <VStack align={'start'}>
