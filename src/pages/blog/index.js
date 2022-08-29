@@ -12,70 +12,70 @@ import {
   VStack,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react'
 
-import { Layout } from "components/Layout"
-import { Link } from "components/mdx"
-import { distanceToNow, formatDate } from "lib/date-formatting"
-import { getSortedPostsMetadata } from "../../lib/posts"
+import { Layout } from '@/components/layout'
+import { Link } from '@/components/mdx'
+import { distanceToNow, formatDate } from '@/lib/date-formatting'
+import { getSortedPostsMetadata } from '@/lib/posts'
 
 export default function Blog({ allPostsData }) {
   return (
     <Layout
-      title={"Blog | Xarray"}
-      url={"https://xarray.dev/blog"}
+      title={'Blog | Xarray'}
+      url={'https://xarray.dev/blog'}
       card={
-        "https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png"
+        'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png'
       }
     >
       <Box
         py={20}
         spacing={4}
-        justifyContent="center"
-        alignItems="flex-start"
-        m="0 auto 4rem auto"
-        maxWidth="4xl"
+        justifyContent='center'
+        alignItems='flex-start'
+        m='0 auto 4rem auto'
+        maxWidth='4xl'
       >
         <Stack spacing={4}>
-          <Heading fontSize={"5xl"} textAlign={"center"}>
+          <Heading fontSize={'5xl'} textAlign={'center'}>
             Blog
           </Heading>
           <Text
-            color={useColorModeValue("gray.800", "white")}
-            fontSize={"lg"}
-            textAlign={"center"}
+            color={useColorModeValue('gray.800', 'white')}
+            fontSize={'lg'}
+            textAlign={'center'}
           >
             All the latest news, insights, and practices about Xarray from the
             Xarray team.
           </Text>
         </Stack>
-        <Divider py={2} borderColor="gray.200" />
+        <Divider py={2} borderColor='gray.200' />
 
         <VStack
-          divider={<StackDivider borderColor="gray.200" />}
+          divider={<StackDivider borderColor='gray.200' />}
           spacing={4}
-          align="stretch"
+          align='stretch'
         >
           {allPostsData.map((page) => {
             const date = new Date(page.date)
             return (
               <Stack key={page.id}>
                 <Stack
-                  spacing="2"
-                  align="stretch"
+                  spacing='2'
+                  align='stretch'
                   py={{ base: 5, md: 10 }}
-                  direction={{ base: "column", md: "row" }}
+                  direction={{ base: 'column', md: 'row' }}
                 >
                   <Box>
                     <Link
                       href={`/blog/${page.id}`}
-                      fontSize={"xl"}
-                      fontWeight={"bold"}
+                      fontSize={'xl'}
+                      fontWeight={'bold'}
                     >
                       {page.title}
                     </Link>
 
-                    <Text fontSize={"sm"} color={"gray.600"} py={4}>
+                    <Text fontSize={'sm'} color={'gray.600'} py={4}>
                       {formatDate(date)} ({distanceToNow(date)})
                     </Text>
 
@@ -90,9 +90,9 @@ export default function Blog({ allPostsData }) {
                         return (
                           <WrapItem key={author.name}>
                             <Flex
-                              align={"center"}
+                              align={'center'}
                               mt={1}
-                              direction={"column"}
+                              direction={'column'}
                               key={author.name}
                             >
                               <Avatar
@@ -111,7 +111,7 @@ export default function Blog({ allPostsData }) {
             )
           })}
         </VStack>
-        <Divider py={2} borderColor="gray.200" />
+        <Divider py={2} borderColor='gray.200' />
       </Box>
     </Layout>
   )

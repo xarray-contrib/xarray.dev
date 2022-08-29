@@ -1,13 +1,12 @@
-import React from "react"
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Box,
   CloseButton,
   useDisclosure,
-  AlertIcon,
-  Alert,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react'
 
 export const Banner = ({ title, description, children }) => {
   const {
@@ -19,12 +18,12 @@ export const Banner = ({ title, description, children }) => {
   return isVisible ? (
     <Box pt={16} px={20}>
       <Alert
-        status="info"
-        variant="solid"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
+        status='info'
+        variant='solid'
+        flexDirection='row'
+        alignItems='center'
+        justifyContent='center'
+        textAlign='center'
       >
         <AlertIcon />
 
@@ -33,8 +32,8 @@ export const Banner = ({ title, description, children }) => {
         {children}
 
         <CloseButton
-          alignSelf="flex-start"
-          position="relative"
+          alignSelf='flex-start'
+          position='relative'
           right={-1}
           top={-1}
           onClick={onClose}

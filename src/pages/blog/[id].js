@@ -9,26 +9,26 @@ import {
   VStack,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react"
+} from '@chakra-ui/react'
 
-import { ArrowBackIcon } from "@chakra-ui/icons"
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
-import { MDXRemote } from "next-mdx-remote"
-import { serialize } from "next-mdx-remote/serialize"
-import rehypeSlug from "rehype-slug"
+import { MDXRemote } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import rehypeSlug from 'rehype-slug'
 
-import fs from "fs"
-import matter from "gray-matter"
-import path from "path"
+import fs from 'fs'
+import matter from 'gray-matter'
+import path from 'path'
 
-import { Giscus } from "components"
-import { Layout } from "components/Layout"
-import { Link } from "components/mdx"
-import { distanceToNow, formatDate } from "../../lib/date-formatting"
-import { MDXElements } from "../../lib/mdx-elements"
-import { getAllPostsIds, getPostData } from "../../lib/posts"
+import { Giscus } from '@/components'
+import { Layout } from '@/components/layout'
+import { Link } from '@/components/mdx'
+import { distanceToNow, formatDate } from '@/lib/date-formatting'
+import { MDXElements } from '@/lib/mdx-elements'
+import { getAllPostsIds, getPostData } from '@/lib/posts'
 
-const CARDS_BASE_URL = "https://xarray.dev/cards"
+const CARDS_BASE_URL = 'https://xarray.dev/cards'
 
 export default function Post({ source, frontmatter, postId }) {
   const card = `${CARDS_BASE_URL}/${postId}.png`
@@ -44,32 +44,32 @@ export default function Post({ source, frontmatter, postId }) {
       <Box
         py={10}
         spacing={8}
-        justifyContent="center"
-        alignItems="flex-start"
-        m="0 auto 4rem auto"
-        maxWidth="4xl"
+        justifyContent='center'
+        alignItems='flex-start'
+        m='0 auto 4rem auto'
+        maxWidth='4xl'
       >
-        <Box spacing="3" alignItems="start">
-          <VStack paddingTop="30px" spacing="2" alignItems="center">
-            <Heading as={"h1"} textAlign={"center"} size="xl" my={4}>
+        <Box spacing='3' alignItems='start'>
+          <VStack paddingTop='30px' spacing='2' alignItems='center'>
+            <Heading as={'h1'} textAlign={'center'} size='xl' my={4}>
               {frontmatter.title}
             </Heading>
-            <Text fontSize={"sm"} color={"gray.700"}>
+            <Text fontSize={'sm'} color={'gray.700'}>
               {formatDate(date)} ({distanceToNow(date)})
             </Text>
 
-            <Wrap spacing="20px">
+            <Wrap spacing='20px'>
               {frontmatter.authors.map((author) => {
                 return (
                   <WrapItem key={author.name}>
                     <Flex
                       as={Link}
                       href={`https://github.com/${author.github}`}
-                      align={"center"}
+                      align={'center'}
                       my={2}
-                      direction={"column"}
+                      direction={'column'}
                       _hover={{
-                        textDecoration: "none",
+                        textDecoration: 'none',
                       }}
                     >
                       <Avatar
@@ -92,10 +92,10 @@ export default function Post({ source, frontmatter, postId }) {
         <Button
           my={8}
           as={Link}
-          href={"/blog"}
-          variant={"outline"}
+          href={'/blog'}
+          variant={'outline'}
           leftIcon={<ArrowBackIcon />}
-          colorScheme={"blue"}
+          colorScheme={'blue'}
         >
           Back to Blog
         </Button>
@@ -117,8 +117,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const postData = getPostData(params.id)
-  const filePath = path.join(process.cwd(), "src/posts", postData.file)
-  const source = fs.readFileSync(filePath, "utf8")
+  const filePath = path.join(process.cwd(), 'src/posts', postData.file)
+  const source = fs.readFileSync(filePath, 'utf8')
   const { content, data } = matter(source)
   const mdxSource = await serialize(content, {
     mdxOptions: {

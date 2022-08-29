@@ -1,16 +1,16 @@
-import { extendTheme } from "@chakra-ui/react"
-import { theme } from "@chakra-ui/theme"
-import "@fontsource/inter/variable.css"
+import { extendTheme } from '@chakra-ui/react'
+import { theme } from '@chakra-ui/theme'
+import '@fontsource/inter/variable.css'
 
 // color mode config
 const config = {
-  initialColorMode: "light",
+  initialColorMode: 'light',
   useSystemColorMode: false,
 }
 
 const fonts = {
   body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  heading: "Inter, Work Sans, system-ui, sans-serif",
+  heading: 'Inter, Work Sans, system-ui, sans-serif',
 }
 
 export const customTheme = extendTheme(
@@ -20,7 +20,7 @@ export const customTheme = extendTheme(
     fonts: fonts,
     styles: {
       global: {
-        html: { scrollBehavior: "smooth" },
+        html: { scrollBehavior: 'smooth' },
       },
     },
   },
