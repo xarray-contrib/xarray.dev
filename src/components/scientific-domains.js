@@ -1,10 +1,4 @@
-import {
-  Button,
-  Container,
-  SimpleGrid,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 
 import { Link } from '@/components/mdx'
@@ -15,12 +9,8 @@ export const ScientificDomains = () => {
   const projects = React.useMemo(() => Projects, [])
 
   return (
-    <Container maxW={'6xl'} mt={10}>
-      <Text
-        color={useColorModeValue('gray.800', 'white')}
-        fontSize={'lg'}
-        my={4}
-      >
+    <Box my={8}>
+      <Text fontSize={'lg'}>
         This section lists some of the standalone packages, projects developed
         with xarray.
       </Text>
@@ -55,6 +45,6 @@ export const ScientificDomains = () => {
       >
         See More
       </Button>
-    </Container>
+    </Box>
   )
 }

@@ -67,14 +67,14 @@ const Library = ({ name, description, repo, url, logo }) => {
 export const ArrayLibraries = () => {
   const libraries = React.useMemo(() => data, [])
   return (
-    <Box my={4}>
-      <Text color={useColorModeValue('gray.800', 'white')} fontSize={'lg'}>
+    <Box my={8}>
+      <Text fontSize={'lg'}>
         Xarray supports multiple array backends, allowing users to choose array
         types that work best for their application.
       </Text>
 
       <SimpleGrid
-        columns={{ base: 1, md: 3 }}
+        columns={{ base: 1, md: 2, lg: 3 }}
         spacing={8}
         my={8}
         align={'left'}

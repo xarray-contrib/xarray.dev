@@ -41,7 +41,7 @@ const SocialButton = ({ children, label, href }) => {
 
 const ListHeader = ({ children }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+    <Text fontWeight={'bold'} my={2}>
       {children}
     </Text>
   )
@@ -52,11 +52,12 @@ export const Footer = () => {
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
+      as='footer'
     >
-      <Container as={Stack} maxW={'6xl'} py={10}>
+      <Container maxW='container.lg' my={8} centerContent>
         <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
-          spacing={8}
+          columns={{ base: 1, sm: 2, md: 4 }}
+          spacing={{ base: 2, md: 8 }}
         >
           <Stack spacing={6}>
             <Box>
