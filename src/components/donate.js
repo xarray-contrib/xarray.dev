@@ -1,4 +1,11 @@
-import { Box, Button, Center, Container, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Container,
+  SimpleGrid,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 
 import { Heading, Image, Link } from '@/components/mdx'
 
@@ -6,19 +13,20 @@ import { BiDonateHeart } from 'react-icons/bi'
 
 export const Donate = () => {
   return (
-    <Box id={'donate'}>
-      <Container maxW={'6xl'}>
-        <Heading as='h1' size='2xl' my={4} textAlign={'center'}>
+    <Box id={'donate'} as='section'>
+      <Container maxW='container.xl' centerContent>
+        <Heading as='h1' size='2xl'>
           Donate
         </Heading>
-        <Stack
-          align={'center'}
-          py={{ base: 8, md: 8 }}
-          direction={{ base: 'column', md: 'row' }}
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={8}
+          my={8}
+          justify={'center'}
+          alignItems={'center'}
         >
           <Stack
             flex={1}
-            px={10}
             spacing={{ base: 5, md: 10 }}
             justify={'center'}
             align={'center'}
@@ -30,13 +38,19 @@ export const Donate = () => {
                 as={Link}
                 href={'https://en.wikipedia.org/wiki/501(c)(3)_organization'}
                 color={'blue.400'}
+                useExternalIcon
               >
                 501(c)(3) nonprofit charity
               </Text>{' '}
               in the United States. NumFOCUS provides Xarray with fiscal, legal,
               and administrative support to help ensure the health and
               sustainability of the project. Visit{' '}
-              <Text as={Link} href={'https://numfocus.org/'} color={'blue.400'}>
+              <Text
+                as={Link}
+                useExternalIcon
+                href={'https://numfocus.org/'}
+                color={'blue.400'}
+              >
                 numfocus.org
               </Text>{' '}
               for more information.
@@ -46,25 +60,23 @@ export const Donate = () => {
               consider making a donation to support our efforts.
             </Text>
             <Button
-              size={'lg'}
+              as={Link}
               fontWeight={'normal'}
-              px={6}
               colorScheme={'red'}
               bg={'red.400'}
               _hover={{ bg: 'red.500' }}
               rightIcon={<BiDonateHeart />}
+              href={'https://numfocus.org/donate-to-xarray'}
             >
-              <Link href={'https://numfocus.org/donate-to-xarray'}>Donate</Link>
+              Donate
             </Button>
           </Stack>
-          <Stack flex={1} justify={'center'} align={'center'} w={'full'}>
-            <Center
-              as={Image}
-              src={'/NumFOCUS_sponsored_project_logo.svg'}
-              alt={'NumFocus logo'}
-            ></Center>
-          </Stack>
-        </Stack>
+
+          <Image
+            src={'/NumFOCUS_sponsored_project_logo.svg'}
+            alt={'NumFocus logo'}
+          ></Image>
+        </SimpleGrid>
       </Container>
     </Box>
   )

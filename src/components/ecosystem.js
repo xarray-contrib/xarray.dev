@@ -50,9 +50,9 @@ const GitHubStats = () => {
 
 export const Ecosystem = () => {
   return (
-    <Box id={'ecosystem'}>
-      <Stack as={Container} maxW={'6xl'} textAlign={'center'}>
-        <Heading as='h1' size='2xl' my={4}>
+    <Box id={'ecosystem'} as='section'>
+      <Container maxW='container.xl' centerContent>
+        <Heading as='h1' size='2xl'>
           Ecosystem
         </Heading>
         <Text fontSize={'lg'}>
@@ -60,14 +60,21 @@ export const Ecosystem = () => {
           on top of NumPy, Pandas, and Dask and supports a wide range of domain
           specific scientific applications.
         </Text>
-        <GitHubStats />
-      </Stack>
 
-      <Container maxW={'6xl'} mt={10}>
-        <Tabs align='center' variant='enclosed' isFitted colorScheme='teal'>
+        <Tabs
+          my={8}
+          align='center'
+          variant='enclosed'
+          isFitted
+          colorScheme='teal'
+        >
           <TabList>
-            <Tab>Scientific Domains</Tab>
-            <Tab>Array Libraries</Tab>
+            <Tab _selected={{ color: 'white', bg: 'teal.500' }}>
+              Scientific Domains
+            </Tab>
+            <Tab _selected={{ color: 'white', bg: 'teal.500' }}>
+              Array Libraries
+            </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

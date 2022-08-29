@@ -1,13 +1,6 @@
 import React from 'react'
 
-import {
-  Box,
-  Container,
-  Flex,
-  Stack,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Container, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 
 import { Heading, Image, Link } from '@/components/mdx'
 import { Sponsors as data } from '@/data/sponsors'
@@ -16,24 +9,20 @@ export const Sponsors = () => {
   const sponsors = React.useMemo(() => data, [])
 
   return (
-    <Box id={'sponsors'}>
-      <Container maxW={'6xl'} as={Stack}>
-        <Stack>
-          <Heading as='h1' size='2xl' my={4} textAlign={'center'}>
-            Supported By
-          </Heading>
-          <Text
-            color={useColorModeValue('gray.800', 'white')}
-            fontSize={'lg'}
-            textAlign={'center'}
-          >
-            We thank these institutions for generously supporting the
-            development and maintenance of Xarray.
-          </Text>
-        </Stack>
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          spacing={2}
+    <Box id={'sponsors'} as='section'>
+      <Container maxW='container.xl' centerContent>
+        <Heading as='h1' size='2xl'>
+          Supported By
+        </Heading>
+        <Text fontSize={'lg'}>
+          We thank these institutions for generously supporting the development
+          and maintenance of Xarray.
+        </Text>
+
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 2, lg: 4 }}
+          my={4}
+          spacing={'space-between'}
           align={'center'}
           justify={'center'}
         >
@@ -51,7 +40,7 @@ export const Sponsors = () => {
               <Image w={36} h={36} src={sponsor.logo} alt={sponsor.name} />
             </Flex>
           ))}
-        </Stack>
+        </SimpleGrid>
       </Container>
     </Box>
   )
