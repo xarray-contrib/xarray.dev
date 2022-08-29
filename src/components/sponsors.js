@@ -10,7 +10,7 @@ export const Sponsors = () => {
 
   return (
     <Box id={'sponsors'} as='section'>
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
           Supported By
         </Heading>

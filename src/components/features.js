@@ -17,7 +17,7 @@ export const Features = () => {
   const features = React.useMemo(() => data, [])
   return (
     <Box id={'features'} as='section'>
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
           Key Features & Capabilities
         </Heading>

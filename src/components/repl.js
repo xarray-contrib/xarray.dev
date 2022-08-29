@@ -59,7 +59,7 @@ data.isel(lon=0).plot();
 export const Repl = () => {
   return (
     <Box id={'repl'} as='section'>
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
           Try Xarray
         </Heading>

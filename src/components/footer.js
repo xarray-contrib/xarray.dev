@@ -54,7 +54,7 @@ export const Footer = () => {
       color={useColorModeValue('gray.700', 'gray.200')}
       as='footer'
     >
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' my={8} centerContent>
         <SimpleGrid
           columns={{ base: 1, sm: 2, md: 4 }}
           spacing={{ base: 2, md: 8 }}

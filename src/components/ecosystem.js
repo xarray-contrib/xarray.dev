@@ -51,7 +51,7 @@ const GitHubStats = () => {
 export const Ecosystem = () => {
   return (
     <Box id={'ecosystem'} as='section'>
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
           Ecosystem
         </Heading>

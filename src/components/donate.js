@@ -14,7 +14,7 @@ import { BiDonateHeart } from 'react-icons/bi'
 export const Donate = () => {
   return (
     <Box id={'donate'} as='section'>
-      <Container maxW='container.xl' centerContent>
+      <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
           Donate
         </Heading>
