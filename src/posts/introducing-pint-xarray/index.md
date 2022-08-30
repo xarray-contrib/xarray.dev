@@ -115,27 +115,21 @@ You also immediately get the key benefits of Pint:
    <Quantity(2.6077643524162074e-11, 'parsec')>
    ```
 
-4. You can specify that custom functions should expect certain units, and convert them if needed:
+With these features, you can build code that automatically propagates units and converts them where necessary to stay consistent.
+For example, the problem of the NASA orbiter could have been prevented by explicitly converting to the correct units at the start
 
-   ```python
-   def jpl_trajectory_code(impulse):
-       """This function will only compute the correct result if supplied input in units of Newton-seconds."""
+```python
+def jpl_trajectory_code(impulse):
 
-       if impulse.pint.units != "newton * second":
-           impulse = impulse.pint.to("Newton * seconds")
+    # Defensively check units first
+    impulse = impulse.pint.to("Newton * seconds")
 
-       # do some rocket science
-       ...
+    # This function we called here will only compute the correct result if supplied input in units of Newton-seconds,
+    # but that's fine because we already converted the values to be in the correct units!
+    propagated_position = some_rocket_science(impulse)
 
-   lockheed_impulse_value = xr.DataArray(5).pint.quantify("force_pounds * seconds")
-
-   jpl_trajectory_code(lockheed_impulse_value)
-   ```
-
-   ```
-   Out:
-   pint.DimensionalityError
-   ```
+    return propagated_position
+```
 
 Note: We are adding [new features](https://github.com/xarray-contrib/pint-xarray/pull/143) to make specifying the units of parameters of existing library functions more slick.
 
