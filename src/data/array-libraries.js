@@ -20,7 +20,7 @@ export const Libraries = [
     description:
       'NumPy-compatible array library for GPU-accelerated computing with Python.',
     url: 'https://cupy.chainer.org/',
-    repo: 'https://github.com/cupy/cupy/',
+    repo: 'https://github.com/cupy/cupy',
     logo: '/libraries/cupy_logo_1000px.png',
   },
   {
@@ -35,13 +35,14 @@ export const Libraries = [
     name: 'Sparse',
     description: 'Sparse multi-dimensional arrays for the PyData ecosystem',
     url: 'https://sparse.pydata.org/',
+    repo: 'https://github.com/pydata/sparse',
     logo: '/libraries/sparse-logo.png',
   },
   {
     name: 'Pint',
     description: 'Operate and manipulate physical quantities in Python',
     url: 'http://pint.readthedocs.org/',
-    repo: 'https://github.com/pydata/sparse',
+    repo: 'https://github.com/hgrecco/pint',
     logo: '/libraries/pint-logo-full.jpg',
   },
 ]
