@@ -33,6 +33,7 @@ async function getScreenshot(postId) {
     height: height,
   })
   await page.goto(`${baseUrl}/cards/${postId}`)
+  await page.waitForTimeout(2000) // wait for page to load fully (2 seconds). This is a hacky way to wait for GitHub Avatars to fully load.
 
   await page.screenshot({
     path: `${cardsDir}/${postId}.png`,

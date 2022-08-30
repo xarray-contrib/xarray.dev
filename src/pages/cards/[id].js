@@ -1,90 +1,79 @@
+import { Image } from '@/components/mdx'
+import { MdOutlineCalendarToday, MdPeopleOutline } from 'react-icons/md'
+
 import { formatDate } from '@/lib/date-formatting'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
 import {
   Avatar,
   AvatarGroup,
   Box,
-  Center,
+  Container,
   Flex,
   Heading,
   Icon,
-  Image,
+  Stack,
   Text,
 } from '@chakra-ui/react'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import { MdCalendarToday } from 'react-icons/md'
 
 const Card = ({ frontmatter, id }) => {
-  const boxBackground = 'white !important'
-  const iconColor = 'brand.200'
+  const boxBackground = 'gray.300'
   const date = new Date(frontmatter.date)
 
   return (
-    <Center mt={40} id='post'>
-      <Flex
-        borderRadius='20px'
-        bg={boxBackground}
-        w={{ base: '900px', md: '930px' }}
-        direction='column'
-        justify='space-between'
-      >
-        <Box p='20px'>
-          <Flex w='100%' mb='10px'>
-            <Image
-              src={'/dataset-diagram-logo.png'}
-              alt={'xarray logo'}
-              me={'auto'}
-            ></Image>
-          </Flex>
-          <Box>
-            <Heading as={'h1'} size='xl'>
-              {frontmatter.title}
-            </Heading>
-          </Box>
-        </Box>
+    <Box sx={{ bg: boxBackground, color: 'invert' }} h={'100vh'} w={'100vw'}>
+      <Container id='post' maxW={{ base: '900px', md: '930px' }}>
+        <Flex direction='column' fontSize={'2xl'}>
+          <Stack direction={'row'} spacing={8} justify='space-between'>
+            <Stack>
+              <Text my={8} fontWeight={'bold'} opacity={0.7}>
+                xarray.dev / blog
+              </Text>
+            </Stack>
+            <Flex
+              direction={'row'}
+              alignItems={'center'}
+              justify={'right'}
+              align={'right'}
+            >
+              <Image
+                justify={'right'}
+                align={'right'}
+                w={40}
+                src={'/dataset-diagram-logo.png'}
+                alt={'xarray logo'}
+              />
+            </Flex>
+          </Stack>
+          <Heading as={'h1'} size={'2xl'} my={8}>
+            {frontmatter.title}
+          </Heading>
 
-        <Flex
-          mt='auto'
-          justify='space-between'
-          w='100%'
-          align='center'
-          borderBottomLeftRadius='inherit'
-          borderBottomRightRadius='inherit'
-          height='100%'
-          direction='row'
-          p='20px'
-        >
-          <Flex me='25px'>
-            <Icon
-              as={MdCalendarToday}
-              w='20px'
-              h='20px'
-              me='6px'
-              color='white.500'
-            />
-            <Text fontWeight={'600'} fontSize={'xl'}>
-              {formatDate(date)}
-            </Text>
-          </Flex>
+          <Stack direction={'row'} my={4} align={'center'}>
+            <Icon as={MdOutlineCalendarToday} w='8' h='8' />
+            <Text>{formatDate(date)}</Text>
+          </Stack>
 
-          <AvatarGroup size='md' max={4} color={iconColor}>
-            {frontmatter.authors.map((author) => {
-              return (
-                <Avatar
-                  key={author.name}
-                  src={`https://github.com/${author.github}.png`}
-                  name={author.name}
-                  mt={1}
-                  fontWeight={'600'}
-                />
-              )
-            })}
-          </AvatarGroup>
+          <Stack direction={'row'} my={8} align={'center'}>
+            <Icon as={MdPeopleOutline} w='8' h='8' />
+
+            <AvatarGroup size={'xl'}>
+              {frontmatter.authors.map((author) => {
+                return (
+                  <Avatar
+                    key={author.name}
+                    src={`https://github.com/${author.github}.png`}
+                    name={author.name}
+                  />
+                )
+              })}
+            </AvatarGroup>
+          </Stack>
         </Flex>
-      </Flex>
-    </Center>
+      </Container>
+    </Box>
   )
 }
 
