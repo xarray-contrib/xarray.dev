@@ -5,14 +5,14 @@ import { formatDate } from '@/lib/date-formatting'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
 import {
   Avatar,
+  AvatarGroup,
+  Box,
   Container,
   Flex,
   Heading,
   Icon,
   Stack,
   Text,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react'
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -23,67 +23,57 @@ const Card = ({ frontmatter, id }) => {
   const date = new Date(frontmatter.date)
 
   return (
-    <Container
-      my={20}
-      id='post'
-      sx={{ bg: boxBackground, color: 'invert' }}
-      maxW={{ base: '900px', md: '930px' }}
-    >
-      <Flex direction='column' fontSize={'2xl'}>
-        <Stack direction={'row'} spacing={8} justify='space-between'>
-          <Stack>
-            <Text my={8} fontWeight={'bold'} opacity={0.5}>
-              xarray.dev / blog
-            </Text>
-          </Stack>
-          <Flex
-            direction={'row'}
-            alignItems={'center'}
-            justify={'right'}
-            align={'right'}
-          >
-            <Image
+    <Box sx={{ bg: boxBackground, color: 'invert' }} h={'100vh'} w={'100vw'}>
+      <Container id='post' maxW={{ base: '900px', md: '930px' }}>
+        <Flex direction='column' fontSize={'2xl'}>
+          <Stack direction={'row'} spacing={8} justify='space-between'>
+            <Stack>
+              <Text my={8} fontWeight={'bold'} opacity={0.7}>
+                xarray.dev / blog
+              </Text>
+            </Stack>
+            <Flex
+              direction={'row'}
+              alignItems={'center'}
               justify={'right'}
               align={'right'}
-              w={40}
-              src={'/dataset-diagram-logo.png'}
-              alt={'xarray logo'}
-            />
-          </Flex>
-        </Stack>
-        <Heading as={'h1'} size={'2xl'} my={8}>
-          {frontmatter.title}
-        </Heading>
+            >
+              <Image
+                justify={'right'}
+                align={'right'}
+                w={40}
+                src={'/dataset-diagram-logo.png'}
+                alt={'xarray logo'}
+              />
+            </Flex>
+          </Stack>
+          <Heading as={'h1'} size={'2xl'} my={8}>
+            {frontmatter.title}
+          </Heading>
 
-        <Stack direction={'row'} my={4} align={'center'}>
-          <Icon as={MdOutlineCalendarToday} w='8' h='8' />
-          <Text>{formatDate(date)}</Text>
-        </Stack>
+          <Stack direction={'row'} my={4} align={'center'}>
+            <Icon as={MdOutlineCalendarToday} w='8' h='8' />
+            <Text>{formatDate(date)}</Text>
+          </Stack>
 
-        <Stack direction={'row'} my={4} align={'center'}>
-          <Icon as={MdPeopleOutline} w='8' h='8' />
+          <Stack direction={'row'} my={8} align={'center'}>
+            <Icon as={MdPeopleOutline} w='8' h='8' />
 
-          <Wrap spacing={3} my={8}>
-            {frontmatter.authors.map((author) => {
-              return (
-                <WrapItem key={author.name}>
-                  <Flex align={'center'} direction={'column'}>
-                    <Avatar
-                      src={`https://github.com/${author.github}.png`}
-                      name={author.name}
-                      size={'lg'}
-                    />
-                    <Text fontWeight={'bold'} fontSize={'md'}>
-                      {author.name}
-                    </Text>
-                  </Flex>
-                </WrapItem>
-              )
-            })}
-          </Wrap>
-        </Stack>
-      </Flex>
-    </Container>
+            <AvatarGroup size={'xl'}>
+              {frontmatter.authors.map((author) => {
+                return (
+                  <Avatar
+                    key={author.name}
+                    src={`https://github.com/${author.github}.png`}
+                    name={author.name}
+                  />
+                )
+              })}
+            </AvatarGroup>
+          </Stack>
+        </Flex>
+      </Container>
+    </Box>
   )
 }
 

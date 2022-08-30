@@ -71,6 +71,7 @@ export default function Post({ source, frontmatter, postId }) {
                           src={`https://github.com/${author.github}.png`}
                           name={author.name}
                           my={2}
+                          size={'lg'}
                         />
                         <Text fontWeight={600}>{author.name}</Text>
                       </Flex>
