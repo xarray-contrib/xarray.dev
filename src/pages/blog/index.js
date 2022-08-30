@@ -1,9 +1,9 @@
 import {
   Avatar,
+  AvatarGroup,
   Box,
   Container,
   Divider,
-  Flex,
   Heading,
   Spacer,
   Stack,
@@ -11,8 +11,6 @@ import {
   Text,
   useColorModeValue,
   VStack,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react'
 
 import { Layout } from '@/components/layout'
@@ -79,26 +77,17 @@ export default function Blog({ allPostsData }) {
                     </Box>
                     <Spacer />
                     <Box>
-                      <Wrap spacing={2}>
+                      <AvatarGroup size={'lg'}>
                         {page.authors.map((author) => {
                           return (
-                            <WrapItem key={author.name}>
-                              <Flex
-                                align={'center'}
-                                mt={1}
-                                direction={'column'}
-                                key={author.name}
-                              >
-                                <Avatar
-                                  src={`https://github.com/${author.github}.png`}
-                                  name={author.name}
-                                  mb={1}
-                                />
-                              </Flex>
-                            </WrapItem>
+                            <Avatar
+                              key={author.name}
+                              src={`https://github.com/${author.github}.png`}
+                              name={author.name}
+                            />
                           )
                         })}
-                      </Wrap>
+                      </AvatarGroup>
                     </Box>
                   </Stack>
                 </Stack>
