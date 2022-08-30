@@ -24,7 +24,7 @@ export const Layout = ({
       <Link href='/blog/introducing-pint-xarray'>
         Unit-aware arithmetic in Xarray, via pint
       </Link>
-   </Text>
+    </Text>
   )
   return (
     <>
