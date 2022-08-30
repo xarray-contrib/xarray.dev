@@ -19,16 +19,21 @@ import matter from 'gray-matter'
 import path from 'path'
 
 const Card = ({ frontmatter, id }) => {
-  const boxBackground = 'gray.300'
+  const boxBackground = 'teal.100'
   const date = new Date(frontmatter.date)
 
   return (
-    <Box sx={{ bg: boxBackground, color: 'invert' }} h={'100vh'} w={'100vw'}>
-      <Container id='post' maxW={{ base: '900px', md: '930px' }}>
+    <Box
+      sx={{ bg: boxBackground, color: 'invert' }}
+      h={'100vh'}
+      w={'100vw'}
+      backgroundImage={'/background.svg'}
+    >
+      <Container id='post' maxW={'container.lg'} centerContent>
         <Flex direction='column' fontSize={'2xl'}>
           <Stack direction={'row'} spacing={8} justify='space-between'>
             <Stack>
-              <Text my={8} fontWeight={'bold'} opacity={0.7}>
+              <Text my={32} fontWeight={'bold'} opacity={0.7}>
                 xarray.dev / blog
               </Text>
             </Stack>
@@ -53,7 +58,7 @@ const Card = ({ frontmatter, id }) => {
 
           <Stack direction={'row'} my={4} align={'center'}>
             <Icon as={MdOutlineCalendarToday} w='8' h='8' />
-            <Text>{formatDate(date)}</Text>
+            <Text fontWeight={'bold'}>{formatDate(date)}</Text>
           </Stack>
 
           <Stack direction={'row'} my={8} align={'center'}>

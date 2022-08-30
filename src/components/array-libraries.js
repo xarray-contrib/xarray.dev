@@ -86,6 +86,7 @@ export const ArrayLibraries = () => {
             description={library.description}
             logo={library.logo}
             url={library.url}
+            repo={library.repo}
           />
         ))}
       </SimpleGrid>
