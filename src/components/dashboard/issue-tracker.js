@@ -7,9 +7,9 @@ import { Heading } from '@/components/mdx'
 
 export const IssueTracker = () => {
   return (
-    <Box as='section'>
+    <Box as='section' id='issue-tracker'>
       <Container maxW='container.lg'>
-        <Heading as='h1' size='2xl' textAlign={'center'}>
+        <Heading as='h2' size='xl' textAlign={'center'}>
           Xarray Issue Tracker
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
