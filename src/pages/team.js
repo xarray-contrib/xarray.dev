@@ -1,22 +1,52 @@
 import { Layout } from '@/components/layout'
 import { Image, Link } from '@/components/mdx'
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import { TeamMember } from '@/components/team-member'
+import { TeamMembers } from '@/data/team-members'
+import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 
 const Team = () => {
   return (
     <Layout title={'Xarray Contributors'}>
       <Box as='section' py={20}>
         <Container maxW='container.lg'>
-          <Heading as='h1' size='2xl' textAlign={'center'} my={4}>
+          <Heading as='h1' size='2xl' textAlign={'center'}>
             Team
           </Heading>
+
+          <Box py={4}>
+            <Heading as='h2' size='xl' textAlign={'center'} my={4}>
+              Current core maintainers 🤝
+            </Heading>
+            <Text>
+              Xarray core maintainers are responsible for the ongoing
+              organizational maintenance and technical direction of the Xarray
+              project. The current core team comprises:
+            </Text>
+          </Box>
+
+          <SimpleGrid
+            columns={{ base: 1, md: 2, lg: 2, xl: 2, '2xl': 3 }}
+            spacing={8}
+            my={4}
+            align={'left'}
+          >
+            {TeamMembers.map((member) => (
+              <TeamMember key={member.name} member={member} />
+            ))}
+          </SimpleGrid>
           <Heading as='h2' size='xl' textAlign={'center'} my={4}>
-            Our valuable Contributors
+            Our valuable contributors 💖
           </Heading>
           <Text>
             Xarray is made with love by more than{' '}
-            <Link useExternalIcon>370 volunteer contributors</Link>. We
-            appreciate all contributions from community to make Xarray thrive.
+            <Link
+              href={'https://github.com/pydata/xarray/graphs/contributors'}
+              useExternalIcon
+            >
+              370 volunteer contributors
+            </Link>
+            . We appreciate all contributions from community to make Xarray
+            thrive.
           </Text>
           <Box
             as={Link}
@@ -27,16 +57,6 @@ const Team = () => {
               src={'https://contrib.rocks/image?repo=pydata/xarray'}
               alt={'Xarray Contributors'}
             />
-          </Box>
-          <Box py={8}>
-            <Heading as='h2' size='xl' textAlign={'center'} my={4}>
-              Current core maintainers
-            </Heading>
-            <Text>
-              Xarray core maintainers are responsible for the ongoing
-              organizational maintenance and technical direction of the xarray
-              project. The current core team comprises:
-            </Text>
           </Box>
         </Container>
       </Box>
