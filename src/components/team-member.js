@@ -30,14 +30,14 @@ export const TeamMember = ({ member }) => {
 
       <Stack spacing={4}>
         <Text fontWeight={'bold'}>{member.name}</Text>
-        <Stack direction={'row'} align='center' spacing={2}>
-          <SocialLink
-            href={`https://github.com/${member.github}`}
-            icon={IoLogoGithub}
-            label={`View ${member.name}'s Github`}
-          />
+        <Skeleton isLoaded={!isLoading}>
+          <Stack direction={'row'} align='center' spacing={2}>
+            <SocialLink
+              href={`https://github.com/${member.github}`}
+              icon={IoLogoGithub}
+              label={`View ${member.name}'s Github`}
+            />
 
-          <Skeleton isLoaded={!isLoading}>
             {data?.blog && (
               <SocialLink
                 href={data.blog}
@@ -53,8 +53,8 @@ export const TeamMember = ({ member }) => {
                 label={`View ${member.name}'s Twitter`}
               />
             )}
-          </Skeleton>
-        </Stack>
+          </Stack>
+        </Skeleton>
         <Skeleton isLoaded={!isLoading}>
           {data?.bio && (
             <Text fontSize='sm' color='fg-muted' noOfLines={2}>
