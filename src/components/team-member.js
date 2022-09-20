@@ -63,7 +63,7 @@ export const TeamMember = ({ member }) => {
           )}
 
           {data?.company && (
-            <Stack direction={'row'} align='center' spacing={2}>
+            <Stack direction={'row'} align='center' spacing={2} my={2}>
               <BsBuilding />
               <Text fontSize='sm' color='fg-muted'>
                 {data.company}
