@@ -1,35 +1,11 @@
-import {
-  Box,
-  Circle,
-  Flex,
-  Icon,
-  SimpleGrid,
-  Stack,
-  Text,
-  useColorModeValue,
-  VisuallyHidden,
-} from '@chakra-ui/react'
+import { Box, Circle, Flex, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { IoIosGlobe, IoLogoGithub } from 'react-icons/io'
 
-import { Image, Link } from '@/components/mdx'
+import { Image } from '@/components/mdx'
 import { Libraries as data } from '@/data/array-libraries'
 
-const SocialLink = ({ icon, href, label }) => {
-  return (
-    <Link
-      display='inline-flex'
-      alignItems='center'
-      justifyContent='center'
-      rounded='full'
-      href={href}
-      isExternal
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      <Icon as={icon} fontSize='xl' color='accent' />
-    </Link>
-  )
-}
+import { SocialLink } from '@/components/social-link'
 
 const Library = ({ name, description, repo, url, logo }) => {
   return (

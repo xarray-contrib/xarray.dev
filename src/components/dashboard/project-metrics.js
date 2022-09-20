@@ -2,7 +2,7 @@ import { DatasetteStatsCard } from '@/components/dashboard/datasette-stats-card'
 import { StatisticsCard } from '@/components/dashboard/statistics-card'
 import { Heading } from '@/components/mdx'
 import { fetcher } from '@/lib/data-fetching'
-import { SimpleGrid, Spinner, Box, Container } from '@chakra-ui/react'
+import { Box, Container, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { BsPeople, BsPerson } from 'react-icons/bs'
 import { GoBook, GoPackage, GoStar, GoTag } from 'react-icons/go'
 import useSWR from 'swr'
@@ -32,10 +32,10 @@ export const ProjectMetrics = () => {
   const year = dateObj.getFullYear()
 
   return (
-    <Box as='section'>
+    <Box as='section' id='metrics'>
       <Container maxW='container.lg'>
         {' '}
-        <Heading as='h1' size='2xl' textAlign={'center'}>
+        <Heading as='h2' size='xl' textAlign={'center'}>
           Xarray Project Metrics
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
