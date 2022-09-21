@@ -12,7 +12,7 @@ authors:
 
 In the past, when analyzing [Weather Research and Forecasting (`WRF`)](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) data with python you would be restricted to using the [`wrf-python`](https://wrf-python.readthedocs.io/en/latest/) package. This is not very convenient, especially when working on very large datasets since it uses compiled Fortran code in the background essentially preventing the user from scaling to cluster-scale using utilities like [`dask`](https://www.dask.org/).
 
-Here, we present to you [`xWRF`](https://github.com/xarray-contrib/xwrf/), a lightweight interface for working with the  model output in [Xarray](https://docs.xarray.dev/en/stable/). Using `xWRF` enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack. It achieves this by:
+Here, we present to you [`xWRF`](https://github.com/xarray-contrib/xwrf/), a lightweight interface for working with the model output in [Xarray](https://docs.xarray.dev/en/stable/). Using `xWRF` enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack. It achieves this by:
 
 1. transforming `WRF` data into CF- and COMODO-compliant xarray datasets
 2. converting `WRF` units into [`pint`](https://pint.readthedocs.io/en/stable/)-friendly ones
@@ -25,6 +25,7 @@ In this post, we will show how `xWRF` works together with other utilities in ord
 ## Installing `xWRF`
 
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
+
 1. Install this in your python environment using pip (`pip install xwrf`)
 2. Open up a notebook and use the imports shown below!
 
@@ -138,7 +139,7 @@ plot = ws_difference.hvplot.quadmesh(
     widget_location='bottom',
     title='Wind speed difference between SSPs 245 and 585',
     cmap='seismic',
-    clim=(-max_value,max_value), 
+    clim=(-max_value,max_value),
     clabel='wind speed [m/s]',
     coastline=True,
     geo=True,
@@ -147,6 +148,7 @@ plot = ws_difference.hvplot.quadmesh(
 )
 plot
 ```
+
 ![blogpost.gif](https://user-images.githubusercontent.com/14276158/191564410-1a7a83f0-3795-445a-9f5d-388ba225fa13.gif)
 
 Finally, we clean up our workspace.
