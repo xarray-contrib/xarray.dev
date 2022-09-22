@@ -29,8 +29,6 @@ It achieves this by:
 
 In this post, we will show how `xWRF` works together with other utilities in order to post-process a large `WRF` output dataset.
 
-+++
-
 ## Installing `xWRF`
 
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
