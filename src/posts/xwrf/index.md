@@ -10,9 +10,18 @@ authors:
 
 ![xWRF logo](https://github.com/xarray-contrib/xwrf/blob/main/docs/source/_static/xwrf_logo_bg_light.svg)
 
-In the past, when analyzing [Weather Research and Forecasting (`WRF`)](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) data with python you would be restricted to using the [`wrf-python`](https://wrf-python.readthedocs.io/en/latest/) package. This is not very convenient, especially when working on very large datasets since it uses compiled Fortran code in the background essentially preventing the user from scaling to cluster-scale using utilities like [`dask`](https://www.dask.org/).
+The [Weather Research and Forecasting model (`WRF`)](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is a mesoscale numerical weather prediction system, used for atmospheric research and operational forecasting.
+Among other private meteorological organizations, it is currently used by [NCEP](https://weather.gov/ncep/).
 
-Here, we present to you [`xWRF`](https://github.com/xarray-contrib/xwrf/), a lightweight interface for working with the model output in [Xarray](https://docs.xarray.dev/en/stable/). Using `xWRF` enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack. It achieves this by:
+`WRF` produces [NetCDF](https://www.unidata.ucar.edu/software/netcdf/) files for output, which have some custom quirks.
+In order to post-process these files with python, the tool of choice would be the [`wrf-python`](https://wrf-python.readthedocs.io/en/latest/) package.
+While `wrf-python` has a rich set of functionality, it also has some detrimental aspects which inspired a move away from it.
+One such aspects is its lack of direct integration with distributed/parallel tools, such as [`dask`](https://www.dask.org/), which enable the ability to work these larger terabyte or possibly even petabyte scale datasets.
+
+Here, we present to you [`xWRF`](https://github.com/xarray-contrib/xwrf/) (v0.0.2), a lightweight interface for working with the model output in [Xarray](https://docs.xarray.dev/en/stable/).
+It is the successor of an earlier version of `xWRF` presented in the [NCAR-ESDS blog](https://ncar.github.io/esds/posts/2021/xarray-wrf-example/) in October 2021.
+Since then, the package has matured considerably and now enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack. 
+It achieves this by:
 
 1. transforming `WRF` data into CF- and COMODO-compliant xarray datasets
 2. converting `WRF` units into [`pint`](https://pint.readthedocs.io/en/stable/)-friendly ones
@@ -26,7 +35,9 @@ In this post, we will show how `xWRF` works together with other utilities in ord
 
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
 
-1. Install this in your python environment using pip (`pip install xwrf`)
+1. Install this in your environment using either
+   * [conda](https://anaconda.org/conda-forge/xwrf) (`conda install -c conda-forge xwrf`)
+   * or [pip](https://pypi.org/project/xwrf/) (`pip install xwrf`)
 2. Open up a notebook and use the imports shown below!
 
 ```{code-cell} ipython3
@@ -124,8 +135,6 @@ for ds in [ssp2_ds, ssp5_ds]:
     wind_speeds_js.append(_wind_speed)
 ```
 
-+++ {"tags": []}
-
 Now, we can simply subtract the wind speed data of the two simulations from one another, compute the outcome and plot the data using `hvplot.quadmesh`.
 
 ```{code-cell} ipython3
@@ -155,8 +164,5 @@ Finally, we clean up our workspace.
 
 ```{code-cell} ipython3
 ssp5_ds.close(); ssp2_ds.close();
-```
-
-```{code-cell} ipython3
 cluster.close(); client.close()
 ```
