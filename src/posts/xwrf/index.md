@@ -20,7 +20,7 @@ One such aspects is its lack of direct integration with distributed/parallel too
 
 Here, we present to you [`xWRF`](https://github.com/xarray-contrib/xwrf/) (v0.0.2), a lightweight interface for working with the model output in [Xarray](https://docs.xarray.dev/en/stable/).
 It is the successor of an earlier version of `xWRF` presented in the [NCAR-ESDS blog](https://ncar.github.io/esds/posts/2021/xarray-wrf-example/) in October 2021.
-Since then, the package has matured considerably and now enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack. 
+Since then, the package has matured considerably and now enables a seamless integration of the unique `WRF` data format into Xarray and the [Pangeo](https://pangeo.io/) software stack.
 It achieves this by:
 
 1. transforming `WRF` data into CF- and COMODO-compliant xarray datasets
@@ -36,8 +36,8 @@ In this post, we will show how `xWRF` works together with other utilities in ord
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
 
 1. Install this in your environment using either
-   * [conda](https://anaconda.org/conda-forge/xwrf) (`conda install -c conda-forge xwrf`)
-   * or [pip](https://pypi.org/project/xwrf/) (`pip install xwrf`)
+   - [conda](https://anaconda.org/conda-forge/xwrf) (`conda install -c conda-forge xwrf`)
+   - or [pip](https://pypi.org/project/xwrf/) (`pip install xwrf`)
 2. Open up a notebook and use the imports shown below!
 
 ```{code-cell} ipython3
