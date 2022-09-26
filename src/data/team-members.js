@@ -16,4 +16,5 @@ export const TeamMembers = [
   { name: 'Jimmy Westling', github: 'Illviljan' },
   { name: 'Alessandro Amici', github: 'alexamici' },
   { name: 'Aureliana Barghini', github: 'aurghs' },
+  { name: 'Mick Niklas', github: 'headtr1ck' },
 ]
