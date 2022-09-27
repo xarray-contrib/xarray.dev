@@ -80,8 +80,10 @@ The Coupled Model Intercomparison Project phase 6 (`CMIP6`) provides scientific 
 There, the `CMIP`-models are used to analyze the impact of different forcings on the climate system and predict future climate change given different scenarios.
 
 Let's just imagine that one would want to investigate e.g. how climate change might affect the jet stream in the California region in different climate change scenarios.
-In the AR6, these scenarios are called [SSP](https://www.carbonbrief.org/explainer-how-shared-socioeconomic-pathways-explore-future-climate-change/).
-One comparison one might want to make could be between the SSP5-8.5 and the SSP2-4.5 scenarios.
+In earlier IPCC reports, said scenarios would only be differentiated by different Representative Concentration Pathways (RCP), modeling different radiative forcings due to greenhouse gases, aerosols and other factors.
+However, one major critique of this framework was that it excluded a whole dimension of socioeconomic and political developments.
+Since AR5, this dimension is included using so-called [Shared Socioeconomic Pathways (SSP)](https://www.carbonbrief.org/explainer-how-shared-socioeconomic-pathways-explore-future-climate-change/).
+For the sake of our analysis we pick two different scenarios which one might want to compare, namely SSP2-4.5 (SSP2, `4.5 W/m^2` forcing in 2100) and SSP5-8.5 (SSP5, `8.5 W/m^2` forcing in 2100).
 
 In order to be able to easily access this data, we are using an [`intake`](https://intake.readthedocs.io/en/latest/) catalog.
 This catalog points to [`kerchunk`](https://fsspec.github.io/kerchunk/) metadata which in turn points to this [Opendata AWS bucket](https://registry.opendata.aws/wrf-cmip6/).
