@@ -18,10 +18,10 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "^2.3.5",
-    "@chakra-ui/system": "^2.2.11",
+    "@chakra-ui/system": "^2.3.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@fontsource/inter": "^4.5.13",
+    "@fontsource/inter": "^4.5.14",
     "@giscus/react": "^2.2.0",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",

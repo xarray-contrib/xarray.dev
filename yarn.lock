@@ -873,7 +873,7 @@
   dependencies:
     "@chakra-ui/checkbox" "2.2.1"
 
-"@chakra-ui/system@2.2.12", "@chakra-ui/system@^2.2.11":
+"@chakra-ui/system@2.2.12":
   version "2.2.12"
   resolved "https://registry.yarnpkg.com/@chakra-ui/system/-/system-2.2.12.tgz#6792afebbebb21e03a4cbf6c0de79739f230acfc"
   integrity sha512-I7hFQswp8tG6ogjEMFs5TsCItdCYuNxpLAULgUrLdOlsQeNnHNQhlL4zpIfD+VzguhsNy5lisbegAMKjdghTYg==
@@ -881,6 +881,18 @@
     "@chakra-ui/color-mode" "2.1.9"
     "@chakra-ui/react-utils" "2.0.8"
     "@chakra-ui/styled-system" "2.3.4"
+    "@chakra-ui/utils" "2.0.11"
+    react-fast-compare "3.2.0"
+
+"@chakra-ui/system@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/system/-/system-2.3.0.tgz#b7ba122872d4d48806fbf994f1187680ae2296a6"
+  integrity sha512-BxikahglBI0uU8FE3anEorDTU5oKTUuBIEKVcQrEVnrbNuRJEy1OVYyCNXfqW3MpruRO9ypYV2bWt02AZZWEaQ==
+  dependencies:
+    "@chakra-ui/color-mode" "2.1.9"
+    "@chakra-ui/react-utils" "2.0.8"
+    "@chakra-ui/styled-system" "2.3.4"
+    "@chakra-ui/theme-utils" "2.0.1"
     "@chakra-ui/utils" "2.0.11"
     react-fast-compare "3.2.0"
 
@@ -928,10 +940,27 @@
     "@chakra-ui/anatomy" "2.0.7"
     "@ctrl/tinycolor" "^3.4.0"
 
+"@chakra-ui/theme-utils@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/theme-utils/-/theme-utils-2.0.1.tgz#a3dc99331ba943e155dd683fe25ce302e3084db0"
+  integrity sha512-NDwzgTPxm+v3PAJlSSU1MORHLMqO9vsRJ+ObELD5wpvE9aEyRziN/AZSoK2oLwCQMPEiU7R99K5ij1E6ptMt7w==
+  dependencies:
+    "@chakra-ui/styled-system" "2.3.4"
+    "@chakra-ui/theme" "2.1.14"
+    lodash.mergewith "4.6.2"
+
 "@chakra-ui/theme@2.1.13":
   version "2.1.13"
   resolved "https://registry.yarnpkg.com/@chakra-ui/theme/-/theme-2.1.13.tgz#51e76179048cf87c0cb551a619a49d183246550e"
   integrity sha512-qbrrvn9JstyLFV2qyhwgnhwzVs4zSJ4PcS3ScL8kafXJazTRU6onbCcjEZ5mVCw6z8uEz3jcE8Y5KIhVzaB+Xw==
+  dependencies:
+    "@chakra-ui/anatomy" "2.0.7"
+    "@chakra-ui/theme-tools" "2.0.12"
+
+"@chakra-ui/theme@2.1.14":
+  version "2.1.14"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/theme/-/theme-2.1.14.tgz#4726d65a65515f8ee96b5f2a725d0d17804ddfc9"
+  integrity sha512-6EYJCQlrjSjNAJvZmw1un50F8+sQDFsdwu/7UzWe+TeANpKlz4ZcHbh0gkl3PD62lGis+ehITUwqRm8htvDOjw==
   dependencies:
     "@chakra-ui/anatomy" "2.0.7"
     "@chakra-ui/theme-tools" "2.0.12"
@@ -1121,10 +1150,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/inter@^4.5.13":
-  version "4.5.13"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.13.tgz#db4b0177992091816962c4a4a24b1e060cc750bf"
-  integrity sha512-nABtF6jNZZHrotLRiGBByhG7NKJGJHgMbX5W8v6C/7nSdyiWtMRfZX7AMIECDLYGUOEArZDeVO/SbkgwKLrLJw==
+"@fontsource/inter@^4.5.14":
+  version "4.5.14"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.14.tgz#3944b809aa7bf27dacd20bdc04a49fb738959724"
+  integrity sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==
 
 "@giscus/react@^2.2.0":
   version "2.2.0"
