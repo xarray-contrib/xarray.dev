@@ -15,7 +15,9 @@ export const Layout = ({
 }) => {
   const bannerTitle = ''
   const bannerDescription = ''
-  const bannerChildren = null
+  const bannerChildren =  <Text fontWeight='medium'>
+  <Link href='/href-placeholder'>Text for a future announcement</Link>
+</Text>
   return (
     <>
       <Head>
