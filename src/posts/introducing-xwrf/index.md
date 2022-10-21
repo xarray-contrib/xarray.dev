@@ -4,7 +4,7 @@ date: '2022-10-12'
 authors:
   - name: Lukas Pilz
     github: lpilz
-  - name: Jon Thielen
+  - name: Jonathan (JT) Thielen
     github: jthielen
 ---
 
@@ -53,6 +53,7 @@ Before we start using `xWRF`, we need to install it. We can do this by following
 
 ```python
 # for WRF data processing (`xwrf` Dataset and DataArray accessor)
+import xarray as xr
 import xwrf
 # for unit conversion (`pint` DataArray accessor)
 import pint_xarray
@@ -66,6 +67,7 @@ import hvplot
 import hvplot.xarray
 
 hv.extension('bokeh') # set plotting backend
+xr.set_options(display_style="text")
 ```
 
 ## Spin up a Cluster
@@ -75,10 +77,12 @@ This example uses a large volume of data, so in order to make use of `dask`'s pa
 ```python
 cluster = LocalCluster(n_workers=6)
 client = Client(cluster)
-client
+print(client)
 ```
 
-TODO: insert output
+```
+<Client: 'tcp://127.0.0.1:33017' processes=6 threads=24, memory=125.71 GiB>
+```
 
 ## Example analysis
 
@@ -95,7 +99,59 @@ ssp5_ds = cat["xwrf-sample-ssp585"].to_dask()
 ssp5_ds
 ```
 
-TODO: insert output
+```
+<xarray.Dataset>
+Dimensions:                (Time: 124, south_north: 340, west_east: 270,
+                            bottom_top_stag: 40, bottom_top: 39,
+                            soil_levels_or_lake_levels_stag: 10,
+                            snow_and_soil_levels_stag: 15, soil_layers_stag: 4,
+                            seed_dim_stag: 2, west_east_stag: 271,
+                            south_north_stag: 341, snow_layers_stag: 3,
+                            interface_levels_stag: 16, snso_layers_stag: 7)
+Coordinates:
+  * Time                   (Time) float64 nan 1.0 2.0 3.0 ... 121.0 122.0 123.0
+    XLAT                   (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    XLAT_U                 (Time, south_north, west_east_stag) float32 dask.array<chunksize=(1, 170, 136), meta=np.ndarray>
+    XLAT_V                 (Time, south_north_stag, west_east) float32 dask.array<chunksize=(1, 171, 135), meta=np.ndarray>
+    XLONG                  (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    XLONG_U                (Time, south_north, west_east_stag) float32 dask.array<chunksize=(1, 170, 136), meta=np.ndarray>
+    XLONG_V                (Time, south_north_stag, west_east) float32 dask.array<chunksize=(1, 171, 135), meta=np.ndarray>
+    XTIME                  (Time) float32 dask.array<chunksize=(124,), meta=np.ndarray>
+Dimensions without coordinates: south_north, west_east, bottom_top_stag,
+                                bottom_top, soil_levels_or_lake_levels_stag,
+                                snow_and_soil_levels_stag, soil_layers_stag,
+                                seed_dim_stag, west_east_stag,
+                                south_north_stag, snow_layers_stag,
+                                interface_levels_stag, snso_layers_stag
+Data variables: (12/283)
+    ACGRDFLX               (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACHFX                  (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLHF                  (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNB                (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNBC               (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNT                (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ...                     ...
+    ZNU                    (Time, bottom_top) float32 dask.array<chunksize=(1, 39), meta=np.ndarray>
+    ZNW                    (Time, bottom_top_stag) float32 dask.array<chunksize=(1, 40), meta=np.ndarray>
+    ZS                     (Time, soil_layers_stag) float32 dask.array<chunksize=(1, 4), meta=np.ndarray>
+    ZSNSO                  (Time, snso_layers_stag, south_north, west_east) float32 dask.array<chunksize=(1, 7, 170, 135), meta=np.ndarray>
+    ZWT                    (Time, south_north, west_east) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    Z_LAKE3D               (Time, soil_levels_or_lake_levels_stag, south_north, west_east) float32 dask.array<chunksize=(1, 10, 170, 135), meta=np.ndarray>
+Attributes: (12/149)
+    ADAPT_DT_MAX:                    72.0
+    ADAPT_DT_MIN:                    36.0
+    ADAPT_DT_START:                  54.0
+    AERCU_FCT:                       1.0
+    AERCU_OPT:                       0
+    AER_ANGEXP_OPT:                  1
+    ...                              ...
+    WEST-EAST_PATCH_END_STAG:        271
+    WEST-EAST_PATCH_END_UNSTAG:      270
+    WEST-EAST_PATCH_START_STAG:      1
+    WEST-EAST_PATCH_START_UNSTAG:    1
+    W_DAMPING:                       0
+    YSU_TOPDOWN_PBLMIX:              0
+```
 
 As one can see, this output is not very helpful. Heaps of necessary information like WRF model grid coordinates or coordinate index assignments are missing. But we can use `xWRF` to very efficiently fix this.
 
@@ -110,7 +166,65 @@ print(f"{end - start} s elapsed")
 ssp5_ds
 ```
 
-TODO: insert output
+```
+3.1846201419830322 s elapsed
+```
+
+```
+<xarray.Dataset>
+Dimensions:                    (Time: 124, z: 39, z_stag: 40, y: 340, x: 270,
+                                soil_levels_or_lake_levels_stag: 10,
+                                snow_and_soil_levels_stag: 15,
+                                soil_layers_stag: 4, seed_dim_stag: 2,
+                                x_stag: 271, y_stag: 341, snow_layers_stag: 3,
+                                interface_levels_stag: 16, snso_layers_stag: 7)
+Coordinates: (12/15)
+  * Time                       (Time) datetime64[ns] 2099-10-01 ... 2099-10-3...
+  * z                          (z) float32 0.9969 0.9899 ... 0.009174 0.002948
+  * z_stag                     (z_stag) float32 1.0 0.9938 ... 0.005896 0.0
+    CLAT                       (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLAT                       (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLAT_U                     (y, x_stag) float32 dask.array<chunksize=(170, 136), meta=np.ndarray>
+    ...                         ...
+    XLONG_V                    (y_stag, x) float32 dask.array<chunksize=(171, 135), meta=np.ndarray>
+    XTIME                      (Time) float32 dask.array<chunksize=(124,), meta=np.ndarray>
+  * y_stag                     (y_stag) float64 -3.386e+05 ... 2.721e+06
+  * x_stag                     (x_stag) float64 -4.733e+06 ... -2.303e+06
+  * y                          (y) float64 -3.341e+05 -3.251e+05 ... 2.717e+06
+  * x                          (x) float64 -4.728e+06 -4.719e+06 ... -2.307e+06
+Dimensions without coordinates: soil_levels_or_lake_levels_stag,
+                                snow_and_soil_levels_stag, soil_layers_stag,
+                                seed_dim_stag, snow_layers_stag,
+                                interface_levels_stag, snso_layers_stag
+Data variables: (12/282)
+    ACGRDFLX                   (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACHFX                      (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLHF                      (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNB                    (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNBC                   (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNT                    (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ...                         ...
+    air_pressure               (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    geopotential               (Time, z_stag, y, x) float32 dask.array<chunksize=(1, 40, 170, 135), meta=np.ndarray>
+    geopotential_height        (Time, z_stag, y, x) float32 dask.array<chunksize=(1, 40, 170, 135), meta=np.ndarray>
+    wind_east                  (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    wind_north                 (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    wrf_projection             object +proj=lcc +x_0=0 +y_0=0 +a=6370000 +b=6...
+Attributes: (12/149)
+    ADAPT_DT_MAX:                    72.0
+    ADAPT_DT_MIN:                    36.0
+    ADAPT_DT_START:                  54.0
+    AERCU_FCT:                       1.0
+    AERCU_OPT:                       0
+    AER_ANGEXP_OPT:                  1
+    ...                              ...
+    WEST-EAST_PATCH_END_STAG:        271
+    WEST-EAST_PATCH_END_UNSTAG:      270
+    WEST-EAST_PATCH_START_STAG:      1
+    WEST-EAST_PATCH_START_UNSTAG:    1
+    W_DAMPING:                       0
+    YSU_TOPDOWN_PBLMIX:              0
+```
 
 Despite the uncompressed dataset being close to 60GB in size, the `xWRF` post-processing is done in negligble time thanks to delayed computation of `dask` arrays.
 
@@ -120,7 +234,23 @@ Along with cleaning up the coordinates, `xWRF` post-processing includes the calc
 ssp5_ds.air_pressure
 ```
 
-TODO: insert output
+```
+<xarray.DataArray 'air_pressure' (Time: 124, z: 39, y: 340, x: 270)>
+dask.array<add, shape=(124, 39, 340, 270), dtype=float32, chunksize=(1, 39, 170, 135), chunktype=numpy.ndarray>
+Coordinates:
+  * Time     (Time) datetime64[ns] 2099-10-01 ... 2099-10-31T18:00:00
+  * z        (z) float32 0.9969 0.9899 0.981 0.9698 ... 0.0161 0.009174 0.002948
+    CLAT     (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLAT     (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLONG    (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XTIME    (Time) float32 dask.array<chunksize=(124,), meta=np.ndarray>
+  * y        (y) float64 -3.341e+05 -3.251e+05 ... 2.708e+06 2.717e+06
+  * x        (x) float64 -4.728e+06 -4.719e+06 ... -2.316e+06 -2.307e+06
+Attributes:
+    units:          Pa
+    standard_name:  air_pressure
+    grid_mapping:   wrf_projection
+```
 
 For comparison with these SSP5-8.5 data, using method chaining, we can load the SSP2-4.5 data too and post-process it in a single line!
 
@@ -129,7 +259,61 @@ ssp2_ds = cat["xwrf-sample-ssp245"].to_dask().xwrf.postprocess()
 ssp2_ds
 ```
 
-TODO: insert output
+```
+<xarray.Dataset>
+Dimensions:                    (Time: 124, z: 39, z_stag: 40, y: 340, x: 270,
+                                soil_levels_or_lake_levels_stag: 10,
+                                snow_and_soil_levels_stag: 15,
+                                soil_layers_stag: 4, seed_dim_stag: 2,
+                                x_stag: 271, y_stag: 341, snow_layers_stag: 3,
+                                interface_levels_stag: 16, snso_layers_stag: 7)
+Coordinates: (12/15)
+  * Time                       (Time) datetime64[ns] 2099-10-01 ... 2099-10-3...
+  * z                          (z) float32 0.9969 0.9899 ... 0.009174 0.002948
+  * z_stag                     (z_stag) float32 1.0 0.9938 ... 0.005896 0.0
+    CLAT                       (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLAT                       (y, x) float32 dask.array<chunksize=(170, 135), meta=np.ndarray>
+    XLAT_U                     (y, x_stag) float32 dask.array<chunksize=(170, 136), meta=np.ndarray>
+    ...                         ...
+    XLONG_V                    (y_stag, x) float32 dask.array<chunksize=(171, 135), meta=np.ndarray>
+    XTIME                      (Time) float32 dask.array<chunksize=(124,), meta=np.ndarray>
+  * y_stag                     (y_stag) float64 -3.386e+05 ... 2.721e+06
+  * x_stag                     (x_stag) float64 -4.733e+06 ... -2.303e+06
+  * y                          (y) float64 -3.341e+05 -3.251e+05 ... 2.717e+06
+  * x                          (x) float64 -4.728e+06 -4.719e+06 ... -2.307e+06
+Dimensions without coordinates: soil_levels_or_lake_levels_stag,
+                                snow_and_soil_levels_stag, soil_layers_stag,
+                                seed_dim_stag, snow_layers_stag,
+                                interface_levels_stag, snso_layers_stag
+Data variables: (12/282)
+    ACGRDFLX                   (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACHFX                      (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLHF                      (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNB                    (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNBC                   (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ACLWDNT                    (Time, y, x) float32 dask.array<chunksize=(1, 170, 135), meta=np.ndarray>
+    ...                         ...
+    air_pressure               (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    geopotential               (Time, z_stag, y, x) float32 dask.array<chunksize=(1, 40, 170, 135), meta=np.ndarray>
+    geopotential_height        (Time, z_stag, y, x) float32 dask.array<chunksize=(1, 40, 170, 135), meta=np.ndarray>
+    wind_east                  (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    wind_north                 (Time, z, y, x) float32 dask.array<chunksize=(1, 39, 170, 135), meta=np.ndarray>
+    wrf_projection             object +proj=lcc +x_0=0 +y_0=0 +a=6370000 +b=6...
+Attributes: (12/149)
+    ADAPT_DT_MAX:                    72.0
+    ADAPT_DT_MIN:                    36.0
+    ADAPT_DT_START:                  54.0
+    AERCU_FCT:                       1.0
+    AERCU_OPT:                       0
+    AER_ANGEXP_OPT:                  1
+    ...                              ...
+    WEST-EAST_PATCH_END_STAG:        271
+    WEST-EAST_PATCH_END_UNSTAG:      270
+    WEST-EAST_PATCH_START_STAG:      1
+    WEST-EAST_PATCH_START_UNSTAG:    1
+    W_DAMPING:                       0
+    YSU_TOPDOWN_PBLMIX:              0
+```
 
 Now, say we want to calculate the wind speeds from grid-relative wind vector components using [MetPy](https://unidata.github.io/MetPy/latest/). Because WRF's most commonly used core utilizes a numerically-advantageous [Arakawa-C grid](http://amps-backup.ucar.edu/information/configuration/wrf_grid_structure.html), these wind components are located on grid cell walls and have differing array shapes, which means we need to *destagger* them onto the grid cell center to perform our calculation (we could also use the already-destaggered earth-relative wind component, but where would be the fun in that? ;) ). Additionally, atmospheric data is most frequently interpretted on isobaric (constant pressure) levels, so we also will use [xgcm](https://xgcm.readthedocs.io/en/latest/) to perform vertical interpolation to our defined pressure levels.
 
