@@ -8,7 +8,7 @@ authors:
     github: jthielen
 ---
 
-![xWRF logo](https://github.com/xarray-contrib/xwrf/blob/main/docs/source/_static/xwrf_logo_bg_light.svg)
+![xWRF logo](https://raw.githubusercontent.com/xarray-contrib/xwrf/main/docs/source/_static/xwrf_logo_bg_light.svg)
 
 ## TLDR
 
@@ -42,7 +42,7 @@ These factors, along with the maintenance burden of `wrf-python`'s legacy framew
 
 In this post, we will show how `xWRF` works together with other utilities in order to post-process a large WRF dataset.
 
-## Installing `xWRF`
+## Installing xWRF
 
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
 
@@ -363,7 +363,7 @@ plot = ws_difference.hvplot.quadmesh(
 plot
 ```
 
-![Animation of wind speed difference over the western U.S. for various times and isobaric levels](hvplot_output.gif)
+![Animation of wind speed difference over the western U.S. for various times and isobaric levels](/posts/introducing-xwrf/hvplot_output.gif)
 
 Finally, we clean up our workspace.
 
