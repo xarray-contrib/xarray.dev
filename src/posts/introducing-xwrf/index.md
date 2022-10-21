@@ -12,7 +12,7 @@ authors:
 
 ## TLDR
 
-The [WRF model](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is widely used in the atmospheric sciences community, but it's raw [NetCDF](https://www.unidata.ucar.edu/software/netcdf/) output is difficult to work with in Xarray. [`xWRF`](https://github.com/xarray-contrib/xwrf/) introduces post-processing and other utilities (via [accessors](https://docs.xarray.dev/en/stable/internals/extending-xarray.html)), making an `xarray.Dataset` of analysis-ready WRF data just a line of code away:
+The [WRF model](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is widely used in the atmospheric sciences community, but its raw [NetCDF](https://www.unidata.ucar.edu/software/netcdf/) output is difficult to work with in Xarray. [`xWRF`](https://github.com/xarray-contrib/xwrf/) introduces post-processing and other utilities (via [accessors](https://docs.xarray.dev/en/stable/internals/extending-xarray.html)), making an `xarray.Dataset` of analysis-ready WRF data just a line of code away:
 
 ```python
 import xarray as xr
@@ -33,7 +33,7 @@ However, when using WRF in one's own research, WRF outputs [NetCDF](https://www.
 
 To address these needs, *post-processing* tools are most often used to translate the "raw" WRF output into something more useable. Previously in the Python ecosystem, the only extant package for doing so was NCAR's [`wrf-python`](https://wrf-python.readthedocs.io/en/latest/). This legacy toolkit is built on long-standing Fortran routines ported from [NCL](http://www.ncl.ucar.edu/), and has a rich set of functionality for extracting diagnostic variables and interpolating to physically-meaningful coordinate systems. However, it crucially lacks CF metadata handling and [Dask](https://www.dask.org/) support, making it difficult to integrate into the modern stack of Python tools in the [Pangeo ecosystem](https://pangeo.io/) or to scale up to larger datasets.
 
-These factors, along with the maintence burden of `wrf-python`'s legacy framework, motivated several community members to build [`xWRF`](https://github.com/xarray-contrib/xwrf/). Efforts started with a simple interface for processing just WRF's poorly constructed time coordinate(s), as showcased in the [NCAR-ESDS blog](https://ncar.github.io/esds/posts/2021/xarray-wrf-example/) in October 2021. Since then, `xWRF` has built up to a full-featured accessor-based interface that enables a seamless integration of the unique WRF output format into Xarray and the rest of the Pangeo software stack. Key features include:
+These factors, along with the maintenance burden of `wrf-python`'s legacy framework, motivated several community members to build [`xWRF`](https://github.com/xarray-contrib/xwrf/). Efforts started with a simple interface for processing just WRF's poorly constructed time coordinate(s), as showcased in the [NCAR-ESDS blog](https://ncar.github.io/esds/posts/2021/xarray-wrf-example/) in October 2021. Since then, `xWRF` has built up to a full-featured accessor-based interface that enables a seamless integration of the unique WRF output format into Xarray and the rest of the Pangeo software stack. Key features include:
 
 1. transforming WRF data into CF- and COMODO-compliant `xarray.Dataset` instances
 2. converting WRF units into [`pint`](https://pint.readthedocs.io/en/stable/)-friendly ones
@@ -46,7 +46,7 @@ In this post, we will show how `xWRF` works together with other utilities in ord
 
 Before we start using `xWRF`, we need to install it. We can do this by following these steps!
 
-1. Install this in your environment using either
+1. Install it in your environment using either
    - [conda](https://anaconda.org/conda-forge/xwrf) (`conda install -c conda-forge xwrf`)
    - or [pip](https://pypi.org/project/xwrf/) (`pip install xwrf`)
 2. Open up a notebook and use the imports shown below!
@@ -72,7 +72,7 @@ xr.set_options(display_style="text")
 
 ## Spin up a Cluster
 
-This example uses a large volume of data, so in order to make use of `dask`'s parallelized computational speedup, specifying a Dask cluster best suited for the computational resources at one's disposal is in order. Here, we use a [`LocalCluster`](https://distributed.dask.org/en/stable/api.html#distributed.LocalCluster) to parallelize within a single machine. If we had access to a HPC system, we could also use [`Dask-Jobqueue`](https://jobqueue.dask.org/en/latest/) or another distributed Dask configuration in order to outsource the computation there.
+This example uses a large volume of data, so in order to make use of Dask's parallelized computational speedup, specifying a Dask cluster best suited for the computational resources at one's disposal is in order. Here, we use a [`LocalCluster`](https://distributed.dask.org/en/stable/api.html#distributed.LocalCluster) to parallelize within a single machine. If we had access to a HPC system, we could also use [`Dask-Jobqueue`](https://jobqueue.dask.org/en/latest/) or another distributed Dask configuration in order to outsource the computation there.
 
 ```python
 cluster = LocalCluster(n_workers=6)
@@ -86,11 +86,11 @@ print(client)
 
 ## Example analysis
 
-In this example, we will have a closer look at some WRF output data generated by downscaling the [CMIP6 GCM](https://mpimet.mpg.de/en/science/projects/integrated-activities/translate-to-englisch-cmip6-das-gekoppelte-modellvergleichsprojekt) data to higher spatial resolutions. This Coupled Model Intercomparison Project phase 6 (CMIP6) provides scientific input to the 6th assessment report of the IPCC ([IPCC AR6](https://www.ipcc.ch/report/ar6/wg1/)). There, the CMIP-models are used to analyze the impact of different forcings on the climate system and predict future climate change given different scenarios.
+In this example, we will have a closer look at some WRF output data generated by downscaling the [CMIP6 GCM](https://mpimet.mpg.de/en/science/projects/integrated-activities/translate-to-englisch-cmip6-das-gekoppelte-modellvergleichsprojekt) data to higher spatial resolutions. The Coupled Model Intercomparison Project phase 6 (CMIP6) provides scientific input to the 6th assessment report of the IPCC ([IPCC AR6](https://www.ipcc.ch/report/ar6/wg1/)). There, the CMIP-models are used to analyze the impact of different forcings on the climate system and predict future climate change given different scenarios.
 
 For the purposes of our example, let's imagine that one wishes to investigate how climate change could affect the jet stream in the California region in different climate change scenarios. In earlier IPCC reports, said scenarios would only be differentiated by different Representative Concentration Pathways (RCP), modeling different radiative forcings due to greenhouse gases, aerosols and other factors. However, one major critique of this framework was that it excluded a whole dimension of socioeconomic and political developments. Since AR5, this dimension is included using so-called [Shared Socioeconomic Pathways (SSP)](https://www.carbonbrief.org/explainer-how-shared-socioeconomic-pathways-explore-future-climate-change/). For the sake of this analysis. we pick two different scenarios which one might want to compare, namely SSP2-4.5 (SSP2, `4.5 W/m^2` forcing in 2100) and SSP5-8.5 (SSP5, `8.5 W/m^2` forcing in 2100).
 
-In order to be able to easily access this data, we are using an [`intake`](https://intake.readthedocs.io/en/latest/) catalog. This catalog points to [`kerchunk`](https://fsspec.github.io/kerchunk/) metadata which in turn points to an [Open Data AWS bucket](https://registry.opendata.aws/wrf-cmip6/). This allows us to read a large multi-file collection of netcdf4 files as if they were a single [Zarr store](https://zarr.readthedocs.io/en/stable/) concatenated over time (and this indeed uses an `xr.open_dataset` call with the `zarr` engine behind the scenes).
+In order to be able to easily access this data, we are using an [`intake`](https://intake.readthedocs.io/en/latest/) catalog. This catalog points to [`kerchunk`](https://fsspec.github.io/kerchunk/) metadata which in turn points to an [Open Data AWS bucket](https://registry.opendata.aws/wrf-cmip6/). This allows us to read a large multi-file collection of NetCDF files as if they were a single [Zarr store](https://zarr.readthedocs.io/en/stable/) concatenated over time (and this indeed uses an `xr.open_dataset` call with the `zarr` engine behind the scenes).
 
 ```python
 import intake
@@ -226,9 +226,9 @@ Attributes: (12/149)
     YSU_TOPDOWN_PBLMIX:              0
 ```
 
-Despite the uncompressed dataset being close to 60GB in size, the `xWRF` post-processing is done in negligble time thanks to delayed computation of `dask` arrays.
+Despite the uncompressed dataset being close to 60GB in size, the `xWRF` post-processing is done in negligible time thanks to delayed computation of `dask` arrays.
 
-Along with cleaning up the coordinates, `xWRF` post-processing includes the calculation of some basic diagnostics not included in `WRF` output, namely `air_pressure`, `air_potential_temperature`, `geopotential` and `geopotential_height`. Since version 0.0.2, it also computes `wind_east` and `wind_north` - earth relative wind vector components. These exist as `dask` arrays with delayed execution, and so are computed upon using `.compute()`, `.persist()` or `.values` on the variable itself or a variable depending on it.
+Along with cleaning up the coordinates, `xWRF` post-processing includes the calculation of some basic diagnostics not included in `WRF` output, namely `air_pressure`, `air_potential_temperature`, `geopotential` and `geopotential_height`. Since version 0.0.2, it also computes `wind_east` and `wind_north` - earth relative wind vector components. These exist as `dask` arrays with delayed execution, and so are only computed upon using `.compute()`, `.persist()` or `.values` on the variable itself or a variable depending on it.
 
 ```python
 ssp5_ds.air_pressure
@@ -315,7 +315,7 @@ Attributes: (12/149)
     YSU_TOPDOWN_PBLMIX:              0
 ```
 
-Now, say we want to calculate the wind speeds from grid-relative wind vector components using [MetPy](https://unidata.github.io/MetPy/latest/). Because WRF's most commonly used core utilizes a numerically-advantageous [Arakawa-C grid](http://amps-backup.ucar.edu/information/configuration/wrf_grid_structure.html), these wind components are located on grid cell walls and have differing array shapes, which means we need to *destagger* them onto the grid cell center to perform our calculation (we could also use the already-destaggered earth-relative wind component, but where would be the fun in that? ;) ). Additionally, atmospheric data is most frequently interpretted on isobaric (constant pressure) levels, so we also will use [xgcm](https://xgcm.readthedocs.io/en/latest/) to perform vertical interpolation to our defined pressure levels.
+Now, say we want to calculate the wind speeds from grid-relative wind vector components using [MetPy](https://unidata.github.io/MetPy/latest/). Because WRF's most commonly used core utilizes a numerically-advantageous [Arakawa-C grid](http://amps-backup.ucar.edu/information/configuration/wrf_grid_structure.html), these wind components are located on grid cell walls and have differing array shapes, which means we need to *destagger* them onto the grid cell center to perform our calculation (we could also use the already-destaggered earth-relative wind component, but where would be the fun in that? ;) ). Additionally, atmospheric data is most frequently interpreted on isobaric (constant pressure) levels, so we also will use [xgcm](https://xgcm.readthedocs.io/en/latest/) to perform vertical interpolation to our defined pressure levels.
 
 ```python
 from metpy.calc import wind_speed
@@ -340,7 +340,7 @@ for ds in [ssp2_ds, ssp5_ds]:
     wind_speeds_js.append(_wind_speed)
 ```
 
-Now, we can simply subtract the wind speed data of the two simulations from one another, let `dask` compute the outcome, and plot the data using `hvplot.quadmesh`.
+Now, we can simply subtract the wind speed data of the two simulations from one another, let Dask compute the outcome, and plot the data using `hvplot.quadmesh`.
 
 ```python
 ws_difference = (wind_speeds_js[0] - wind_speeds_js[1]).compute()
@@ -376,6 +376,6 @@ client.close()
 
 ## Conclusions
 
-In this blog post, we demonstrated how `xWRF` can handle the eccentricities of WRF model output in a lightweight and effecient fashion so as to integrate seamlessly with Xarray and many other tools of the Pangeo stack like Dask, MetPy, and xgcm. This updated approach, in comparison to legacy WRF post-processing tools, handles large, cloud-based workflows effortlessly as seen with this downscaled CMIP6 example. Single local-file use cases are just as straightforward, as seen in [`xWRF`'s documentation](https://xwrf.readthedocs.io/en/latest/) (among several other examples).
+In this blog post, we demonstrated how `xWRF` can handle the eccentricities of WRF model output in a lightweight and efficient fashion so as to integrate seamlessly with Xarray and many other tools of the Pangeo stack like Dask, MetPy, and xgcm. This updated approach, in comparison to legacy WRF post-processing tools, handles large, cloud-based workflows effortlessly as seen with this downscaled CMIP6 example. Single local-file use cases are just as straightforward, as seen in [`xWRF`'s documentation](https://xwrf.readthedocs.io/en/latest/) (among several other examples).
 
 The latest version of `xwrf` (v0.0.2, as of publication) contains the core set of functionality needed for most WRF postprocessing and is available on both conda-forge and PyPI, so feel free to try it out with your own WRF data processing! As a rather new package, we especially welcome any bug reports or feature requests on [xWRF's issue tracker](https://github.com/xarray-contrib/xwrf/issues), as well as PRs for code and/or documentation contributions.
