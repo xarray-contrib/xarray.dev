@@ -10,7 +10,7 @@ authors:
 
 ![xWRF logo](https://raw.githubusercontent.com/xarray-contrib/xwrf/main/docs/source/_static/xwrf_logo_bg_light.svg)
 
-## TLDR
+## Summary
 
 The [WRF model](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is widely used in the atmospheric sciences community, but its raw [NetCDF](https://www.unidata.ucar.edu/software/netcdf/) output is difficult to work with in Xarray. [`xWRF`](https://github.com/xarray-contrib/xwrf/) introduces post-processing and other utilities (via [accessors](https://docs.xarray.dev/en/stable/internals/extending-xarray.html)), making an `xarray.Dataset` of analysis-ready WRF data just a line of code away:
 
