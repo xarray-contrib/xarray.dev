@@ -1,6 +1,6 @@
 ---
 title: 'Making WRF model output Xarray-friendly using xWRF'
-date: '2022-10-12'
+date: '2022-10-27'
 authors:
   - name: Lukas Pilz
     github: lpilz
