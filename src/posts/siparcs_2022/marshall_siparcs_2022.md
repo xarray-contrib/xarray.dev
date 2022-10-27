@@ -1,4 +1,10 @@
-# Reflection on 2022 NCAR summer internship: "Leveraging Xarray for reproducible and scalable analysis of remote sensing data in the cloud"
+---
+title: 'Reflection on 2022 NCAR summer internship: "Leveraging Xarray for reproducible and scalable analysis of remote sensing data in the cloud"'
+date: '2022-10-27'
+authors:
+  - name: Emma Marshall
+    github: e-marshall
+---
 
 I spent the 2022 summer as a Summer Internships in Parallel Computational Sciences ([SIParCS](https://www2.cisl.ucar.edu/outreach/internships#technical)) intern at the National Center for Atmospheric Research ([NCAR](https://ncar.ucar.edu/)) in Boulder, CO, working on Xarray. The advertisement for the project highlighted working on cloud-based remote sensing data workflows using Xarray – something that was intriguing to me as a geography Ph.D. student at the University of Utah who has spent many hours downloading and organizing data locally and on HPC servers. My prior experience with cloud-computing and cloud-hosted resources was very minimal; I’d heard people discuss cloud-hosted data and was somewhat familiar with the terms ‘AWS’, ‘S3 bucket’, ‘Zarr’, etc. but was otherwise unfamiliar with the landscape of cloud resources.
 
