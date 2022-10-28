@@ -22,12 +22,12 @@ The Jupyter Book tutorials each focus on a different remote sensing dataset and 
 Here are the two books I created:
 
 1.  [Using Xarray to examine cloud-based glacier surface velocity data](https://e-marshall.github.io/itslive/)
-
-Based on the Inter-mission Time Series of Land Ice Velocity and Elevation ([ITS_LIVE](https://its-live.jpl.nasa.gov/)) dataset.
+ 
+    Based on the Inter-mission Time Series of Land Ice Velocity and Elevation ([ITS_LIVE](https://its-live.jpl.nasa.gov/)) dataset.
 
 2. [Sentinel-1 RTC imagery workflows with Xarray](https://e-marshall.github.io/sentinel1_rtc/)
 
-Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
+   Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
 
 #### Approach
 
@@ -43,7 +43,8 @@ Keeping errors in the code and including explanations and solutions was a valuab
 
 Working on these tutorials was a significant learning experience for me. I gained experience working with cloud-optimized data types such as [Zarr](https://zarr.readthedocs.io/en/stable/) and [COGs](https://www.cogeo.org/), querying cloud-hosted datasets such as [AWS](https://registry.opendata.aws/?search=tags:gis,earth%20observation,events,mapping,meteorological,environmental,transportation) and Microsoft Planetary Computer using [PySTAC](https://pystac.readthedocs.io/en/stable/) and [stackstac](https://stackstac.readthedocs.io/en/latest/) tools, and learned strategies for optimizing and parallelizing workflows using [Xarray](https://docs.xarray.dev/en/stable/) and [dask](https://www.dask.org/). Working with large datasets that necessitated the use of these tools was valuable in that I gained a better understanding of how they actually work, the purposes they serve, the situations in which they are or are not well-suited, and how to orient my workflows to make the best use of them. To give an example, while I had used dask once or twice in the past, I had never used it in a case where I was pushing my computational resources and thus needed to parallelize my workflow. Figuring out the appropriate use of Xarray and dask tools in these situations was a challenging learning experience that ultimately left me with a far greater understanding of what the tools are actually doing and how best to use them.
 
-<br>
+<br />
+
 ![](https://i.imgur.com/nh5K9AB.png)
 *Exploring seasonal variability in Sentinel-1 RTC backscatter using `groupby()` and `FacetGrid`*
 
