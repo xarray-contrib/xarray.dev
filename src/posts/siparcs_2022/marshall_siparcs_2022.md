@@ -76,15 +76,6 @@ The cloud-computing ecosystem was all new to me, and I felt slightly intimidated
 
 This summer, I got to experience how fun and exciting it is to talk through concepts, work on issues, and problem-solve with people who are passionate about what they do, curious about interesting questions, and selfless in the time and knowledge they invest back into the community. My experience as an Xarray intern and more general community interactions I had both on GitHub and Pangeo left me with a set of role models who I admire for the emphasis they place on sharing knowledge in a constructive, intentional, and community-minded way, with an eye toward developing the tools, but also culture, that will help use data to solve large, important problems now and in the future.
 
-## Jupyter book tutorials
-
-### 1.[Using Xarray to examine cloud-based glacier surface velocity data](https://e-marshall.github.io/itslive/)
-
-Based on the Inter-mission Time Series of Land Ice Velocity and Elevation ([ITS_LIVE](https://its-live.jpl.nasa.gov/)) dataset.
-
-### 2.[Sentinel-1 RTC imagery workflows with Xarray](https://e-marshall.github.io/sentinel1_rtc/)
-
-Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
 
 ## Acknowledgments
 
