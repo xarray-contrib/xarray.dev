@@ -76,7 +76,6 @@ The cloud-computing ecosystem was all new to me, and I felt slightly intimidated
 
 This summer, I got to experience how fun and exciting it is to talk through concepts, work on issues, and problem-solve with people who are passionate about what they do, curious about interesting questions, and selfless in the time and knowledge they invest back into the community. My experience as an Xarray intern and more general community interactions I had both on GitHub and Pangeo left me with a set of role models who I admire for the emphasis they place on sharing knowledge in a constructive, intentional, and community-minded way, with an eye toward developing the tools, but also culture, that will help use data to solve large, important problems now and in the future.
 
-
 ## Acknowledgments
 
 - I'm grateful to Deepak Cherian, Scott Henderson and Jessica Scheick for their guidance, mentorship and support during my summer internship.
