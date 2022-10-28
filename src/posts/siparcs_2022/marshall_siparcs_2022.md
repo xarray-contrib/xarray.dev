@@ -1,5 +1,5 @@
 ---
-title: 'Reflection on 2022 NCAR summer internship: "Leveraging Xarray for reproducible and scalable analysis of remote sensing data in the cloud"'
+title: 'Reflections on my NCAR summer internship working with Xarray and satellite data"'
 date: '2022-10-27'
 authors:
   - name: Emma Marshall
