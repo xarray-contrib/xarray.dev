@@ -22,12 +22,12 @@ The Jupyter Book tutorials each focus on a different remote sensing dataset and 
 Here are the two books I created:
 
 1.  [Using Xarray to examine cloud-based glacier surface velocity data](https://e-marshall.github.io/itslive/)
- 
+
     Based on the Inter-mission Time Series of Land Ice Velocity and Elevation ([ITS_LIVE](https://its-live.jpl.nasa.gov/)) dataset.
 
-2. [Sentinel-1 RTC imagery workflows with Xarray](https://e-marshall.github.io/sentinel1_rtc/)
+2.  [Sentinel-1 RTC imagery workflows with Xarray](https://e-marshall.github.io/sentinel1_rtc/)
 
-   Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
+    Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
 
 #### Approach
 
@@ -46,7 +46,7 @@ Working on these tutorials was a significant learning experience for me. I gaine
 <br />
 
 ![](https://i.imgur.com/nh5K9AB.png)
-*Exploring seasonal variability in Sentinel-1 RTC backscatter using `groupby()` and `FacetGrid`*
+_Exploring seasonal variability in Sentinel-1 RTC backscatter using `groupby()` and `FacetGrid`_
 
 ### Other open-source contributions
 
