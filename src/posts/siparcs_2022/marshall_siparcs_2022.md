@@ -19,7 +19,14 @@ A few months out, I’m grateful for the impactful experience I had this summer.
 Most of my work this summer focused on developing educational resources to help remote sensing data users incorporate Xarray into their workflows. This project was motivated by recent increases in the availability of cloud-based datasets and computational tools, and in preparation for increasing data volume from missions like [NISAR](https://nisar.jpl.nasa.gov/) and [SWOT](https://swot.jpl.nasa.gov/). These advances are exciting because they offer the potential to democratize scientific participation and reduce barriers to entry related to computational and storage resources ([Gentemann et al., 2021](https://doi.org/10.1029/2020AV000354)). Alongside these exciting developments is the need for accessible and informative educational resources that accompany data and tools.
 
 The Jupyter Book tutorials each focus on a different remote sensing dataset and contain Jupyter Notebooks detailing common steps of a research workflow. They demonstrate working with global ice velocity measurements derived from a combination of optical and synthetic aperture radar (SAR) satellite imagery as well as SAR radiometric terrain corrected (RTC) backscatter imagery. These data make use of cloud-native processing chains and cover a range of cloud-native and traditional data types and the tutorials include examples of reading directly from object storage as well as working with data locally. In choosing these examples, we focused on time series datasets that lend themselves to working with Xarray and provide valuable information about Earth’s surface processes that can be used in a range of climate-related applications such as glacier dynamics, hydrology, hazards, and studies of vegetative cover and extent.
+Here are the two books I created:
+ 1. [Using Xarray to examine cloud-based glacier surface velocity data](https://e-marshall.github.io/itslive/)
 
+Based on the Inter-mission Time Series of Land Ice Velocity and Elevation ([ITS_LIVE](https://its-live.jpl.nasa.gov/)) dataset.
+
+2. [Sentinel-1 RTC imagery workflows with Xarray](https://e-marshall.github.io/sentinel1_rtc/)
+
+Using Sentinel-1 Radiometric Terrain Corrected (RTC) backscatter datasets processed and hosted by both [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc#overview) and [Alaska Satellite Facility](https://www.arcgis.com/home/item.html?id=3dd8d25559db4ba6aa0e1b6e8cb5d39a)
 #### Approach
 
 In developing these tutorials, I tried to imagine what kind of resources would have helped me when I was first beginning to work with remote sensing data. This included
