@@ -38,7 +38,6 @@ Working on these tutorials was a significant learning experience for me. I gaine
 ![](https://i.imgur.com/nh5K9AB.png)
 *Exploring seasonal variability in Sentinel-1 RTC backscatter using `groupby()` and `FacetGrid`*
 
-
 ### Other open-source contributions
 
 I was fortunate to get to work on other projects and open-source contributions in addition to the Jupyter book tutorials this summer. I developed a data cleaning example that is now a [chapter](https://tutorial.xarray.dev/data_cleaning/ice_velocity.html) within the Xarray tutorial. This focused on taking a time series of gridded data with multiple variables and organizing it into an ‘analysis ready’ format with x, y, and time coordinates. I also submitted [pull requests](https://github.com/pydata/xarray/pulls?q=is%3Apr+author%3Ae-marshall) to pydata/xarray that included improved documentation for xr.Dataset and xr.DataArray methods and a [new dataset](https://github.com/pydata/xarray-data/pull/24) to be used for Xarray tutorials.
