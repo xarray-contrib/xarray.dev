@@ -86,6 +86,8 @@ This summer, I got to experience how fun and exciting it is to talk through conc
 
 Gentemann, C. L., Holdgraf, C., Abernathey, R., Crichton, D., Colliander, J., Kearns, E. J., et al. (2021). Science storms the cloud. AGU Advances, 2, e2020AV000354. https://doi.org/10.1029/2020AV000354
 
+## Pictures
+
 ![](https://i.imgur.com/ESa6prm.jpg)_View of NCAR Mesa Lab coming back from a lunchtime walk_
 
 ![](https://i.imgur.com/cz4Sw7N.jpg)
