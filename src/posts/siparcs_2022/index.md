@@ -1,6 +1,6 @@
 ---
 title: 'Reflections on my NCAR summer internship working with Xarray and satellite data'
-date: '2022-10-27'
+date: '2022-11-01'
 authors:
   - name: Emma Marshall
     github: e-marshall
