@@ -1,5 +1,5 @@
 ---
-title: 'Better Bayesian Workfllows wiith Inference Data and Xarray'
+title: 'Better Bayesian Workfllows with Inference Data and Xarray'
 date: '2022-12-17'
 authors:
   - name: Ravin Kumar
@@ -9,13 +9,10 @@ authors:
 summary: 'Xarray now supports unit-aware operations by wrapping pint arrays'
 ---
 
-_TLDR: Pint-Xarray supports unit-aware operations by wrapping [pint arrays](https://pint.readthedocs.io/en/stable/), so your code can automatically track the physical units that your data represents:_
+_TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](INSERT LINK) simplifies the Bayesian workflow, facilitates reprocibility, and enables interoperability between different Probabalistic Programming languages._
+
 
 ```python
-distance = xr.DataArray(10).pint.quantify("metres")
-time = xr.DataArray(4).pint.quantify("seconds")
-
-distance / time
 ```
 
 ```
