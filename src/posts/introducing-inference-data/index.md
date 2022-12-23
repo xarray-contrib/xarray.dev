@@ -71,7 +71,7 @@ Before `az.InferenceData` there wasn't a consistent object or method
 ## How az.InferenceData works and its implementation
 
 `az.InferenceData` is an object that stores (nearly) of outputs of Bayesian Modeling in a consisntent manner.
-Under the hood `az.InferenceData` is largely a collection of xarray objects, with some utility functions built in as well.
+Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
 Xarray was the natural choice, especially for MCMC inference, because its ability to store, index, and perform calculations
 over multidimensional outputs is exactly what is needed to enable Bayesian workflows.
 
