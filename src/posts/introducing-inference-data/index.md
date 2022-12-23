@@ -31,7 +31,7 @@ the PPL Designer, and what things used to be like before `az.IhnferenceData`.
 ### The Modern Bayesian Practitioner
 
 Like most modern statisticians, the Modern Bayesian Statistician uses a computer to perform their work.
-Many Probabilistic Programming Language are available for this task, such as [Stan](https://mc-stan.org/),
+Many Probabilistic Programming Language (PPL) are available for this task, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
 With probabilistic programming language in hand, the Bayesian then follows the workflow below, performing each of the various steps
 as part of their analysis.
