@@ -9,7 +9,7 @@ authors:
 summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
 ---
 
-_TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](INSERT LINK) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
+_TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](https://python.arviz.org/en/stable/api/generated/arviz.InferenceData.html) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
 
 <!-- Temporary Reference https://xarray.dev/blog/introducing-pint-xarray -->
 
