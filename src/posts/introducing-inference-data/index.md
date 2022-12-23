@@ -86,9 +86,9 @@ as long as they follow the InferenceData specification ArviZ will know "what to 
 This enables PPL designer to focus on the core of inference,
 and also ensures Bayesian Practitioners don't need to relearn the entire workflow if they decide to switch PPLs.
 
-### The benefit of Xarrayu
+### The benefit of Xarray
 
-Xarray in turnsimplifies the life of the ArviZ devs because we don't need to focus too much
+Xarray in turn simplifies the life of the ArviZ devs because we don't need to focus too much
 on the data store object, and instead can focus on the statistical computation.
 
 **Editing note** Should I mention ein stats?
