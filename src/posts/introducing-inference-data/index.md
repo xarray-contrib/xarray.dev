@@ -6,7 +6,7 @@ authors:
     github: canyon289
   - name: Justus Magin
     github: keewis
-summary: 'Xarray now supports unit-aware operations by wrapping pint arrays'
+summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
 ---
 
 _TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](INSERT LINK) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
