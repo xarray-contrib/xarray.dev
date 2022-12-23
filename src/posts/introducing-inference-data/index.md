@@ -47,7 +47,6 @@ And as an individual statistician it's not enough to just store the numbers in a
 Often these arrays need to be passed to specialized functions that get check for properties like convergence,
 or for plotting.
 
-
 And once the individual statistician has completed their work, they may either want to save it to disk,
 or share it with a colleague.
 
@@ -97,4 +96,5 @@ on the data store object, and instead can focus on the statistical computation.
 https://github.com/arviz-devs/xarray-einstats
 
 ## Conclusion
+
 **TODO** Insert conclusion
