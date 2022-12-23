@@ -1,11 +1,11 @@
 ---
-title: 'Better Bayesian Workfllows with Inference Data and Xarray'
+title: 'Better Bayesian Workflows with Inference Data and Xarray'
 date: '2022-12-17'
 authors:
   - name: Ravin Kumar
     github: canyon289
-  - name: Justus Magin
-    github: keewis
+  - name: ArviZ Dev 2
+    github: someone
 summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
 ---
 
@@ -33,8 +33,11 @@ the PPL Designer, and what things used to be like before `az.IhnferenceData`.
 Like most modern statisticians, the Modern Bayesian Statistician uses a computer to perform their work.
 Many Probabilistic Programming Language (PPL) are available for this task, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
+
 With probabilistic programming language in hand, the Bayesian then follows the workflow below, performing each of the various steps
 as part of their analysis.
+
+![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
 
 At each of these steps the PPLs generate many arrays, and not only single dimension arrays, but multi dimensional arrays.
 Sampling the prior predictive, running sampling, sampling from the posterior predictive, and even the input data
@@ -44,7 +47,6 @@ And as an individual statistician it's not enough to just store the numbers in a
 Often these arrays need to be passed to specialized functions that get check for properties like convergence,
 or for plotting.
 
-![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
 
 And once the individual statistician has completed their work, they may either want to save it to disk,
 or share it with a colleague.
@@ -95,3 +97,4 @@ on the data store object, and instead can focus on the statistical computation.
 https://github.com/arviz-devs/xarray-einstats
 
 ## Conclusion
+**TODO** Insert conclusion
