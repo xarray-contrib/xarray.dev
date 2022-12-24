@@ -51,7 +51,7 @@ or share it with a colleague.
 ## The Modern PPL designer
 
 Now consider a PPL designer. PPL designers typically want to focus on the core of the Bayesian inference,
-which is graph representation and sampling.
+Including working with graph representation and samplers.
 However for their PPL to be useful they must ensure their users must have easy access to diagnostics,
 visualizations, and model criticism tools.
 Suddenly the scope of their codebase grows, and duplicative functionality now exists across
