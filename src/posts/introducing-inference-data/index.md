@@ -79,7 +79,7 @@ over multidimensional outputs is exactly what is needed to enable Bayesian workf
 ## How this enables ArviZ
 
 With a consistent object that represents the outputs of PPLs, it became possible develop ArviZ,
-a unified library for model diagnostics and visualization.
+a unified library for exploratory analysis of Bayesian models.
 Now it didn't matter what PPL someone decided to use,
 as long as they follow the InferenceData specification ArviZ will know "what to do".
 This enables PPL designer to focus on the core of inference,
