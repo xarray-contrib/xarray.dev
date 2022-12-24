@@ -83,7 +83,7 @@ a unified library for exploratory analysis of Bayesian models.
 Now it didn't matter what PPL someone decided to use,
 as long as they follow the InferenceData specification ArviZ will know "what to do".
 This enables PPL designer to focus on the core of inference,
-and also ensures Bayesian Practitioners don't need to relearn the entire workflow if they decide to switch PPLs.
+and also ensures Bayesian Practitioners don't need to relearn the entire toolbox if they decide to switch PPLs.
 
 ### The benefit of Xarray
 
