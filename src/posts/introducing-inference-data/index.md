@@ -44,7 +44,6 @@ The prior predictive distribution, the posterior distribution, the posterior pre
 are all numberical quantities that need to be captured and ordered to facilitate analysis.
 
 Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the posterior distribution.
-or for plotting.
 
 And once the individual statistician has completed their work, they may either want to save it to disk,
 or share it with a colleague.
