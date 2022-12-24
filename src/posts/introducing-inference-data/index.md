@@ -43,7 +43,7 @@ At each of these steps the PPLs generate many arrays, and not only single dimens
 The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the loglikelihood, and even the input data
 are all numberical quantities that need to be captured and ordered to facilitate analysis.
 
-Often these arrays need to be passed to specialized functions that get check for properties like convergence,
+Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the posterior distribution.
 or for plotting.
 
 And once the individual statistician has completed their work, they may either want to save it to disk,
