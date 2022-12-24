@@ -40,7 +40,7 @@ as part of their analysis.
 ![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
 
 At each of these steps the PPLs generate many arrays, and not only single dimension arrays, but multi dimensional arrays.
-Sampling the prior predictive, running sampling, sampling from the posterior predictive, and even the input data
+The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the loglikelihood, and even the input data
 are all numberical quantities that need to be captured and ordered to facilitate analysis.
 
 And as an individual statistician it's not enough to just store the numbers in arrays.
