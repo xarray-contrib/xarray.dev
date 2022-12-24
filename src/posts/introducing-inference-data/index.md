@@ -88,7 +88,7 @@ and also ensures Bayesian Practitioners don't need to relearn the entire toolbox
 ### The benefit of Xarray
 
 Xarray in turn simplifies the life of the ArviZ devs because we don't need to focus too much
-on the data store object, and instead can focus on the statistical computation.
+on the data store object, and instead we can focus on the statistical computations.
 
 **Editing note** Should I mention ein stats?
 https://github.com/arviz-devs/xarray-einstats
