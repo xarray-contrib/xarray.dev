@@ -64,13 +64,13 @@ Before `az.InferenceData` there wasn't a consistent object or method
   - The objects may not be serializable to disk
 - All adjacent workflow libraries would need
 - The APIs and interfaces for all of these were inconsistent making life challenging for end users
-  - Folks using different PPLs would be isolated in completely different ecosystems,  even when the PPLs  share the same general programming language.
+  - Folks using different PPLs would be isolated in completely different ecosystems, even when the PPLs share the same general programming language.
 
 ## How az.InferenceData works and its implementation
 
 `az.InferenceData` is an object that stores (nearly) all the outputs of Bayesian Modeling in a consistent manner.
 Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
-Xarray was the natural choice, because storing  indexing, and performing calculations
+Xarray was the natural choice, because storing indexing, and performing calculations
 over multidimensional outputs are routine task for computational Bayesian modelers.
 
 ![InferenceData Architecture](https://python.arviz.org/en/stable/_images/InferenceDataStructure.png)
