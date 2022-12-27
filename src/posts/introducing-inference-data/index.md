@@ -23,10 +23,10 @@ data
 
 <!-- https://xarray.dev/blog/introducing-pint-xarray -->
 
-## The Life of a modern Bayesians
+## The Life of a modern Bayesian
 
 The utility of `az.InferenceData` will not be very apparent if we first don't talk about the life of a Modern Bayesian Statistician,
-the PPL Designer, and what things used to be like before `az.IhnferenceData`.
+the PPL Designer, and what things used to be like before `az.InferenceData`.
 
 ### The Modern Bayesian Practitioner
 
@@ -40,38 +40,37 @@ as part of their analysis.
 ![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
 
 At each of these steps the PPLs generate many arrays, and not only single dimension arrays, but multi dimensional arrays.
-The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the loglikelihood, and even the input data
+The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the log likelihood, and even the input data
 are all numberical quantities that need to be captured and ordered to facilitate analysis.
 
-Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the posterior distribution.
+Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the target distribution.
 
 And once the individual statistician has completed their work, they may either want to save it to disk,
 or share it with a colleague.
 
 ## The Modern PPL designer
 
-Now consider a PPL designer. PPL designers typically want to focus on the core of the Bayesian inference,
-Including working with graph representation and samplers.
-However for their PPL to be useful they must ensure their users must have easy access to diagnostics,
+Now consider a PPL designer. PPL designers typically want to focus on model building and inference: graph representation, samplers, symbolic differentiation speed and stability...
+However for their PPL to be useful they must ensure users have easy access to diagnostics,
 visualizations, and model criticism tools.
 Suddenly the scope of their codebase grows, and duplicative functionality now exists across
-the open source Bayesian Ecosystem
+the open source Bayesian ecosystem
 
 ## Life before az.InferenceData
 
 Before `az.InferenceData` there wasn't a consistent object or method
 
-- Each PPL designer would have their own internal objects to store these
+- Each PPL designer would have to implement their own internal objects
   - The objects may not be serializable to disk
 - All adjacent workflow libraries would need
-- The APIs and interfaces for all of these were inconsistent making life challenging for end useres
-  - Folks using different PPLs would be in completely different ecosystems
+- The APIs and interfaces for all of these were inconsistent making life challenging for end users
+  - Folks using different PPLs would be isolated in completely different ecosystems,  even when the PPLs  share the same general programming language.
 
 ## How az.InferenceData works and its implementation
 
-`az.InferenceData` is an object that stores (nearly) of outputs of Bayesian Modeling in a consisntent manner.
+`az.InferenceData` is an object that stores (nearly) all the outputs of Bayesian Modeling in a consistent manner.
 Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
-Xarray was the natural choice, especially for MCMC inference, because its ability to store, index, and perform calculations
+Xarray was the natural choice, because storing  indexing, and performing calculations
 over multidimensional outputs are routine task for computational Bayesian modelers.
 
 ![InferenceData Architecture](https://python.arviz.org/en/stable/_images/InferenceDataStructure.png)
