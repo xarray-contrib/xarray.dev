@@ -33,7 +33,7 @@
     "framer-motion": "^7.6.1",
     "gray-matter": "^4.0.3",
     "next": "^13.0.0",
-    "next-mdx-remote": "^3.0.8",
+    "next-mdx-remote": "^4.2.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
