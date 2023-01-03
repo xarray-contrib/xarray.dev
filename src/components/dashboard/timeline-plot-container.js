@@ -15,7 +15,7 @@ import useSWR from 'swr'
 
 export const TimelinePlotContainer = () => {
   const { data, error } = useSWR(
-    'https://pydata-datasette.herokuapp.com/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++time%2C%0D%0A++open_issues%2C%0D%0A++open_pull_requests%0D%0Afrom%0D%0A++open_pulls_and_issues%0D%0Awhere%0D%0A++project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time',
+    'https://pydata-datasette.fly.dev/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++time%2C%0D%0A++open_issues%2C%0D%0A++open_pull_requests%0D%0Afrom%0D%0A++open_pulls_and_issues%0D%0Awhere%0D%0A++project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time',
     fetcher,
   )
 
