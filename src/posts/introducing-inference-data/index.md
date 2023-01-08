@@ -89,11 +89,12 @@ and also ensures Bayesian Practitioners don't need to relearn the entire toolbox
 Xarray in turn simplifies the life of the ArviZ devs because we don't need to focus too much
 on the data store object, and instead we can focus on the statistical computations.
 Of the [key features of Xarray](https://xarray.dev/#features) we directly utiilize
-* Interoperability
-* Opereations over named dimensions
-* Value selection by label
-* Vectorized operations
-* Flexible and Extensible I/O backend API
+
+- Interoperability
+- Opereations over named dimensions
+- Value selection by label
+- Vectorized operations
+- Flexible and Extensible I/O backend API
 
 **Editing note** Should I mention ein stats?
 https://github.com/arviz-devs/xarray-einstats
@@ -103,4 +104,4 @@ https://github.com/arviz-devs/xarray-einstats
 Xarray enables neat functionality, standardization, and simplication for Bayesian users.
 If you're a bayesian practioner we invite you to use ArviZ, and xarray by extension, to see how easy things are.
 If you're a library developer for anything that uses numerical, consider how Xarray could help your users.
-We're quite thrilled with capabilities of Xarray today and are excited to see how what's to come in in the future! 
+We're quite thrilled with capabilities of Xarray today and are excited to see how what's to come in in the future!
