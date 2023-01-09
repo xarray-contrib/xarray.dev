@@ -64,7 +64,7 @@ Before `az.InferenceData` there wasn't a consistent object or method
 
 - Each PPL designer would have to implement their own internal objects
   - The objects may not be serializable to disk
-- All adjacent workflow libraries would need
+- All adjacent workflow libraries would only work with a subset of these objects, or would require users to restructure data each time.
 - The APIs and interfaces for all of these were inconsistent making life challenging for end users
   - Folks using different PPLs would be isolated in completely different ecosystems, even when the PPLs share the same general programming language.
 
