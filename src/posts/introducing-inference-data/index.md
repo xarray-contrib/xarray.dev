@@ -5,7 +5,7 @@ authors:
   - name: Ravin Kumar
     github: canyon289
   - name: Oriol Abril-Pla
-    github: OriolAbril 
+    github: OriolAbril
   - name: Osvaldo Martin
     github: aloctavodia
 summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
