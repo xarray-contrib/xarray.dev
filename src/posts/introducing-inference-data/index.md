@@ -4,8 +4,10 @@ date: '2022-12-17'
 authors:
   - name: Ravin Kumar
     github: canyon289
-  - name: ArviZ Dev 2
-    github: someone
+  - name: Oriol Abril-Pla
+    github: OriolAbril 
+  - name: Osvaldo Martin
+    github: aloctavodia
 summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
 ---
 
@@ -77,7 +79,7 @@ over multidimensional outputs are routine task for computational Bayesian modele
 
 ## How this enables ArviZ
 
-With a consistent object that represents the outputs of PPLs, it became possible develop ArviZ,
+With a consistent object that represents the outputs of PPLs, it became possible to develop ArviZ,
 a unified library for exploratory analysis of Bayesian models.
 Now it didn't matter what PPL someone decided to use,
 as long as they follow the InferenceData specification ArviZ will know "what to do".
@@ -102,6 +104,6 @@ https://github.com/arviz-devs/xarray-einstats
 ## Conclusion
 
 Xarray enables neat functionality, standardization, and simplication for Bayesian users.
-If you're a bayesian practioner we invite you to use ArviZ, and xarray by extension, to see how easy things are.
+If you're a Bayesian practitioner we invite you to use ArviZ, and xarray by extension, to see how easy things are.
 If you're a library developer for anything that uses numerical, consider how Xarray could help your users.
 We're quite thrilled with capabilities of Xarray today and are excited to see how what's to come in in the future!
