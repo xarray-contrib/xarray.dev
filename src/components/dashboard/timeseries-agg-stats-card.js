@@ -6,7 +6,7 @@ import { isWithinInterval, lastDayOfMonth, startOfMonth } from 'date-fns'
 import useSWR from 'swr'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
-  const { data, error } = useSWR(query, fetcher)
+  let { data, error } = useSWR(query, fetcher)
   if (error) return <Text>failed to load</Text>
   if (!data)
     return (
