@@ -1,7 +1,8 @@
-import { MDXComponentsProvider } from '@/components/mdx'
+import { mapping } from '@/components/mdx'
 import * as gtag from '@/lib/ga'
 import { customTheme } from '@/theme'
 import { ChakraProvider } from '@chakra-ui/react'
+import { MDXProvider } from '@mdx-js/react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
@@ -41,9 +42,10 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-      <MDXComponentsProvider>
+
+      <MDXProvider components={mapping}>
         <Component {...pageProps} />
-      </MDXComponentsProvider>
+      </MDXProvider>
     </ChakraProvider>
   )
 }
