@@ -1082,7 +1082,7 @@
     "@mdx-js/mdx" "^2.0.0"
     source-map "^0.7.0"
 
-"@mdx-js/mdx@^2.0.0", "@mdx-js/mdx@^2.2.1":
+"@mdx-js/mdx@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-2.2.1.tgz#611af1b68135c94eb467eb07e006fa1d8eebe029"
   integrity sha512-hZ3ex7exYLJn6FfReq8yTvA6TE53uW9UHJQM9IlSauOuS55J9y8RtA7W+dzp6Yrzr00/U1sd7q+Wf61q6SfiTQ==
