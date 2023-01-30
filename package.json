@@ -46,6 +46,6 @@
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.4",
     "glob": "^8.0.3",
-    "playwright": "^1.29.2"
+    "playwright": "^1.30.0"
   }
 }
