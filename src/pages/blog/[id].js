@@ -121,6 +121,7 @@ export async function getStaticProps({ params }) {
     mdxOptions: {
       remarkPlugins: [],
       rehypePlugins: [rehypeSlug],
+      format: 'mdx',
     },
   })
 

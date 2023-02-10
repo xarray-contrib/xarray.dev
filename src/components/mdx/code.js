@@ -1,13 +1,19 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Code as ChakraCode } from '@chakra-ui/react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { CodeContainer } from './code-container'
 import { CopyButton } from './copy-button'
 
 export const Code = ({ className, ...props }) => {
+  // extract language from className
   const match = /language-(\w+)/.exec(className || '')
 
-  return (
+  // check if classname is undefined and length of props.children contains single line
+  // if so, render ChakraCode component
+
+  return typeof className === 'undefined' && !props.children.includes('\n') ? (
+    <ChakraCode fontSize='sm' {...props} />
+  ) : (
     <Box position='relative' zIndex='0'>
       <CodeContainer px='0' overflow='hidden'>
         <SyntaxHighlighter
