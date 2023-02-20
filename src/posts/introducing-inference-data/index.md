@@ -90,7 +90,7 @@ and also ensures Bayesian Practitioners don't need to relearn the entire toolbox
 
 Xarray in turn simplifies the life of the ArviZ devs because we don't need to focus too much
 on the data store object, and instead we can focus on the statistical computations.
-Of the [key features of Xarray](https://xarray.dev/#features) we directly utiilize
+Of the [key features of Xarray](https://xarray.dev/#features) we directly utilize
 
 - Interoperability
 - Opereations over named dimensions
