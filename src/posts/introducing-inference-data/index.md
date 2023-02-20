@@ -99,6 +99,7 @@ Of the [key features of Xarray](https://xarray.dev/#features) we directly utiliz
 - Flexible and Extensible I/O backend API
 
 ## Xarray Einstats
+
 The ArviZ project also maintains [xarray-einstats](https://einstats.python.arviz.org/en/latest/).
 It provides label aware wrappers for linear algebra (wrapping `numpy.linalg`), statistical computations like summary statistics, random sampling or working with distributions (wrapping `scipy.stats`), and reduce and rearrange (wrapping `einops`).
 
