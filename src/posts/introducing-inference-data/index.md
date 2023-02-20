@@ -36,7 +36,7 @@ Like most modern statisticians, the Modern Bayesian Statistician uses a computer
 Many Probabilistic Programming Language (PPL) are available for this task, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
 
-With probabilistic programming language in hand, the Bayesian then follows the workflow below, performing each of the various steps
+With probabilistic programming language in hand, the Bayesian then follows the "Bayesian workflow" below, performing each of the various steps
 as part of their analysis.
 
 ![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
@@ -98,8 +98,9 @@ Of the [key features of Xarray](https://xarray.dev/#features) we directly utiliz
 - Vectorized operations
 - Flexible and Extensible I/O backend API
 
-**Editing note** Should I mention ein stats?
-https://github.com/arviz-devs/xarray-einstats
+## Xarray Einstats
+The ArviZ project also maintains [xarray-einstats](https://einstats.python.arviz.org/en/latest/).
+It provides label aware wrappers for linear algebra (wrapping `numpy.linalg`), statistical computations like summary statistics, random sampling or working with distributions (wrapping `scipy.stats`), and reduce and rearrange (wrapping `einops`).
 
 ## Conclusion
 
