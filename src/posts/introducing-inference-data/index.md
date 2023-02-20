@@ -43,7 +43,7 @@ as part of their analysis.
 
 At each of these steps the PPLs generate many arrays, and not only single dimension arrays, but multi dimensional arrays.
 The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the log likelihood, and even the input data
-are all numberical quantities that need to be captured and ordered to facilitate analysis.
+are all numerical quantities that need to be captured and ordered to facilitate analysis.
 
 Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the target distribution.
 
@@ -73,7 +73,7 @@ Before `az.InferenceData` there wasn't a consistent object or method
 `az.InferenceData` is an object that stores (nearly) all the outputs of Bayesian Modeling in a consistent manner.
 Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
 Xarray was the natural choice, because storing indexing, and performing calculations
-over multidimensional outputs are routine task for computational Bayesian modelers.
+over multidimensional outputs are routine tasks for computational Bayesian modelers.
 
 ![InferenceData Architecture](https://python.arviz.org/en/stable/_images/InferenceDataStructure.png)
 
@@ -93,7 +93,7 @@ on the data store object, and instead we can focus on the statistical computatio
 Of the [key features of Xarray](https://xarray.dev/#features) we directly utilize
 
 - Interoperability
-- Opereations over named dimensions
+- Operations over named dimensions
 - Value selection by label
 - Vectorized operations
 - Flexible and Extensible I/O backend API
@@ -105,7 +105,7 @@ It provides label aware wrappers for linear algebra (wrapping `numpy.linalg`), s
 
 ## Conclusion
 
-Xarray enables neat functionality, standardization, and simplication for Bayesian users.
+Xarray enables neat functionality, standardization, and simplification for Bayesian users.
 If you're a Bayesian practitioner we invite you to use ArviZ, and xarray by extension, to see how easy things are.
 If you're a library developer for anything that uses numerical, consider how Xarray could help your users.
-We're quite thrilled with capabilities of Xarray today and are excited to see how what's to come in in the future!
+We're quite thrilled with the capabilities of Xarray today and are excited to see what's to come in the future!
