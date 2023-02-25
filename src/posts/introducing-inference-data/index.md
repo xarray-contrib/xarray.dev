@@ -13,7 +13,6 @@ summary: "Xarray provides the core data model for ArviZ's InfrerenceData structu
 
 _TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](https://python.arviz.org/en/stable/api/generated/arviz.InferenceData.html) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
 
-
 ```python
 # Load the saved results of a bayesian analysis from disk
 import arviz as az
@@ -21,7 +20,6 @@ import arviz as az
 data = az.load_arviz_data("centered_eight")
 data
 ```
-
 
 ## The Life of a modern Bayesian
 
