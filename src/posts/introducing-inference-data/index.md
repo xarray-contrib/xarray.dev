@@ -1,5 +1,5 @@
 ---
-title: 'Better Bayesian Workflows with Inference Data and Xarray'
+title: 'Better Bayesian Workflows with InferenceData and Xarray'
 date: '2022-12-17'
 authors:
   - name: Ravin Kumar
@@ -13,7 +13,6 @@ summary: "Xarray provides the core data model for ArviZ's InfrerenceData structu
 
 _TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](https://python.arviz.org/en/stable/api/generated/arviz.InferenceData.html) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
 
-<!-- Temporary Reference https://xarray.dev/blog/introducing-pint-xarray -->
 
 ```python
 # Load the saved results of a bayesian analysis from disk
@@ -23,17 +22,16 @@ data = az.load_arviz_data("centered_eight")
 data
 ```
 
-<!-- https://xarray.dev/blog/introducing-pint-xarray -->
 
 ## The Life of a modern Bayesian
 
-The utility of `az.InferenceData` will not be very apparent if we first don't talk about the life of a Modern Bayesian Statistician,
-the PPL Designer, and what things used to be like before `az.InferenceData`.
+The utility of `az.InferenceData` will not be very apparent unless we first talk about the life of a Modern Bayesian Statistician,
+the Probabilistic Programming Language (PPL) Designer, and what things used to be like before `az.InferenceData`.
 
 ### The Modern Bayesian Practitioner
 
 Like most modern statisticians, the Modern Bayesian Statistician uses a computer to perform their work.
-Many Probabilistic Programming Language (PPL) are available for this task, such as [Stan](https://mc-stan.org/),
+Many PPLs are available for this task, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
 
 With probabilistic programming language in hand, the Bayesian then follows the "Bayesian workflow" below, performing each of the various steps
@@ -45,18 +43,18 @@ At each of these steps the PPLs generate many arrays, and not only single dimens
 The prior predictive distribution, the posterior distribution, the posterior predictive distribution, the log likelihood, and even the input data
 are all numerical quantities that need to be captured and ordered to facilitate analysis.
 
-Often these arrays need to be passed to specialized functions in order to check for MCMC convergence, model comparison, or getting summaries from the target distribution.
+Often these arrays need to be passed to specialized functions in order to check for Markov Chain Monte Carlo (MCMC) convergence, model comparison, or getting summaries from the target distribution.
 
 And once the individual statistician has completed their work, they may either want to save it to disk,
 or share it with a colleague.
 
 ## The Modern PPL designer
 
-Now consider a PPL designer. PPL designers typically want to focus on model building and inference: graph representation, samplers, symbolic differentiation speed and stability...
-However for their PPL to be useful they must ensure users have easy access to diagnostics,
+Now consider a PPL designer. PPL designers typically want to focus on model building and inference: graph representation, samplers, symbolic differentiation speed and stability.
+However for their PPL to be useful they must ensure that users have easy access to diagnostics,
 visualizations, and model criticism tools.
 Suddenly the scope of their codebase grows, and duplicative functionality now exists across
-the open source Bayesian ecosystem
+the open source Bayesian ecosystem.
 
 ## Life before az.InferenceData
 
@@ -72,7 +70,7 @@ Before `az.InferenceData` there wasn't a consistent object or method
 
 `az.InferenceData` is an object that stores (nearly) all the outputs of Bayesian Modeling in a consistent manner.
 Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
-Xarray was the natural choice, because storing indexing, and performing calculations
+Xarray was the natural choice, because storing indexes, and performing calculations
 over multidimensional outputs are routine tasks for computational Bayesian modelers.
 
 ![InferenceData Architecture](https://python.arviz.org/en/stable/_images/InferenceDataStructure.png)
@@ -81,15 +79,14 @@ over multidimensional outputs are routine tasks for computational Bayesian model
 
 With a consistent object that represents the outputs of PPLs, it became possible to develop ArviZ,
 a unified library for exploratory analysis of Bayesian models.
-Now it didn't matter what PPL someone decided to use,
+Now it does not matter which PPL someone decides to use,
 as long as they follow the InferenceData specification ArviZ will know "what to do".
 This enables PPL designer to focus on the core of inference,
 and also ensures Bayesian Practitioners don't need to relearn the entire toolbox if they decide to switch PPLs.
 
 ### The benefit of Xarray
 
-Xarray in turn simplifies the life of the ArviZ devs because we don't need to focus too much
-on the data store object, and instead we can focus on the statistical computations.
+Xarray, in turn, simplifies the lives of the ArviZ developers because we do not need to focus too much on the data storage object, and instead, we can focus on the statistical computations.
 Of the [key features of Xarray](https://xarray.dev/#features) we directly utilize
 
 - Interoperability
@@ -100,12 +97,15 @@ Of the [key features of Xarray](https://xarray.dev/#features) we directly utiliz
 
 ## Xarray Einstats
 
-The ArviZ project also maintains [xarray-einstats](https://einstats.python.arviz.org/en/latest/).
-It provides label aware wrappers for linear algebra (wrapping `numpy.linalg`), statistical computations like summary statistics, random sampling or working with distributions (wrapping `scipy.stats`), and reduce and rearrange (wrapping `einops`).
+The ArviZ project also maintains [xarray-einstats](https://einstats.python.arviz.org/en/latest/), which provides label-aware wrappers for the following functionalities:
+
+- Linear algebra (wrapping `numpy.linalg`)
+- Statistical computations like summary statistics, random sampling, or working with distributions (wrapping `scipy.stats`)
+- Reduce and rearrange operations (wrapping `einops`)
 
 ## Conclusion
 
 Xarray enables neat functionality, standardization, and simplification for Bayesian users.
-If you're a Bayesian practitioner we invite you to use ArviZ, and xarray by extension, to see how easy things are.
+If you're a Bayesian practitioner we invite you to use [ArviZ](https://python.arviz.org/), and xarray by extension, to see how easy things are.
 If you're a library developer for anything that uses numerical, consider how Xarray could help your users.
 We're quite thrilled with the capabilities of Xarray today and are excited to see what's to come in the future!
