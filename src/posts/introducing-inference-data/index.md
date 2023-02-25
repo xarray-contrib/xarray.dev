@@ -56,7 +56,12 @@ the open source Bayesian ecosystem.
 
 ## Life before az.InferenceData
 
-Before `az.InferenceData` there wasn't a consistent object or method
+Before `az.InferenceData` there wasn't a consistent object or method both for the user or for the PPL library maintainers.
+Things like posteriors, prior predictives, observed data, and sampler stats could be stored in their own ways,
+For example one PPL may store their modeling outputs in a dictionary, other may have used plain numpy arrays, a third had its own custom class.
+And that's even before considering the shapes and indices of the array.
+
+This all meant
 
 - Each PPL designer would have to implement their own internal objects
   - The objects may not be serializable to disk
