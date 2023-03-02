@@ -10,6 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 
+import { GitSHA } from '@/components/git-sha'
 import { Image, Link } from '@/components/mdx'
 import { VercelCallout } from '@/components/vercel'
 import { footerItems } from '@/data/footer-items'
@@ -67,10 +68,13 @@ export const Footer = () => {
                 alt={'xarray logo'}
               />
             </Box>
+
             <Text fontSize={'sm'}>
               © {new Date().getFullYear()}, Xarray core developers. Apache 2.0
-              Licensed
+              Licensed.
             </Text>
+            <GitSHA />
+
             <Stack direction={'row'} spacing={6}>
               <SocialButton
                 label={'Twitter'}
