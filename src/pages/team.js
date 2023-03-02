@@ -14,7 +14,7 @@ const Team = () => {
           </Heading>
 
           <Box py={4}>
-            <Heading as='h2' size='xl' textAlign={'center'} my={4}>
+            <Heading as='h2' size='xl' textAlign={'center'} my={16}>
               Current core maintainers 🤝
             </Heading>
             <Text>
@@ -34,7 +34,7 @@ const Team = () => {
               <TeamMember key={member.name} member={member} />
             ))}
           </SimpleGrid>
-          <Heading as='h2' size='xl' textAlign={'center'} my={4}>
+          <Heading as='h2' size='xl' textAlign={'center'} my={16}>
             Our valuable contributors 💖
           </Heading>
           <Text>
