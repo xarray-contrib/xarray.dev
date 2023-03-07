@@ -4,14 +4,14 @@ date: '2023-03-15'
 authors:
   - name: Josh Siegle
     github: jsiegle
-summary: "Xarray’s data structures provide an effective way to represent data recorded from neurons in living brains"
+summary: 'Xarray’s data structures provide an effective way to represent data recorded from neurons in living brains'
 ---
 
-_TLDR:  Xarray’s data structures are used in parts of the AllenSDK and provide an effective way to represent data recorded from neurons in living brains.
+\_TLDR: Xarray’s data structures are used in parts of the AllenSDK and provide an effective way to represent data recorded from neurons in living brains.
 
 These days, most neuroscience involves a hefty dose of data science. As technological advances make it possible to record larger numbers of neurons simultaneously<sup>1-3</sup>, neuroscientists need to spend even more time writing code to extract value from the massive datasets being produced. Despite the general enthusiasm for big data across the field, there are still no widely adopted conventions for representing neural time series in memory. This means that most researchers end up developing their own ad hoc analysis approaches which are rarely reused, even by members of the same laboratory.
 
-At the [Allen Institute](https://alleninstitute.org/division/brain-science/), we are working to improve the reproducibility of *in vivo* neurophysiology experiments by employing greater standardization in the ways data is generated and shared. Each step in our "Allen Brain Observatory" data collection pipeline is carried out by highly trained technicians, and the outputs are subjected to rigorous quality control procedures. All of the sessions that pass inspection are packaged in Neurodata Without Borders (NWB) format<sup>4</sup> and distributed freely via the [AllenSDK](https://allensdk.readthedocs.io), a Python package that serves as a portal to a wide range of Allen Institute data resources. 
+At the [Allen Institute](https://alleninstitute.org/division/brain-science/), we are working to improve the reproducibility of _in vivo_ neurophysiology experiments by employing greater standardization in the ways data is generated and shared. Each step in our "Allen Brain Observatory" data collection pipeline is carried out by highly trained technicians, and the outputs are subjected to rigorous quality control procedures. All of the sessions that pass inspection are packaged in Neurodata Without Borders (NWB) format<sup>4</sup> and distributed freely via the [AllenSDK](https://allensdk.readthedocs.io), a Python package that serves as a portal to a wide range of Allen Institute data resources.
 
 This blog post will describe how Xarray is being used in the AllenSDK’s `ecephys` module, which stands for "**e**xtra**c**ellular **e**lectro**phys**iology." We found Xarray to be well suited to serve as the foundational data structure for collaboratively developed neurophysiology analysis pipelines because it is efficient, domain-agnostic, and uses many of the same conventions as Pandas, which many neuroscientists are already familiar with. We hope that the examples described below will convince others to try out Xarray for their own analysis needs.
 
@@ -56,9 +56,10 @@ This creates a 3-dimensional `DataArray` with dimensions of stimulus presentatio
 da = responses.mean(dim='stimulus_presentation_id').sortby("unit_id").transpose()
 da.plot(cmap='magma', vmin=0, vmax=0.1)
 ```
+
 <!-- TODO: add figure 2 -->
 
-Using a `DataArray` instead of a NumPy `ndarray` makes it easy to sort, average, and plot large matrices without having to manually keep track of what each axis represents. 
+Using a `DataArray` instead of a NumPy `ndarray` makes it easy to sort, average, and plot large matrices without having to manually keep track of what each axis represents.
 
 In the AllenSDK, we also use Xarray to represent continuous signals from individual electrodes, known as "local field potentials" or “LFP.” We can use the `EcephysSession` object to load the LFP data for one probe as a `DataArray`, which makes it straightforward to select time slices of interest:
 
@@ -80,6 +81,7 @@ Let's look at the LFP data for a similar segment of data we plotted earlier:
 ```python
 lfp.sel(time=slice(100,101)).transpose().plot(cmap='magma')
 ```
+
 <!-- TODO: add figure 3 -->
 
 The signal is dominated by a high-amplitude 7 Hz oscillation known as the “theta rhythm.”
@@ -118,6 +120,7 @@ Now, it only takes one line of code to plot the average response across the whol
 ```python
 aligned_lfp.mean(dim='presentation_id').plot(cmap='magma')
 ```
+
 <!-- TODO: add figure 4 -->
 
 The impact of the stimulus is perhaps less obvious here, but the trained eye can see a clear onset and offset response, similar to what was observed in the spiking data.
@@ -148,19 +151,14 @@ The Allen Brain Observatory `ecephys` datasets have been quite popular across th
 
 We are now working on incorporating some of the most useful functions from the AllenSDK into a separate [lightweight analysis package](https://github.com/allenneuraldynamics/aind-ephys-utils). We plan to make all of the return types `DataFrames` or `DataArrays`, so they can be easily manipulated using these classes’ powerful built-in methods. While it’s still very early stages, we are excited to continue to build analysis tools on top of the powerful Xarray library.
 
-
 ### Acknowledgments
 
 Special thanks to Nile Graddis for introducing me to Xarray and writing the AllenSDK methods described here. Thanks to Joe Hamman for providing feedback on this post.
 
 ### References
 
-1. Stevenson & Körding (2011) *Nat Neurosci* **14**: 139-142.
-2. Jun et al. (2017) *Nature* **551**: 232-236.
-3. Demas et al. (2021) *Nat Methods* **18**: 1103-1111.
-4. Rübel et al. (2022) *eLife* **11**: e78362.
-5. De Vries et al. (2023) *arXiv* 2212.08638
-
-
-
-
+1. Stevenson & Körding (2011) _Nat Neurosci_ **14**: 139-142.
+2. Jun et al. (2017) _Nature_ **551**: 232-236.
+3. Demas et al. (2021) _Nat Methods_ **18**: 1103-1111.
+4. Rübel et al. (2022) _eLife_ **11**: e78362.
+5. De Vries et al. (2023) _arXiv_ 2212.08638
