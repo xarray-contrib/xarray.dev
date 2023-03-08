@@ -27,7 +27,7 @@ session = cache.get_session_data(819701982) # access data by session ID
 
 The primary data for this session consists of spike times from 585 neurons (also called "units") simultaneously recorded across more than a dozen brain regions. This is what a 10-second snippet of the recording looks likes, with each dot representing one spike:
 
-<!-- TODO: add figure 1 -->
+{/* TODO: add figure 1 */}
 
 To begin to search for patterns in this data, it's helpful to align the spikes to salient events that occur during the session. Since most of these neurons were recorded from visual areas of the mouse brain, they display robust increases in spike rate in response to images and movies. To make it easy to align spikes to a block of stimulus presentations, we created a function called `presentationwise_spike_counts` that takes a time interval, a list of presentation IDs, and a list of unit IDs, and returns an `xarray.DataArray` containing the binned spiking responses:
 
