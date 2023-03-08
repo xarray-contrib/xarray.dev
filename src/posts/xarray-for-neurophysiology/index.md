@@ -7,7 +7,7 @@ authors:
 summary: 'Xarray’s data structures provide an effective way to represent data recorded from neurons in living brains'
 ---
 
-\_TLDR: Xarray’s data structures are used in parts of the AllenSDK and provide an effective way to represent data recorded from neurons in living brains.
+_TLDR: Xarray’s data structures are used in parts of the AllenSDK and provide an effective way to represent data recorded from neurons in living brains._
 
 These days, most neuroscience involves a hefty dose of data science. As technological advances make it possible to record larger numbers of neurons simultaneously<sup>1-3</sup>, neuroscientists need to spend even more time writing code to extract value from the massive datasets being produced. Despite the general enthusiasm for big data across the field, there are still no widely adopted conventions for representing neural time series in memory. This means that most researchers end up developing their own ad hoc analysis approaches which are rarely reused, even by members of the same laboratory.
 
@@ -17,17 +17,16 @@ This blog post will describe how Xarray is being used in the AllenSDK’s `eceph
 
 Each `ecephys` experiment involves recordings of spiking activity from up to 6 high-density recording devices, called Neuropixels<sup>2</sup>, inserted into a mouse brain. We can load the data for one session (which includes about 2.5 hours of data) via the `EcephysProjectCache`. This will automatically download the NWB file from our remote server and load it as an `EcephysSession` object:
 
-```
+```python
 from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProjectCache
 
 cache = EcephysProjectCache.from_warehouse(manifest=manifest_path)
-
-session = cache.get_session_data(819701982) # access data by session ID
+session = cache.get_session_data(819701982)  # access data by session ID
 ```
 
 The primary data for this session consists of spike times from 585 neurons (also called "units") simultaneously recorded across more than a dozen brain regions. This is what a 10-second snippet of the recording looks likes, with each dot representing one spike:
 
-{/* TODO: add figure 1 */}
+TODO: add figure 1
 
 To begin to search for patterns in this data, it's helpful to align the spikes to salient events that occur during the session. Since most of these neurons were recorded from visual areas of the mouse brain, they display robust increases in spike rate in response to images and movies. To make it easy to align spikes to a block of stimulus presentations, we created a function called `presentationwise_spike_counts` that takes a time interval, a list of presentation IDs, and a list of unit IDs, and returns an `xarray.DataArray` containing the binned spiking responses:
 
@@ -38,7 +37,6 @@ flash_presentations = stimulus_presentations[stimulus_presentations.stimulus_nam
 responses = session.presentationwise_spike_counts(
     np.arange(0,0.5,0.001), flash_presentations.index.values, session.units.index.values
 )
-
 responses.coords
 ```
 
@@ -57,7 +55,7 @@ da = responses.mean(dim='stimulus_presentation_id').sortby("unit_id").transpose(
 da.plot(cmap='magma', vmin=0, vmax=0.1)
 ```
 
-<!-- TODO: add figure 2 -->
+TODO: add figure 2
 
 Using a `DataArray` instead of a NumPy `ndarray` makes it easy to sort, average, and plot large matrices without having to manually keep track of what each axis represents.
 
@@ -65,7 +63,6 @@ In the AllenSDK, we also use Xarray to represent continuous signals from individ
 
 ```python
 lfp = session.get_lfp(session.probes.index.values[0])
-
 lfp.coords
 ```
 
@@ -82,7 +79,7 @@ Let's look at the LFP data for a similar segment of data we plotted earlier:
 lfp.sel(time=slice(100,101)).transpose().plot(cmap='magma')
 ```
 
-<!-- TODO: add figure 3 -->
+TODO: add figure 3
 
 The signal is dominated by a high-amplitude 7 Hz oscillation known as the “theta rhythm.”
 
@@ -103,7 +100,6 @@ ds = lfp.sel(time = time_selection, method='nearest').to_dataset(name='aligned_l
 ds = ds.assign(time=inds).unstack('time')
 
 aligned_lfp = ds['aligned_lfp']
-
 aligned_lfp.coords
 ```
 
@@ -121,7 +117,7 @@ Now, it only takes one line of code to plot the average response across the whol
 aligned_lfp.mean(dim='presentation_id').plot(cmap='magma')
 ```
 
-<!-- TODO: add figure 4 -->
+TODO: add figure 4
 
 The impact of the stimulus is perhaps less obvious here, but the trained eye can see a clear onset and offset response, similar to what was observed in the spiking data.
 
@@ -143,7 +139,7 @@ spike_phase = lfp_phase.sel(time=session.spike_times[unit_id], method='nearest')
 
 A histogram of the spike phase shows this neuron has a clear preference for the “trough” of theta (±π radians):
 
-<!-- TODO: add figure 5 -->
+TODO: add figure 5
 
 ## Summary
 
