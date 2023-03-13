@@ -43,7 +43,7 @@
     "swr": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "8.35.0",
+    "eslint": "8.36.0",
     "eslint-config-next": "13.2.1",
     "glob": "^8.1.0",
     "playwright": "^1.30.0"
