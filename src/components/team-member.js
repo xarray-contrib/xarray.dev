@@ -40,7 +40,11 @@ export const TeamMember = ({ member }) => {
 
             {data?.blog && (
               <SocialLink
-                href={data.blog}
+                href={
+                  data.blog.startsWith('http')
+                    ? data.blog
+                    : `https://${data.blog}`
+                }
                 icon={IoIosGlobe}
                 label={`View ${member.name}'s website`}
               />
