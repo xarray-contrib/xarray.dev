@@ -40,7 +40,7 @@
     "react-icons": "^4.8.0",
     "react-syntax-highlighter": "^15.5.0",
     "rehype-slug": "^5.1.0",
-    "swr": "^2.1.0"
+    "swr": "^2.1.1"
   },
   "devDependencies": {
     "eslint": "8.36.0",
