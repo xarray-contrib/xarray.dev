@@ -1,6 +1,6 @@
 ---
 title: 'Using Xarray for the analysis of neurophysiology data'
-date: '2023-03-15'
+date: '2023-03-29'
 authors:
   - name: Josh Siegle
     github: jsiegle
