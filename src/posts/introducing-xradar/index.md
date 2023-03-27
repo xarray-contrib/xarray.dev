@@ -14,7 +14,6 @@ authors:
 
 ![Openadar Science logo](https://raw.githubusercontent.com/openradar/openradar.github.io/main/_static/openradar_logo.svg)
 
-
 ## Who are we?
 
 The [Openradar Community](https://openradarscience.org/) is aimed to foster the use and the collaboration on weather radar related open source software ([BAMS: The Emergence of Open Source Software for the Weather Radar Community](https://doi.org/10.1175/BAMS-D-13-00240.1)). Many affiliated packages are accessible via Python. For more than eight years the openradar community is providing short courses on several weather radar related topics at major conferences (eg. [ERAD2022](https://openradarscience.org/erad2022/README.html)).
@@ -27,19 +26,27 @@ Radar data is complex. Unlike model data, or observational time-series datasets,
 
 ![](https://i.imgur.com/ltwSTo3.png)
 
-
 ### Radar Data Structure
+
 For those who are not familar with weather radar observations, here is a graphic describing how these datasets are collected.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Yrq2TVdM8HI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width='560'
+  height='315'
+  src='https://www.youtube.com/embed/Yrq2TVdM8HI'
+  title='YouTube video player'
+  frameborder='0'
+  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+  allowfullscreen
+></iframe>
 
 The radar scans through different **elevation scans**, which represent some angle between the ground and where the beam is pointing. Each of these scans can have a different number of azimuths (the direction the beam is pointing ex. North (0 degrees)) and range (distance from the radar).
 
 #### Defining Radar Terminology
 
-Each of those elevation scans represents a single ***sweep***, whereas the full collection of sweeps represents the full ***volume***. 
+Each of those elevation scans represents a single **_sweep_**, whereas the full collection of sweeps represents the full **_volume_**.
 
-We can think about this 
+We can think about this
 
 ### CfRadial 1
 
@@ -56,21 +63,19 @@ If we were to represent this in Xarray, within the DataArray and Dataset structu
 
 Kai working on this
 
-
 ### Converging on Common Data Formats (Cfradial2)
 
 One major difficulty to this time is handling the plethora of radar data file formats. At least two standards emerged within the last decades, [OPERA ODIM_H5](https://www.eumetnet.eu/activities/observations-programme/current-activities/opera/) and [CfRadial1](https://ncar.github.io/CfRadial/). Out of those 2 standards [WMO JET-OWR](https://community.wmo.int/governance/commission-membership/commission-observation-infrastructure-and-information-systems-infcom/standing-committee-measurements-instrumentation-and-traceability-sc-mint/joint-expert-team-operational-weather-radar-jet-owr) is distilling a new standard, FM301 ([WMO CF Extensions](https://community.wmo.int/activity-areas/wis/wmo-cf-extensions)).
 
-Within the openradar community the consensus was that a close collaboration that benefits the entire community can only be maximized through joint projects. So the idea of a common software project [xradar](http://xradar.readthedocs.io/) whose only task is to read and write radar data was born. The data import should include as many available data formats as possible, but the data export should be limited to the above recognized standards. 
-
+Within the openradar community the consensus was that a close collaboration that benefits the entire community can only be maximized through joint projects. So the idea of a common software project [xradar](http://xradar.readthedocs.io/) whose only task is to read and write radar data was born. The data import should include as many available data formats as possible, but the data export should be limited to the above recognized standards.
 
 ## How does Xarray/DataTree help?
 
-Within the community Xarray was already used to conveniently hold radar data in memory (see [wradlib xarray backends](https://docs.wradlib.org/en/stable/notebooks/fileio/wradlib_xarray_backends.html)). The closeness of the Xarray Datamodel using Dataset and DataArray to the major radar data standards (based on netCDF4/HDF5) made Xarray the ideal package to base on. Any software package that uses Xarray in any way will then be able to directly use the described data model and thus quickly and easily import and export radar data.     
+Within the community Xarray was already used to conveniently hold radar data in memory (see [wradlib xarray backends](https://docs.wradlib.org/en/stable/notebooks/fileio/wradlib_xarray_backends.html)). The closeness of the Xarray Datamodel using Dataset and DataArray to the major radar data standards (based on netCDF4/HDF5) made Xarray the ideal package to base on. Any software package that uses Xarray in any way will then be able to directly use the described data model and thus quickly and easily import and export radar data.
 
 ## Why did we choose Xarray?
 
-Beside the already mentioned similarities a major point is cloud readiness and inherent multiprocessing capabilities. Also the multitude of available Xarray-based packages targeting different aspects of scientific problems is another huge advantage. 
+Beside the already mentioned similarities a major point is cloud readiness and inherent multiprocessing capabilities. Also the multitude of available Xarray-based packages targeting different aspects of scientific problems is another huge advantage.
 
 ## A typical Radar Data Analysis Workflow with `Xradar`
 
@@ -90,7 +95,7 @@ from open_radar_data import DATASETS
 
 ### Fetch and Open a Single Sweep of CfRadial1 data
 
-Within xradar, we have a collection of **xarray backends**, which enable us to read a variety of radar data formats using xarray! In this case, we are reading *cfradial1* data, which follows the data structure described above.
+Within xradar, we have a collection of **xarray backends**, which enable us to read a variety of radar data formats using xarray! In this case, we are reading _cfradial1_ data, which follows the data structure described above.
 
 We can use the xarray API directly, specifying we want the first sweep (counting from 0), `sweep_0`. This returns an xarray dataset!
 
@@ -128,7 +133,8 @@ Data variables: (12/18)
 ```
 
 ### Open an Entire Volume of Cfradial1 data
-Often times, we want the ***entire volume***, including all of the individual sweeps. Since the coordiantes vary across each sweep, and there are additional metadata fields that do not conform to the typical `xarray.Dataset` data structure, we use the [`xarray.DataTree`](https://github.com/xarray-contrib/datatree) data model. We call this tree of radar data a **radar object** since it represents the entire set of radar data.
+
+Often times, we want the **_entire volume_**, including all of the individual sweeps. Since the coordiantes vary across each sweep, and there are additional metadata fields that do not conform to the typical `xarray.Dataset` data structure, we use the [`xarray.DataTree`](https://github.com/xarray-contrib/datatree) data model. We call this tree of radar data a **radar object** since it represents the entire set of radar data.
 
 ```python
 radar = xd.io.open_cfradial1_datatree(filename)
@@ -157,14 +163,14 @@ DataTree('root', parent=None)
 │       Conventions:         CF/Radial instrument_parameters radar_parameters rad...
 │       version:             1.2
 │       title:               TIMREX
-│       institution:         
-│       references:          
-│       source:              
+│       institution:
+│       references:
+│       source:
 │       ...                  ...
-│       comment:             
+│       comment:
 │       instrument_name:     SPOLRVP8
-│       site_name:           
-│       scan_name:           
+│       site_name:
+│       scan_name:
 │       scan_id:             0
 │       platform_is_mobile:  false
 ├── DataTree('radar_parameters')
@@ -426,9 +432,10 @@ DataTree('root', parent=None)
 ```
 
 ### Georeference data
+
 By default, the coordinates are in antenna coordinates, with limited geographic information. The only latitude/longitude information included in the file is the location of the radar, with the individual **gate latitude and longitude** information missing. Our first step to plotting this data and performing anlaysis is georeferencing, or adding additional geographic information to the coordinates.
 
-Here, we use the ***Azimuthal Equal Area*** projection, with the x/y/z values representing the distance east/west, north/south, above/below the radar respectively. The georeferencing can be performed on the core **radar** object using the **georeference accessor**. An example is provided below.
+Here, we use the **_Azimuthal Equal Area_** projection, with the x/y/z values representing the distance east/west, north/south, above/below the radar respectively. The georeferencing can be performed on the core **radar** object using the **georeference accessor**. An example is provided below.
 
 Notice how after we apply this georeferencing, values of x, y, and z are added to each of the sweeps!
 
@@ -474,7 +481,7 @@ Now that we have the geographic information, we can plot the data! The radar obj
 
 We extract the georeferenced information, and add some additional features to the map using matplotlib and cartopy.
 
-The visualization plotted here is a ***Plan Position Indicator (PPI)*** plot.
+The visualization plotted here is a **_Plan Position Indicator (PPI)_** plot.
 
 ```python=
 # Extract the cartopy reference system from the radar
@@ -494,10 +501,11 @@ radar["sweep_0"]["DBZ"].plot(
 ax.coastlines()
 ax.gridlines(draw_labels=True);
 ```
+
 ![](https://i.imgur.com/t1uXgPE.jpg)
 
-
 ### Save the data
+
 Once we are finished analyzing our data, we can save it to disk! When we save it, it will be in cfradial2 format, using netCDF4 groups.
 
 ```python
@@ -509,7 +517,6 @@ And we can read it back in, this time using datatree itself.
 ```python
 radar = dt.open_datatree('sample-radar-data-cfradial2.nc')
 ```
-
 
 ## Conclusions
 
