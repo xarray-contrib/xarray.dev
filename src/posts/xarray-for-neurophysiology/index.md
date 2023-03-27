@@ -93,17 +93,18 @@ The AllenSDK doesn't include a built-in function for aligning LFP to visual stim
 presentation_times = flash_presentations.start_time.values
 presentation_ids = flash_presentations.index.values
 
-trial_window = np.arange(0, 0.5, 1/500)
+trial_window = np.arange(0, 0.5, 1 / 500)
 time_selection = np.concatenate([trial_window + t for t in presentation_times])
 
 inds = pd.MultiIndex.from_product(
-    (presentation_ids, trial_window), names=('presentation_id', 'time_relative_to_stimulus_onset')
+    (presentation_ids, trial_window),
+    names=("presentation_id", "time_relative_to_stimulus_onset"),
 )
 
-ds = lfp.sel(time = time_selection, method='nearest').to_dataset(name='aligned_lfp')
-ds = ds.assign(time=inds).unstack('time')
+ds = lfp.sel(time=time_selection, method="nearest").to_dataset(name="aligned_lfp")
+ds = ds.assign(time=inds).unstack("time")
 
-aligned_lfp = ds['aligned_lfp']
+aligned_lfp = ds["aligned_lfp"]
 aligned_lfp.coords
 ```
 
@@ -130,15 +131,16 @@ Finally, it's worth mentioning that Xarray also simplifies analyses that relate 
 ```python
 from scipy.signal import butter, filtfilt, hilbert
 
-unit_id = units[(units.probe_description == 'probeA')
-            	& (units.ecephys_structure_acronym == 'CA1')].index.values[26]
-nearby_lfp = lfp.sel(channel=units.loc[unit_id].peak_channel_id, method='nearest')
+unit_id = units[
+    (units.probe_description == "probeA") & (units.ecephys_structure_acronym == "CA1")
+].index.values[26]
+nearby_lfp = lfp.sel(channel=units.loc[unit_id].peak_channel_id, method="nearest")
 
-b,a = butter(3, np.array([5, 9])/(1250 / 2), btype='bandpass')
+b, a = butter(3, np.array([5, 9]) / (1250 / 2), btype="bandpass")
 lfp_filt = filtfilt(b, a, hippocampal_lfp)
-lfp_phase = xr.DataArray(np.angle(hilbert(lfp_filt)), coords={'time': nearby_lfp.time})
+lfp_phase = xr.DataArray(np.angle(hilbert(lfp_filt)), coords={"time": nearby_lfp.time})
 
-spike_phase = lfp_phase.sel(time=session.spike_times[unit_id], method='nearest')
+spike_phase = lfp_phase.sel(time=session.spike_times[unit_id], method="nearest")
 ```
 
 A histogram of the spike phase shows this neuron has a clear preference for the “trough” of theta (±π radians):
@@ -157,8 +159,8 @@ Special thanks to Nile Graddis for introducing me to Xarray and writing the Alle
 
 ### References
 
-1. Stevenson & Körding (2011) _Nat Neurosci_ **14**: 139-142.
-2. Jun et al. (2017) _Nature_ **551**: 232-236.
-3. Demas et al. (2021) _Nat Methods_ **18**: 1103-1111.
-4. Rübel et al. (2022) _eLife_ **11**: e78362.
-5. De Vries et al. (2023) _arXiv_ 2212.08638
+1. [Stevenson & Körding (2011) _Nat Neurosci_ **14**: 139-142](https://www.nature.com/articles/nn.2731).
+2. [Jun et al. (2017) _Nature_ **551**: 232-236](https://www.nature.com/articles/nature24636).
+3. [Demas et al. (2021) _Nat Methods_ **18**: 1103-1111](https://www.nature.com/articles/s41592-021-01239-8).
+4. [Rübel et al. (2022) _eLife_ **11**: e78362](https://elifesciences.org/articles/78362).
+5. [De Vries et al. (2023) _arXiv_ 2212.08638](https://arxiv.org/abs/2212.08638).
