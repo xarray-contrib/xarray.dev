@@ -32,10 +32,14 @@ To begin to search for patterns in this data, it's helpful to align the spikes t
 
 ```python
 stimulus_presentations = session.stimulus_presentations
-flash_presentations = stimulus_presentations[stimulus_presentations.stimulus_name == 'flashes']
+flash_presentations = stimulus_presentations[
+    stimulus_presentations.stimulus_name == "flashes"
+]
 
 responses = session.presentationwise_spike_counts(
-    np.arange(0,0.5,0.001), flash_presentations.index.values, session.units.index.values
+    np.arange(0, 0.5, 0.001),
+    flash_presentations.index.values,
+    session.units.index.values,
 )
 responses.coords
 ```
