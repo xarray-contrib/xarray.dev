@@ -26,7 +26,7 @@ session = cache.get_session_data(819701982)  # access data by session ID
 
 The primary data for this session consists of spike times from 585 neurons (also called "units") simultaneously recorded across more than a dozen brain regions. This is what a 10-second snippet of the recording looks likes, with each dot representing one spike:
 
-TODO: add figure 1
+![10 second recording](/posts/xarray-for-neurophysiology/image1.png)
 
 To begin to search for patterns in this data, it's helpful to align the spikes to salient events that occur during the session. Since most of these neurons were recorded from visual areas of the mouse brain, they display robust increases in spike rate in response to images and movies. To make it easy to align spikes to a block of stimulus presentations, we created a function called `presentationwise_spike_counts` that takes a time interval, a list of presentation IDs, and a list of unit IDs, and returns an `xarray.DataArray` containing the binned spiking responses:
 
@@ -55,7 +55,7 @@ da = responses.mean(dim='stimulus_presentation_id').sortby("unit_id").transpose(
 da.plot(cmap='magma', vmin=0, vmax=0.1)
 ```
 
-TODO: add figure 2
+![onset-offset-stimulus](/posts/xarray-for-neurophysiology/image2.png)
 
 Using a `DataArray` instead of a NumPy `ndarray` makes it easy to sort, average, and plot large matrices without having to manually keep track of what each axis represents.
 
@@ -79,7 +79,7 @@ Let's look at the LFP data for a similar segment of data we plotted earlier:
 lfp.sel(time=slice(100,101)).transpose().plot(cmap='magma')
 ```
 
-TODO: add figure 3
+![lfp-data](/posts/xarray-for-neurophysiology/image3.png)
 
 The signal is dominated by a high-amplitude 7 Hz oscillation known as the “theta rhythm.”
 
@@ -117,7 +117,7 @@ Now, it only takes one line of code to plot the average response across the whol
 aligned_lfp.mean(dim='presentation_id').plot(cmap='magma')
 ```
 
-TODO: add figure 4
+![average-response-across-the-whole-probe](/posts/xarray-for-neurophysiology/image4.png)
 
 The impact of the stimulus is perhaps less obvious here, but the trained eye can see a clear onset and offset response, similar to what was observed in the spiking data.
 
@@ -139,7 +139,7 @@ spike_phase = lfp_phase.sel(time=session.spike_times[unit_id], method='nearest')
 
 A histogram of the spike phase shows this neuron has a clear preference for the “trough” of theta (±π radians):
 
-TODO: add figure 5
+![histogram-of-the-spike-phase](/posts/xarray-for-neurophysiology/image5.png)
 
 ## Summary
 
