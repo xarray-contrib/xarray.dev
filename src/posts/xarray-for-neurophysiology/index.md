@@ -13,7 +13,7 @@ These days, most neuroscience involves a hefty dose of data science. As technolo
 
 At the [Allen Institute](https://alleninstitute.org/division/brain-science/), we are working to improve the reproducibility of _in vivo_ neurophysiology experiments by employing greater standardization in the ways data is generated and shared. Each step in our "Allen Brain Observatory" data collection pipeline is carried out by highly trained technicians, and the outputs are subjected to rigorous quality control procedures. All of the sessions that pass inspection are packaged in Neurodata Without Borders (NWB) format<sup>4</sup> and distributed freely via the [AllenSDK](https://allensdk.readthedocs.io), a Python package that serves as a portal to a wide range of Allen Institute data resources.
 
-This blog post will describe how Xarray is being used in the AllenSDK’s `ecephys` module, which stands for "**e**xtra**c**ellular **e**lectro**phys**iology." We found Xarray to be well suited to serve as the foundational data structure for collaboratively developed neurophysiology analysis pipelines because it is efficient, domain-agnostic, and uses many of the same conventions as Pandas, which many neuroscientists are already familiar with. We hope that the examples described below will convince others to try out Xarray for their own analysis needs.
+This blog post will describe how Xarray is being used in the AllenSDK’s `ecephys` module, which stands for "**e**xtra**c**ellular **e**lectro**phys**iology." We found Xarray to be well suited to serve as the foundational data structure for collaboratively developed neurophysiology analysis pipelines because it is efficient, domain-agnostic, and uses many of the same conventions as Pandas, which plenty of neuroscientists are already familiar with. We hope that the examples described below will convince others to try out Xarray for their own analysis needs.
 
 Each `ecephys` experiment involves recordings of spiking activity from up to 6 high-density recording devices, called Neuropixels<sup>2</sup>, inserted into a mouse brain. We can load the data for one session (which includes about 2.5 hours of data) via the `EcephysProjectCache`. This will automatically download the NWB file from our remote server and load it as an `EcephysSession` object:
 
@@ -24,11 +24,13 @@ cache = EcephysProjectCache.from_warehouse(manifest=manifest_path)
 session = cache.get_session_data(819701982)  # access data by session ID
 ```
 
-The primary data for this session consists of spike times from 585 neurons (also called "units") simultaneously recorded across more than a dozen brain regions. This is what a 10-second snippet of the recording looks likes, with each dot representing one spike:
+The `session` object provides access to the primary data, which consists of spike times from 585 neurons (also called "units") simultaneously recorded across more than a dozen brain regions. This is what a 10-second snippet of the recording looks likes, with each dot representing one spike:
 
 ![10 second recording](/posts/xarray-for-neurophysiology/image1.png)
 
-To begin to search for patterns in this data, it's helpful to align the spikes to salient events that occur during the session. Since most of these neurons were recorded from visual areas of the mouse brain, they display robust increases in spike rate in response to images and movies. To make it easy to align spikes to a block of stimulus presentations, we created a function called `presentationwise_spike_counts` that takes a time interval, a list of presentation IDs, and a list of unit IDs, and returns an `xarray.DataArray` containing the binned spiking responses:
+Our `session` object can also be used to access information about the visual stimuli that were shown, the behavior of the mouse, and the electrodes that were used. For example, `session.stimulus_presentations` returns a `DataFrame` of all the visual stimuli, with each stimulus indexed by a unique ID. More information about this class can be found in the [AllenSDK documentation](https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html).
+
+To begin to search for patterns in this data, it's helpful to align spikes to salient events that occur during the session. Since most of these neurons were recorded from visual areas of the mouse brain, they display robust increases in spike rate in response to images and movies. To make it easy to align spikes to a block of stimulus presentations, the `EcephysSession` class includes a helpful method called `presentationwise_spike_counts` that takes a time interval, a list of presentation IDs, and a list of unit IDs, and returns an `xarray.DataArray` containing the binned spiking responses:
 
 ```python
 stimulus_presentations = session.stimulus_presentations
@@ -60,6 +62,8 @@ da.plot(cmap='magma', vmin=0, vmax=0.1)
 ```
 
 ![onset-offset-stimulus](/posts/xarray-for-neurophysiology/image2.png)
+
+(Note that this figure includes some annotations that were not produced by `da.plot()`.)
 
 Using a `DataArray` instead of a NumPy `ndarray` makes it easy to sort, average, and plot large matrices without having to manually keep track of what each axis represents.
 
@@ -123,6 +127,8 @@ aligned_lfp.mean(dim='presentation_id').plot(cmap='magma')
 ```
 
 ![average-response-across-the-whole-probe](/posts/xarray-for-neurophysiology/image4.png)
+
+(Note that this figure includes some annotations that were not produced by `da.plot()`.)
 
 The impact of the stimulus is perhaps less obvious here, but the trained eye can see a clear onset and offset response, similar to what was observed in the spiking data.
 
