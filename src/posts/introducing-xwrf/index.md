@@ -21,7 +21,7 @@ import xwrf
 ds = xr.open_dataset("wrfout_d01.nc").xwrf.postprocess()
 ```
 
-<RawHTML filePath='public/posts/introducing-xwrf/ssp_ds.html' />
+<RawHTML filePath='/posts/introducing-xwrf/ssp_ds.html' />
 
 ## WRF in the Python Ecosystem
 
