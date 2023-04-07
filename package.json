@@ -47,6 +47,13 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "glob": "^9.3.0",
+    "html-minifier": "^4.0.0",
+    "husky": "^8.0.3",
     "playwright": "^1.32.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx html-minify-pre-commit"
+    }
   }
 }
