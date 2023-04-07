@@ -22,6 +22,7 @@ export const RawHTML = ({ filePath }) => {
   const { data: htmlContent, error } = useSWR(
     `/api/html-content?filePath=${encodeURIComponent(filePath)}`,
     fetcher,
+    { dedupingInterval: 60 * 60 * 1000 }, // 1 hour in milliseconds
   )
 
   if (error) {
