@@ -21,6 +21,8 @@ import xwrf
 ds = xr.open_dataset("wrfout_d01.nc").xwrf.postprocess()
 ```
 
+<RawHTML filePath='/public/posts/introducing-xwrf/ssp_ds.html' />
+
 ## WRF in the Python Ecosystem
 
 The [Weather Research and Forecasting model ("WRF")](https://www.mmm.ucar.edu/weather-research-and-forecasting-model) is a widely-used numerical weather prediction system, with applications in both atmospheric sciences research and forecasting on scales from climate prediction, to mesoscale weather forecasting, all the way to large-eddy simulations. For example, the [National Centers for Environmental Prediction](https://weather.gov/ncep/) in the U.S. runs several models based on the WRF core (e.g., [NAM](https://www.emc.ncep.noaa.gov/emc/pages/numerical_forecast_systems/nam.php) and [HRRR](https://www.emc.ncep.noaa.gov/emc/pages/numerical_forecast_systems/hrrr.php)).
