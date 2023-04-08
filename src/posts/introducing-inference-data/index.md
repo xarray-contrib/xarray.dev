@@ -11,7 +11,7 @@ authors:
 summary: "Xarray provides the core data model for ArviZ's InfrerenceData structure"
 ---
 
-_TLDR: Xarray is the core of the `az.InferenceData` object. [ArviZ InferenceData](https://python.arviz.org/en/stable/api/generated/arviz.InferenceData.html) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
+_TLDR: The Xarray Dataset provides is the core of the `arviz.InferenceData` object. [ArviZ InferenceData](https://python.arviz.org/en/stable/api/generated/arviz.InferenceData.html) simplifies the Bayesian workflow, facilitates reproducibility, and enables interoperability between different Probabilistic Programming languages._
 
 ```python
 # Load the saved results of a bayesian analysis from disk
@@ -29,7 +29,7 @@ the Probabilistic Programming Language (PPL) Designer, and what things used to b
 ### The Modern Bayesian Practitioner
 
 Like most modern statisticians, the Modern Bayesian Statistician uses a computer to perform their work.
-Many PPLs are available for this task, such as [Stan](https://mc-stan.org/),
+Many PPLs are available for this kind of work, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
 
 With probabilistic programming language in hand, the Bayesian then follows the "Bayesian workflow" below, performing each of the various steps
@@ -58,16 +58,14 @@ the open source Bayesian ecosystem.
 
 Before `az.InferenceData` there wasn't a consistent object or method both for the user or for the PPL library maintainers.
 Things like posteriors, prior predictives, observed data, and sampler stats could be stored in their own ways,
-For example one PPL may store their modeling outputs in a dictionary, other may have used plain numpy arrays, a third had its own custom class.
+For example one PPL may store their modeling outputs in a dictionary, other may have used plain NumPy arrays, a third had its own custom class.
 And that's even before considering the shapes and indices of the array.
 
 This all meant
 
-- Each PPL designer would have to implement their own internal objects
-  - The objects may not be serializable to disk
+- Each PPL designer would have to implement their own data objects and would have to solve lots problems like how to serialize data to disk.
 - All adjacent workflow libraries would only work with a subset of these objects, or would require users to restructure data each time.
-- The APIs and interfaces for all of these were inconsistent making life challenging for end users
-  - Folks using different PPLs would be isolated in completely different ecosystems, even when the PPLs share the same general programming language.
+- The APIs and interfaces for all of these were inconsistent making life challenging for end user. Users of different PPLs would be isolated in completely different ecosystems, even when the PPLs share the same general programming language.
 
 ## How az.InferenceData works and its implementation
 
