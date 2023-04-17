@@ -2016,9 +2016,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apexcharts@npm:3.37.3":
-  version: 3.37.3
-  resolution: "apexcharts@npm:3.37.3"
+"apexcharts@npm:3.39.0":
+  version: 3.39.0
+  resolution: "apexcharts@npm:3.39.0"
   dependencies:
     svg.draggable.js: ^2.2.2
     svg.easing.js: ^2.0.0
@@ -2026,7 +2026,7 @@ __metadata:
     svg.pathmorphing.js: ^0.1.3
     svg.resize.js: ^1.4.3
     svg.select.js: ^3.0.1
-  checksum: 613f48d835eea1b57fc24f9f943797b0dcd90d9b45a65906a65aa982df3f1cfb4140ee08f86dacab3a8b4ae14f5754fe6f7cb12b8ebd254deb30464868a816db
+  checksum: 2ffc7b2a581cf16726175d64f356e23db4da3636b4f4fa68616e7bc92bc5cb255218e4fa3e0be0c0de29fb041be67f17cbcfb1aa236e091bf645d3146d6b4ca6
   languageName: node
   linkType: hard
 
@@ -6871,7 +6871,7 @@ __metadata:
     "@mdx-js/loader": ^2.3.0
     "@mdx-js/react": ^2.3.0
     "@next/mdx": ^13.2.4
-    apexcharts: 3.37.3
+    apexcharts: 3.39.0
     d3: ^7.8.3
     date-fns: ^2.29.3
     date-fns-tz: ^2.0.0
