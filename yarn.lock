@@ -1590,9 +1590,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^13.2.4":
-  version: 13.2.4
-  resolution: "@next/mdx@npm:13.2.4"
+"@next/mdx@npm:^13.3.4":
+  version: 13.3.4
+  resolution: "@next/mdx@npm:13.3.4"
   dependencies:
     source-map: ^0.7.0
   peerDependencies:
@@ -1603,7 +1603,7 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: a6da0da5fd2c9346ac328484bdcc8662527b32af95cb883fc2a85e4f37485af19cf9c024c301fad48ac539965fc792d4f0815d4ee2c93fc0e220e0111726be94
+  checksum: c36874782ba64f0a794356047058dc7c3f1ec32a6ca2b0afbd25b0841675daa5d47d84640bd02172c2fc3c27a52a4aff6f555bee1b4b25353ac2fc635c27bc0a
   languageName: node
   linkType: hard
 
@@ -6870,7 +6870,7 @@ __metadata:
     "@giscus/react": ^2.2.8
     "@mdx-js/loader": ^2.3.0
     "@mdx-js/react": ^2.3.0
-    "@next/mdx": ^13.2.4
+    "@next/mdx": ^13.3.4
     apexcharts: 3.37.3
     d3: ^7.8.3
     date-fns: ^2.29.3
