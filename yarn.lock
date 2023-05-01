@@ -2766,9 +2766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3@npm:^7.8.3":
-  version: 7.8.3
-  resolution: "d3@npm:7.8.3"
+"d3@npm:^7.8.4":
+  version: 7.8.4
+  resolution: "d3@npm:7.8.4"
   dependencies:
     d3-array: 3
     d3-axis: 3
@@ -2800,7 +2800,7 @@ __metadata:
     d3-timer: 3
     d3-transition: 3
     d3-zoom: 3
-  checksum: d3291a8f487a96a57bef54af40728da82dedd52e6abd033f93835f1ca5fdc8daad8c6e9e10b324d8e67680205da9ae32ee5bb679cc97ef79527c57dea3b78dd8
+  checksum: 8dfea4d026e5597ab9c46035df7f0ca4f3891b2b52b21b181bd8660fc61d85f0bbe3cc2b8f1e922978084156cb017cbbfa350a8e42349310642023a9f1517471
   languageName: node
   linkType: hard
 
@@ -6872,7 +6872,7 @@ __metadata:
     "@mdx-js/react": ^2.3.0
     "@next/mdx": ^13.3.4
     apexcharts: 3.37.3
-    d3: ^7.8.3
+    d3: ^7.8.4
     date-fns: ^2.29.3
     date-fns-tz: ^2.0.0
     eslint: 8.36.0
