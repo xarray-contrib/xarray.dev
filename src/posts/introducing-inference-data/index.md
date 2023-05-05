@@ -21,7 +21,6 @@ data = az.load_arviz_data("non_centered_eight")
 data
 ```
 
-
 <div>
 <div class='xr-header'>
 <div class="xr-obj-type">arviz.InferenceData</div>
@@ -84,7 +83,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -397,6 +396,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:  (chain: 4, draw: 500, school: 8)
 Coordinates:
@@ -481,7 +481,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -794,6 +794,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:    (chain: 4, draw: 500, obs_dim_0: 8)
 Coordinates:
@@ -870,7 +871,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -1183,6 +1184,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:    (chain: 4, draw: 500, obs_dim_0: 8)
 Coordinates:
@@ -1259,7 +1261,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -1572,6 +1574,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:              (chain: 4, draw: 500)
 Coordinates:
@@ -1661,7 +1664,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -1974,6 +1977,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:  (chain: 1, draw: 500, school: 8)
 Coordinates:
@@ -2056,7 +2060,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -2369,6 +2373,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:    (chain: 1, draw: 500, obs_dim_0: 8)
 Coordinates:
@@ -2445,7 +2450,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -2758,6 +2763,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:    (obs_dim_0: 8)
 Coordinates:
@@ -2829,7 +2835,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -3142,6 +3148,7 @@ stroke-width: 0;
 stroke: currentColor;
 fill: currentColor;
 }
+
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:  (school: 8)
 Coordinates:
@@ -3196,7 +3203,7 @@ max-width: 700px;
 }
 
 .xr-text-repr-fallback {
-/* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+/_ fallback to plain text repr when CSS is not injected (untrusted notebook) _/
 display: none;
 }
 
@@ -3502,8 +3509,6 @@ stroke: currentColor;
 fill: currentColor;
 }
 .xr-wrap{width:700px!important;} </style>
-
-
 
 ## The Life of a modern Bayesian
 
