@@ -3562,6 +3562,15 @@ This all meant
 Under the hood `az.InferenceData` is largely a collection of Xarray objects, with some utility functions built in as well.
 Xarray was the natural choice, because storing indexes, and performing calculations
 over multidimensional outputs are routine tasks for computational Bayesian modelers.
+Named dimensions let us directly interact with the dimensions of interest, such as the quantities being studied.
+Importantly they also remove implicit assumptions of which dimension represents chains and draws,\
+dimensions while necessary for sampling, are not so interesting when trying to perform inference, 
+similar to how batch dimensions are a computational nuance, but not a modeling nuance.
+
+Often in Bayesian analysis we tend to reduce multidimensional arrays into lesser multidimensional arrays, 
+for instance taking the mean across a distribution while leaving the other dimensions untouched. 
+Xarray named dimensions also let us do this in a readable and repeatable way agnostic of PPL or model construction.
+
 
 ![InferenceData Architecture](https://python.arviz.org/en/stable/_images/InferenceDataStructure.png)
 
