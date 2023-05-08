@@ -37,7 +37,15 @@ export const RawHTML = ({ filePath }) => {
   const html = sanitizeHTML(htmlContent)
 
   return (
-    <Box as='section' width={'100vw'}>
+    <Box
+      as='section'
+      width={'100%'}
+      backgroundColor={'rgba(255, 255, 255, 0.9)'} // Add a semi-transparent white background
+      padding={'1rem'} // Add some padding around the content
+      boxShadow={'0px 4px 6px rgba(0, 0, 0, 0.1)'} // Add a subtle box shadow
+      borderRadius={'0.5rem'} // Add rounded corners to the box
+      overflow={'auto'} // Add a scrollbar if the content overflows
+    >
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Box>
   )
