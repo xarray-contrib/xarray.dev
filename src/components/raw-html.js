@@ -1,4 +1,5 @@
 import { sanitizeHTML } from '@/lib/sanitize-html'
+import { Box } from '@chakra-ui/react'
 import useSWR from 'swr'
 
 async function fetcher(url) {
@@ -35,5 +36,9 @@ export const RawHTML = ({ filePath }) => {
 
   const html = sanitizeHTML(htmlContent)
 
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
+  return (
+    <Box as='section' width={'100vw'}>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </Box>
+  )
 }
