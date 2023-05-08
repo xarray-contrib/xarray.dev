@@ -249,7 +249,7 @@
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
 
-"@chakra-ui/icons@^2.0.18":
+"@chakra-ui/icons@^2.0.19":
   version "2.0.19"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.0.19.tgz#b4581a59c2e2a2b95b01ab251eabb8cf984bb00f"
   integrity sha512-0A6U1ZBZhLIxh3QgdjuvIEhAZi3B9v8g6Qvlfa3mu6vSnXQn2CHBZXmJwxpXxO40NK/2gj/gKXrLeUaFR6H/Qw==
@@ -589,7 +589,7 @@
   dependencies:
     "@chakra-ui/utils" "2.0.15"
 
-"@chakra-ui/react@^2.5.5":
+"@chakra-ui/react@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@chakra-ui/react/-/react-2.6.1.tgz#0fc4b9811eb675ade09c3fb0541b4412be060d83"
   integrity sha512-Lt8c8pLPTz59xxdSuL2FlE7le9MXx4zgjr60UnEc3yjAMjXNTqUAoWHyT4Zn1elCGUPWOedS3rMvp4KTshT+5w==
@@ -727,7 +727,7 @@
     "@chakra-ui/checkbox" "2.2.15"
     "@chakra-ui/shared-utils" "2.0.5"
 
-"@chakra-ui/system@2.5.7", "@chakra-ui/system@^2.5.1":
+"@chakra-ui/system@2.5.7", "@chakra-ui/system@^2.5.7":
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/@chakra-ui/system/-/system-2.5.7.tgz#f56c480af336d9f48e0ad84e2434d834017c44e2"
   integrity sha512-yB6en7YdJPxKvKY2jJROVwkBE2CLFmHS4ZDx27VdYs0Fa4kGiyDFhJAfnMtLBNDVsTy1NhUHL9aqR63u56QqFg==
@@ -1114,7 +1114,7 @@
   dependencies:
     glob "7.1.7"
 
-"@next/mdx@^13.3.4":
+"@next/mdx@^13.4.1":
   version "13.4.1"
   resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-13.4.1.tgz#34c752eda3155cb67e083df88b9c36e6c883f0b1"
   integrity sha512-jYhj/23/zamwgaZhYHnLc6B6lM/YnTkW5g/L6AClkZ3/o/Kups0Jq5TdYRXQ85vpaGYCNTnLr4kxdtCNWxuYzA==
@@ -2101,7 +2101,7 @@ date-fns-tz@^2.0.0:
   resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-2.0.0.tgz#1b14c386cb8bc16fc56fe333d4fc34ae1d1099d5"
   integrity sha512-OAtcLdB9vxSXTWHdT8b398ARImVwQMyjfYGkKD2zaGpHseG2UPHbHjXELReErZFxWdSLph3c2zOaaTyHfOhERQ==
 
-date-fns@^2.29.3:
+date-fns@^2.30.0:
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
   integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
@@ -4928,6 +4928,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
