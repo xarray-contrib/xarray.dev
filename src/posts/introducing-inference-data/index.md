@@ -76,9 +76,9 @@ Under the hood `az.InferenceData` is largely a collection of Xarray objects, wit
 Xarray was the natural choice, because storing indexes, and performing calculations
 over multidimensional outputs are routine tasks for computational Bayesian modelers.
 Named dimensions let us directly interact with the dimensions of interest, such as the quantities being studied.
-Importantly they also remove implicit assumptions of which dimension represents chains and draws,\
-dimensions while necessary for sampling, are not so interesting when trying to perform inference,
-similar to how batch dimensions are a computational nuance, but not a modeling nuance.
+Importantly they also remove implicit assumptions of which dimension represents chains and draws.
+These dimensions are necessary for sampling and some diagnostics,
+but are not so interesting when trying to perform inference and draw conclusions about the question at hand.
 
 Often in Bayesian analysis we tend to reduce multidimensional arrays into lesser multidimensional arrays,
 for instance taking the mean across a distribution while leaving the other dimensions untouched.
