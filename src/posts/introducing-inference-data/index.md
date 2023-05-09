@@ -34,7 +34,7 @@ Like most modern statisticians, the Modern Bayesian Statistician uses a computer
 Many PPLs are available for this kind of work, such as [Stan](https://mc-stan.org/),
 [PyMC](https://www.pymc.io/), [Tensorflow Probability](https://www.tensorflow.org/probability), [NumPyro](http://pyro.ai/numpyro/) etc.
 
-With probabilistic programming language in hand, the Bayesian then follows the "Bayesian workflow" below, performing each of the various steps
+With a probabilistic programming language in hand, the Bayesian then follows the "Bayesian workflow" below, performing each of the various steps
 as part of their analysis.
 
 ![Bayesian Workflow](https://bayesiancomputationbook.com/_images/Bayesian_workflow.png)
@@ -59,7 +59,7 @@ the open source Bayesian ecosystem.
 ## Life before az.InferenceData
 
 Before `az.InferenceData` there wasn't a consistent object or method both for the user or for the PPL library maintainers.
-Things like posteriors, prior predictives, observed data, and sampler stats could be stored in their own ways,
+Things like posteriors, prior predictives, observed data, and sampler stats could be stored in their own ways.
 For example one PPL may store their modeling outputs in a dictionary, other may have used plain NumPy arrays, a third had its own custom class.
 And that's even before considering the shapes and indices of the array.
 
@@ -117,6 +117,6 @@ The ArviZ project also maintains [xarray-einstats](https://einstats.python.arviz
 ## Conclusion
 
 Xarray enables neat functionality, standardization, and simplification for Bayesian users.
-If you're a Bayesian practitioner we invite you to use [ArviZ](https://python.arviz.org/), and xarray by extension, to see how easy things are.
+If you're a Bayesian practitioner we invite you to use [ArviZ](https://python.arviz.org/), and Xarray by extension, to see how easy things are.
 If you're a library developer for anything that uses numerical, consider how Xarray could help your users.
 We're quite thrilled with the capabilities of Xarray today and are excited to see what's to come in the future!
