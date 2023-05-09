@@ -43,13 +43,3 @@ repos:
           )$"
         # exclude files ending with .html
         exclude: \.html$
-
-  - repo: local
-    hooks:
-      - id: minify-html
-        name: Minify HTML
-        entry: hooks/minify-html.js
-        language: script
-        types:
-          - file
-        files: \.html$
