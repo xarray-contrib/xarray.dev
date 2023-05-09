@@ -1,19 +1,24 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
+
     hooks:
       - id: trailing-whitespace
+        exclude: \.html$
       - id: end-of-file-fixer
+        exclude: \.html$
       - id: check-json
       - id: check-added-large-files
         args: ['--maxkb=20000']
       - id: check-yaml
       - id: double-quote-string-fixer
+        exclude: \.html$
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: 'v3.0.0-alpha.9-for-vscode'
     hooks:
       - id: prettier
+        exclude: \.html$
 
         files: "\\.(\
           css|less|scss\
@@ -36,3 +41,5 @@ repos:
           |md|markdown|mdown|mkdn\
           |mdx\
           )$"
+        # exclude files ending with .html
+        exclude: \.html$
