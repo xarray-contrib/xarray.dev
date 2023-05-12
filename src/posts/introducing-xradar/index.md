@@ -6,6 +6,10 @@ authors:
     github: mgrover1
   - name: Kai Mühlbauer
     github: kmuehlbauer
+  - name: Edouard Goudenhoofdt
+    github: egouden
+  - name: Alfonso Ladino
+    github: aladinor
   - name: Zachary Sherman
     github: zssherman
 ---
