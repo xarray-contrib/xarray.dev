@@ -5,8 +5,17 @@ import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
+
+// use for install xarray via micropip
+const preRun =
+  'import%20micropip%0Aawait%20micropip.install%28%5B%27xarray%27%2C%20%27matplotlib%27%5D%29'
+
 // See: https://github.com/jupyterlite/jupyterlite/issues/151
-const preRunCode = `%22%22%22%0AThe%20next%20two%20commands%20are%20only%20needed%20on%20this%20webpage%0APlease%20do%20not%20try%20to%20run%20them%20outside%20of%20this%20webpage%2C%20otherwise%20you%20will%20get%20an%20error%0A%22%22%22%0Aimport%20micropip%0Aawait%20micropip.install%28%5B%27xarray%27%2C%20%27matplotlib%27%5D%29%0A%0A%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport%20numpy%20as%20np%0Aimport%20pandas%20as%20pd%0A%25matplotlib%20inline`
+const preRunCode = `%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport%20numpy%20as%20np%0Aimport%20pandas%20as%20pd%0A%25matplotlib%20inline`
+
+// https://github.com/jobovy/jupyterlite-repl-prerun
+const jupyterliteInstance =
+  'https://jupyterlite-repl-prerun.readthedocs.io/en/latest/lite/repl'
 
 const sampleCode = `"""
 To try Xarray in the browser,
@@ -82,7 +91,7 @@ export const Repl = () => {
           <AspectRatio ratio={4 / 3}>
             <iframe
               title='repl'
-              src={`https://jupyterlite.github.io/demo/repl/?toolbar=1&kernel=python&code=${preRunCode}`}
+              src={`${jupyterliteInstance}/?toolbar=1&kernel=python&prerun=${preRun}&prerun-code=${preRunCode}`}
               alt='demo'
             />
           </AspectRatio>

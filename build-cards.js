@@ -1,11 +1,10 @@
 const fs = require('fs')
-const glob = require('glob')
 const { chromium, devices } = require('playwright')
 
 const { getAllPostsIds } = require('./src/lib/posts')
 const cardsDir = './public/cards/'
 
-glob('./cards/**.png', async (err, files) => {
+async function main() {
   const contents = getAllPostsIds()
 
   if (!fs.existsSync(cardsDir)) {
@@ -17,7 +16,7 @@ glob('./cards/**.png', async (err, files) => {
   }
 
   process.exit()
-})
+}
 
 const baseUrl = process.env.CARDS_BASE_URL || 'http://localhost:3000'
 const device = devices['Desktop Safari']
@@ -36,3 +35,5 @@ async function getScreenshot(postId) {
   })
   await browser.close()
 }
+
+main()
