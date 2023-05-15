@@ -1,6 +1,6 @@
 ---
 title: 'Weather Radar Data in Xarray'
-date: '2023-05-12'
+date: '2023-05-16'
 authors:
   - name: Maxwell Grover
     github: mgrover1
@@ -13,8 +13,6 @@ authors:
   - name: Zachary Sherman
     github: zssherman
 ---
-
-# Weather Radar Data in Xarray
 
 ![Openadar Science logo](https://raw.githubusercontent.com/openradar/openradar.github.io/main/_static/openradar_logo.svg)
 
@@ -50,7 +48,7 @@ One major difficulty to this time is handling the plethora of radar data file fo
 
 A common data format, for the last decade or so, has been **cfradial 1** which uses the following data model:
 
-![](https://i.imgur.com/AiYtOzn.png)
+![CfRadial-1](https://i.imgur.com/AiYtOzn.png)
 **Figure 2.2 from the Cfradial 1.5 technical document**
 
 This is a special subset of the netCDF data model, that includues information about how to unpack this dataset, with indices where the different elevation scans start and end (`ray_start_index`). **These start and end indices, along with range can change across full volume scans.**
@@ -61,7 +59,7 @@ If we were to represent this in Xarray, within the DataArray and Dataset structu
 
 **ODIM** was designed within the EUMETNET OPERA programme and is used for data exchange in Europe. We use the HDF5 implementation, **ODIM_H5**.
 
-![](/posts/introducing-xradar/odim_polar_scan.png)
+![ODIM](/posts/introducing-xradar/odim_polar_scan.png)
 **Figure 6 from the ODIM_H5 2.4 technical document**
 
 The data is provided in a tree-like structure, where metadata is attached in special sub-groups and dataset-attributes. To represent this in Xarray DataArray and Dataset structures, we would need to merge data-subgroups and create coordinates from metadata.
@@ -76,7 +74,7 @@ The `xradar` [data model](https://docs.openradarscience.org/projects/xradar/en/l
 
 ### History of Radar Data in Python
 
-![](https://i.imgur.com/ltwSTo3.png)
+![history-of-radar-data-in-python](https://i.imgur.com/ltwSTo3.png)
 
 ## How does Xarray/DataTree help?
 
@@ -114,13 +112,7 @@ ds = xr.open_dataset(filename, group="sweep_0", engine="cfradial1")
 ds
 ```
 
-<iframe
-  width='100%'
-  height='500'
-  src='/posts/introducing-xradar/out01.html'
-  frameborder='0'
-  allowfullscreen
-></iframe>
+<RawHTML filePath='/posts/introducing-xradar/out01.html' />
 
 ### Open an Entire Volume of Cfradial1 data
 
@@ -131,13 +123,7 @@ radar = xd.io.open_cfradial1_datatree(filename)
 radar
 ```
 
-<iframe
-  width='100%'
-  height='500'
-  src='/posts/introducing-xradar/out02.html'
-  frameborder='0'
-  allowfullscreen
-></iframe>
+<RawHTML filePath='/posts/introducing-xradar/out02.html' />
 
 ### Georeference data
 
@@ -152,13 +138,7 @@ radar = radar.xradar.georeference()
 radar['sweep_0']
 ```
 
-<iframe
-  width='100%'
-  height='500'
-  src='/posts/introducing-xradar/out03.html'
-  frameborder='0'
-  allowfullscreen
-></iframe>
+<RawHTML filePath='/posts/introducing-xradar/out03.html' />
 
 ### Plot data
 
@@ -187,7 +167,7 @@ ax.coastlines()
 ax.gridlines(draw_labels=True);
 ```
 
-![](https://i.imgur.com/t1uXgPE.jpg)
+![plot](https://i.imgur.com/t1uXgPE.jpg)
 
 ### Save the data
 
