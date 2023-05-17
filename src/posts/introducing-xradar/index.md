@@ -1,6 +1,6 @@
 ---
 title: 'Weather Radar Data in Xarray'
-date: '2023-05-16'
+date: '2023-05-17'
 authors:
   - name: Maxwell Grover
     github: mgrover1
