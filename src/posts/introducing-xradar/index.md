@@ -12,6 +12,7 @@ authors:
     github: aladinor
   - name: Zachary Sherman
     github: zssherman
+summary: 'Bringing weather radar data into the Xarray ecosystem through Xradar'
 ---
 
 ![Openadar Science logo](https://raw.githubusercontent.com/openradar/openradar.github.io/main/_static/openradar_logo.svg)
