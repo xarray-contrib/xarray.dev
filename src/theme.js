@@ -1,6 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 import { theme } from '@chakra-ui/theme'
-import '@fontsource/inter/variable.css'
+import '@fontsource-variable/inter'
 
 // color mode config
 const config = {
@@ -9,8 +9,8 @@ const config = {
 }
 
 const fonts = {
-  body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-  heading: 'Inter, Work Sans, system-ui, sans-serif',
+  body: "'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  heading: "'Inter Variable', Work Sans, system-ui, sans-serif",
 }
 
 export const customTheme = extendTheme(
