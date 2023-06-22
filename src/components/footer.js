@@ -10,11 +10,13 @@ import {
   VStack,
 } from '@chakra-ui/react'
 
+import { getRootURL } from '@/lib/seo-utils'
+
 import { GitSHA } from '@/components/git-sha'
 import { Image, Link } from '@/components/mdx'
 import { VercelCallout } from '@/components/vercel'
 import { footerItems } from '@/data/footer-items'
-import { FaGithub, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaRss, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -75,7 +77,7 @@ export const Footer = () => {
             </Text>
             <GitSHA />
 
-            <Stack direction={'row'} spacing={6}>
+            <Stack direction={'row'} spacing={2}>
               <SocialButton
                 label={'Twitter'}
                 href={'https://twitter.com/xarray_dev'}
@@ -95,6 +97,12 @@ export const Footer = () => {
                 }
               >
                 <FaYoutube size={70} />
+              </SocialButton>
+              <SocialButton
+                label={'Blog RSS Feed'}
+                href={`${getRootURL()}/atom.xml`}
+              >
+                <FaRss size={70} />
               </SocialButton>
             </Stack>
           </Stack>
