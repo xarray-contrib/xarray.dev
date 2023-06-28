@@ -1,5 +1,5 @@
 ---
-title: 'Unit-aware arithmetic in Xarray, via pint'
+title: 'Cubed: Bounded-memory serverless array processing in xarray'
 date: '2023-06-28'
 authors:
   - name: Tom Nicholas
