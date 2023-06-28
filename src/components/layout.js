@@ -13,18 +13,12 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'New blog posts are available. Check them out!'
+  const bannerTitle = ''
   const bannerDescription = ''
   const bannerChildren = (
     <Text fontWeight='medium'>
-      <Link href='/blog/xarray-kvikio'>
-        Enabling GPU-native analytics with Xarray and kvikIO
-      </Link>{' '}
-      and {''}
-      <Link href='/blog/introducing-pint-xarray'>
-        Unit-aware arithmetic in Xarray, via pint
-      </Link>
-   </Text>
+      <Link href='/href-placeholder'>Text for a future announcement</Link>
+    </Text>
   )
   return (
     <>
