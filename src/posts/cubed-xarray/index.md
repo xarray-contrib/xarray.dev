@@ -152,7 +152,7 @@ You can see again that the [projected memory](https://tom-e-white.com/cubed/user
 
 One obvious tradeoff for this memory stability is that Cubed took **a lot longer** to complete - roughly 4x longer then dask for the 1.5TB workload (45m 22s vs 11m 26s). We will come back to discuss this shortly.
 
-Finally it's interesting to look at Cubed's equivalent of the task graph. To calculate one array (the product $<UV>_t$ from the quadratic means problem), Cubed's "Plan" for processing 1.5TB of data looks like this:
+Finally it's interesting to look at Cubed's equivalent of the task graph. To calculate one array (the product $UV$ from the quadratic means problem), Cubed's "Plan" for processing 1.5TB of data looks like this:
 
 ![](https://hackmd.io/_uploads/SJcShLyvn.png)
 
