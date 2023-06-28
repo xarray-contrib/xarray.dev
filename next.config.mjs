@@ -8,6 +8,7 @@ const withMDX = nextMDX({
     rehypePlugins: [rehypeSlug],
     // If you use `MDXProvider`, uncomment the following line.
     providerImportSource: "@mdx-js/react",
+    format: 'mdx',
   },
 })
 

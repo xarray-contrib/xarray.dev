@@ -2,7 +2,7 @@ import { DatasetteStatsCard } from '@/components/dashboard/datasette-stats-card'
 import { StatisticsCard } from '@/components/dashboard/statistics-card'
 import { Heading } from '@/components/mdx'
 import { fetcher } from '@/lib/data-fetching'
-import { SimpleGrid, Spinner, Box, Container } from '@chakra-ui/react'
+import { Box, Container, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { BsPeople, BsPerson } from 'react-icons/bs'
 import { GoBook, GoPackage, GoStar, GoTag } from 'react-icons/go'
 import useSWR from 'swr'
@@ -32,10 +32,10 @@ export const ProjectMetrics = () => {
   const year = dateObj.getFullYear()
 
   return (
-    <Box as='section'>
+    <Box as='section' id='metrics'>
       <Container maxW='container.lg'>
         {' '}
-        <Heading as='h1' size='2xl' textAlign={'center'}>
+        <Heading as='h2' size='xl' textAlign={'center'}>
           Xarray Project Metrics
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
@@ -48,7 +48,7 @@ export const ProjectMetrics = () => {
           <DatasetteStatsCard
             title={'Contributors'}
             query={
-              'https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/contributors,user_id.json?_shape=array'
+              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/contributors,user_id.json?_shape=array'
             }
             icon={<BsPeople size={'3em'} />}
             link={'https://github.com/pydata/xarray/graphs/contributors'}
@@ -58,7 +58,7 @@ export const ProjectMetrics = () => {
             title={'Stargazers'}
             icon={<GoStar size={'3em'} />}
             query={
-              'https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/stars,user.json?_shape=array'
+              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/stars,user.json?_shape=array'
             }
             link={'https://github.com/pydata/xarray/stargazers'}
           />
@@ -66,7 +66,7 @@ export const ProjectMetrics = () => {
           <DatasetteStatsCard
             title={'Dependent Projects'}
             query={
-              'https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/dependents,dependent.json?_shape=array'
+              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/dependents,dependent.json?_shape=array'
             }
             icon={<GoPackage size={'3em'} />}
             link={'https://github.com/pydata/xarray/network/dependents'}
@@ -81,7 +81,7 @@ export const ProjectMetrics = () => {
           <DatasetteStatsCard
             title={'Releases'}
             query={
-              'https://pydata-datasette.herokuapp.com/xarray/_analyze_tables_/releases,id.json?_shape=array'
+              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/releases,id.json?_shape=array'
             }
             icon={<GoTag size={'3em'} />}
             link={'https://github.com/pydata/xarray/releases'}
