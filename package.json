@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "eslint": "8.43.0",
-    "eslint-config-next": "13.4.5",
+    "eslint-config-next": "13.4.7",
     "playwright": "^1.35.1"
   }
 }
