@@ -2,7 +2,7 @@ import { Banner } from '@/components/banner'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 
 export const Layout = ({
@@ -13,12 +13,12 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = ''
+  const bannerTitle = 'Checkout the new blog post on Cubed-xarray!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Text fontWeight='medium'>
-      <Link href='/href-placeholder'>Text for a future announcement</Link>
-    </Text>
+    <Link href='/blog/cubed-xarray'>
+      Cubed: Bounded-memory serverless array processing in xarray
+    </Link>
   )
   return (
     <>

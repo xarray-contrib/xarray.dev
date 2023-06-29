@@ -16,6 +16,7 @@ export default function IndexPage() {
       card={
         'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png'
       }
+      enableBanner
     >
       <HeroBanner />
       <Features />
