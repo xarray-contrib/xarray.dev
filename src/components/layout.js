@@ -13,12 +13,12 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = ''
+  const bannerTitle = 'Checkout the new blog post on Cubed-xarray!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Text fontWeight='medium'>
-      <Link href='/href-placeholder'>Text for a future announcement</Link>
-    </Text>
+    <Link href='/blog/cubed-xarray'>
+        Cubed: Bounded-memory serverless array processing in xarray
+    </Link>{' '}
   )
   return (
     <>
