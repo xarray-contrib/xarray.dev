@@ -9,7 +9,7 @@ authors:
 summary: 'Xarray can now wrap a range of parallel computation backends, including Cubed'
 ---
 
-\_TLDR: Xarray can now wrap a range of parallel computation backends, including [Cubed](https://github.com/tomwhite/cubed), a distributed serverless framework designed to limit memory usage.
+_TLDR: Xarray can now wrap a range of parallel computation backends, including [Cubed](https://github.com/tomwhite/cubed), a distributed serverless framework designed to limit memory usage._
 
 ## Introduction
 
