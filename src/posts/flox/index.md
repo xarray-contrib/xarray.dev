@@ -66,14 +66,25 @@ A lot of effort was spent in ensuring backwards compatibility, so your workloads
 ### Load NWM data
 
 ```python
+import flox  # make sure its available
+import fsspec
+import numpy as np
+import rioxarray
+import xarray as xr
+
 ds = xr.open_zarr(
     fsspec.get_mapper("s3://noaa-nwm-retrospective-2-1-zarr-pds/rtout.zarr", anon=True),
     consolidated=True,
 )
-ds
 ```
 
 Each field in this dataset is big!
+
+```{python}
+ds.zwattablrt
+```
+
+<RawHTML filePath='/public/posts/flox/zwattablrt-repr.html' />
 
 We'll subset to a single variable and a single year for demo purposes
 
@@ -81,6 +92,8 @@ We'll subset to a single variable and a single year for demo purposes
 subset = ds.zwattablrt.sel(time=slice("2001-01-01", "2001-12-31"))
 subset
 ```
+
+<RawHTML filePath='/public/posts/flox/subset-repr.html' />
 
 ### Load county raster for grouping
 
@@ -97,6 +110,19 @@ counties = rioxarray.open_rasterio(
 _, counties_aligned = xr.align(ds, counties, join="override")
 counties_aligned
 ```
+
+<RawHTML filePath='/public/posts/flox/counties-repr.html' />
+
+We'll need the unique county IDs later, calculate that now.
+
+```{python}
+county_id = np.unique(counties_aligned.data).compute()
+# 0 is used as NULL
+county_id = county_id[county_id != 0]
+print(f"There are {len(county_id)} counties!")
+```
+
+There are 3108 counties!
 
 ## GroupBy with Flox
 
@@ -123,6 +149,12 @@ county_mean = flox.xarray.xarray_reduce(
 )
 county_mean
 ```
+
+<RawHTML filePath='/public/posts/flox/county-mean.html' />
+
+The computation proceeds very nicely.
+
+We don't anticipate trouble scaling this computation up to the full dataset.
 
 ## Summary
 
