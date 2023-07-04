@@ -43,11 +43,15 @@ With [Xarray](https://docs.xarray.dev/en/stable/user-guide/groupby.html), this w
 dataset.groupby(counties).mean()
 ```
 
-However Xarray's default algorithm is a simple for-loop over groups and doesn't work very well for large distributed problems.
+However Xarray's default algorithm is to split the dataset in to groups by indexing, and then applying the reduction as a simple for-loop over groups. This approach doesn't work very well for large distributed problems.
+
+![Xarray default groupby](https://flox.readthedocs.io/en/latest/_images/new-split-apply-combine-annotated.svg)
 
 ## Enter `flox`.
 
 `flox` solves a long-standing problem in the Pangeo array computing ecosytem of computing GroupBy reductions. It implements a parallel groupby algorithm (using a tree reduction) to substantially improve performance of groupby reductions with dask.
+
+![flox default map-reduce groupby](https://flox.readthedocs.io/en/latest/_images/new-map-reduce-reindex-True-annotated.svg)
 
 - Specifically, `flox` speeds up [reduction methods](https://flox.readthedocs.io/en/latest/aggregations.html) like `groupby(...).mean()`, `groupby(...).max()`, etc, but not `groupby.map`.
 - `flox` also significantly speeds up groupby reductions with pure numpy arrays using optimized implementations in the [`numpy-groupies` package](https://github.com/ml31415/numpy-groupies).
@@ -152,7 +156,8 @@ county_mean
 
 <RawHTML filePath='/public/posts/flox/county-mean.html' />
 
-The computation proceeds very nicely.
+The computation proceeds very nicely, in particular thanks to recent
+improvements in dask/distributed ([1](https://medium.com/pangeo/dask-distributed-and-pangeo-better-performance-for-everyone-thanks-to-science-software-63f85310a36b), [2](https://www.coiled.io/blog/reducing-dask-memory-usage)).
 
 We don't anticipate trouble scaling this computation up to the full dataset.
 
@@ -165,6 +170,8 @@ We don't anticipate trouble scaling this computation up to the full dataset.
 We [anticipate](https://github.com/pydata/xarray/issues/6610) upgrading Xarray's interface to enable more complicated GroupBy computations. In the mean time, use flox!
 
 ## Acknowledgements
+
+Thanks to Matt Rocklin ([coiled.io](https://coiled.io)) for facilitating easy computation with Dask in the cloud for the demo calculation.
 
 Deepak Cherian's time was was funded in part by
 
