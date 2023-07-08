@@ -88,7 +88,7 @@ Each field in this dataset is big!
 ds.zwattablrt
 ```
 
-<RawHTML filePath='/public/posts/flox/zwattablrt-repr.html' />
+<RawHTML filePath='/posts/flox/zwattablrt-repr.html' />
 
 We'll subset to a single variable and a single year for demo purposes
 
@@ -97,7 +97,7 @@ subset = ds.zwattablrt.sel(time=slice("2001-01-01", "2001-12-31"))
 subset
 ```
 
-<RawHTML filePath='/public/posts/flox/subset-repr.html' />
+<RawHTML filePath='/posts/flox/subset-repr.html' />
 
 ### Load county raster for grouping
 
@@ -115,7 +115,7 @@ _, counties_aligned = xr.align(ds, counties, join="override")
 counties_aligned
 ```
 
-<RawHTML filePath='/public/posts/flox/counties-repr.html' />
+<RawHTML filePath='/posts/flox/counties-repr.html' />
 
 We'll need the unique county IDs later, calculate that now.
 
@@ -154,7 +154,7 @@ county_mean = flox.xarray.xarray_reduce(
 county_mean
 ```
 
-<RawHTML filePath='/public/posts/flox/county-mean.html' />
+<RawHTML filePath='/posts/flox/county-mean.html' />
 
 The computation proceeds very nicely, in particular thanks to recent
 improvements in dask/distributed ([1](https://medium.com/pangeo/dask-distributed-and-pangeo-better-performance-for-everyone-thanks-to-science-software-63f85310a36b), [2](https://www.coiled.io/blog/reducing-dask-memory-usage)).
