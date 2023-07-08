@@ -1,5 +1,5 @@
 ---
-title: 'flox: Faster GroupBy aggregations with Xarray'
+title: 'flox: Faster GroupBy reductions with Xarray'
 date: '2023-07-10'
 authors:
   - name: Deepak Cherian
@@ -47,7 +47,7 @@ However Xarray's default algorithm is to split the dataset in to groups by index
 
 ![Xarray default groupby](https://flox.readthedocs.io/en/latest/_images/new-split-apply-combine-annotated.svg)
 
-## Enter `flox`.
+## Enter flox.
 
 `flox` solves a long-standing problem in the Pangeo array computing ecosytem of computing GroupBy reductions. It implements a parallel groupby algorithm (using a tree reduction) to substantially improve performance of groupby reductions with dask.
 
@@ -176,6 +176,6 @@ Thanks to Matt Rocklin ([coiled.io](https://coiled.io)) for facilitating easy co
 Deepak Cherian's time was was funded in part by
 
 1. NASA-ACCESS 80NSSC18M0156 "Community tools for analysis of NASA Earth Observing System
-   Data in the Cloud" (PI J. Hamman, NCAR),
-1. NASA-OSTFL 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library" (PIs Scott Henderson, University of Washington; Deepak Cherian, NCAR; Jessica Scheick, University of New Hampshire), and
+   Data in the Cloud"
+1. NASA-OSTFL 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library", and
 1. [NCAR's Earth System Data Science Initiative](https://ncar.github.io/esds/).
