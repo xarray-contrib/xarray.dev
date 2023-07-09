@@ -154,7 +154,7 @@ county_mean = flox.xarray.xarray_reduce(
 county_mean
 ```
 
-<RawHTML filePath='/posts/flox/county-mean.html' />
+<RawHTML filePath='/posts/flox/county-mean-repr.html' />
 
 The computation proceeds very nicely, in particular thanks to recent
 improvements in dask/distributed ([1](https://medium.com/pangeo/dask-distributed-and-pangeo-better-performance-for-everyone-thanks-to-science-software-63f85310a36b), [2](https://www.coiled.io/blog/reducing-dask-memory-usage)).
