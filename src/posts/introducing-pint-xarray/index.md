@@ -36,7 +36,7 @@ The most famous example of a units error has to be NASA's $125 million [Mars Cli
 A trajectory course correction had gone wrong, and the error was eventually traced back to a units mismatch: the engineers at Lockheed Martin expressed impulse in [pound-force](<https://en.wikipedia.org/wiki/Pound_(force)>) seconds, whereas the engineers at JPL assumed the impulse value their part of the software received was in SI newton seconds.
 
 <p align='center'>
-  <img src='https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg' />
+  <img src='https://web.archive.org/web/20191116161743/https://clqtg10snjb14i85u49wifbv-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/Customers.jpg' />
 </p>
 
 <p align='center'>
