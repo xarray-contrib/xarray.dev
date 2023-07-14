@@ -25,9 +25,41 @@ Quoting [the NOAA page](https://water.noaa.gov/about/nwm) for more.
 
 > All CONUS model configurations provide streamflow for 2.7 million river reaches and other hydrologic information on 1km and 250m grids.
 
+```python
+import flox  # make sure its available
+import fsspec
+import numpy as np
+import rioxarray
+import xarray as xr
+
+ds = xr.open_zarr(
+    fsspec.get_mapper("s3://noaa-nwm-retrospective-2-1-zarr-pds/rtout.zarr", anon=True),
+    consolidated=True,
+)
+```
+
+Each field in this dataset is big!
+
+```{python}
+ds.zwattablrt
+```
+
+<RawHTML filePath='/posts/flox/zwattablrt-repr.html' />
+
+We'll subset to a single variable and a single year for demo purposes
+
+```{python}
+subset = ds.zwattablrt.sel(time=slice("2001-01-01", "2001-12-31"))
+subset
+```
+
+<RawHTML filePath='/posts/flox/subset-repr.html' />
+
 ## Problem description
 
-We want to calculate county-level means for 3 hourly time series data on the 250m grid. This is a _Groupby_ problem.
+We want to calculate county-level means for 3 hourly time series data on the 250m grid. This is a _Groupby_ problem. Our final output looks like this:
+
+<RawHTML filePath='/posts/flox/county-mean-holoviews.html' />
 
 GroupBy is a term used for a very common analysis pattern commonly called "split-apply-combine" ([Wickham, 2011](https://www.jstatsoft.org/article/view/v040i01)) wherein an analyst
 
@@ -66,38 +98,6 @@ Run `mamba install flox` and `xarray>=2022.06.0` will use it by default for `.gr
 A lot of effort was spent in ensuring backwards compatibility, so your workloads should only work better. Let us know if it [does not](https://github.com/pydata/xarray/issues)
 
 ## Demo
-
-### Load NWM data
-
-```python
-import flox  # make sure its available
-import fsspec
-import numpy as np
-import rioxarray
-import xarray as xr
-
-ds = xr.open_zarr(
-    fsspec.get_mapper("s3://noaa-nwm-retrospective-2-1-zarr-pds/rtout.zarr", anon=True),
-    consolidated=True,
-)
-```
-
-Each field in this dataset is big!
-
-```{python}
-ds.zwattablrt
-```
-
-<RawHTML filePath='/posts/flox/zwattablrt-repr.html' />
-
-We'll subset to a single variable and a single year for demo purposes
-
-```{python}
-subset = ds.zwattablrt.sel(time=slice("2001-01-01", "2001-12-31"))
-subset
-```
-
-<RawHTML filePath='/posts/flox/subset-repr.html' />
 
 ### Load county raster for grouping
 
