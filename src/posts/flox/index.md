@@ -36,6 +36,8 @@ ds = xr.open_zarr(
 )
 ```
 
+<RawHTML filePath='/posts/flox/ds-repr.html' />
+
 Each field in this dataset is big!
 
 ```{python}
