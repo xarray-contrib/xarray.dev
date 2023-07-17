@@ -2232,10 +2232,10 @@ domexception@^4.0.0:
   dependencies:
     webidl-conversions "^7.0.0"
 
-dompurify@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.0.4.tgz#963116d05c94ee42f8353a3690f935475d8cd2f7"
-  integrity sha512-ae0mA+Qiqp6C29pqZX3fQgK+F91+F7wobM/v8DRzDqJdZJELXiFUx4PP4pK/mzUS0xkiSEx3Ncd9gr69jg3YsQ==
+dompurify@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.0.5.tgz#eb3d9cfa10037b6e73f32c586682c4b2ab01fbed"
+  integrity sha512-F9e6wPGtY+8KNMRAVfxeCOHU0/NPWMSENNq4pQctuXRqqdEPW7q3CrLbR5Nse044WwacyjHGOMlvNsBe1y6z9A==
 
 emoji-regex@^9.2.2:
   version "9.2.2"
@@ -3450,13 +3450,13 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
-isomorphic-dompurify@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-dompurify/-/isomorphic-dompurify-1.7.0.tgz#f1357328c7f27268f68b2a2322020abeb594ab85"
-  integrity sha512-Iqt+WDG6I6qjsHAV9k3TYXemKHz5pfMZbSDklCXY2KaQY/jY2s+VbpxKP4j0ujCZ+11/oUB4NPQMY+dVEJ9vPA==
+isomorphic-dompurify@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-dompurify/-/isomorphic-dompurify-1.8.0.tgz#44024158ffb5ad79c8c47430c721ef80012ddebd"
+  integrity sha512-qvNsRVUQIArrn7/TNDw0+0wQgtvRxAkSzfe0pGpX1+OYeGhrAWELxZIb6x+KFFRS6mb4OUe+zAK9yp0WDZHUdQ==
   dependencies:
     "@types/dompurify" "^3.0.2"
-    dompurify "^3.0.4"
+    dompurify "^3.0.5"
     jsdom "^22.1.0"
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
