@@ -106,13 +106,10 @@ A raster TIFF file identifying counties by a unique integer was created separate
 We load that using [rioxarray](https://corteva.github.io/rioxarray/html/rioxarray.html)
 
 ```{python}
-import fsspec
 import rioxarray
 
-fs = fsspec.filesystem("s3", requester_pays=True)
-
 counties = rioxarray.open_rasterio(
-    fs.open("s3://nwm-250m-us-counties/Counties_on_250m_grid.tif"), chunks="auto"
+    "s3://nwm-250m-us-counties/Counties_on_250m_grid.tif", chunks="auto"
 ).squeeze()
 
 # remove any small floating point error in coordinate locations
