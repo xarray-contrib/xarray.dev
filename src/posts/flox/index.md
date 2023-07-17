@@ -59,7 +59,14 @@ subset
 
 We want to calculate county-level means for 3 hourly time series data on the 250m grid. This is a _Groupby_ problem. Our final output looks like this:
 
-<RawHTML filePath='/posts/flox/county-mean-holoviews.html' />
+<iframe
+  width='1024'
+  height='312'
+  src='/posts/flox/county-mean-holoviews.html'
+  title='Interactive visualization of county means'
+  frameborder='0'
+  scrolling='no'
+></iframe>
 
 GroupBy is a term used for a very common analysis pattern commonly called "split-apply-combine" ([Wickham, 2011](https://www.jstatsoft.org/article/view/v040i01)) wherein an analyst
 
