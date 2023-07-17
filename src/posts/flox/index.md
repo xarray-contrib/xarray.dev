@@ -49,7 +49,7 @@ ds.zwattablrt
 We'll subset to a single variable and a single year for demo purposes
 
 ```{python}
-subset = ds.zwattablrt.sel(time=slice("2001-01-01", "2001-12-31"))
+subset = ds.zwattablrt.sel(time="2001")
 subset
 ```
 
