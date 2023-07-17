@@ -46,7 +46,9 @@ ds.zwattablrt
 
 <RawHTML filePath='/posts/flox/zwattablrt-repr.html' />
 
-We'll subset to a single variable and a single year for demo purposes
+This variable `zwattablrt` represents "Depth to saturated layers (=2m when no saturation; =0 when fully saturated)" ([source](https://ral.ucar.edu/sites/default/files/public/WRFHydroV5_OutputVariableMatrix_V5.pdf)). So the 2m depth mean an unsaturated soil column and 0m indicates a fully saturated soil column.
+
+We'll subset to a single variable and a single year for demo purposes.
 
 ```{python}
 subset = ds.zwattablrt.sel(time="2001")
