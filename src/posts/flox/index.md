@@ -1,11 +1,9 @@
 ---
 title: 'flox: Faster GroupBy reductions with Xarray'
-date: '2023-07-10'
+date: '2023-07-17'
 authors:
   - name: Deepak Cherian
     github: dcherian
-  - name: Kevin Sampson
-    github: kmsampson
 summary: 'flox enables significantly faster groupby calculations for Xarray/Dask/Pangeo array computing ecosystem.'
 ---
 
@@ -183,6 +181,8 @@ We [anticipate](https://github.com/pydata/xarray/issues/6610) upgrading Xarray's
 ## Acknowledgements
 
 Thanks to Matt Rocklin ([coiled.io](https://coiled.io)) for facilitating easy computation with Dask in the cloud for the demo calculation.
+
+Thanks to Kevin Sampson, Katelyn Fitzgerald, and James McCreight for feedback.
 
 Deepak Cherian's time was was funded in part by
 
