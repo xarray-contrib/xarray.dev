@@ -13,12 +13,10 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Checkout the new blog post on Cubed-xarray!'
+  const bannerTitle = 'Checkout the new blog post on flox!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='/blog/cubed-xarray'>
-      Cubed: Bounded-memory serverless array processing in xarray
-    </Link>
+    <Link href='/blog/flox'>flox: Faster GroupBy reductions with Xarray</Link>
   )
   return (
     <>
