@@ -1,6 +1,6 @@
 ---
 title: 'flox: Faster GroupBy reductions with Xarray'
-date: '2023-07-17'
+date: '2023-07-18'
 authors:
   - name: Deepak Cherian
     github: dcherian
@@ -46,7 +46,7 @@ ds = xr.open_zarr(
 
 Each field in this dataset is big!
 
-```{python}
+```python
 ds.zwattablrt
 ```
 
@@ -56,7 +56,7 @@ This variable `zwattablrt` represents "Depth to saturated layers (=2m when no sa
 
 We'll subset to a single variable and a single year for demo purposes.
 
-```{python}
+```python
 subset = ds.zwattablrt.sel(time="2001")
 subset
 ```
@@ -116,7 +116,7 @@ A raster TIFF file identifying counties by a unique integer was created separate
 
 We load that using [rioxarray](https://corteva.github.io/rioxarray/html/rioxarray.html)
 
-```{python}
+```python
 import rioxarray
 
 counties = rioxarray.open_rasterio(
@@ -132,7 +132,7 @@ counties_aligned
 
 We'll need the unique county IDs later, calculate that now.
 
-```{python}
+```python
 county_id = np.unique(counties_aligned.data).compute()
 # 0 is used as NULL
 county_id = county_id[county_id != 0]
@@ -155,7 +155,7 @@ However it would also load `counties_aligned` in to memory (an unfortunate Xarra
 
 See [here](https://flox.readthedocs.io/en/latest/intro.html#with-dask) for more.
 
-```{python}
+```python
 import flox.xarray
 
 county_mean = flox.xarray.xarray_reduce(
