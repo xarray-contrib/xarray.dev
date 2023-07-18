@@ -174,8 +174,8 @@ improvements in dask/distributed ([1](https://medium.com/pangeo/dask-distributed
 We don't anticipate trouble scaling this computation up to the full dataset.
 
 <iframe
-  width='1440'
-  height='522'
+  width='1080'
+  height='480'
   src='https://www.youtube.com/embed/1qCGa774UVA'
   title='flox-dashboard-nwm'
   frameborder='0'
