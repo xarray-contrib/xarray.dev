@@ -171,8 +171,17 @@ county_mean
 
 The computation proceeds very nicely, in particular thanks to recent
 improvements in dask/distributed ([1](https://medium.com/pangeo/dask-distributed-and-pangeo-better-performance-for-everyone-thanks-to-science-software-63f85310a36b), [2](https://www.coiled.io/blog/reducing-dask-memory-usage)).
-
 We don't anticipate trouble scaling this computation up to the full dataset.
+
+<iframe
+  width='1440'
+  height='522'
+  src='https://www.youtube.com/embed/1qCGa774UVA'
+  title='flox-dashboard-nwm'
+  frameborder='0'
+  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+  allowfullscreen
+></iframe>
 
 ## Summary
 
