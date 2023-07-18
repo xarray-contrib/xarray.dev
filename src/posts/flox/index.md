@@ -65,7 +65,7 @@ subset
 
 ## Problem description
 
-We want to calculate county-level means for 3 hourly time series data on the 250m grid. This is a _Groupby_ problem. Our final output looks like this:
+We want to calculate county-level means for 3 hourly time series data on the 250m grid. Our desired output looks like this:
 
 <iframe
   width='1024'
