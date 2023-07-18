@@ -13,6 +13,12 @@ Significantly faster groupby calculations are now possible through a new-ish pac
 Practically, this means faster climatologies, faster resampling, faster histogramming, and faster compositing of array datasets.
 It also means that [very](https://github.com/pangeo-data/pangeo/issues/266) [very](https://github.com/pangeo-data/pangeo/issues/271) [many](https://github.com/dask/distributed/issues/2602) [discussions](https://github.com/pydata/xarray/issues/2237) in the [Pangeo](https://pangeo.io) community are now closed 🎉 😱 🤯 🥳.
 
+### How do I use it?
+
+Run `mamba install flox` and `xarray>=2022.06.0` will use it by default for `.groupby`, `.groupby_bins`, and `.resample`!
+
+A lot of effort was spent in ensuring backwards compatibility, so your workloads should only work better. Let us know if it [does not](https://github.com/pydata/xarray/issues)
+
 ## The National Water Model Dataset
 
 To show off, we demonstrate county-wise aggregation of output from the National Water Model (NWM) available on the [AWS Public Data Registry](https://registry.opendata.aws/nwm-archive/).
@@ -70,6 +76,8 @@ We want to calculate county-level means for 3 hourly time series data on the 250
   scrolling='no'
 ></iframe>
 
+## This is a GroupBy problem
+
 GroupBy is a term used for a very common analysis pattern commonly called "split-apply-combine" ([Wickham, 2011](https://www.jstatsoft.org/article/view/v040i01)) wherein an analyst
 
 - _Splits_ a dataset into groups (e.g. counties),
@@ -99,12 +107,6 @@ However Xarray's default algorithm is to split the dataset in to groups by index
 - `flox` allows more complicated groupby operations such as lazy grouping by a dask array, and grouping by multiple variables. Use `flox.xarray.xarray_reduce` for [these operations](https://flox.readthedocs.io/en/latest/xarray.html). Xarray currently only supports grouping by a single numpy variable.
 
 See [here](https://flox.readthedocs.io/en/latest/intro.html) for short examples.
-
-### How do I use it?
-
-Run `mamba install flox` and `xarray>=2022.06.0` will use it by default for `.groupby`, `.groupby_bins`, and `.resample`!
-
-A lot of effort was spent in ensuring backwards compatibility, so your workloads should only work better. Let us know if it [does not](https://github.com/pydata/xarray/issues)
 
 ## Demo
 
@@ -179,6 +181,10 @@ We don't anticipate trouble scaling this computation up to the full dataset.
 [flox](https://flox.readthedocs.io) also makes many small but more complicated (e.g. multiple variables) Groupby problems tractable! Use it.
 
 We [anticipate](https://github.com/pydata/xarray/issues/6610) upgrading Xarray's interface to enable more complicated GroupBy computations. In the mean time, use flox!
+
+Run `mamba install flox` and `xarray>=2022.06.0` will use it by default for `.groupby`, `.groupby_bins`, and `.resample`!
+
+See [here](https://flox.readthedocs.io/en/latest/intro.html) for short examples on the many ways to use flox!
 
 ## Acknowledgements
 
