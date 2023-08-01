@@ -45,7 +45,7 @@
     "swr": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "8.45.0",
+    "eslint": "8.46.0",
     "eslint-config-next": "13.4.10",
     "playwright": "^1.36.1"
   }
