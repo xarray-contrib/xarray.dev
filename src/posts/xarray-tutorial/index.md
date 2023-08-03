@@ -26,21 +26,19 @@ summary: 'The [Xarray tutorial](https://tutorial.xarray.dev) material has receiv
 
 We advertise significant improvements to the [Xarray tutorial](https://tutorial.xarray.org) material.
 
-1. Add before/after images
-1. Execution
+## Context
 
-- Binder
-- VS Codespaces
+Over the past two years, we have worked to substantially revamp the [Xarray tutorial](https://tutorial.xarray.org). See the before/after image:
 
-1. Reworked material to bite-sized chunks that can be reordered as needed.
+![Tutorial outline before/after](/posts/tutorial/tutorial-before-after.png)
 
-- Canonical version of notebooks
-- hope is that these can serve as material for any one to remix as needed.
+The difference is stark!
+We worked to present concepts and reworked the material to bite-sized chunks that can be remixed as needed.
+Rather than organize material by event, we now organize by topic and then build a learning path for each event.
+For example see the [Fundamental](https://tutorial.xarray.dev/overview/fundamental-path/README.html) and [Intermediate](https://tutorial.xarray.dev/overview/intermediate-path/README.html) learning paths that were presented at SciPy 2022 and SciPy 2023 respectively.
+Our hope is that this material will serve as a great starting point for anyone looking to deliver a Xarray tutorial.
 
-1. Addition of learning paths
-
-- Fundamental Path : SciPy 2022
-- Intermediate Path : SciPy 2023
+## New and improved material
 
 1. Full redone fundamentals material
 
@@ -53,9 +51,21 @@ We advertise significant improvements to the [Xarray tutorial](https://tutorial.
 - Computational Patterns
 - Advanced, Vectorized, and Boolean indexing
 
-1. Youtube playlist of recordings
+## Modes of Execution
+
+- Binder
+- VS Codespaces
+
+## Come contribute
+
+While a major improvement, this material is clearly a work in progress and could use help from you!
+[Contributions](https://tutorial.xarray.dev/CONTRIBUTING.html) are very welcome and could range from fixing typos, to improving the presentation of material, and even contributoing all new material.
+
+We can also substantially improve the way this tutorial material is linked to in the main Xarray documentation ([Github issue](https://github.com/pydata/xarray/issues/8008)).
+
+Come help out!
 
 ## Acknowledgments
 
-Funding for this work was partially supported by NASA's Open Source Tools, Frameworks, and Libraries (OSTFL)
+This work was partially supported by NASA's Open Source Tools, Frameworks, and Libraries (OSTFL)
 grant 80NSSC22K0345 "Enhancing analysis of NASA data with the open-source Python Xarray Library".
