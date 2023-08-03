@@ -1,5 +1,5 @@
 ---
-title: 'Major updates to the Xarray tutorial material'
+title: 'Major updates to the Xarray tutorial'
 date: '2023-08-05'
 authors:
   - name: Deepak Cherian
@@ -19,24 +19,24 @@ authors:
   - name: Don Setiawan
     github: lsetiawan
 
-summary: 'The [Xarray tutorial](https://tutorial.xarray.dev) material has received a major upgrade!'
+summary: 'The <a href="https://tutorial.xarray.dev">Xarray tutorial</a> has received a major upgrade!'
 ---
 
-## TLDR
-
-We advertise significant improvements to the [Xarray tutorial](https://tutorial.xarray.org) material.
-
-## Context
+## TL;DR
 
 Over the past two years, we have worked to substantially revamp the [Xarray tutorial](https://tutorial.xarray.org). See the before/after image:
 
 ![Tutorial outline before/after](/posts/tutorial/tutorial-before-after.png)
 
 The difference is stark!
+
+## Approach
+
 We worked to present concepts and reworked the material to bite-sized chunks that can be remixed as needed.
 Rather than organize material by event, we now organize by topic and then build a learning path for each event.
+This way future learners can benefit from a guided tour through the material.
 For example see the [Fundamental](https://tutorial.xarray.dev/overview/fundamental-path/README.html) and [Intermediate](https://tutorial.xarray.dev/overview/intermediate-path/README.html) learning paths that were presented at SciPy 2022 and SciPy 2023 respectively.
-Our hope is that this material will serve as a great starting point for anyone looking to deliver a Xarray tutorial.
+Our hope is that this material will serve as a great starting point for anyone anywhere looking to deliver a Xarray tutorial.
 
 ## New and improved material
 
@@ -51,7 +51,7 @@ Our hope is that this material will serve as a great starting point for anyone l
 - Computational Patterns
 - Advanced, Vectorized, and Boolean indexing
 
-## Modes of Execution
+## Try it out
 
 - Binder
 - VS Codespaces
