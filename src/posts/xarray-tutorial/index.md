@@ -19,14 +19,18 @@ authors:
   - name: Don Setiawan
     github: lsetiawan
 
-summary: 'The <a href="https://tutorial.xarray.dev">Xarray tutorial</a> has received a major upgrade!'
+summary: 'The Xarray tutorial has received a major upgrade!'
 ---
 
 ## TL;DR
 
 Over the past two years, we have worked to substantially revamp the [Xarray tutorial](https://tutorial.xarray.org). See the before/after image:
 
-![Tutorial outline before/after](/posts/tutorial/tutorial-before-after.png)
+<img
+  src='/posts/tutorial/tutorial-before-after.png'
+  alt='Tutorial outline before/after'
+  width='60%'
+/>
 
 The difference is stark!
 
