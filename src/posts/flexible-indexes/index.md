@@ -13,7 +13,7 @@ _TLDR: Xarray has been through a major refactoring of its internals that makes c
 
 [link to Joe's CZI blog post]
 
-## The concept of "dimension coordinate" and its shortcomings 
+## The concept of "dimension coordinate" and its shortcomings
 
 Some datasets could not be loaded with Xarray (dimension name and coordinate with same name but different dimensions)
 
@@ -27,7 +27,7 @@ Refactor index logic in `Index` classes. More easily maintainable. May help Pand
 
 Also allowed to solve lots of issues with multi-indexes, for which each level has now its own real coordinate.
 
-Dataset / DataArray section has now an "indexes" section. 
+Dataset / DataArray section has now an "indexes" section.
 
 ## Selection using non-dimension, 1-d coordinates
 
@@ -43,7 +43,7 @@ E.g., Numpy index (much faster to build, much more expensive to query), Geometry
 
 Out-of-core index, etc.
 
-...or no index at all! (Create dataset with no default index, ``drop_indexes``)
+...or no index at all! (Create dataset with no default index, `drop_indexes`)
 
 ## Create custom indexes from arbitrary coordinates and dimensions
 
@@ -57,6 +57,6 @@ See xarray discussion for examples
 
 Still unfinished [link: indexes next steps GH issue], extension entry points, etc.
 
-## Acknowledgments 
+## Acknowledgments
 
 CZI, Xarray core developers, etc.
