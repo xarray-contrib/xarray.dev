@@ -23,7 +23,7 @@
     "@emotion/styled": "^11.10.6",
     "@fontsource-variable/inter": "^5.0.8",
     "@giscus/react": "^2.3.0",
-    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^14.0.1",
     "apexcharts": "3.44.0",
