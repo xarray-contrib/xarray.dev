@@ -54,11 +54,12 @@ The key to connecting all of these layers are open standards.
 
 For the file formats, we favour [cloud-native geospatial](https://www.ogc.org/ogc-topics/cloud-native-geospatial) because it allows us to efficiently access subsets of data without reading the entire file.
 Generally speaking, you would store rasters as [Zarr](https://zarr.dev) or [Cloud-Optimized GeoTIFFs](https://www.cogeo.org), and vectors (points/lines/polygons) in [FlatGeobuf](https://flatgeobuf.org) or [(Geo)Parquet](https://geoparquet.org).
+Ideally though, these files would be indexed using a [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org) which makes it easier to discover datasets using standardized queries.
 This can be a whole topic in itself, so check out this [guide](https://guide.cloudnativegeo.org) that was [published last month](https://cloudnativegeo.org/blog/2023/10/introducing-the-cloud-optimized-geospatial-formats-guide) for more details!
 
 ### In memory array representations
 
-In the Python world, [NumPy](https://numpy.org) arrays have been the core of this, but there are many others too, with an ongoing movement to standardize the array/dataframe API at [https://data-apis.org](https://data-apis.org).
+In the Python world, [NumPy](https://numpy.org) arrays have been the core way of representing arrays in-memory, but there are many others too, along with an ongoing movement to standardize the array/dataframe API at [https://data-apis.org](https://data-apis.org).
 Geospatial folks would most likely be familiar with vector libraries like [GeoPandas](https://geopandas.org) GeoDataFrames (built on top of [pandas](https://pandas.pydata.org)); or raster libraries like [rioxarray](https://corteva.github.io/rioxarray) and [stackSTAC](https://stackstac.readthedocs.io) that reads into [xarray](https://xarray.dev) data structures.
 
 NumPy arrays are CPU-based, but there are also libraries like [CuPy](https://cupy.dev) which can do GPU-accelerated computations.
@@ -80,7 +81,8 @@ TODO write more here ... kvikIO, xbatcher, zen3geo ...
   - [GeoSMART Machine Learning Curriculum](https://geo-smart.github.io/mlgeo-book)
   - [University of Washington Hackweeks as a Service](https://guidebook.hackweek.io)
 
-- Pangeo ML Working Group
+- Pangeo ML Working Group:
+
   - [Monthly meetings](https://pangeo.io/meeting-notes.html#working-group-meetings)
   - [Discourse Forum](https://discourse.pangeo.io/tag/machine-learning)
 
