@@ -9,7 +9,7 @@ authors:
   - name: Negin Sobhani
     github: negin513
   - name: Deepak Cherian
-    github: dcherian  
+    github: dcherian
 summary: 'An overview of the open source libraries enabling geospatial machine learning in the Pangeo community.'
 ---
 
@@ -75,6 +75,7 @@ TODO write more here ... kvikIO, xbatcher, zen3geo ...
 ## Where to learn more
 
 - Educational resources:
+
   - [Project Pythia Cookbooks](https://cookbooks.projectpythia.org)
   - [GeoSMART Machine Learning Curriculum](https://geo-smart.github.io/mlgeo-book)
   - [University of Washington Hackweeks as a Service](https://guidebook.hackweek.io)
