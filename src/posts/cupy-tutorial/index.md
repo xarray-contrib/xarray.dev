@@ -40,7 +40,7 @@ The new documentation offer the following sections:
 3. Basic Computations with CuPy-Xarray: This section introduces, how to use CuPy-Xarray to perform basic computations on Xarray DataArrays. Next, it introduces the concepts of broadcasting and alignment.
 4. High-level Computation with CuPy-Xarray: This section introduces, Applying high-level functions like groupby, resample, rolling, and apply_ufunc to xarray DataArray.
 5. Custom Kernels with `apply_ufunc` : Here we will talk about how to write custom kernels for `apply_ufunc` and how to use `apply_ufunc` with `groupby` and `resample`.
-6. A real world example: This section introduces, how to use CuPy-Xarray to accelerate a real world example. We will use the NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) to demonstrate how to use CuPy-Xarray to accelerate a real world example.
+6. A real world example: This section introduces, how to use CuPy-Xarray to accelerate a real world example. We will use the NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) to demonstrate how to use CuPy-Xarray to speed-up computation on climate data variables.
 
 If you have any questions, encounter issues, or want to contribute, the [community forum](https://discourse.pangeo.io) is a great place to start.
 
