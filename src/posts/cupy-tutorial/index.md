@@ -2,8 +2,12 @@
 title: 'CuPy-Xarray: Xarray on GPUs!'
 date: '2023-10-27'
 authors:
-  - name: Negin Sobhani, Deepak Cherian, Max Jones
-    github: negin513, dcherian, maxrjones
+  - name: Negin Sobhani
+    github: negin513
+ - name: Deepak Cherian
+   github: dcherian
+ - name: Max Jones
+   github: maxrjones
 summary: 'CuPy-Xarray is a Python library that leverages CuPy, a GPU array library, and Xarray, a library for multi-dimensional labeled array computations, to enable fast and efficient data processing on GPUs.'
 ---
 
