@@ -42,7 +42,7 @@ The new documentation offer the following sections:
 5. Custom Kernels with `apply_ufunc` : Here we will talk about how to write custom kernels for `apply_ufunc` and how to use `apply_ufunc` with `groupby` and `resample`.
 6. A real world example: This section introduces, how to use CuPy-Xarray to accelerate a real world example. We will use the NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) to demonstrate how to use CuPy-Xarray to accelerate a real world example.
 
-If you have any questions, encounter issues, or want to contribute, the community forums are a great place to start.
+If you have any questions, encounter issues, or want to contribute, the [community forum](https://discourse.pangeo.io) is a great place to start.
 
 ## Summary
 
