@@ -69,9 +69,27 @@ Deep Learning libraries like [PyTorch](https://pytorch.org/docs), [TensorFlow](h
 ### High-level Pangeo ML libraries
 
 Finally, to make life simpler, we have high-level convenience libraries wrapping the low-level stuff.
+These are designed to have a nicer user interface to connect the underlying file formats and in-memory array representations.
 The [Pangeo Machine Learning Working Group](https://pangeo.io/meeting-notes.html#working-group-meetings) mostly works on Climate/Weather datasets, so we'll focus on multi-dimensional arrays for now.
 
-TODO write more here ... kvikIO, xbatcher, zen3geo ...
+Stepping into the GPU-native world, [cupy-xarray](https://cupy-xarray.readthedocs.io) allows users to use GPU-backed CuPy arrays in n-dimensional Xarray data structures (see our previous [blog post](./cupy-tutorial) on this).
+An exciting development on this front is the experimental [kvikIO](https://github.com/rapidsai/kvikio) engine that enables low-latency reading data from Zarr stores into GPU memory using NVIDIA GPUDirect Storage technology (see this [blog post](./xarray-kvikio)).
+[Preliminary benchmarks](https://github.com/zarr-developers/zarr-benchmark/discussions/14) suggest that the GPU-based `kvikIO` engine can take about 25% less time for data reads compared to the regular CPU-based `zarr` engine!
+
+Once you have tensors loaded (lazily) into an Xarray data structure, [xbatcher](https://xbatcher.readthedocs.io) enables efficient iteration over batches of data in a streaming fashion.
+This library makes it easier to train machine learning models on big datacubes such as time-series datasets or multi-variate ocean/climate model outputs, as users can do on-the-fly slicing using named variables (more readable than numbered indexes).
+There is also an experimental [cache mechanism](https://github.com/xarray-contrib/xbatcher/pull/167) we'd like more people to try and provide feedback on!
+
+To connect all of the pieces, [zen3geo](https://zen3geo.readthedocs.io) implements Composable DataPipes for geospatial.
+It acts as the glue to chain together different building blocks, such as readers for Vector/Raster file formats, converters between different in-memory array representations, and even custom pre-processing functions.
+The composable design pattern makes it well suited for building complex machine learning data pipelines for multi-modal models that can take in different inputs (e.g. Images, Point Clouds, Trajectory, Text/Sound, etc).
+Going forward, there are plans to [refactor the backend to be asynchronous-first](https://github.com/weiji14/zen3geo/discussions/117) to overcome I/O bottlenecks.
+
+## Summary
+
+We've presented a snapshot of the Pangeo Machine Learning ecosystem in 2023.
+The basis of any machine learning project is the data, and we touched on how cloud-native geospatial file formats and in-memory array representations built on open standards act as the foundation for our work.
+Lastly, we highlight some of the high-level Pangeo ML libraries enabling user friendly access to GPU-native compute, streaming data batches, and composable geospatial data pipelines.
 
 ## Where to learn more
 
@@ -96,6 +114,7 @@ and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://dev
 ## Appendix I: Further Reading
 
 - [The Composable Codex](https://voltrondata.com/codex)
+- [zen3geo 2022 Pangeo ML Working Group presentation](https://discourse.pangeo.io/t/monday-november-07-2022-machine-learning-working-group-presentation-zen3geo-guiding-earth-observation-data-on-its-path-to-enlightenment-by-wei-ji-leong/2883) ([recording](https://www.youtube.com/watch?v=8uhOtQUTuDg))
 - [Xbatcher 2023 AMS presentation](https://doi.org/10.6084/m9.figshare.22264072.v1) ([recording](https://ams.confex.com/recording/ams/103ANNUAL/mp4/CGNTFL54WCL/67cfb841cba94216ff99f1eb15286ba2/session63444_5.mp4) (starts at 45:30))
 - [CuPy-Xarray tutorial at SciPy 2023](https://doi.org/10.5281/zenodo.8247471) ([jupyter-book](https://negin513.github.io/cupy-xarray-tutorials/README.html))
-- [Pangeo ML Ecosystem 2023 presentation at FOSS4G SotM Oceania 2023](https://github.com/weiji14/foss4g2023oceania) ([recording](https://www.youtube.com/watch?v=X2LBuUfSo5Q))
+- [Pangeo ML Ecosystem presentation at FOSS4G SotM Oceania 2023](https://github.com/weiji14/foss4g2023oceania) ([recording](https://www.youtube.com/watch?v=X2LBuUfSo5Q))
