@@ -31,7 +31,7 @@ GPU acceleration is becoming increasingly important in scientific research, data
 
 ## New Documentation and Tutorials
 
-We have recently created detailed documentation with examples to help users get started with CuPy-Xarray. Check it out at [this link](https://cupy-xarray.readthedocs.io/en/latest/.
+We have recently created detailed documentation with examples to help users get started with CuPy-Xarray. Check it out at [this link](https://cupy-xarray.readthedocs.io/en/latest/).
 
 The new documentation offer the following topics:
 
