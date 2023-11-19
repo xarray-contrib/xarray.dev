@@ -206,3 +206,7 @@ Here we've focused on Cubed, but this work opens the door to using other alterna
 - Cubed is a serverless prototype which you can try out today.
 - We hope this integration work leads to a range of new parallel backend options for users.
 - Please come and help out on the [Cubed repository](https://github.com/tomwhite/cubed), and join the [Distributed Arrays Working Group](https://discourse.pangeo.io/t/new-working-group-for-distributed-array-computing/2734)!
+
+## Acknowledgements
+
+Tom Nicholas' work on this project was by the Gordon and Betty Moore Foundation Data-Driven Discovery program, via a grant to the [Columbia Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html).
