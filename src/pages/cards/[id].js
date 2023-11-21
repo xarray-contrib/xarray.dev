@@ -47,7 +47,7 @@ const Card = ({ frontmatter, id }) => {
                 justify={'right'}
                 align={'right'}
                 w={40}
-                src={'/dataset-diagram-logo.png'}
+                src={'/Xarray-assets/Icon/Xarray_Icon_Final.png.png'}
                 alt={'xarray logo'}
               />
             </Flex>
