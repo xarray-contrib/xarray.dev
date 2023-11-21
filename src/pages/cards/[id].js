@@ -46,8 +46,8 @@ const Card = ({ frontmatter, id }) => {
               <Image
                 justify={'right'}
                 align={'right'}
-                w={40}
-                src={'/Xarray-assets/Icon/Xarray_Icon_Final.png.png'}
+                w={'200px'}
+                src={'/Xarray-assets/RGB/Xarray_Logo_RGB_Final.svg'}
                 alt={'xarray logo'}
               />
             </Flex>
