@@ -13,7 +13,7 @@ summary: 'CuPy-Xarray is a Python library that leverages CuPy, a GPU array libra
 
 ## TLDR
 
-The [CuPy-Xarray](https://github.com/xarray-contrib/cupy-xarray) collaboration brings GPU acceleration into Xarray workflows. Explore the [new documentation](https://cupy-xarray.readthedocs.io/) and tutorials to explore how CuPy-Xarray enables GPU accelerations on large multidimensional datasets. 🎉 🥳 🚀
+The [CuPy-Xarray](https://github.com/xarray-contrib/cupy-xarray) project makes mixing GPU acceleration with Xarray workflows very convenient! Explore the [new documentation](https://cupy-xarray.readthedocs.io/) and tutorials to explore how CuPy-Xarray enables GPU accelerations on large multidimensional datasets. 🎉 🥳 🚀
 
 ## Background
 
