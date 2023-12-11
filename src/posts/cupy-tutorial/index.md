@@ -19,7 +19,7 @@ The [CuPy-Xarray](https://github.com/xarray-contrib/cupy-xarray) project makes m
 
 ### What is CuPy-Xarray?
 
-[CuPy](https://cupy.dev) is a GPU-accelerated library for numerical computations. It’s like NumPy but runs on NVIDIA CUDA devices. Meanwhile, Xarray is an open-source Python library that simplifies working with labelled multi-dimensional arrays, such as in weather data, satellite images, and more. Xarray can wrap custom duck array objects (i.e. NumPy-like arrays) that follow specific protocols.
+[CuPy](https://cupy.dev) is a GPU-accelerated library for numerical computations. CuPy provides a NumPy-like array object -- a duck array -- that follows various standard array protocols and executes computations on CUDA-capable devices. Xarray can [wrap duck array](https://docs.xarray.dev/en/stable/user-guide/duckarrays.html) objects (i.e. NumPy-like arrays) that follow specific protocols.
 
 Thus Xarray can handle CuPy arrays, and `cupy-xarray` provides a number of useful methods under the `xarray_object.cupy` namespace, allowing seamless transition between CPU and GPU computations in your data pipeline.
 
