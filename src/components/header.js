@@ -75,8 +75,8 @@ export const Header = () => {
               spacing={{ base: 2, sm: 4 }}
             >
               <Image
-                w={28}
-                src={'/dataset-diagram-logo.png'}
+                w={32}
+                src={'/Xarray-assets/RGB/Xarray_Logo_RGB_Final.svg'}
                 alt={'xarray logo'}
               />
             </Stack>

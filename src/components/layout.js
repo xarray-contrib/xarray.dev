@@ -32,7 +32,12 @@ export const Layout = ({
         <meta name='twitter:image' content={card} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@xarray_dev' />
-        <link rel='icon' type='image/png' sizes='96x96' href='/favicon.ico' />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='96x96'
+          href='/Xarray-assets/Icon/Xarray_Icon_final.svg'
+        />
 
         <title>{title}</title>
       </Head>
@@ -41,7 +46,6 @@ export const Layout = ({
         justify={'space-between'}
         gap={0}
         minHeight={'100vh'}
-        backgroundImage={'/background.svg'}
       >
         <Box>
           <Header />

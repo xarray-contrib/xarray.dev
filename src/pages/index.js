@@ -14,7 +14,7 @@ export default function IndexPage() {
     <Layout
       title={'Xarray: N-D labeled arrays and datasets in Python'}
       card={
-        'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/dataset-diagram-logo.png'
+        'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/Xarray-assets/Icon/Xarray_Icon_Final.png'
       }
       enableBanner
     >
