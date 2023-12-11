@@ -34,8 +34,8 @@ We have recently created detailed documentation with examples to help users get 
 The new documentation offer the following topics:
 
 1. **[Basics of CuPy](https://cupy-xarray.readthedocs.io/source/cupy-basics.html)** : An introduction to CuPy, basics of GPU computing, and data transfer between host and device.
-2. **[Introduction to CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/introduction.html)** 
-3. **[Basic Computations with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html)** 
+2. **[Introduction to CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/introduction.html)**
+3. **[Basic Computations with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html)**
 4. **[High-level Computation with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html#)** :Applying high-level functions like groupby, resample, rolling, and apply_ufunc to xarray DataArray.
 5. **[Custom Kernels with `apply_ufunc`](https://cupy-xarray.readthedocs.io/source/apply-ufunc.html)** : Custom CUDA kernels for `apply_ufunc` and how to use `apply_ufunc` with `groupby` and `resample`.
 6. **[A real world example](https://cupy-xarray.readthedocs.io/source/real-example-1.html)** : This section introduces how to use CuPy-Xarray to accelerate a real world earth system model analysis workflow. In this demo, we used the NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) to demonstrate how to use CuPy-Xarray to speed-up computations on climate data variables.
