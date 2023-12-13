@@ -1,6 +1,6 @@
 ---
 title: 'The Pangeo Machine Learning Ecosystem in 2023'
-date: '2023-11-02'
+date: '2023-12-12'
 authors:
   - name: Wei Ji Leong
     github: weiji14
@@ -22,7 +22,7 @@ Join the [Pangeo ML community](https://pangeo.io/meeting-notes.html#working-grou
 
 ### Building next-generation Machine Learning (ML) tools
 
-At FOSS4G SotM Oceania 2023 last month, we presented on "The ecosystem of geospatial machine learning tools in the Pangeo World" (see the recording [here](https://www.youtube.com/watch?v=X2LBuUfSo5Q)).
+At FOSS4G SotM Oceania 2023, we presented on "The ecosystem of geospatial machine learning tools in the Pangeo World" (see the recording [here](https://www.youtube.com/watch?v=X2LBuUfSo5Q)).
 One of the driving forces of the Pangeo community is to build better tools that will enable scientific workflows on petabyte-scale datasets, such as Climate/Weather projections that will impact the planet over the coming decades.
 
 To do that, we need to be fast.
@@ -55,7 +55,7 @@ The key to connecting all of these layers are open standards.
 For the file formats, we favour [cloud-native geospatial](https://www.ogc.org/ogc-topics/cloud-native-geospatial) because it allows us to efficiently access subsets of data without reading the entire file.
 Generally speaking, you would store rasters as [Zarr](https://zarr.dev) or [Cloud-Optimized GeoTIFFs](https://www.cogeo.org), and vectors (points/lines/polygons) in [FlatGeobuf](https://flatgeobuf.org) or [(Geo)Parquet](https://geoparquet.org).
 Ideally though, these files would be indexed using a [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org) which makes it easier to discover datasets using standardized queries.
-This can be a whole topic in itself, so check out this [guide](https://guide.cloudnativegeo.org) that was [published last month](https://cloudnativegeo.org/blog/2023/10/introducing-the-cloud-optimized-geospatial-formats-guide) for more details!
+This can be a whole topic in itself, so check out this [guide](https://guide.cloudnativegeo.org) that was [published in October](https://cloudnativegeo.org/blog/2023/10/introducing-the-cloud-optimized-geospatial-formats-guide) for more details!
 
 ### In memory array representations
 
