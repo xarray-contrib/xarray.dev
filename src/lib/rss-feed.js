@@ -1,7 +1,7 @@
 
+import { getRootURL } from '@/lib/seo-utils';
 import { Feed } from 'feed';
 import fs from 'fs';
-import { getRootURL } from '@/lib/seo-utils'
 
 
 export async function generateRssFeed(allPostsData) {
@@ -15,7 +15,7 @@ const feed = new Feed({
     id: blogUrl,
     link: blogUrl,
     language: 'en',
-    image: `${siteUrl}/dataset-diagram-logo.png`,
+    image: `${siteUrl}/Xarray-assets/Icon/Xarray_Icon_Final.png`,
     favicon: `${siteUrl}/favicon.ico`,
     copyright: `© ${new Date().getFullYear()}, Xarray core developers. Apache 2.0 Licensed`,
     feedLinks: {
