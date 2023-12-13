@@ -1,6 +1,6 @@
 ---
 title: 'CuPy-Xarray: Xarray on GPUs!'
-date: '2023-10-27'
+date: '2023-12-12'
 authors:
   - name: Negin Sobhani
     github: negin513
