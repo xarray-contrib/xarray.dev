@@ -1,6 +1,6 @@
 ---
 title: 'CuPy-Xarray: Xarray on GPUs!'
-date: '2024-01-16'
+date: '2024-01-17'
 authors:
   - name: Negin Sobhani
     github: negin513
@@ -66,7 +66,7 @@ conda install cupy-xarray -c conda-forge
 From PyPI:
 
 ```shell
-pip install cupy-xarray
+python -m pip install cupy-xarray
 ```
 
 ## Appendix II: Additional Resources
