@@ -1,6 +1,6 @@
 ---
 title: 'The Pangeo Machine Learning Ecosystem in 2023'
-date: '2023-12-12'
+date: '2024-01-19'
 authors:
   - name: Wei Ji Leong
     github: weiji14
@@ -55,7 +55,7 @@ The key to connecting all of these layers are open standards.
 For the file formats, we favour [cloud-native geospatial](https://www.ogc.org/ogc-topics/cloud-native-geospatial) because it allows us to efficiently access subsets of data without reading the entire file.
 Generally speaking, you would store rasters as [Zarr](https://zarr.dev) or [Cloud-Optimized GeoTIFFs](https://www.cogeo.org), and vectors (points/lines/polygons) in [FlatGeobuf](https://flatgeobuf.org) or [(Geo)Parquet](https://geoparquet.org).
 Ideally though, these files would be indexed using a [SpatioTemporal Asset Catalog (STAC)](https://stacspec.org) which makes it easier to discover datasets using standardized queries.
-This can be a whole topic in itself, so check out this [guide](https://guide.cloudnativegeo.org) that was [published in October](https://cloudnativegeo.org/blog/2023/10/introducing-the-cloud-optimized-geospatial-formats-guide) for more details!
+This can be a whole topic in itself, so check out this [guide](https://guide.cloudnativegeo.org) [published in October 2023](https://cloudnativegeo.org/blog/2023/10/introducing-the-cloud-optimized-geospatial-formats-guide) for more details!
 
 ### In memory array representations
 
