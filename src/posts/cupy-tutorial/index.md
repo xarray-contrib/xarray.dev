@@ -1,6 +1,6 @@
 ---
 title: 'CuPy-Xarray: Xarray on GPUs!'
-date: '2023-12-12'
+date: '2024-01-16'
 authors:
   - name: Negin Sobhani
     github: negin513
@@ -29,14 +29,14 @@ GPU acceleration is becoming increasingly important in scientific research, data
 
 ## New Documentation and Tutorials
 
-We have recently created detailed documentation with examples to help users get started with CuPy-Xarray. Check it out at [this link](https://cupy-xarray.readthedocs.io/en/latest/).
+We have recently created detailed documentation with examples to help users get started with CuPy-Xarray. Check it out at [this link](https://cupy-xarray.readthedocs.io/).
 
-The new documentation offer the following topics:
+The new documentation offers the following topics:
 
 1. **[Basics of CuPy](https://cupy-xarray.readthedocs.io/source/cupy-basics.html)** : An introduction to CuPy, basics of GPU computing, and data transfer between host and device.
 2. **[Introduction to CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/introduction.html)**
 3. **[Basic Computations with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html)**
-4. **[High-level Computation with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html#)** :Applying high-level functions like `groupby`, `resample`, `rolling`, and `apply_ufunc` to xarray objects.
+4. **[High-level Computation with CuPy-Xarray](https://cupy-xarray.readthedocs.io/source/basic-computations.html#)** : Applying high-level functions like `groupby`, `resample`, `rolling`, and `apply_ufunc` to xarray objects.
 5. **[Custom Kernels with `apply_ufunc`](https://cupy-xarray.readthedocs.io/source/apply-ufunc.html)** : Custom CUDA kernels for `apply_ufunc` and how to use `apply_ufunc` with `groupby` and `resample`.
 6. **[A real world example](https://cupy-xarray.readthedocs.io/source/real-example-1.html)** : This section introduces how to use CuPy-Xarray to accelerate a real world earth system model analysis workflow. In this demo, we used the NASA Earth Exchange Global Daily Downscaled Projections (NEX-GDDP-CMIP6) to demonstrate how to use CuPy-Xarray to speed-up computations on climate data variables.
 
