@@ -13,10 +13,10 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Checkout the new blog post on flox!'
+  const bannerTitle = 'Checkout the new blog post on CuPy-Xarray!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='/blog/flox'>flox: Faster GroupBy reductions with Xarray</Link>
+    <Link href='/blog/cupy-tutorial'>CuPy-Xarray: Xarray on GPUs!</Link>
   )
   return (
     <>

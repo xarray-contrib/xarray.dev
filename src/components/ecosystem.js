@@ -22,7 +22,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const GitHubStats = () => {
   const { data, error } = useSWR(
-    'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/stars,user.json?_shape=array',
+    'https://xarray-datasette.fly.dev/github/_analyze_tables_/stars,user.json?_shape=array',
     fetcher,
   )
 
