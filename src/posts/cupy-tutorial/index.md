@@ -53,6 +53,7 @@ CuPy-Xarray is a Python library helps you use CuPy, a GPU array library, and Xar
 ## Acknowledgments
 
 A special thanks to the Xarray, CuPy, and Pangeo communities for making this integration possible. Collaborations like these are a testament to the power of open-source and community-driven development. 💪
+Much thanks to the [NVIDIA RAPIDS team](https://developer.nvidia.com/rapids) (specifically Jacob Tomlinson, John Kirkham) for initiating the `cupy-xarray` project and guiding us along the way.
 This work was partly funded by NSF Earthcube award ["Jupyter Meets the Earth" (1928374)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1928374); and NASA's Open Source Tools, Frameworks, and Libraries award "Enhancing analysis of NASA data with the open-source Python Xarray Library" (80NSSC22K0345).
 
 ## Appendix I: Installation Instructions
@@ -71,7 +72,7 @@ python -m pip install cupy-xarray
 
 ## Appendix II: Additional Resources
 
-[CuPy User Guide](https://docs.cupy.dev/en/stable/user_guide/index.html)
-[Xarray User Guide](https://docs.xarray.dev/en/stable/user-guide/index.html)
-[Cupy-Xarray Github](https://github.com/xarray-contrib/cupy-xarray.git)
-[NCAR GPU Workshop](https://github.com/NCAR/GPU_workshop)
+1. [CuPy User Guide](https://docs.cupy.dev/en/stable/user_guide/index.html)
+2. [Xarray User Guide](https://docs.xarray.dev/en/stable/user-guide/index.html)
+3. [Cupy-Xarray Github](https://github.com/xarray-contrib/cupy-xarray.git)
+4. [NCAR GPU Workshop](https://github.com/NCAR/GPU_workshop)
