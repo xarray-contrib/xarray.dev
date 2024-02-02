@@ -13,3 +13,16 @@ updates:
     directory: '/'
     schedule:
       interval: 'monthly'
+
+    groups:
+      dependencies:
+        patterns:
+          - '@chakra-ui*'
+          - '@emotion*'
+          - '@mdx-js*'
+          - '@next*'
+          - 'd3'
+          - 'date*'
+          - 'next*'
+          - 'react*'
+          - 'swr'
