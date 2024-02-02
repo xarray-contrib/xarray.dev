@@ -26,3 +26,12 @@ updates:
           - 'next*'
           - 'react*'
           - 'swr'
+          - 'apexcharts'
+          - 'rehype*'
+          - 'framer*'
+          - 'isomorphic*'
+      dev-dependencies:
+        patterns:
+          - '@types/*'
+          - 'eslint*'
+          - 'playwright'
