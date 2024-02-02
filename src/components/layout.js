@@ -38,6 +38,8 @@ export const Layout = ({
           sizes='96x96'
           href='/Xarray-assets/Icon/Xarray_Icon_final.svg'
         />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+        <link rel='icon' type='image/png' href='/favicon.png' />
 
         <title>{title}</title>
       </Head>
