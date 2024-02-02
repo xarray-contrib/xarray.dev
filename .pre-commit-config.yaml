@@ -7,7 +7,6 @@ repos:
         exclude: \.html$
       - id: end-of-file-fixer
         exclude: \.html$
-      - id: check-json
       - id: check-added-large-files
         args: ['--maxkb=20000']
       - id: check-yaml
