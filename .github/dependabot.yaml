@@ -19,17 +19,18 @@ updates:
         patterns:
           - '@chakra-ui*'
           - '@emotion*'
+          - '@giscus*'
           - '@mdx-js*'
           - '@next*'
+          - 'apexcharts'
           - 'd3'
           - 'date*'
-          - 'next*'
-          - 'react*'
-          - 'swr'
-          - 'apexcharts'
-          - 'rehype*'
           - 'framer*'
           - 'isomorphic*'
+          - 'next*'
+          - 'react*'
+          - 'rehype*'
+          - 'swr'
       dev-dependencies:
         patterns:
           - '@types/*'
