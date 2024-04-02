@@ -24,7 +24,7 @@ import path from 'path'
 
 import { Giscus } from '@/components'
 import { Layout } from '@/components/layout'
-import { Link } from '@/components/mdx'
+import { Link, mapping } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
@@ -82,7 +82,10 @@ export default function Post({ source, frontmatter, postId }) {
               <Divider my={2} />
             </VStack>
             <br></br>
-            <MDXRemote {...source} components={MDXElements} />
+            <MDXRemote
+              {...source}
+              components={{ ...mapping, ...MDXElements }}
+            />
           </Box>
 
           <Button
