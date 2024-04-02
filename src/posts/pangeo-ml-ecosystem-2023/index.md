@@ -1,6 +1,6 @@
 ---
-title: 'The Pangeo Machine Learning Ecosystem in 2023'
-date: '2024-01-19'
+title: 'The Pangeo Machine Learning Ecosystem'
+date: '2024-04-03'
 authors:
   - name: Wei Ji Leong
     github: weiji14
@@ -87,9 +87,9 @@ Going forward, there are plans to [refactor the backend to be asynchronous-first
 
 ## Summary
 
-We've presented a snapshot of the Pangeo Machine Learning ecosystem in 2023.
+We've presented a snapshot of the Pangeo Machine Learning ecosystem from 2023.
 The basis of any machine learning project is the data, and we touched on how cloud-native geospatial file formats and in-memory array representations built on open standards act as the foundation for our work.
-Lastly, we highlight some of the high-level Pangeo ML libraries enabling user friendly access to GPU-native compute, streaming data batches, and composable geospatial data pipelines.
+Lastly, we highlighted some of the high-level Pangeo ML libraries enabling user friendly access to GPU-native compute, streaming data batches, and composable geospatial data pipelines.
 
 ## Where to learn more
 
@@ -109,7 +109,7 @@ Lastly, we highlight some of the high-level Pangeo ML libraries enabling user fr
 The work above is the cumulative effort of folks from the Pangeo, Xarray and RAPIDS AI community, plus more!
 In particular, we'd like to acknowledge the work of [Deepak Cherian](https://github.com/dcherian) at [Earthmover](https://earthmover.io) and [Negin Sobhani](https://github.com/negin513) at [NCAR](https://ncar.ucar.edu) for their work on cupy-xarray/kvikIO,
 [Max Jones](https://github.com/maxrjones) at [Carbonplan](https://carbonplan.org) for recent developments on the xbatcher package,
-and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://developmentseed.org) for the development of zen3geo.
+and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://developmentseed.org) for the development of zen3geo. Xbatcher development was partly funded by NASA'S Advancing Collaborative Connections for Earth System Science (ACCESS) award "Pangeo ML - Open Source Tools and Pipelines for Scalable Machine Learning Using NASA Earth Observation Data" (80NSSC21M0065). Cupy-Xarray development was partly funded by NSF Earthcube award ["Jupyter Meets the Earth" (1928374)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1928374); and NASA's Open Source Tools, Frameworks, and Libraries award "Enhancing analysis of NASA data with the open-source Python Xarray Library" (80NSSC22K0345)
 
 ## Appendix I: Further Reading
 
@@ -118,3 +118,4 @@ and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://dev
 - [Xbatcher 2023 AMS presentation](https://doi.org/10.6084/m9.figshare.22264072.v1) ([recording](https://ams.confex.com/recording/ams/103ANNUAL/mp4/CGNTFL54WCL/67cfb841cba94216ff99f1eb15286ba2/session63444_5.mp4) (starts at 45:30))
 - [CuPy-Xarray tutorial at SciPy 2023](https://doi.org/10.5281/zenodo.8247471) ([jupyter-book](https://negin513.github.io/cupy-xarray-tutorials/README.html))
 - [Pangeo ML Ecosystem presentation at FOSS4G SotM Oceania 2023](https://github.com/weiji14/foss4g2023oceania) ([recording](https://www.youtube.com/watch?v=X2LBuUfSo5Q))
+-  [Earthmover blog post on cloud native data loaders for machine learning using xarray and zarr](https://earthmover.io/blog/cloud-native-dataloader)
