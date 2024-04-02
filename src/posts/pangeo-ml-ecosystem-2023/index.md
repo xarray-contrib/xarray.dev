@@ -119,3 +119,4 @@ and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://dev
 - [CuPy-Xarray tutorial at SciPy 2023](https://doi.org/10.5281/zenodo.8247471) ([jupyter-book](https://negin513.github.io/cupy-xarray-tutorials/README.html))
 - [Pangeo ML Ecosystem presentation at FOSS4G SotM Oceania 2023](https://github.com/weiji14/foss4g2023oceania) ([recording](https://www.youtube.com/watch?v=X2LBuUfSo5Q))
 - [Earthmover blog post on cloud native data loaders for machine learning using xarray and zarr](https://earthmover.io/blog/cloud-native-dataloader)
+- [Development Seed blog post on GPU-native machine learning](https://developmentseed.org/blog/2024-03-19-combining-cloud-gpu-native)
