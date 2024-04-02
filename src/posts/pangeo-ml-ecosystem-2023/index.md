@@ -118,4 +118,4 @@ and [Wei Ji Leong](https://github.com/weiji14) at [Development Seed](https://dev
 - [Xbatcher 2023 AMS presentation](https://doi.org/10.6084/m9.figshare.22264072.v1) ([recording](https://ams.confex.com/recording/ams/103ANNUAL/mp4/CGNTFL54WCL/67cfb841cba94216ff99f1eb15286ba2/session63444_5.mp4) (starts at 45:30))
 - [CuPy-Xarray tutorial at SciPy 2023](https://doi.org/10.5281/zenodo.8247471) ([jupyter-book](https://negin513.github.io/cupy-xarray-tutorials/README.html))
 - [Pangeo ML Ecosystem presentation at FOSS4G SotM Oceania 2023](https://github.com/weiji14/foss4g2023oceania) ([recording](https://www.youtube.com/watch?v=X2LBuUfSo5Q))
--  [Earthmover blog post on cloud native data loaders for machine learning using xarray and zarr](https://earthmover.io/blog/cloud-native-dataloader)
+- [Earthmover blog post on cloud native data loaders for machine learning using xarray and zarr](https://earthmover.io/blog/cloud-native-dataloader)
