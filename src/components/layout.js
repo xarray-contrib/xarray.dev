@@ -13,10 +13,12 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Checkout the new blog post on CuPy-Xarray!'
+  const bannerTitle = 'Checkout the new blog post on Pangeo ML!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='/blog/cupy-tutorial'>CuPy-Xarray: Xarray on GPUs!</Link>
+    <Link href='/blog/pangeo-ml-ecosystem-2023'>
+      The Pangeo Machine Learning Ecosystem!
+    </Link>
   )
   return (
     <>
