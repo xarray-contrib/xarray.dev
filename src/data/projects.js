@@ -98,8 +98,8 @@ export const Projects = [
     name: 'sgkit',
     description: 'Scalable statistical genetic data analysis in Python',
     domains: ['🧬 genomics'],
-    homepage: 'https://pystatgen.github.io/sgkit/latest/',
-    repo: 'https://github.com/pystatgen/sgkit',
+    homepage: 'https://sgkit-dev.github.io/sgkit/latest/',
+    repo: 'https://github.com/sgkit-dev/sgkit',
     logo: '/projects/sgkit_trnsprnt.png',
   },
   {
