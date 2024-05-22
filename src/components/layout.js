@@ -13,10 +13,12 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Checkout the new blog post on flox!'
+  const bannerTitle = 'Checkout the new blog post on Pangeo ML!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='/blog/flox'>flox: Faster GroupBy reductions with Xarray</Link>
+    <Link href='/blog/pangeo-ml-ecosystem-2023'>
+      The Pangeo Machine Learning Ecosystem!
+    </Link>
   )
   return (
     <>
@@ -32,7 +34,14 @@ export const Layout = ({
         <meta name='twitter:image' content={card} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@xarray_dev' />
-        <link rel='icon' type='image/png' sizes='96x96' href='/favicon.ico' />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='96x96'
+          href='/Xarray-assets/Icon/Xarray_Icon_final.svg'
+        />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+        <link rel='icon' type='image/png' href='/favicon.png' />
 
         <title>{title}</title>
       </Head>
@@ -41,7 +50,6 @@ export const Layout = ({
         justify={'space-between'}
         gap={0}
         minHeight={'100vh'}
-        backgroundImage={'/background.svg'}
       >
         <Box>
           <Header />

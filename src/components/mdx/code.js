@@ -17,17 +17,13 @@ export const Code = ({ className, ...props }) => {
     <Box position='relative' zIndex='0'>
       <CodeContainer px='0' overflow='hidden'>
         <SyntaxHighlighter
-          language={props.language ? props.language : match ? match[1] : null}
+          language={props.language || (match ? match[1] : null)}
           {...props}
           style={nord}
-          wrapLongLines={
-            !props.wrapLongLines ? props.wrapLongLines : match ? false : true
-          } // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
-          showLineNumbers={
-            props.showLineNumbers ? props.showLineNumbers : match ? true : false
-          }
+          wrapLongLines={props.wrapLongLines ? !match : props.wrapLongLines} // enable this once https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/402 has been fixed
+          showLineNumbers={props.showLineNumbers || !!match}
         />
-        <CopyButton top='5' code={props.children} />
+        <CopyButton top='4' right='1' code={props.children} />
       </CodeContainer>
     </Box>
   )

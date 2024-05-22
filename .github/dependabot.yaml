@@ -13,3 +13,26 @@ updates:
     directory: '/'
     schedule:
       interval: 'monthly'
+
+    groups:
+      dependencies:
+        patterns:
+          - '@chakra-ui*'
+          - '@emotion*'
+          - '@giscus*'
+          - '@mdx-js*'
+          - '@next*'
+          - 'apexcharts'
+          - 'd3'
+          - 'date*'
+          - 'framer*'
+          - 'isomorphic*'
+          - 'next*'
+          - 'react*'
+          - 'rehype*'
+          - 'swr'
+      dev-dependencies:
+        patterns:
+          - '@types/*'
+          - 'eslint*'
+          - 'playwright'

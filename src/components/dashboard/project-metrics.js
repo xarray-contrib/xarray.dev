@@ -9,7 +9,7 @@ import useSWR from 'swr'
 
 export const ProjectMetrics = () => {
   const { data, error } = useSWR(
-    'https://raw.githubusercontent.com/andersy005/pydata-issue-tracker-datasette/main/data/docs-monthly-views.json',
+    'https://raw.githubusercontent.com/andersy005/xarray-datasette/a73704d803350a2ec059bec1b4cce601cd9efdd9/data/docs-monthly-views.json',
     fetcher,
   )
 
@@ -48,7 +48,7 @@ export const ProjectMetrics = () => {
           <DatasetteStatsCard
             title={'Contributors'}
             query={
-              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/contributors,user_id.json?_shape=array'
+              'https://xarray-datasette.fly.dev/github/_analyze_tables_/contributors,user_id.json?_shape=array'
             }
             icon={<BsPeople size={'3em'} />}
             link={'https://github.com/pydata/xarray/graphs/contributors'}
@@ -58,16 +58,14 @@ export const ProjectMetrics = () => {
             title={'Stargazers'}
             icon={<GoStar size={'3em'} />}
             query={
-              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/stars,user.json?_shape=array'
+              'https://xarray-datasette.fly.dev/github/_analyze_tables_/stars,user.json?_shape=array'
             }
             link={'https://github.com/pydata/xarray/stargazers'}
           />
 
-          <DatasetteStatsCard
-            title={'Dependent Projects'}
-            query={
-              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/dependents,dependent.json?_shape=array'
-            }
+          <StatisticsCard
+            title={'Dependent Packages/Repos'}
+            stat={21275}
             icon={<GoPackage size={'3em'} />}
             link={'https://github.com/pydata/xarray/network/dependents'}
           />
@@ -81,7 +79,7 @@ export const ProjectMetrics = () => {
           <DatasetteStatsCard
             title={'Releases'}
             query={
-              'https://pydata-datasette.fly.dev/xarray/_analyze_tables_/releases,id.json?_shape=array'
+              'https://xarray-datasette.fly.dev/github/_analyze_tables_/releases,id.json?_shape=array'
             }
             icon={<GoTag size={'3em'} />}
             link={'https://github.com/pydata/xarray/releases'}
