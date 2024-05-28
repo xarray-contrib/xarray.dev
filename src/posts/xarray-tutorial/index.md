@@ -28,12 +28,12 @@ Over the past several years, we have worked to significantly revamp the [Xarray 
 
 ## Approach
 
-The Xarray Tutorial Website https://tutorial.xarray.org hosts a curated selection of Jupyter Notebooks that illustrate concepts, common usage patterns, and long-form examples of using Xarray for data analytics. 
+The Xarray Tutorial Website https://tutorial.xarray.org hosts a curated selection of Jupyter Notebooks that illustrate concepts, common usage patterns, and long-form examples of using Xarray for data analytics.
 
 We reworked existing material to bite-sized chunks that can be remixed as needed. For example, rather than organizing material by specific workshops at a top-level, we now organize by topic and then build a learning path for each event. This way future learners can benefit from a guided tour through the material.
 For example see the [Fundamental](https://tutorial.xarray.dev/overview/fundamental-path/README.html) and [Intermediate](https://tutorial.xarray.dev/overview/intermediate-path/README.html) learning paths that were presented at SciPy 2022 and SciPy 2023 respectively.
 
-Our hope is that this material will serve as a great starting point for anyone anywhere looking to deliver a Xarray tutorial. 
+Our hope is that this material will serve as a great starting point for anyone anywhere looking to deliver a Xarray tutorial.
 
 ## Redesigned with Jupyterbook
 
@@ -47,8 +47,7 @@ We chose to use [Jupyterbook](https://jupyterbook.org/en/stable/intro.html) as a
 
 We've been particularly happy with the [`jupyterlab-myst`](https://github.com/executablebooks/jupyterlab-myst) extension, which extends the basic Markdown rendering with in JupyterLab and ensures Notebooks rendered as a static webpage look identical to an exectuable notebook in the JupyterLab interface.
 
-Finally, we think the Xarray Tutorial is a great way to engage new contributors to Open Source Sofware Development. Every Jupyterbook webpage has a GitHub icon dropdown in the upper right hand corner with a 'Open Issue' and 'Suggest Edit' button. This really simplifies the process of community development and we love that during workshops people totally new to the library have made improvements to the content as we run through it. The repository now has over 30 contributors! 
-
+Finally, we think the Xarray Tutorial is a great way to engage new contributors to Open Source Sofware Development. Every Jupyterbook webpage has a GitHub icon dropdown in the upper right hand corner with a 'Open Issue' and 'Suggest Edit' button. This really simplifies the process of community development and we love that during workshops people totally new to the library have made improvements to the content as we run through it. The repository now has over 30 contributors!
 
 ## New and improved material
 
