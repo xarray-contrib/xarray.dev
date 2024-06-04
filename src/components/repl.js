@@ -15,7 +15,7 @@ const preRunCode = `%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport
 
 // https://github.com/jobovy/jupyterlite-repl-prerun
 const jupyterliteInstance =
-  'https://jupyterlite-repl-prerun.readthedocs.io/en/latest/lite/repl'
+  'https://jupyterlite.github.io/demo/repl'
 
 const sampleCode = `"""
 To try Xarray in the browser,
