@@ -1,5 +1,5 @@
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 }
 
 export default async function handler(req, res) {
@@ -12,8 +12,9 @@ export default async function handler(req, res) {
     //'cache-control': 'public, s-maxage=600, stale-while-revalidate=300',
   }
 
-  if (process.env.GITHUB_TOKEN)
+  if (process.env.GITHUB_TOKEN) {
     headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`
+  }
 
   const result = await fetch(requestURL, { headers })
   return new Response(result.body, { status: result.status })
