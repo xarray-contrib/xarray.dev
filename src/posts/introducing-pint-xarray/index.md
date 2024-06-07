@@ -293,3 +293,7 @@ If you have usage questions you can raise them there, on the [Xarray discussions
 
 The work here to allow Xarray to wrap Pint objects is part of a [broader effort to generalise Xarray](http://xarray.pydata.org/en/stable/roadmap.html#flexible-arrays) to handle a wide variety of data types (so-called "duck array wrapping").
 Along with the incoming [support for flexible indexes](http://xarray.pydata.org/en/stable/roadmap.html#flexible-indexes), we are excited for all the new features that this will enable for Xarray users!
+
+## Acknowledgements
+
+Tom Nicholas' work on this project was by the Gordon and Betty Moore Foundation Data-Driven Discovery program, via a grant to the [Columbia Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html).

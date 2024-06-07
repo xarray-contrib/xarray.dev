@@ -1,0 +1,4 @@
+{
+  "ignoredFiles": ["public/Xarray-assets/*", "public/cards/*"],
+  "schedule": "monthly"
+}
