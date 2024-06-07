@@ -13,11 +13,11 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Checkout the new blog post on Pangeo ML!'
+  const bannerTitle = 'Xarray’s 2024 User Survey is live now.'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='/blog/pangeo-ml-ecosystem-2023'>
-      The Pangeo Machine Learning Ecosystem!
+    <Link href='https://forms.gle/KEq7WviCdz9xTaJX6'>
+      Please take ~5 minutes to fill it out and help us improve Xarray.
     </Link>
   )
   return (

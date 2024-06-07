@@ -11,6 +11,10 @@ export const footerItems = {
       label: 'Roadmap',
       href: 'https://docs.xarray.dev/en/stable/roadmap.html',
     },
+    {
+      label: 'Brand Assets',
+      href: 'https://github.com/xarray-contrib/xarray.dev/tree/main/public/Xarray-assets',
+    },
   ],
 
   resources: [
