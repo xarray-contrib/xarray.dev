@@ -1,6 +1,6 @@
 ---
 title: 'The revamped Xarray tutorial'
-date: '2024-05-31'
+date: '2024-06-11'
 authors:
   - name: Deepak Cherian
     github: dcherian
@@ -24,7 +24,7 @@ summary: 'The Xarray tutorial has received a major upgrade!'
 
 ## TL;DR
 
-Over the past several years, we have worked to significantly revamp the [Xarray tutorial](https://tutorial.xarray.org). The tutorial material is geared towards both new and seasoned practitioners. Consider using it for your own lecture or workshop! Or sign up for the upcoming [SciPy 2024 Workshop](https://cfp.scipy.org/2024/talk/HHVZ9T/) that we'll be running.
+Over the past several years, we have worked to significantly revamp the [Xarray tutorial](https://tutorial.xarray.dev). The tutorial material is geared towards both new and seasoned practitioners. Consider using it for your own lecture or workshop! Or sign up for the upcoming [SciPy 2024 Workshop](https://cfp.scipy.org/2024/talk/HHVZ9T/) that we'll be running.
 
 ## Approach
 
