@@ -1,5 +1,5 @@
 ---
-title: flox: GroupBy, now with smarts!'
+title: 'flox: GroupBy, now with smarts!'
 date: '2024-05-31'
 authors:
   - name: Deepak Cherian
