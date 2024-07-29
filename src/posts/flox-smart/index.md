@@ -21,23 +21,24 @@ See our [previous blog post](https://xarray.dev/blog/flox) for more.
 Two key realizations influenced the development of flox:
 
 1. Array workloads frequently group by a relatively small in-memory array. Quite frequently those arrays have patterns to their values e.g. `"time.month"` is exactly periodic, `"time.dayofyear"` is approximately periodic (depending on calendar), `"time.year"` is commonly a monotonic increasing array.
-2. An important difference between arrays and dataframes is that chunk sizes (or "partition sizes") for arrays can be quite small along the core-dimension of an operation.
+2. Chunk sizes (or "partition sizes") for arrays can be quite small along the core-dimension of an operation. This is an important difference between arrays and dataframes!
 
-These two properties are particularly relevant for climatology calculations --- a common Xarray workload.
+These two properties are particularly relevant for "climatology" calculations (e.g. `groupby("time.month").mean()`) — a common Xarray workload.
 
 ## Tree reductions can be catastrophically bad
 
 For a catastrophic example, consider `ds.groupby("time.year").mean()`, or the equivalent `ds.resample(time="Y").mean()` for a 100 year long dataset of monthly averages with chunk size of **1** (or **4**) along the time dimension.
 This is a fairly common format for climate model output.
-The small chunk size along time is offset by much larger chunk sizes along the other dimensions --- commonly horizontal space (`x, y` or `latitude, longitude`).
+The small chunk size along time is offset by much larger chunk sizes along the other dimensions — commonly horizontal space (`x, y` or `latitude, longitude`).
 
 A naive tree reduction would accumulate all averaged values into a single output chunk of size 100.
 Depending on the chunking of the input dataset, this may overload the worker memory and fail catastrophically.
-More importantly, there is a lot of wasteful communication --- computing on the last year of data is completely independent of computing on the first year of the data, and there is no reason the two values need to reside in the same output chunk.
+More importantly, there is a lot of wasteful communication — computing on the last year of data is completely independent of computing on the first year of the data, and there is no reason the two values need to reside in the same output chunk.
 
 ## Avoiding catastrophe
 
-Thus `flox` quickly grew two new modes of computing the groupby reduction:
+Thus `flox` quickly grew two new modes of computing the groupby reduction.
+
 First, `method="blockwise"` which applies the grouped-reduction in a blockwise fashion.
 This is great for `resample(time="Y").mean()` where we group by `"time.year"`, which is a monotonic increasing array.
 With an appropriate (and usually quite cheap) rechunking, the problem is embarassingly parallel.
@@ -93,7 +94,7 @@ After a fun exploration involving such fun ideas as [locality-sensitive hashing]
 I use set _containment_, or a "normalized intersection", to determine the similarity the sets of chunks occupied by two different groups (`Q` and `X`).
 
 ```
-C =  |Q ∩ X| / |Q|  ≤ 1
+C = |Q ∩ X| / |Q| ≤ 1;     (∩ is set intersection)
 ```
 
 Unlike Jaccard similarity, _containment_ [isn't skewed](http://ekzhu.com/datasketch/lshensemble.html) when one of the sets is much larger than the other.
@@ -109,28 +110,24 @@ The steps are as follows:
    1. Use `"blockwise"` when every group is contained to one block each.
    1. Use `"cohorts"` when every chunk only has a single group, but that group might extend across multiple chunks
    1. [and more](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L408-L426)
-      Here is an example:
-      <!-- ![bitmask-patterns](/../diagrams/bitmask-patterns-perfect.png) -->
-
-   - On the left, is a monthly grouping for a monthly time series with chunk size 4. There are 3 non-overlapping cohorts so
-     `method="cohorts"` is perfect.
-   - On the right, is a resampling problem of a daily time series with chunk size 10 to 5-daily frequency. Two 5-day periods
-     are exactly contained in one chunk, so `method="blockwise"` is perfect.
 
 1. At this point, we want to merge groups in to cohorts when they occupy _approximately_ the same chunks. For each group `i` we can quickly compute containment against
-   all other groups `j` as `C = S.T @ S / number_chunks_per_group`. Here is `C` for a range of chunk sizes from 1 to 12, for computing
-   the monthly mean of a monthly time series problem, \[the title on each image is `(chunk size, sparsity)`\].
-
-   ```python
-   chunks = np.arange(1, 13)
-   labels = np.tile(np.arange(1, 13), 30)
-   ```
-
-   <!-- ![cohorts-schematic](/../diagrams/containment.png) -->
+   all other groups `j` as `C = S.T @ S / number_chunks_per_group`.
 
 1. To choose between `"map-reduce"` and `"cohorts"`, we need a summary measure of the degree to which the labels overlap with
    each other. We can use _sparsity_ --- the number of non-zero elements in `C` divided by the number of elements in `C`, `C.nnz/C.size`.
    We use _sparsity_ --- the number of non-zero elements in `C` divided by the number of elements in `C`, `C.nnz/C.size`. When sparsity is relatively high, we use `"map-reduce"`, otherwise we use `"cohorts"`.
+
+For more detail [see the docs](https://flox.readthedocs.io/en/latest/implementation.html#heuristics).
+
+Here is C for a range of chunk sizes from 1 to 12, for computing `groupby("time.month")` of a monthly mean dataset, [the title on each image is (chunk size, sparsity)].
+![flox sparsity image](https://flox.readthedocs.io/en/latest/_images/containment.png)
+
+flox will choose:
+
+1. `"blockwise"` for chunk size 1,
+2. `"cohorts"` for (2, 3, 4, 6, 12),
+3. and `"map-reduce"` for the rest.
 
 Cool, isn't it?!
 
@@ -140,7 +137,7 @@ flox' ability to do cool inferences entirely relies on the input chunking, which
 Perfect optimization still requires some user-tuned chunking.
 Recent Xarray feature makes that a lot easier for time grouping:
 
-```
+```python
 from xarray.groupers import TimeResampler
 
 rechunked = ds.chunk(time=TimeResampler("YE"))
@@ -149,10 +146,11 @@ rechunked = ds.chunk(time=TimeResampler("YE"))
 will rechunk so that a year of data is in a single chunk.
 
 Even so, it would be nice to automatically rechunk to minimize number of cohorts detected, or to a perfectly blockwise application.
-A key limitation is that we have lost context.
+A key limitation is that we have lost _context_.
 The string `"time.month"` tells me that I am grouping a perfectly periodic array with period 12; similarly
-the _string_ `"time.dayofyear"` tells me that I am grouping by a (quasi-)\_periodic array with period 365, and that group `366` may occur occasionally (depending on calendar).
+the _string_ `"time.dayofyear"` tells me that I am grouping by a (quasi-)periodic array with period 365, and that group `366` may occur occasionally (depending on calendar).
 This context is hard to infer from integer group labels `[1, 2, 3, 4, 5, ..., 1, 2, 3, 4, 5]`.
+/[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas for how to do this inference!\*.
 
 One way to preserve context may be to use Xarray's new Grouper objects, and let them report ["preferred chunks"](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md#the-preferred_chunks-method-) for a particular grouping.
 This would allow a downstream system like `flox` or `dask-expr` to take this in to account later (or even earlier!) in the pipeline.
