@@ -8,6 +8,10 @@ authors:
 summary: 'flox adds heuristics for automatically choosing an appropriate strategy with dask arrays!'
 ---
 
+## TL;DR
+
+`flox>=0.9` adds heuristics for automatically choosing an appropriate strategy with dask arrays! Here I describe how.
+
 ## What is flox?
 
 [`flox` implements](https://flox.readthedocs.io/) grouped reductions for chunked array types like cubed and dask using a tree reduction approach.
@@ -42,17 +46,19 @@ Thus `flox` quickly grew two new modes of computing the groupby reduction.
 First, `method="blockwise"` which applies the grouped-reduction in a blockwise fashion.
 This is great for `resample(time="Y").mean()` where we group by `"time.year"`, which is a monotonic increasing array.
 With an appropriate (and usually quite cheap) rechunking, the problem is embarassingly parallel.
+![blockwise](https://flox.readthedocs.io/en/latest/_images/new-blockwise-annotated.svg)
 
 Second, `method="cohorts"` which is a bit more subtle.
 Consider `groupby("time.month")` for the monthly mean dataset i.e. grouping by an exactly periodic array.
 When the chunk size along the core dimension "time" is a divisor of the period; so either 1, 2, 3, 4, or 6 in this case; groups tend to occur in cohorts ("groups of groups").
 For example, with a chunk size of 4, monthly mean input data for Jan, Feb, Mar, and April ("one cohort") are _always_ in the same chunk, and totally separate from any of the other months.
+![monthly cohorts](https://flox.readthedocs.io/en/latest/_images/cohorts-month-chunk4.png)
 This means that we can run the tree reduction for each cohort (three cohorts in total: `JFMA | MJJA | SOND`) independently and expose more parallelism.
 Doing so can significantly reduce compute times and in particular memory required for the computation.
 
 Importantly if there isn't much separation of groups into cohorts; example, the groups are randomly distributed, then we'd like the standard `method="map-reduce"` for low overhead.
 
-## Choosing a strategy is hard, and hard to teach.
+## Choosing a strategy is hard, and harder to teach.
 
 These strategies are great, but the downside is some sophistication is required to apply them.
 Worse, they are hard to explain conceptually! I've tried! ([example 1](https://discourse.pangeo.io/t/optimizing-climatology-calculation-with-xarray-and-dask/2453/20?u=dcherian), [example 2](https://discourse.pangeo.io/t/understanding-optimal-zarr-chunking-scheme-for-a-climatology/2335)).
@@ -104,16 +110,12 @@ The steps are as follows:
 1. First determine which labels are present in each chunk. The distribution of labels across chunks
    is represented internally as a 2D boolean sparse array `S[chunks, labels]`. `S[i, j] = 1` when
    label `j` is present in chunk `i`.
-
 1. Now we can quickly determine a number of special cases:
-
    1. Use `"blockwise"` when every group is contained to one block each.
    1. Use `"cohorts"` when every chunk only has a single group, but that group might extend across multiple chunks
    1. [and more](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L408-L426)
-
 1. At this point, we want to merge groups in to cohorts when they occupy _approximately_ the same chunks. For each group `i` we can quickly compute containment against
    all other groups `j` as `C = S.T @ S / number_chunks_per_group`.
-
 1. To choose between `"map-reduce"` and `"cohorts"`, we need a summary measure of the degree to which the labels overlap with
    each other. We can use _sparsity_ --- the number of non-zero elements in `C` divided by the number of elements in `C`, `C.nnz/C.size`.
    We use _sparsity_ --- the number of non-zero elements in `C` divided by the number of elements in `C`, `C.nnz/C.size`. When sparsity is relatively high, we use `"map-reduce"`, otherwise we use `"cohorts"`.
@@ -130,6 +132,9 @@ flox will choose:
 3. and `"map-reduce"` for the rest.
 
 Cool, isn't it?!
+
+Importantly this inference is fast — 400ms for the [US county GroupBy problem in our previous post](https://xarray.dev/blog/flox)!
+But we have not tried with bigger problems (example: GroupBy(100,000 watersheds) in the US).
 
 ## What's next?
 
@@ -150,7 +155,7 @@ A key limitation is that we have lost _context_.
 The string `"time.month"` tells me that I am grouping a perfectly periodic array with period 12; similarly
 the _string_ `"time.dayofyear"` tells me that I am grouping by a (quasi-)periodic array with period 365, and that group `366` may occur occasionally (depending on calendar).
 This context is hard to infer from integer group labels `[1, 2, 3, 4, 5, ..., 1, 2, 3, 4, 5]`.
-/[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas for how to do this inference!\*.
+_[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas for how to do this inference!_.
 
 One way to preserve context may be to use Xarray's new Grouper objects, and let them report ["preferred chunks"](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md#the-preferred_chunks-method-) for a particular grouping.
 This would allow a downstream system like `flox` or `dask-expr` to take this in to account later (or even earlier!) in the pipeline.
