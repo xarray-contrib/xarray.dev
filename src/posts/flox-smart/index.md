@@ -110,7 +110,7 @@ The steps are as follows:
    1. Use `"cohorts"` when every chunk only has a single group, but that group might extend across multiple chunks
    1. [and more](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L408-L426)
       Here is an example:
-      ![bitmask-patterns](/../diagrams/bitmask-patterns-perfect.png)
+      <!-- ![bitmask-patterns](/../diagrams/bitmask-patterns-perfect.png) -->
 
    - On the left, is a monthly grouping for a monthly time series with chunk size 4. There are 3 non-overlapping cohorts so
      `method="cohorts"` is perfect.
@@ -126,7 +126,7 @@ The steps are as follows:
    labels = np.tile(np.arange(1, 13), 30)
    ```
 
-   ![cohorts-schematic](/../diagrams/containment.png)
+   <!-- ![cohorts-schematic](/../diagrams/containment.png) -->
 
 1. To choose between `"map-reduce"` and `"cohorts"`, we need a summary measure of the degree to which the labels overlap with
    each other. We can use _sparsity_ --- the number of non-zero elements in `C` divided by the number of elements in `C`, `C.nnz/C.size`.
