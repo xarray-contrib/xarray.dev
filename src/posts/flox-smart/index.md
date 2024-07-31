@@ -137,16 +137,16 @@ For more detail [see the docs](https://flox.readthedocs.io/en/latest/implementat
 Suggestions and improvements are very welcome!
 
 Here is containment `C[i, j]` for a range of chunk sizes from 1 to 12 for computing `groupby("time.month")` of a monthly mean dataset.
-The images only show 12 time steps.
-These are colored so that light yellow is C=0, and dark purple is C=1.
+These panels are colored so that light yellow is `C=0`, and dark purple is `C=1`.
 `C[i,j] = 1` when the chunks occupied by group `i` perfectly overlaps with those occupied by group `j` (so the diagonal elements
 are always 1).
+Since there are 12 groups, `C` is a 12x12 matrix.
 The title on each image is `(chunk size, sparsity)`.
-When the chunksize _is_ a divisor of the period 12, $C$ is a [block diagonal](https://en.wikipedia.org/wiki/Block_matrix) matrix.
-When the chunksize _is not_ a divisor of the period 12, $C$ is much less sparse in comparison.
+When the chunksize _is_ a divisor of the period 12, `C` is a [block diagonal](https://en.wikipedia.org/wiki/Block_matrix) matrix.
+When the chunksize _is not_ a divisor of the period 12, `C` is much less sparse in comparison.
 ![flox sparsity image](https://flox.readthedocs.io/en/latest/_images/containment.png)
 
-Given the above `C`, flox will choose `"cohorts"` for chunk sizes (1, 2, 3, 4, 6, 12), and `"map-reduce"` for the rest.
+Given the above `C`, flox will choose `"cohorts"` for chunk sizes (1, 2, 3, 4, 6), and `"map-reduce"` for the rest.
 
 Cool, isn't it?!
 
