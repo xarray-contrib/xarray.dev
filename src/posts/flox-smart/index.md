@@ -26,7 +26,7 @@ With flox installed, Xarray instead uses its parallel-friendly tree reduction.
 In many cases, this is a massive improvement.
 Notice how much cleaner the graph is in this image:
 ![map-reduce](https://flox.readthedocs.io/en/latest/_images/new-map-reduce-reindex-True-annotated.svg)
-See our [previous blog post](https://xarray.dev/blog/flox) for more.
+See our [previous blog post](https://xarray.dev/blog/flox) or the [docs](https://flox.readthedocs.io/en/latest/implementation.html#method-map-reduce) for more.
 
 ## Tree reductions can be catastrophically bad
 
@@ -45,7 +45,7 @@ Thus `flox` quickly grew two new modes of computing the groupby reduction.
 Two key realizations influenced that development:
 
 1. Array workloads frequently group by a relatively small in-memory array. Quite frequently those arrays have patterns to their values e.g. `"time.month"` is exactly periodic, `"time.dayofyear"` is approximately periodic (depending on calendar), `"time.year"` is commonly a monotonic increasing array.
-2. Chunk sizes (or "partition sizes") for arrays can be quite small along the core-dimension of an operation. This is an important difference between arrays and dataframes!
+2. Chunk sizes (or "partition sizes") for arrays can be quite small along the core-dimension of an operation. So a grouped reduction applied blockwise need not reduce the data by much (or any!) at all. This is an important difference between arrays and dataframes!
 
 These two properties are particularly relevant for "climatology" calculations (e.g. `groupby("time.month").mean()`) — a common Xarray workload in the Earth Sciences.
 
@@ -84,16 +84,16 @@ For groups `A,B,C,D` that occupy the following chunks (chunk 0 is the first chun
 
 ```
 A: [0, 1, 2]
-B: [1, 2, 3]
-D: [5, 6, 7, 8]
-E: [8]
-X: [0, 3]
+B: [1, 2, 3, 4]
+C: [5, 6, 7, 8]
+D: [8]
+X: [0, 4]
 ```
 
 We want to detect the cohorts `{A,B,X}` and `{C, D}` with the following chunks.
 
 ```
-[A, B, X]: [0, 1, 2, 3]
+[A, B, X]: [0, 1, 2, 3, 4]
 [C, D]: [5, 6, 7, 8]
 ```
 
@@ -101,7 +101,7 @@ Importantly, we do _not_ want to be dependent on detecting exact patterns, and p
 
 ## The solution
 
-After a fun exploration involving such fun ideas as [locality-sensitive hashing](http://ekzhu.com/datasketch/lshensemble.html), and [all-pair set similarity search](https://www.cse.unsw.edu.au/~lxue/WWW08.pdf), I settled on the following algorithm.
+After a fun exploration involving such fun ideas as [locality-sensitive hashing](http://ekzhu.com/datasketch/lshensemble.html), and [all-pairs set similarity search](https://www.cse.unsw.edu.au/~lxue/WWW08.pdf), I settled on the following algorithm.
 
 I use set _containment_, or a "normalized intersection", to determine the similarity between the sets of chunks occupied by two different groups (`Q` and `X`).
 
@@ -121,11 +121,11 @@ The steps are as follows:
 1. Now we can quickly determine a number of special cases and exit early:
    1. Use `"blockwise"` when every group is contained to one block each.
    1. Use `"cohorts"` when
-   1. every chunk only has a single group, but that group might extend across multiple chunks; and
-   1. existing cohorts don't overlap at all.
-1. [and more](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L408-L426)
+      1. every chunk only has a single group, but that group might extend across multiple chunks; and
+      1. existing cohorts don't overlap at all.
+   1. [and more](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L408-L426)
 
-If we reach here, then we want to merge together any detected cohorts that substantially overlap with each other.
+If we haven't exited yet, then we want to merge together any detected cohorts that substantially overlap with each other using the containment metric.
 
 1. For that we first quickly compute containment for all groups `i` against all other groups `j` as `C = S.T @ S / number_chunks_per_group`.
 1. To choose between `"map-reduce"` and `"cohorts"`, we need a summary measure of the degree to which the labels overlap with
@@ -136,25 +136,21 @@ If we reach here, then we want to merge together any detected cohorts that subst
 For more detail [see the docs](https://flox.readthedocs.io/en/latest/implementation.html#heuristics) or [the code](https://github.com/xarray-contrib/flox/blob/e6159a657c55fa4aeb31bcbcecb341a4849da9fe/flox/core.py#L336).
 Suggestions and improvements are very welcome!
 
-Here is containment `C[i, j]` for a range of chunk sizes from 1 to 12, for an input array with 12 monthly mean time steps,
-for computing `groupby("time.month")` of a monthly mean dataset.
-These are colored so that light yellow is $C=0$, and dark purple is $C=1$.
-The title on each image is (chunk size, sparsity).
+Here is containment `C[i, j]` for a range of chunk sizes from 1 to 12 for computing `groupby("time.month")` of a monthly mean dataset.
+The images only show 12 time steps.
+These are colored so that light yellow is C=0, and dark purple is C=1.
 `C[i,j] = 1` when the chunks occupied by group `i` perfectly overlaps with those occupied by group `j` (so the diagonal elements
 are always 1).
+The title on each image is `(chunk size, sparsity)`.
 When the chunksize _is_ a divisor of the period 12, $C$ is a [block diagonal](https://en.wikipedia.org/wiki/Block_matrix) matrix.
 When the chunksize _is not_ a divisor of the period 12, $C$ is much less sparse in comparison.
 ![flox sparsity image](https://flox.readthedocs.io/en/latest/_images/containment.png)
 
-Given the above `C`, flox will choose:
-
-1. `"blockwise"` for chunk size 1,
-2. `"cohorts"` for (2, 3, 4, 6, 12),
-3. and `"map-reduce"` for the rest.
+Given the above `C`, flox will choose `"cohorts"` for chunk sizes (1, 2, 3, 4, 6, 12), and `"map-reduce"` for the rest.
 
 Cool, isn't it?!
 
-Importantly this inference is fast — [400ms for the US county](https://flox.readthedocs.io/en/latest/implementation.html#example-spatial-grouping) GroupBy problem in our [previous post](https://xarray.dev/blog/flox)!
+Importantly this inference is fast — [400ms for the US county](https://flox.readthedocs.io/en/latest/implementation.html#example-spatial-grouping) GroupBy problem in our [previous post](https://xarray.dev/blog/flox) where the group labels are a 2GB 2D array!
 But we have not tried with bigger problems (example: GroupBy(100,000 watersheds) in the US).
 
 ## What's next?
