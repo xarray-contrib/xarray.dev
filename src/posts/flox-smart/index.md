@@ -10,7 +10,7 @@ summary: 'flox adds heuristics for automatically choosing an appropriate strateg
 
 ## TL;DR
 
-`flox>=0.9` now automatically optimizes GroupBy reductions with dask arrays to reduce memory usage and increase parallelism! Here I describe how.
+`flox>=0.9` now automatically optimizes GroupBy reductions with dask arrays to reduce memory usage and increase parallelism! Here I describe how. To opt in, simply set `method=None` if you were setting it explicitly previously.
 
 ## What is flox?
 
