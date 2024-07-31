@@ -20,6 +20,7 @@ Briefly, one computes the reduction for a subset of the array N chunks at a time
 
 Without flox, Xarray effectively shuffles — sorts the data to extract all values in a single group — and then runs the reduction group-by-group.
 Depending on data layout or "chunking" this shuffle can be quite expensive.
+Here's a schematic of an array with 5 chunks arranged vertically, and each chunk has 10 elements each of which are colored by group.
 ![shuffle](https://flox.readthedocs.io/en/latest/_images/new-split-apply-combine-annotated.svg)
 With flox installed, Xarray instead uses its parallel-friendly tree reduction.
 In many cases, this is a massive improvement.
