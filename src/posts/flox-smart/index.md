@@ -16,7 +16,7 @@ summary: 'flox adds heuristics for automatically choosing an appropriate strateg
 
 [`flox` implements](https://flox.readthedocs.io/) grouped reductions for chunked array types like [cubed](https://cubed-dev.github.io/cubed/) and [dask](https://docs.dask.org/en/stable/array.html) using tree reductions.
 Tree reductions ([example](https://people.csail.mit.edu/xchen/gpu-programming/Lecture11-reduction.pdf)) are a parallel-friendly way of computing common reduction operations like `sum`, `mean` etc.
-Briefly, one computes the reduction for a subset of the array $N$ chunks at a time in parallel, then combines those results together again $N$ chunks at a time, until we have the final result.
+Briefly, one computes the reduction for a subset of the array N chunks at a time in parallel, then combines those results together again N chunks at a time, until we have the final result.
 
 Without flox, Xarray effectively shuffles — sorts the data to extract all values in a single group — and then runs the reduction group-by-group.
 Depending on data layout or "chunking" this shuffle can be quite expensive.
@@ -57,12 +57,12 @@ Second, `method="cohorts"` which is a bit more subtle.
 Consider `groupby("time.month")` for the monthly mean dataset i.e. grouping by an exactly periodic array.
 When the chunk size along the core dimension "time" is a divisor of the period; so either 1, 2, 3, 4, or 6 in this case; groups tend to occur in cohorts ("groups of groups").
 For example, with a chunk size of 4, monthly mean input data for the "cohort" Jan/Feb/Mar/Apr are _always_ in the same chunk, and totally separate from any of the other months.
-Here is a schematic illustration where each month is represented by a different shade of red:
+Here is a schematic illustration where each month is represented by a different shade of red and a single chunk contains 4 months:
 ![monthly cohorts](https://flox.readthedocs.io/en/latest/_images/cohorts-month-chunk4.png)
 This means that we can run the tree reduction for each cohort (three cohorts in total: `JFMA | MJJA | SOND`) independently and expose more parallelism.
 Doing so can significantly reduce compute times and in particular memory required for the computation.
 
-If there isn't much separation of groups into cohorts, like when groups are randomly distributed across chunks, then it's hard to do better than the standard `method="map-reduce"`.
+Finally, if there isn't much separation of groups into cohorts, like when groups are randomly distributed across chunks, then it's hard to do better than the standard `method="map-reduce"`.
 
 ## Choosing a strategy is hard, and harder to teach.
 
