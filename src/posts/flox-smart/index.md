@@ -150,8 +150,7 @@ Given the above `C`, flox will choose `"cohorts"` for chunk sizes (1, 2, 3, 4, 6
 
 Cool, isn't it?!
 
-Importantly this inference is fast — [400ms for the US county](https://flox.readthedocs.io/en/latest/implementation.html#example-spatial-grouping) GroupBy problem in our [previous post](https://xarray.dev/blog/flox) where the group labels are a 2GB 2D array!
-But we have not tried with bigger problems (example: GroupBy(100,000 watersheds) in the US).
+Importantly this inference is fast — [~250ms for the US county](https://flox.readthedocs.io/en/latest/implementation.html#example-spatial-grouping) GroupBy problem in our [previous post](https://xarray.dev/blog/flox) where approximately 3000 groups are distributed over 2500 chunks; and ~1.25s for grouping by US watersheds ~87000 groups across 640 chunks.
 
 ## What's next?
 
