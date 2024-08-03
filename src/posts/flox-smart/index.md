@@ -61,7 +61,7 @@ For example, with a chunk size of 4, monthly mean input data for the "cohort" Ja
 Here is a schematic illustration where each month is represented by a different shade of red and a single chunk contains 4 months:
 ![monthly cohorts](https://flox.readthedocs.io/en/latest/_images/cohorts-month-chunk4.png)
 This means that we can run the tree reduction for each cohort (three cohorts in total: `JFMA | MJJA | SOND`) independently and expose more parallelism.
-Doing so can significantly reduce compute times and in particular memory required for the computation.
+Doing so can significantly reduce memory required for the computation.
 
 Finally, if there isn't much separation of groups into cohorts, like when groups are randomly distributed across chunks, then it's hard to do better than the standard `method="map-reduce"`.
 
@@ -71,6 +71,18 @@ These strategies are great, but the downside is that some sophistication is requ
 Worse, they are hard to explain conceptually! I've tried! ([example 1](https://discourse.pangeo.io/t/optimizing-climatology-calculation-with-xarray-and-dask/2453/20?u=dcherian), [example 2](https://discourse.pangeo.io/t/understanding-optimal-zarr-chunking-scheme-for-a-climatology/2335)).
 
 What we need is to choose the appropriate strategy automatically.
+
+## Demo
+
+Here's a quick demo of computing monthly mean climatologies with the National Water Model.
+
+For this input dataset, chunked so that approximately a month of data is in a single chunk,
+
+<RawHTML filePath='/posts/flox-smart/dataset-repr.html' />
+we run ``` mean_mapreduce = ds.groupby("time.month").mean(method="map-reduce") mean_cohorts
+= ds.groupby("time.month").mean() # this is auto-detected! ``` Using the algorithm
+described below, flox will **automatically** set `method="cohorts"` for this dataset
+unless specified, yielding a 5X decrease in memory need, and 2X longer in time ![](/posts/flox-smart/mem.png)
 
 ## Problem statement
 
