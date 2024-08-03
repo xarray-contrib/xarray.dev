@@ -5,7 +5,7 @@ authors:
   - name: Deepak Cherian
     github: dcherian
 
-summary: 'flox adds heuristics for automatically choosing an appropriate strategy with dask arrays!'
+summary: 'flox adds heuristics for automatically choosing an appropriate reduction strategy with dask arrays!'
 ---
 
 ## TL;DR
@@ -89,7 +89,7 @@ mean_cohorts = ds.groupby("time.month").mean() # this is auto-detected!
 
 Using the algorithm described below, flox will **automatically** set
 `method="cohorts"` for this dataset unless specified, yielding a 5X decrease in
-memory need, and 2X longer in time
+memory used and a 2X increase in runtime. Read on to figure out how!
 
 <img src='/posts/flox-smart/mem.png' alt='Memory usage' width='60%' />
 
