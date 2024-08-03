@@ -79,10 +79,11 @@ Here's a quick demo of computing monthly mean climatologies with the National Wa
 For this input dataset, chunked so that approximately a month of data is in a single chunk,
 
 <RawHTML filePath='/posts/flox-smart/dataset-repr.html' />
-we run ``` mean_mapreduce = ds.groupby("time.month").mean(method="map-reduce") mean_cohorts
-= ds.groupby("time.month").mean() # this is auto-detected! ``` Using the algorithm
-described below, flox will **automatically** set `method="cohorts"` for this dataset
-unless specified, yielding a 5X decrease in memory need, and 2X longer in time ![](/posts/flox-smart/mem.png)
+we run ``` mean_mapreduce = ds.groupby("time.month").mean(method="map-reduce")
+mean_cohorts = ds.groupby("time.month").mean() # this is auto-detected! ```
+Using the algorithm described below, flox will **automatically** set
+`method="cohorts"` for this dataset unless specified, yielding a 5X decrease in
+memory need, and 2X longer in time ![](/posts/flox-smart/mem.png)
 
 ## Problem statement
 
