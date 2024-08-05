@@ -90,6 +90,12 @@ mean_cohorts = ds.groupby("time.month").mean() # this is auto-detected!
 Using the algorithm described below, flox will **automatically** set
 `method="cohorts"` for this dataset unless specified, yielding a 5X decrease in
 memory used and a 2X increase in runtime. Read on to figure out how!
+Read on to figure out how!
+
+_Note that the improvements here are strongly dependent on the details
+of the grouping variable, the chunksize, and even dask's scheduler. In fact, writing this post
+prompted the discovery of a bug in dask's scheduler that should substantially improve the "map-reduce"
+case._
 
 <img src='/posts/flox-smart/mem.png' alt='Memory usage' width='60%' />
 
@@ -200,3 +206,10 @@ _[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas
 One way to preserve context may be be to have Xarray's new Grouper objects report ["preferred chunks"](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md#the-preferred_chunks-method-) for a particular grouping.
 This would allow a downstream system like `flox` or `cubed` or `dask-expr` to take this in to account later (or even earlier!) in the pipeline.
 That is an experiment for another day.
+
+The improvements described here are strongly dependent on the details
+of the grouping variable, the chunksize, and even dask's scheduler.
+In fact, writing this post prompted the discovery of a bug in dask's scheduler
+that should substantially improve the "map-reduce" case. In parallel, there's been work around
+improving shuffling along dask arrays.
+Clearly the last word on the GroupBy problem has not been said!
