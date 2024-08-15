@@ -8,6 +8,7 @@ Geospatial datasets representing information about real-world features as points
 This blog post is geared toward analysts working with geospatial datasets. We introduce vector data cubes, discuss how they differ from raster data cubes, and describe the analytical opportunities they enable. We demonstrate these ideas by constructing a vector data cube from ERA5 reanalysis data sampled at a set of geometries representing points of interest.
 
 ## Background
+
 ### Raster data cubes and vector dataframes
 
 The Python ecosystem has robust tools built to work with both raster and vector data. Geospatial raster data are typically stored as multi-dimensional arrays, with dimensions such as [x, y] or [longitude, latitude] representing the spatial domain of the dataset. For example, a satellite image usually covers a swath of area of the Earth’s surface with either latitude,longitude, or x,y dimensions. Raster data cubes can have additional dimensions such as time and a vertical dimension such as height or level. These data are typically stored on disk in array-based formats such as NetCDF, Zarr, or GeoTIFF, and analyzed with powerful tools like Xarray and Numpy. In contrast, geospatial vector data, which model real-world features like rivers, counties, and buildings as geometry objects, are typically stored as tables and formatted on disk in vector-specific containers like GeoJSON, Shapefile, or GeoParquet. In memory, geometries are commonly represented as Shapely geometries, and vector dataframes are analyzed using the GeoPandas library.
@@ -15,16 +16,17 @@ The Python ecosystem has robust tools built to work with both raster and vector 
 The key difference: raster data is viewed as a cube, while vector data is (mostly) viewed as a dataframe. Both of these are powerful and functional formats, but they are optimized for different types of operations. Thus framing raster data as cubes and vector data as tables can influence both how we, as analysts, think about our data and the analytical questions we ask with it. Further, analysts commonly want to merge the raster and vector data worlds, for instance, sampling a raster data cube at a set of points described by a vector dataframe.
 
 #### The drawbacks of dataframes
-|![geodataframe](/posts/vector-data-cubes/geodataframe.png)|
-|:--:|
-|*Diagram of a GeoPandas GeoDataFrame, a tabular representation of vector data. Source: Introduction to GeoPandas*|
+
+|                            ![geodataframe](/posts/vector-data-cubes/geodataframe.png)                             |
+| :---------------------------------------------------------------------------------------------------------------: |
+| _Diagram of a GeoPandas GeoDataFrame, a tabular representation of vector data. Source: Introduction to GeoPandas_ |
 
 Some data is more naturally represented as a multi-dimensional cube. Consider a collection of weather stations that record temperature and windspeed. These measurements are stored in the columns of a geopandas.GeoDataFrame, while the coordinates of each weather station are stored as Shapely Point geometries in a geometry column. We can quickly access a lot of information and ask questions such as “how do temperatures vary across the elevation range covered by the weather stations”, and “where are windspeeds highest?” But, each time the weather station records a measurement, we get a new set of data for each variable. How should that new data be incorporated in the GeoDataFrame? While there are ways of representing such multi-dimensional data in tabular form (see Pebesma, 2022), the column structure is still fundamentally one-dimensional, and these strategies all involve duplicating data along either the row or column dimension.
 
 In the weather station example, the data are fundamentally two-dimensional ([location, time]) and must be flattened to fit into a dataframe. Contrast this to raster data cubes, where data is explicitly represented as multi-dimensional. In this data model, adding new dimensions is easy, and popular tools reflect this fundamental concept. What would it look like, and how would our workflows change, if vector data were also represented as a cube?
 |![cube_sidebyside](/posts/vector-data-cubes/cube_sidebyside.png)|
 |:--:|
-|*Example of a raster data cube (left) and vector data cube (right). The raster data cube has a gridded structure with latitude, longitude and time dimensions. The vector data cube has a dimension of geometries, a dimension of data variables and a time dimension. Source: R-Spatial: Data Cubes*|
+|_Example of a raster data cube (left) and vector data cube (right). The raster data cube has a gridded structure with latitude, longitude and time dimensions. The vector data cube has a dimension of geometries, a dimension of data variables and a time dimension. Source: R-Spatial: Data Cubes_|
 
 ## What are vector data cubes?
 
@@ -49,9 +51,7 @@ ERA5 is a dataset that provides estimates for 32 atmospheric variables for the e
 
 ## Assemble vector data cube
 
-
 For brevity's sake, we'll extract a shorter time series and only a few data variables.
-
 
 ```python
 import xarray as xr
@@ -69,23 +69,20 @@ era5_ds_sub = (
 )
 era5_ds_sub
 ```
+
 ![era5_raster_cube](/posts/vector-data-cubes/era5_raster_cube.png)
 
-
 Here's an image of the "2m_temperature' variable at a single time-step.
-
 
 ```python
 (era5_ds_sub.isel(time=-2)["2m_temperature"].plot(robust=True, figsize=(10, 6)))
 ```
-![png](/posts/vector-data-cubes/vector_cube_blogpost_combined_4_1.png)
-    
 
+![png](/posts/vector-data-cubes/vector_cube_blogpost_combined_4_1.png)
 
 ### Read vector data
 
 ERA5 outputs are gridded datasets covering the entire globe. We only need data about cities in Europe, so continuing to store the global dataset is a pain and unnecessary. We use a [vector dataset from Hugging Face](https://huggingface.co/datasets/jamescalam/world-cities-geo) and format it as a `gpd.GeoDataFrame` containing data covering the European continent.
-
 
 ```python
 import geopandas as gpd
@@ -102,12 +99,12 @@ cities_eur = gpd.GeoDataFrame(
 ).drop(["latitude", "longitude", "x", "y", "z"], axis=1)
 cities_eur.head()
 ```
+
 ![gdf](/posts/vector-data-cubes/eur_cities_gdf.png)
 
 ### Sampling a raster data cube using vector geometries
 
 We've created an vector data cube (`europe_ds`) storing data about European cities. This object has the geographic information needed to subset the ERA5 dataset `era5_ds_sub`. We now need to extract the points from `era5_ds_sub` (which is indexed with latitude and longitude coordinates) that align with the `city` geometry dimension in `europe_ds`. We can use the Xvec method [xvec.extract_points()](https://xvec.readthedocs.io/en/stable/extract_pts.html) for this operation.
-
 
 ```python
 import xvec
@@ -117,19 +114,19 @@ era5_europe_cities = era5_ds_sub.xvec.extract_points(
 ).drop_vars("index")
 era5_europe_cities
 ```
+
 ![era5_raster_cube](/posts/vector-data-cubes/era5_eur_cities_vector_cube.png)
 
 Cool, now we have a **2-dimensional vector data cube**! We went from a 3-d raster datacube with `[time, latitude, longitude]` dimensions to a 2-d datacube `[time, geometry]` where the only spatial dimension is 'geometry'.
 
 Up until now, we have been performing lazy operations, meaning that we haven't actually loaded the ERA5 data we accessed from Google Cloud Storage into memory on our local machine. We'll do this now so that we can perform computations that require the data in memory.
 
-
 ```python
 
 era5_europe_cities = era5_europe_cities.load()
 ```
 
-## Using a vector data cube 
+## Using a vector data cube
 
 We've shown how to combine raster and vector data to create a vector data cube with **two indexes** (geometry and time). Now, let's use it!
 
@@ -146,26 +143,21 @@ max_temp_buffer = era5_europe_cities.xvec.query(
 )
 max_temp_buffer
 ```
+
 ![max_temp](/posts/vector-data-cubes/max_temp.png)
-
-
-
 
 ### 2. Raster analysis
 
 Now that we have a multidimensional vector data cube, we can leverage Xarray's functionality for computations and reductions along labeled dimensions. For example, let us compute seasonal means of the data
 
-
 ```python
 era5_europe_cities_seasons = era5_europe_cities.groupby("time.season").mean()
 era5_europe_cities_seasons
 ```
+
 ![seasonal](/posts/vector-data-cubes/seasonal.png)
 
-
-
 Let's visualize a single season:
-
 
 ```python
 (
@@ -175,8 +167,8 @@ Let's visualize a single season:
     .explore("u_component_of_wind")
 )
 ```
-![explore](/posts/vector-data-cubes/explore.png)
 
+![explore](/posts/vector-data-cubes/explore.png)
 
 ## Wrap up
 
@@ -184,7 +176,7 @@ Vector data cubes offer a natural way to manipulate and analyze n-dimensional da
 
 A few rough edges, such as plotting, remain around interoperability between Xarray vector data cubes and existing Xarray methods. Stay tuned for more updates to vector data cubes in Xarray, and check out the Xvec repository if you’re interested in getting involved.
 
-Implementing vector data cubes is the result of hard work and development across the open-source community by a number of individuals and groups working on a range of packages. It’s exciting to see collaborative efforts in the open-source community that lead to significant breakthroughs and improvements to user experience. 
+Implementing vector data cubes is the result of hard work and development across the open-source community by a number of individuals and groups working on a range of packages. It’s exciting to see collaborative efforts in the open-source community that lead to significant breakthroughs and improvements to user experience.
 
 ## Acknowledgments
 
