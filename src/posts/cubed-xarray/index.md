@@ -150,7 +150,7 @@ FIGURE: Cubed's actual memory usage vs projected memory usage, for the largest w
 
 You can see again that the [projected memory](https://tom-e-white.com/cubed/user-guide/memory.html) usage is below the allowed memory usage (else Cubed would have raised an exception before the job even started running), and the actual peak memory used was lower still. We've also plotted the reserved memory, which is a parameter intended to account for the memory usage of the executor itself (i.e. Lithops here), and was estimated by measuring beforehand using [`cubed.measure_reserved_memory()`](https://tom-e-white.com/cubed/generated/cubed.measure_reserved_memory.html#cubed.measure_reserved_memory).
 
-One obvious tradeoff for this memory stability is that Cubed took **a lot longer** to complete - roughly 4x longer then dask for the 1.5TB workload (45m 22s vs 11m 26s). We will come back to discuss this shortly.
+One obvious tradeoff for this memory stability is that Cubed took **a lot longer** to complete - roughly 4x longer then dask for the 1.5TB workload (45m 22s vs 11m 26s). We will come back to discuss this shortly. (EDIT: Since then a lot of work has been put into optimizing Cubed's performance - see the [follow-up blog post](https://medium.com/pangeo/optimizing-cubed-7a0b8f65f5b7).)
 
 Finally it's interesting to look at Cubed's equivalent of the task graph. To calculate one array (the product $UV$ from the quadratic means problem), Cubed's "Plan" for processing 1.5TB of data looks like this:
 
@@ -167,7 +167,7 @@ Cubed uses a completely different paradigm to Dask (and other frameworks), and s
 ### Disadvantages
 
 1. **Writing to persistent storage is slow**
-   In general writing and reading to persistent storage (disk or object store) is slow, and doing it repeatedly even more so. Whilst there is scope for considerable [optimization within Cubed](https://github.com/tomwhite/cubed/issues?q=is%3Aissue+is%3Aopen+label%3Aoptimization), the model of communicating between processes by writing to disk will likely always be slower for many problems than communicating using RAM like dask does. One idea for mitigating this might be to use a very fast storage technology like Redis to store intermediate results.
+   In general writing and reading to persistent storage (disk or object store) is slow, and doing it repeatedly even more so. Whilst there is scope for considerable [optimization within Cubed](https://github.com/tomwhite/cubed/issues?q=is%3Aissue+is%3Aopen+label%3Aoptimization) (EDIT: see the [follow-up blog post](https://medium.com/pangeo/optimizing-cubed-7a0b8f65f5b7) for subsequent performance improvements), the model of communicating between processes by writing to disk will likely always be slower for many problems than communicating using RAM like dask does. One idea for mitigating this might be to use a very fast storage technology like Redis to store intermediate results.
 2. **Spinning up cloud services can be slow**
    There is also a time cost to spinning up the containers in which each task is performed, which can vary considerably between cloud services.
 3. **Higher monetary cost**
