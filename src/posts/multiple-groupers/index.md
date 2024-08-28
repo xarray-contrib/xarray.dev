@@ -78,8 +78,8 @@ Coordinates:
 ## Multiple Groupers
 
 Combining different grouper types is allowed, that is you can combine
-categorical grouping with` UniqueGrouper`, binning with `BinGrouper`, and
-resampling with `TimeResampler`.
+categorical grouping with [`UniqueGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.UniqueGrouper.html#xarray.groupers.UniqueGrouper), binning with [`BinGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.BinGrouper.html#xarray.groupers.BinGrouper), and
+resampling with [`TimeResampler`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.TimeResampler.html#xarray.groupers.TimeResampler).
 
 ```python
 from xarray.groupers import BinGrouper
