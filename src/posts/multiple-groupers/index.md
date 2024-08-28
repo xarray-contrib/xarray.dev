@@ -5,7 +5,7 @@ authors:
   - name: Deepak Cherian
     github: dcherian
 
-summary: 'Xarray finally supports grouping by multiple arrays. 🎉'
+summary: 'Xarray finally supports grouping by multiple arrays.'
 ---
 
 ## TLDR
@@ -82,6 +82,8 @@ categorical grouping with` UniqueGrouper`, binning with `BinGrouper`, and
 resampling with `TimeResampler`.
 
 ```python
+from xarray.groupers import BinGrouper
+
 ds = xr.Dataset(
         {"foo": (("x", "y"), np.arange(12).reshape((4, 3)))},
         coords={"x": [10, 20, 30, 40], "letters": ("x", list("abba"))},
@@ -91,21 +93,12 @@ gb
 ```
 
 ```
-from xarray.groupers import BinGrouper
-
-ds = xr.Dataset(
-        {"foo": (("x", "y"), np.arange(12).reshape((4, 3)))},
-        coords={"x": [10, 20, 30, 40], "letters": ("x", list("abba"))},
-    )
-gb = ds.foo.groupby(x=BinGrouper(bins=[5, 15, 25]), letters=UniqueGrouper())
-gb
-```
-
-```
 <DatasetGroupBy, grouped over 2 grouper(s), 4 groups in total:
 	'x_bins': 2 groups with labels (5,, 15], (15,, 25]
 	'letters': 2 groups with labels 'a', 'b'>
 ```
+
+Now reduce as usual
 
 ```python
 gb.mean()
