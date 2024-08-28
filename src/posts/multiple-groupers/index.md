@@ -49,15 +49,7 @@ Reductions work as usual:
 gb.mean()
 ```
 
-```
-xarray.DataArray (labels1: 3, labels2: 3)> Size: 72B
-array([[1. , nan, nan],
-       [nan, 2. , nan],
-       [nan, nan, 1.5]])
-Coordinates:
-  * labels1  (labels1) object 24B 'a' 'b' 'c'
-  * labels2  (labels2) object 24B 'x' 'y' 'z'
-```
+<RawHTML filePath='/posts/multiple-groupers/repr1.html' />
 
 So does `map`:
 
@@ -65,15 +57,7 @@ So does `map`:
 gb.map(lambda x: x[0])
 ```
 
-```
-<xarray.DataArray (labels1: 3, labels2: 3)> Size: 72B
-array([[ 1., nan, nan],
-       [nan,  2., nan],
-       [nan, nan,  3.]])
-Coordinates:
-  * labels1  (labels1) object 24B 'a' 'b' 'c'
-  * labels2  (labels2) object 24B 'x' 'y' 'z'
-```
+<RawHTML filePath='/posts/multiple-groupers/repr3.html' />
 
 ## Multiple Groupers
 
@@ -104,15 +88,4 @@ Now reduce as usual
 gb.mean()
 ```
 
-```
-<xarray.DataArray 'foo' (x_bins: 2, letters: 2, y: 3)> Size: 96B
-array([[[ 0.,  1.,  2.],
-        [nan, nan, nan]],
-
-       [[nan, nan, nan],
-        [ 3.,  4.,  5.]]])
-Coordinates:
-  * x_bins   (x_bins) object 16B (5, 15] (15, 25]
-  * letters  (letters) object 16B 'a' 'b'
-Dimensions without coordinates: y
-```
+<RawHTML filePath='/posts/multiple-groupers/repr2.html' />
