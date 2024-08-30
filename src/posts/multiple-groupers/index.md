@@ -18,7 +18,7 @@ Install `xarray>=2024.08.0` and optionally [flox](https://flox.readthedocs.io/en
 
 ## Simple example
 
-Set up a multiple variable groupby using [Grouper objects](https://docs.xarray.dev/en/latest/user-guide/groupby.html#grouping-by-multiple-variables).
+Simple grouping by multiple categorical variables is easy:
 
 ```python
 import xarray as xr
@@ -33,7 +33,7 @@ da = xr.DataArray(
     ),
 )
 
-gb = da.groupby(labels1=UniqueGrouper(), labels2=UniqueGrouper())
+gb = da.groupby(["labels1", "labels2"])
 gb
 ```
 
@@ -59,10 +59,18 @@ gb.map(lambda x: x[0])
 
 <RawHTML filePath='/posts/multiple-groupers/repr3.html' />
 
-## Multiple Groupers
+## Multiple Grouper types
 
-Combining different grouper types is allowed, that is you can combine
-categorical grouping with [`UniqueGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.UniqueGrouper.html#xarray.groupers.UniqueGrouper), binning with [`BinGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.BinGrouper.html#xarray.groupers.BinGrouper), and
+The above syntax `da.groupby(["labels1", "labels2"])` is a short cut for using [Grouper objects](https://docs.xarray.dev/en/latest/user-guide/groupby.html#grouping-by-multiple-variables).
+
+```python
+da.groupby(labels1=UniqueGrouper(), labels2=UniqueGrouper())
+```
+
+Grouper objects allow you to express more complicated GroupBy problems.
+For example, combining different grouper types is allowed.
+That is you can combine categorical grouping with [`UniqueGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.UniqueGrouper.html#xarray.groupers.UniqueGrouper),
+binning with [`BinGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.BinGrouper.html#xarray.groupers.BinGrouper), and
 resampling with [`TimeResampler`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.TimeResampler.html#xarray.groupers.TimeResampler).
 
 ```python
