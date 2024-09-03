@@ -14,7 +14,7 @@ Xarray now supports grouping by multiple variables ([docs](https://docs.xarray.d
 
 ## How do I use it?
 
-Install `xarray>=2024.08.0` and optionally [flox](https://flox.readthedocs.io/en/latest/) for better performance with reductions.
+Install `xarray>=2024.09.0` and optionally [flox](https://flox.readthedocs.io/en/latest/) for better performance with reductions.
 
 ## Simple example
 
