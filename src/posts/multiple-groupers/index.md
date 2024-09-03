@@ -1,6 +1,6 @@
 ---
 title: 'Grouping by multiple arrays with Xarray'
-date: '2023-07-18'
+date: '2024-09-02'
 authors:
   - name: Deepak Cherian
     github: dcherian
