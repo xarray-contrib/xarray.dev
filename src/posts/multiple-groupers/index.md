@@ -59,6 +59,19 @@ gb.map(lambda x: x[0])
 
 <RawHTML filePath='/posts/multiple-groupers/repr3.html' />
 
+## More complex time grouping
+
+Grouping by multiple /virtual/ variables like `"time.month"` is also supported:
+
+```python
+import xarray as xr
+
+ds = xr.tutorial.open_dataset("air_temperature")
+ds.groupby(["time.year", "time.month"]).mean()
+```
+
+<RawHTML filePath='/posts/multiple-groupers/repr-time.html' />
+
 ## Multiple Grouper types
 
 The above syntax `da.groupby(["labels1", "labels2"])` is a short cut for using [Grouper objects](https://docs.xarray.dev/en/latest/user-guide/groupby.html#grouping-by-multiple-variables).
