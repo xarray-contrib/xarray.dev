@@ -29,18 +29,15 @@ import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
 
-const CARDS_BASE_URL = 'https://xarray.dev/cards'
-
 export default function Post({ source, frontmatter, postId }) {
-  const card = `${CARDS_BASE_URL}/${postId}.png`
   const date = new Date(frontmatter.date)
 
   return (
     <Layout
       title={`${frontmatter.title}`}
-      card={card}
+      card={`/cards/${postId}.png`}
       description={frontmatter.summary}
-      url={`https://xarray.dev/blog/${postId}`}
+      url={`/blog/${postId}`}
     >
       <Box as={'section'}>
         <Container maxW='container.lg' py={10}>

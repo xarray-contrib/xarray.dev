@@ -6,7 +6,7 @@ import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 
 const Team = () => {
   return (
-    <Layout title={'Xarray Contributors'}>
+    <Layout title={'Xarray Contributors'} url={`/team`}>
       <Box as='section' py={20}>
         <Container maxW='container.lg'>
           <Heading as='h1' size='2xl' textAlign={'center'}>
