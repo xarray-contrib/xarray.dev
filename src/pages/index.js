@@ -17,7 +17,7 @@ export default function IndexPage() {
       card={
         'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/Xarray-assets/Icon/Xarray_Icon_Final.png'
       }
-      enableBanner
+      // enableBanner
     >
       <HeroBanner />
       <Features />
