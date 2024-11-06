@@ -10,14 +10,14 @@ export const Link = React.forwardRef(function CustomLink(props, ref) {
 
   if (isInternalLink) {
     return (
-      <ChakraLink ref={ref} {...rest}>
+      <ChakraLink as={NextLink} ref={ref} {...rest}>
         {rest.children}
       </ChakraLink>
     )
   }
 
   return (
-    <ChakraLink isExternal {...rest} ref={ref}>
+    <ChakraLink isExternal {...rest} as={NextLink} ref={ref}>
       {rest.children}
       {useExternalIcon && <ExternalLinkIcon mx='2px' />}
     </ChakraLink>
