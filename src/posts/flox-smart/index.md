@@ -41,13 +41,12 @@ This issue does _not_ arise for regular reductions where the final result depend
 
 ## Avoiding catastrophe
 
-Thus `flox` quickly grew two new modes of computing the groupby reduction.
-Two key realizations influenced that development:
+Two key realizations:
 
 1. Array workloads frequently group by a relatively small in-memory array. Quite frequently those arrays have patterns to their values e.g. `"time.month"` is exactly periodic, `"time.dayofyear"` is approximately periodic (depending on calendar), `"time.year"` is commonly a monotonic increasing array.
 2. Chunk sizes (or "partition sizes") for arrays can be quite small along the core-dimension of an operation. So a grouped reduction applied blockwise need not reduce the data by much (or any!) at all. This is an important difference between arrays and dataframes!
 
-These two properties are particularly relevant for "climatology" calculations (e.g. `groupby("time.month").mean()`) — a common Xarray workload in the Earth Sciences.
+These two properties are particularly relevant for "climatology" calculations (e.g. `groupby("time.month").mean()`) — a common Xarray workload in the Earth Sciences. Thus `flox` quickly grew two new modes of computing the groupby reduction.
 
 First, `method="blockwise"` which applies the grouped-reduction in a blockwise fashion.
 This is great for `resample(time="Y").mean()` where we group by `"time.year"`, which is a monotonic increasing array.
@@ -83,13 +82,13 @@ For this input dataset, chunked so that approximately a month of data is in a si
 we run
 
 ```python
-mean_mapreduce = ds.groupby("time.month").mean(method="map-reduce")
-mean_cohorts = ds.groupby("time.month").mean() # this is auto-detected!
+mean_mapreduce = ds.groupby("time.month").mean(method="map-reduce")  # mapreduce is a suboptimal manual choice here
+mean_cohorts = ds.groupby("time.month").mean()  # cohorts is a better choice - auto-detected!
 ```
 
 Using the algorithm described below, flox will **automatically** set
 `method="cohorts"` for this dataset unless specified, yielding a 5X decrease in
-memory used and a 2X increase in runtime. Read on to figure out how!
+memory used and a 2X increase in runtime.
 Read on to figure out how!
 
 _Note that the improvements here are strongly dependent on the details
@@ -99,7 +98,37 @@ case._
 
 <img src='/posts/flox-smart/mem.png' alt='Memory usage' width='60%' />
 
-## Problem statement
+## What's next?
+
+flox' ability to do cleanly infer an optimal strategy relies entirely on the input chunking making such optimization possible.
+This is a big knob.
+A brand new [Xarray feature](https://docs.xarray.dev/en/stable/user-guide/groupby.html#grouper-objects) does make such rechunking
+a lot easier for time grouping in particular:
+
+```python
+from xarray.groupers import TimeResampler
+
+rechunked = ds.chunk(time=TimeResampler("YE"))
+```
+
+will rechunk so that a year of data is in a single chunk.
+Even so, it would be nice to automatically rechunk to minimize number of cohorts detected, or to a perfectly blockwise application when that's cheap.
+
+A challenge here is that we have lost _context_ when moving from Xarray to flox.
+The string `"time.month"` tells Xarray that I am grouping a perfectly periodic array with period 12; similarly
+the _string_ `"time.dayofyear"` tells Xarray that I am grouping by a (quasi-)periodic array with period 365, and that group `366` may occur occasionally (depending on calendar).
+But Xarray passes flox an array of integer group labels `[1, 2, 3, 4, 5, ..., 1, 2, 3, 4, 5]`.
+It's hard to infer the context from that!
+Though one approach might frame the problem as: what rechunking would transform `C` to a block diagonal matrix.
+_[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas for how to do this inference._
+
+One way to preserve context may be be to have Xarray's new Grouper objects report ["preferred chunks"](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md#the-preferred_chunks-method-) for a particular grouping.
+This would allow a downstream system like `flox` or `cubed` or `dask-expr` to take this in to account later (or even earlier!) in the pipeline.
+That is an experiment for another day.
+
+## Appendix: automatically detecting group patterns
+
+### Problem statement
 
 Fundamentally, we know:
 
@@ -126,7 +155,7 @@ We want to detect the cohorts `{A,B,X}` and `{C, D}` with the following chunks.
 
 Importantly, we do _not_ want to be dependent on detecting exact patterns, and prefer approximate solutions and heuristics.
 
-## The solution
+### The solution
 
 After a fun exploration involving such fun ideas as [locality-sensitive hashing](http://ekzhu.com/datasketch/lshensemble.html), and [all-pairs set similarity search](https://www.cse.unsw.edu.au/~lxue/WWW08.pdf), I settled on the following algorithm.
 
@@ -178,38 +207,3 @@ Given the above `C`, flox will choose `"cohorts"` for chunk sizes (1, 2, 3, 4, 6
 Cool, isn't it?!
 
 Importantly this inference is fast — [~250ms for the US county](https://flox.readthedocs.io/en/latest/implementation.html#example-spatial-grouping) GroupBy problem in our [previous post](https://xarray.dev/blog/flox) where approximately 3000 groups are distributed over 2500 chunks; and ~1.25s for grouping by US watersheds ~87000 groups across 640 chunks.
-
-## What's next?
-
-flox' ability to do cleanly infer an optimal strategy relies entirely on the input chunking making such optimization possible.
-This is a big knob.
-A brand new [Xarray feature](https://docs.xarray.dev/en/stable/user-guide/groupby.html#grouper-objects) does make such rechunking
-a lot easier for time grouping in particular:
-
-```python
-from xarray.groupers import TimeResampler
-
-rechunked = ds.chunk(time=TimeResampler("YE"))
-```
-
-will rechunk so that a year of data is in a single chunk.
-Even so, it would be nice to automatically rechunk to minimize number of cohorts detected, or to a perfectly blockwise application when that's cheap.
-
-A challenge here is that we have lost _context_ when moving from Xarray to flox.
-The string `"time.month"` tells Xarray that I am grouping a perfectly periodic array with period 12; similarly
-the _string_ `"time.dayofyear"` tells Xarray that I am grouping by a (quasi-)periodic array with period 365, and that group `366` may occur occasionally (depending on calendar).
-But Xarray passes flox an array of integer group labels `[1, 2, 3, 4, 5, ..., 1, 2, 3, 4, 5]`.
-It's hard to infer the context from that!
-Though one approach might frame the problem as: what rechunking would transform `C` to a block diagonal matrix.
-_[Get in touch](https://github.com/xarray-contrib/flox/issues) if you have ideas for how to do this inference._
-
-One way to preserve context may be be to have Xarray's new Grouper objects report ["preferred chunks"](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md#the-preferred_chunks-method-) for a particular grouping.
-This would allow a downstream system like `flox` or `cubed` or `dask-expr` to take this in to account later (or even earlier!) in the pipeline.
-That is an experiment for another day.
-
-The improvements described here are strongly dependent on the details
-of the grouping variable, the chunksize, and even dask's scheduler.
-In fact, writing this post prompted the discovery of a bug in dask's scheduler
-that should substantially improve the "map-reduce" case. In parallel, there's been work around
-improving shuffling along dask arrays.
-Clearly the last word on the GroupBy problem has not been said!
