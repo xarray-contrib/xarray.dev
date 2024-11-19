@@ -10,10 +10,10 @@ subselects data.
 
 ## What is GroupBy.map?
 
-`GroupBy.map` lets you apply a User Defined Function (UDF) that accepts and returns Xarray objects.
-The UDF will receive an Xarray object (either a Dataset or a DataArray) containing Dask arrays corresponding to one single group.
-`Groupby.reduce` is quite similar in that it applies a UDF, but in this case the UDF will receive the underlying
-Dask arrays, _not_ xarray objects.
+[`GroupBy.map`](https://docs.xarray.dev/en/stable/generated/xarray.core.groupby.DatasetGroupBy.map.html) lets you apply a User Defined Function (UDF)
+that accepts and returns Xarray objects. The UDF will receive an Xarray object (either a Dataset or a DataArray) containing Dask arrays corresponding to one single group.
+[`Groupby.reduce`](https://docs.xarray.dev/en/stable/generated/xarray.core.groupby.DatasetGroupBy.reduce.html) is quite similar
+in that it applies a UDF, but in this case the UDF will receive the underlying Dask arrays, _not_ xarray objects.
 
 ## The Application
 
@@ -71,8 +71,8 @@ additional tasks.
 The only workaround for users was to rechunk to something more sensible afterward, but it
 still keeps the incredibly expensive indexing operation in the graph.
 
-Note this is the underlying problem that is solved by flox for aggregations like `.mean()` using
-parallel-native algorithms to avoid the expense of indexing out each group.
+Note this is the underlying problem that is [solved by flox](https://xarray.dev/blog/flox) for aggregations like `.mean()`
+using parallel-native algorithms to avoid the expense of indexing out each group.
 
 ## Improvements to the Data Selection algorithm
 
@@ -91,7 +91,7 @@ and a scale that Dask can easily handle. The graph is now much smaller, and the 
 will run a lot faster as well.
 
 This improvement will help every operation that we listed above and make the scale a lot more
-reliably than before. The algorithm is used very widely accross Dask and Xarray and thus, influences
+reliably than before. The algorithm is used very widely across Dask and Xarray and thus, influences
 many methods.
 
 ## What's next?
