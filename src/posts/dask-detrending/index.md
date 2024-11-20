@@ -1,5 +1,5 @@
 ---
-title: 'Improving `GroupBy.map` with Dask and Xarray'
+title: 'Improving GroupBy.map with Dask and Xarray'
 date: '2024-11-21'
 authors:
   - name: Patrick Hoefler
