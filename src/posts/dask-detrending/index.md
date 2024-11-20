@@ -1,4 +1,11 @@
-# Improving `GroupBy.map` with Dask and Xarray
+---
+title: 'Improving `GroupBy.map` with Dask and Xarray'
+date: '2024-11-21'
+authors:
+  - name: Patrick Hoefler
+    github: phofl
+summary: 'Recent dask improvements make GroupBy.map a lot better!'
+---
 
 Running large-scale GroupBy-Map patterns with Xarray that are backed by Dask Arrays is
 an essential part of a lot of typical geospatial workloads. Detrending is a very common
