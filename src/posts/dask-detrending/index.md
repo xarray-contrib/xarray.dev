@@ -27,7 +27,7 @@ We are grouping by the day of the year and then are calculating the rolling aver
 
 Our example will run on a 1TiB array, 64 years worth of data and the following structure:
 
-![](input-array.png)
+![](/posts/dask-detrending/input-array.png)
 
 The array isn't overly huge and the chunks are reasonably sized.
 
@@ -39,7 +39,7 @@ this operation unusable. Our array is sorted by time, which means that we have t
 entries from many different areas in the array to create a single group. Picking the same day of 
 every year is basically a slicing operation with a step size of 365.
 
-![](indexing-data-selection.png "Data Selection Pattern")
+![](/posts/dask-detrending/indexing-data-selection.png "Data Selection Pattern")
 
 Our example has a year worth of data in a single chunk along the time axis. The general problem
 exists for any workload where you have to access random entries of data. This
@@ -51,7 +51,7 @@ entry, e.g. each group will consist of as many chunks as we have year.
 
 This results in a huge increase in the number of chunks:
 
-![](output-array-old.png)
+![](/posts/dask-detrending/output-array-old.png)
 
 This simple operation increases the number of chunks from 5000 to close to 2 million. Each
 chunk only has a few hundred kilobytes of data. **This is pretty bad!**
@@ -82,7 +82,7 @@ it will try to preserve the input chunksize as closely as possible.
 For our initial example, it will put every group into a single chunk. This means that we will
 end up with the number of chunks along the time axis being equal to the number of groups, i.e. 365.
 
-![](output-array-new.png)
+![](/posts/dask-detrending/output-array-new.png)
 
 The algorithm reduces the number of chunks from 2 million to roughly 30 000, which is a huge improvement
 and a scale that Dask can easily handle. The graph is now much smaller, and the follow-up operations
