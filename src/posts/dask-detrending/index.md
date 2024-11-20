@@ -7,7 +7,7 @@ authors:
 summary: 'Recent dask improvements make GroupBy.map a lot better!'
 ---
 
-Running large-scale GroupBy-Map patterns with Xarray that are backed by Dask Arrays is
+Running large-scale GroupBy-Map patterns with Xarray that are backed by [Dask arrays](https://docs.dask.org/en/stable/array.html?utm_source=xarray-blog) is
 an essential part of a lot of typical geospatial workloads. Detrending is a very common
 operation where this pattern is needed.
 
@@ -20,7 +20,7 @@ subselects data.
 [`GroupBy.map`](https://docs.xarray.dev/en/stable/generated/xarray.core.groupby.DatasetGroupBy.map.html) lets you apply a User Defined Function (UDF)
 that accepts and returns Xarray objects. The UDF will receive an Xarray object (either a Dataset or a DataArray) containing Dask arrays corresponding to one single group.
 [`Groupby.reduce`](https://docs.xarray.dev/en/stable/generated/xarray.core.groupby.DatasetGroupBy.reduce.html) is quite similar
-in that it applies a UDF, but in this case the UDF will receive the underlying Dask arrays, _not_ xarray objects.
+in that it applies a UDF, but in this case the UDF will receive the underlying Dask arrays, _not_ Xarray objects.
 
 ## The Application
 
@@ -33,14 +33,13 @@ def detrending_step(arr: DataArray) -> DataArray:
     # important: the rolling operation is applied within a group
     return arr - arr.rolling(time=30, min_periods=1).mean()
 
-
 data.groupby("time.dayofyear").map(detrending_step)
 ```
 
 We are grouping by the day of the year and then are calculating the rolling average over
 30-year windows for a particular day.
 
-Our example will run on a 1TiB array, 64 years worth of data and the following structure:
+Our example will run on a 1 TiB array, 64 years worth of data and the following structure:
 
 ![](/posts/dask-detrending/input-array.png)
 
@@ -93,7 +92,7 @@ end up with the number of chunks along the time axis being equal to the number o
 
 ![](/posts/dask-detrending/output-array-new.png)
 
-The algorithm reduces the number of chunks from 2 million to roughly 30 000, which is a huge improvement
+The algorithm reduces the number of chunks from 2 million to roughly 30 thousand, which is a huge improvement
 and a scale that Dask can easily handle. The graph is now much smaller, and the follow-up operations
 will run a lot faster as well.
 
@@ -116,7 +115,8 @@ pattern. This also includes:
 - `.sortby`
 - `groupby(...).quantile()`
 - and many more.
-  We expect all of these workloads to be substantially improved now.
+
+We expect all of these workloads to be substantially improved now.
 
 Additionally, [Dask improved a lot of things](https://docs.dask.org/en/stable/changelog.html#v2024-11-1) related to either increasing chunksizes or fragmentation
 of chunks over the cycle of a workload with more improvements to come. This will help a lot of
