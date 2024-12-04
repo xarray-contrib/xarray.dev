@@ -34,6 +34,10 @@ It acts like a tree of linked `xarray.Dataset` objects, with alignment enforced 
 
 For more details please see the [high-level description](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree) and the [dedicated page on hierarchical data](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html), and the [section on IO with groups](https://docs.xarray.dev/en/stable/user-guide/io.html#groups) in the xarray documentation.
 
+## Deprecation
+
+If you previously had used the `DataTree` prototype in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), that has now been archived and will no longer be supported. Instead we encourage you to migrate to the implementation of `DataTree` that you can import from xarray, following the [migration guide](https://github.com/pydata/xarray/blob/main/DATATREE_MIGRATION_GUIDE.md).
+
 ## Big moves
 
 This was a big feature addition! For a [decade](https://github.com/pydata/xarray/discussions/8462) there have been 3 core public xarray data structures, now there are 4: [`Variable`](https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable), [`DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray), [`Dataset`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset), and now [`DataTree`](https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html#xarray.DataTree).
@@ -42,11 +46,7 @@ Datatree represents arguably one of the single largest new features added to xar
 
 We also had to resolve some really [gnarly design questions](https://github.com/pydata/xarray/pull/9063) to make it work in a way we were happy with.
 
-## Deprecation
 
-- Mention the prototype in xarray-contrib/datatree repo
-  - Explain how old repository is now archived
-  - And link to migration guide https://github.com/pydata/xarray/issues/8807#issuecomment-2338869819
 
 ## How did this happen?
 
