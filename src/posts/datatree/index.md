@@ -21,7 +21,7 @@ summary: "The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## TL;DR
 
-``xarray.DataTree`` has been released, and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis).
+``xarray.DataTree`` has been released in [v2024.10.0](https://github.com/pydata/xarray/releases/tag/v2024.10.0), and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis).
 
 ## Why trees?
 
@@ -45,8 +45,6 @@ This was a big feature addition! For a [decade](https://github.com/pydata/xarray
 Datatree represents arguably one of the single largest new features added to xarray in 10 years - the migration of the existing prototype alone added >10k lines of code across [80 PRs](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the resulting datatree code now contains contributions from at least 25 people.
 
 We also had to resolve some really [gnarly design questions](https://github.com/pydata/xarray/pull/9063) to make it work in a way we were happy with.
-
-
 
 ## How did this happen?
 
@@ -90,7 +88,9 @@ Overall this type of collaboration could work again in future! So if there is an
 
 ## Go try out `DataTree`!
 
-- Implore people to try datatree out, but also to report bugs / suggestions as it's still being built up to its full potential.
+Please try datatree out! The hierarchical structure is potentially useful to any xarray users who work with more than one dataset at a time.
+
+Be aware that as `xarray.DataTree` is still new there will likely be some bugs lurking, as well as as-yet [unimplemented features](https://github.com/pydata/xarray/issues?q=is%3Aissue+is%3Aopen+label%3Atopic-DataTree) (as there always are)!
 
 ## Thanks
 
