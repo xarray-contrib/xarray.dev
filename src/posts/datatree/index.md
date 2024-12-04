@@ -49,9 +49,9 @@ ESDIS OR EOSDIS??
 
 DataTree didn't get implemented overnight - it was a multi-year effort that took place in a number of steps.
 
-Initially, the xarray team applied for funding from the [Chan-Zuckerberg initiative]() LINK to develop something like datatree, citing bioscience use cases (e.g. microscopy image pyramids LINK). Unfortunately whilst we've been lucky to receive CZI funding before (LINK), on this occasion we didn't win money to work on the datatree idea.
+Initially, the xarray team applied for funding from the [Chan-Zuckerberg initiative]() (LINK?) in March 2021 to develop something like datatree, citing bioscience use cases (e.g. [microscopy image pyramids](https://spatialdata.scverse.org/en/latest/design_doc.html)). Unfortunately whilst we've been lucky to [receive CZI funding before](https://chanzuckerberg.com/eoss/proposals/xarray-multidimensional-labeled-arrays-and-datasets-in-python/), on this occasion we didn't win money to work on the datatree idea.
 
-Without direct funding, Tom then used some time whilst at Columbia University to take a initial stab at the design in August 2021 - writing the first implementation on an overnight Amtrak! This simple prototype was released as a separate package in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), and steadily gained a small community of intrepid users.
+In the abcense of dedicated funding for datatree, Tom then used some time whilst at the [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University to take a initial stab at the design in August 2021 - writing the first implementation on an overnight Amtrak! This simple prototype was released as a separate package in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), and steadily gained a small community of intrepid users.
 
 A separate repository was chosen for speed of iteration, and to [avoid](https://github.com/xarray-contrib/datatree/blob/7ba05880c37f2371b5174f6e8dcfae31248fe19f/README.md#development-roadmap) giving the impression that these early experiments would have the same level of [long-term support promised](https://github.com/pydata/xarray/issues/9854) for code in xarray's main repo. However this meant that the prototype datatree was not fully integrated with xarray's main codebase, limiting possible features and requiring fragile dependencies on private xarray internals.
 
@@ -83,3 +83,8 @@ This gradual process of moving from idea to prototype to robust implementation i
 ## Thanks
 
 A number of other people also [contributed to datatree](https://github.com/xarray-contrib/datatree/graphs/contributors) in various ways - particular shoutout to [Alfonso Ladino](https://github.com/aladinor) and [Etinenne Schalk](https://github.com/etienneschalk) for their dedicated attendance at many of the weekly migration meetings!
+
+## Funding Acknowledgements
+
+- Owen, Eni, and Matt were able to contribute development time thanks to NASA ESDIS.
+- Tom was supported first by the Gordon and Betty Moore foundation as part of Ryan Abernathey's [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University, then later by various funders for a fraction of his time through [[C]Worthy](https://www.cworthy.org/).
