@@ -16,12 +16,12 @@ authors:
     github: keewis
   - name: Stephan Hoyer
     github: shoyer
-summary: "The new xarray.DataTree class allows working with netCDF/Zarr groups, brought to you in collaboration with NASA!"
+summary: 'The new xarray.DataTree class allows working with netCDF/Zarr groups, brought to you in collaboration with NASA!'
 ---
 
 ## TL;DR
 
-``xarray.DataTree`` has been released in [v2024.10.0](https://github.com/pydata/xarray/releases/tag/v2024.10.0), and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis).
+`xarray.DataTree` has been released in [v2024.10.0](https://github.com/pydata/xarray/releases/tag/v2024.10.0), and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis).
 
 ## Why trees?
 
@@ -56,7 +56,7 @@ In the absence of dedicated funding for datatree, Tom then used some time whilst
 
 A separate repository was chosen for speed of iteration, and to [avoid](https://github.com/xarray-contrib/datatree/blob/7ba05880c37f2371b5174f6e8dcfae31248fe19f/README.md#development-roadmap) giving the impression that these early experiments would have the same level of [long-term support promised](https://github.com/pydata/xarray/issues/9854) for code in xarray's main repo. However this meant that the prototype datatree was not fully integrated with xarray's main codebase, limiting possible features and requiring fragile dependencies on private xarray internals.
 
-The prototype then sat there for 2 years, until NASA ESDIS approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support. 
+The prototype then sat there for 2 years, until NASA ESDIS approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support.
 
 Amazingly the NASA team were able to offer engineer time, so starting in early 2024 Owen, Matt, and Eni (NASA) worked on migrating datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray core devs).
 
@@ -71,6 +71,7 @@ The scientific grant model for funding software expects you to present a full id
 Overall while the migration effort took longer than anticipated we found it worked out quite well!
 
 ### Pros:
+
 - **Literally zero overhead** - the existing xarray team did not to have to write a proposal to get developer time, and there was literally zero paperwork inflicted (on them at least).
 - **Certainty of funding** - writing grant proposals is a lottery, so the time invested up front doesn't even come with any certainty of funding. Collaborating with another org has a much higher chance of actually leading to more money being available for developer time.
 - **Time efficient** - a xarray core dev spending 10% of their time directing someone who is less familiar with the codebase but has more time is an efficient use of relative expertise.
@@ -79,6 +80,7 @@ Overall while the migration effort took longer than anticipated we found it work
 - **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), NASA ESDIS has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
 
 ### Cons:
+
 - **Not everyone got direct funding** - it's less ideal that Tom, Justus, and Stephan didn't get direct funding for their supervisory work. In future it might be better to have one of the paid people at the contributing org already be a core xarray team member.
 - **Tricky to accurately scope** out the duration of required work in advance, and hard to "just ship it". We hold the xarray project to high standards and backwards compatibility promises so we want to ensure that any publicly released features don't compromise on quality.
 
