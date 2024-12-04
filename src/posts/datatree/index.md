@@ -34,13 +34,16 @@ ESDIS OR EOSDIS??
 - Very brief explanation of the solution we have ended up with
   - Doesn't need to explain much about actually using datatree - that should be covered by pointing people to the docs.
 
-## A Big Addition!
+## Big moves
 
-- Emphasise that this is a big deal
-  - Arguably the single largest feature added to xarray in 10 years? (I think it is by LoC)
-  - Metrics for # commits, LoC, contributors
-  - Some really gnarly design questions (link to issues about inheritance)
-  - For a decade there have been 3 public xarray data structures, now there are 4 (`Variable`, `DataArray`, `Dataset`, and now `DataTree`). LINKS
+This was a big feature addition! For a [decade](https://github.com/pydata/xarray/discussions/8462) there have been 3 core public xarray data structures, now there are 4: [`Variable`](https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable), [`DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray), [`Dataset`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset), and now [`DataTree`](https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html#xarray.DataTree).
+
+Datatree represents arguably the single largest feature added to xarray in 10 years - the migration alone added >10k lines of code across [80 PRs](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the datatree code now contains contributions from at least 25 people. 
+
+We also had to resolve some really [gnarly design questions](https://github.com/pydata/xarray/pull/9063) to make it work in a way we were happy with.
+
+## Deprecation
+
 - Mention the prototype in xarray-contrib/datatree repo
   - Explain how old repository is now archived
   - And link to migration guide https://github.com/pydata/xarray/issues/8807#issuecomment-2338869819
@@ -55,9 +58,9 @@ In the abcense of dedicated funding for datatree, Tom then used some time whilst
 
 A separate repository was chosen for speed of iteration, and to [avoid](https://github.com/xarray-contrib/datatree/blob/7ba05880c37f2371b5174f6e8dcfae31248fe19f/README.md#development-roadmap) giving the impression that these early experiments would have the same level of [long-term support promised](https://github.com/pydata/xarray/issues/9854) for code in xarray's main repo. However this meant that the prototype datatree was not fully integrated with xarray's main codebase, limiting possible features and requiring fragile dependencies on private xarray internals.
 
-The prototype then sat there for 2 years, until NASA ESDIS approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray `main` so there would be more guarantees of long-term API stability and support. 
+The prototype then sat there for 2 years, until NASA ESDIS approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support. 
 
-Amazingly the NASA team were able to offer engineer time, so starting in early 2024 Owen, Matt, and Eni (NASA) then worked on migrating datatree into xarray upstream, with supervision from Tom, Justus, and Stephan (existing xarray core devs).
+Amazingly the NASA team were able to offer engineer time, so starting in early 2024 Owen, Matt, and Eni (NASA) worked on migrating datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray core devs).
 
 This second stage of development allowed us to reduce the bus factor on the datatree code, sanity check the original approach, and it gave us a chance to make some signficant changes to the design without worrying too much about backwards-incompatibility (for example enabling the [new "coordinate inheritance" feature](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html#alignment-and-coordinate-inheritance)).
 
