@@ -25,18 +25,20 @@ summary: "The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## Why trees?
 
-Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets often fall into this category, and users want a way to work with such hierarchical data in-memory and a way to interact with it on disk.
+Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets often fall into this category, and users wanted a way to work with such hierarchical data in-memory and a way to interact with it on disk.
 
 ## What is a DataTree?
 
-- Very brief explanation of the solution we have ended up with
-  - Doesn't need to explain much about actually using datatree - that should be covered by pointing people to the docs.
+Our solution is the new high-level container class `xarray.DataTree`.
+It acts like a tree of linked `xarray.Dataset` objects, with alignment enforced between variables in sibling nodes but not between parents and children. It can be written to and opened from formats containing multiple groups, such as netCDF4 files and Zarr stores.
+
+For more details please see the [high-level description](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree) and the [dedicated page on hierarchical data](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html), and the [section on IO with groups](https://docs.xarray.dev/en/stable/user-guide/io.html#groups) in the xarray documentation.
 
 ## Big moves
 
 This was a big feature addition! For a [decade](https://github.com/pydata/xarray/discussions/8462) there have been 3 core public xarray data structures, now there are 4: [`Variable`](https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable), [`DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray), [`Dataset`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset), and now [`DataTree`](https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html#xarray.DataTree).
 
-Datatree represents arguably the single largest feature added to xarray in 10 years - the migration alone added >10k lines of code across [80 PRs](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the datatree code now contains contributions from at least 25 people. 
+Datatree represents arguably one of the single largest new features added to xarray in 10 years - the migration of the existing prototype alone added >10k lines of code across [80 PRs](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the resulting datatree code now contains contributions from at least 25 people.
 
 We also had to resolve some really [gnarly design questions](https://github.com/pydata/xarray/pull/9063) to make it work in a way we were happy with.
 
