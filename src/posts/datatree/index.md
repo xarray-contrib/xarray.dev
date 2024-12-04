@@ -63,20 +63,29 @@ This second stage of development allowed us to reduce the bus factor on the data
 
 ## Lessons for future collaborations
 
-This gradual process of moving from idea to prototype to robust implementation is arguably a better model of 
+This development story is different from the more typical scientific grant funding model - how did that work out for us?
 
- - Took a bit longer than anticipated but otherwise worked out quite well
-  - Got 3 new xarray core developers now - so NASA has more explicit representation
-  - Was a lot easier for xarray team not to have to write a proposal to get developer time
-  - Ideal in the sense of literally zero overhead
-  - Also core dev spending 10% time spent directing someone with more time is efficient use of relative expertise
-  - Less ideal that Tom/Justus/Stephan didn't get paid for the work
-  - In future better to have one of the paid people at the contributing org already be a core dev
-  - This approach could work again in future!
+The scientific grant model for funding software expects you to present a full idea in a proposal, wait 6-12 months to hopefully get funding for it, then implement the whole thing during the grant period. In contrast datatree evolved over a gradual process of moving from ideas to hacky prototype to robust implementation, with big time gaps for user feedback and experimentation. The migration was completed by developer-users who actually wanted the feature, rather than grant awardees working in service of a separate and maybe-theoretical userbase.
 
-- Officially added Owen, Matt and Eni to the xarray core team, which also gives NASA some direct representation.
+Overall while the migration effort took longer than anticipated we found it worked out quite well!
 
-## Go try it out!
+### Pros:
+- **Literally zero overhead** - the existing xarray team did not to have to write a proposal to get developer time, and there was literally zero paperwork inflicted (on them at least).
+- **Certainty of funding** - writing grant proposals is a lottery, so the time invested up front doesn't even come with any certainty of funding. Collaborating with another org has a much higher chance of actually leading to more money being available for developer time.
+- **Time efficient** - a xarray core dev spending 10% of their time directing someone who is less familiar with the codebase but has more time is an efficient use of relative expertise.
+- **Bus factor** - the new contributors reduce the bus factor on the datatree code dramatically.
+- **User-driven Development** - it makes sense to have actual interested user communities involved in development.
+- **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), NASA ESDIS has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
+
+### Cons:
+- **Not everyone got direct funding** - it's less ideal that Tom, Justus, and Stephan didn't get direct funding for their supervisory work. In future it might be better to have one of the paid people at the contributing org already be a core xarray team member.
+- **Tricky to accurately scope** out the duration of required work in advance, and hard to "just ship it". We hold the xarray project to high standards and backwards compatibility promises so we want to ensure that any publicly released features don't compromise on quality.
+
+This contributing model is more similar to how OSS has historically been supported by industry, but perhaps because xarray is primarily developed and used by the scientific community we tend to default to more grant-based funding models.
+
+Overall this could work again in future! So if there is an xarray or xarray-adjacent feature your organisation would like to see, **please reach out to us**.
+
+## Go try out `DataTree`!
 
 - Implore people to try datatree out, but also to report bugs / suggestions as it's still being built up to its full potential.
 
