@@ -16,18 +16,16 @@ authors:
     github: keewis
   - name: Stephan Hoyer
     github: shoyer
-summary: "The new xarray.DataTree class allows working with netCDF/Zarr groups, brought to you via collaboration with NASA!"
+summary: "The new xarray.DataTree class allows working with netCDF/Zarr groups, brought to you in collaboration with NASA!"
 ---
 
 ## TL;DR
 
 ``xarray.DataTree`` has been released, and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis).
 
-ESDIS OR EOSDIS??
-
 ## Why trees?
 
-- Motivate why users wanted a hierarchical structure (e.g. https://github.com/pydata/xarray/issues/4118 and https://github.com/pydata/xarray/issues/1092)
+Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets often fall into this category, and users want a way to work with such hierarchical data in-memory and a way to interact with it on disk.
 
 ## What is a DataTree?
 
@@ -54,7 +52,7 @@ DataTree didn't get implemented overnight - it was a multi-year effort that took
 
 Initially, the xarray team applied for funding from the [Chan-Zuckerberg initiative]() (LINK?) in March 2021 to develop something like datatree, citing bioscience use cases (e.g. [microscopy image pyramids](https://spatialdata.scverse.org/en/latest/design_doc.html)). Unfortunately whilst we've been lucky to [receive CZI funding before](https://chanzuckerberg.com/eoss/proposals/xarray-multidimensional-labeled-arrays-and-datasets-in-python/), on this occasion we didn't win money to work on the datatree idea.
 
-In the abcense of dedicated funding for datatree, Tom then used some time whilst at the [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University to take a initial stab at the design in August 2021 - writing the first implementation on an overnight Amtrak! This simple prototype was released as a separate package in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), and steadily gained a small community of intrepid users.
+In the absence of dedicated funding for datatree, Tom then used some time whilst at the [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University to take a initial stab at the design in August 2021 - writing the first implementation on an overnight Amtrak! This simple prototype was released as a separate package in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), and steadily gained a small community of intrepid users. It was driven partly by the use case of [climate model intercomparison datasets](https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114).
 
 A separate repository was chosen for speed of iteration, and to [avoid](https://github.com/xarray-contrib/datatree/blob/7ba05880c37f2371b5174f6e8dcfae31248fe19f/README.md#development-roadmap) giving the impression that these early experiments would have the same level of [long-term support promised](https://github.com/pydata/xarray/issues/9854) for code in xarray's main repo. However this meant that the prototype datatree was not fully integrated with xarray's main codebase, limiting possible features and requiring fragile dependencies on private xarray internals.
 
@@ -86,7 +84,7 @@ Overall while the migration effort took longer than anticipated we found it work
 
 This contributing model is more similar to how OSS has historically been supported by industry, but perhaps because xarray is primarily developed and used by the scientific community we tend to default to more grant-based funding models.
 
-Overall this could work again in future! So if there is an xarray or xarray-adjacent feature your organisation would like to see, **please reach out to us**.
+Overall this type of collaboration could work again in future! So if there is an xarray or xarray-adjacent feature your organisation would like to see, **please reach out to us**.
 
 ## Go try out `DataTree`!
 
