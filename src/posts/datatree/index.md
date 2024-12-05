@@ -36,7 +36,7 @@ For more details please see the [high-level description](https://docs.xarray.dev
 
 ## Deprecation
 
-If you previously had used the `DataTree` prototype in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), that has now been archived and will no longer be supported. Instead we encourage you to migrate to the implementation of `DataTree` that you can import from xarray, following the [migration guide](https://github.com/pydata/xarray/blob/main/DATATREE_MIGRATION_GUIDE.md).
+If you previously had used the `datatree.DataTree` prototype in the [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree), that has now been archived and will no longer be supported. Instead we encourage you to migrate to the implementation of `DataTree` that you can import from xarray, following the [migration guide](https://github.com/pydata/xarray/blob/main/DATATREE_MIGRATION_GUIDE.md).
 
 ## Big moves
 
