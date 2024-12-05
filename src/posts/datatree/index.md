@@ -74,7 +74,7 @@ Overall while the migration effort took longer than anticipated we think it work
 
 - **Zero overhead** - the existing xarray team did not to have to write a proposal to get developer time, and there was literally zero paperwork inflicted (on them at least).
 - **Certainty of funding** - writing grant proposals is a lottery, so the time invested up front doesn't even come with any certainty of funding. Collaborating with another org has a much higher chance of actually leading to more money being available for developer time.
-- **Time efficient** - a xarray core dev spending 10% of their time directing someone who is less familiar with the codebase but has more time is an efficient use of relative expertise.
+- **Time efficient** - an xarray core dev spending 10% of their time advising someone who is less familiar with the codebase but has more time is an efficient use of relative expertise.
 - **Bus factor** - the new contributors reduced the bus factor on the datatree code dramatically.
 - **User-driven Development** - it makes sense to have actual interested user communities involved in development.
 - **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), NASA ESDIS has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
