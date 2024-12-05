@@ -90,19 +90,7 @@ Overall we think this type of collaboration could work again in future! So if th
 
 ## Go try out DataTree!
 
-Please try datatree out! The hierarchical structure is potentially useful to any xarray users who work with more than one dataset at a time. Simply do
-
-```python
-from xarray import DataTree
-```
-
-or
-
-```python
-open_datatree(...)
-```
-
-on a netCDF4 file / Zarr store containing multiple groups.
+Please try datatree out! The hierarchical structure is potentially useful to any xarray users who work with more than one dataset at a time. Simply do `from xarray import DataTree` or call [`open_datatree(...)`](https://docs.xarray.dev/en/stable/generated/xarray.open_datatree.html) on a netCDF4 file / Zarr store containing multiple groups.
 
 Be aware that as `xarray.DataTree` is still new there will likely be some bugs lurking or places that performance could be improved, as well as as-yet [unimplemented features](https://github.com/pydata/xarray/issues?q=is%3Aissue+is%3Aopen+label%3Atopic-DataTree) (as there always are)!
 
