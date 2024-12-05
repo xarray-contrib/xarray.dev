@@ -96,7 +96,7 @@ Be aware that as `xarray.DataTree` is still new there will likely be some bugs l
 
 ## Thanks
 
-A number of other people also [contributed to datatree](https://github.com/xarray-contrib/datatree/graphs/contributors) in various ways - particular shoutout to [Alfonso Ladino](https://github.com/aladinor) and [Etinenne Schalk](https://github.com/etienneschalk) for their dedicated attendance at many of the [weekly migration meetings](https://github.com/pydata/xarray/issues/8747)!
+A number of other people also [contributed to datatree](https://github.com/xarray-contrib/datatree/graphs/contributors) in various ways - particular shoutout to [Alfonso Ladino](https://github.com/aladinor) and [Etienne Schalk](https://github.com/etienneschalk) for their dedicated attendance at many of the [weekly migration meetings](https://github.com/pydata/xarray/issues/8747)!
 
 ## Funding Acknowledgements
 
