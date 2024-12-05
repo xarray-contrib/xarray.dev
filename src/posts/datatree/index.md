@@ -25,7 +25,7 @@ summary: 'The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## Why trees?
 
-Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets (such as [climate model intercomparisons]https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114)) often fall into this category, and users wanted a way to work with such hierarchical data in-memory and a way to interact with it on disk.
+Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets (such as [climate model intercomparisons](https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114)) often fall into this category, and users wanted a way to work with such hierarchical data in-memory and a way to interact with it on disk.
 
 ## What is a DataTree?
 
