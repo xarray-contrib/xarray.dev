@@ -21,7 +21,7 @@ summary: 'The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## tl;dr
 
-[`xarray.DataTree`](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree) has been [released](https://github.com/pydata/xarray/discussions/9680) in [v2024.10.0](https://github.com/pydata/xarray/releases/tag/v2024.10.0), and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and [NASA ESDIS](https://www.earthdata.nasa.gov/about/esdis). 🤝
+[`xarray.DataTree`](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree) has been [released](https://github.com/pydata/xarray/discussions/9680) in [v2024.10.0](https://github.com/pydata/xarray/releases/tag/v2024.10.0), and the prototype [`xarray-contrib/datatree` repository](https://github.com/xarray-contrib/datatree) archived, after collaboration between the xarray team and the [NASA ESDIS project](https://www.earthdata.nasa.gov/about/esdis). 🤝
 
 ## Why trees?
 
@@ -56,9 +56,9 @@ In the absence of dedicated funding for datatree, Tom then used some time whilst
 
 A separate repository was chosen for speed of iteration, and to be able to more easily [make changes](https://github.com/xarray-contrib/datatree/blob/7ba05880c37f2371b5174f6e8dcfae31248fe19f/README.md#development-roadmap) without worrying as much about [backwards compatibility](https://github.com/pydata/xarray/issues/9854) as code in xarray's main repo does. However the separate repo meant that the prototype `datatree` library was not fully integrated with xarray's main codebase, limiting possible features and requiring fragile dependencies on private xarray internals.
 
-The prototype then sat there for 2 years, until NASA ESDIS approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support.
+The prototype then sat there for 2 years, until the NASA ESDIS team approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support.
 
-Amazingly the NASA team were able to offer engineer time, so starting in late 2023 Owen, Matt, and Eni (NASA) worked on migrating datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray core devs).
+Amazingly the NASA team were able to offer engineer time, so starting in late 2023 Owen, Matt, and Eni (NASA) worked on migrating the prototype datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray team).
 
 This second stage of development allowed us to reduce the bus factor on the datatree code, sanity check the original approach, and it gave us a chance to make some significant improvements to the design without backwards-compatibility concerns (for example enabling the [new "coordinate inheritance" feature](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html#alignment-and-coordinate-inheritance)).
 
@@ -77,7 +77,7 @@ Overall while the migration effort took longer than anticipated we think it work
 - **Time efficient** - an xarray core dev spending 10% of their time advising someone who is less familiar with the codebase but has more time is an efficient use of relative expertise.
 - **Bus factor** - the new contributors reduced the bus factor on the datatree code dramatically.
 - **User-driven Development** - it makes sense to have actual interested user communities involved in development.
-- **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), NASA ESDIS has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
+- **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), the NASA ESDIS project has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
 
 ### Cons:
 
@@ -100,5 +100,5 @@ A number of other people also [contributed to datatree](https://github.com/xarra
 
 ## Funding Acknowledgements
 
-- Owen, Eni, and Matt were able to contribute development time thanks to NASA ESDIS.
+- Owen, Eni, and Matt were able to contribute development time thanks to the [NASA ESDIS project](https://www.earthdata.nasa.gov/about/esdis).
 - Tom was supported first by the Gordon and Betty Moore foundation as part of Ryan Abernathey's [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University, then later by various funders for a fraction of his time through [[C]Worthy](https://www.cworthy.org/).
