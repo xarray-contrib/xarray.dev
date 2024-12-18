@@ -42,7 +42,7 @@ If you previously had used the `datatree.DataTree` prototype in the [`xarray-con
 
 This was a big feature addition! For a [decade](https://github.com/pydata/xarray/discussions/8462) there have been 3 core public xarray data structures, now there are 4: [`Variable`](https://docs.xarray.dev/en/stable/generated/xarray.Variable.html#xarray.Variable), [`DataArray`](https://docs.xarray.dev/en/stable/generated/xarray.DataArray.html#xarray.DataArray), [`Dataset`](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset), and now [`DataTree`](https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html#xarray.DataTree).
 
-Datatree represents arguably one of the single largest new features added to xarray in 10 years - the migration of the existing prototype alone added >10k lines of code across [80 pull requests](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the resulting datatree implementation now contains contributions from at least 25 people.
+Datatree represents arguably one of the largest new features added to xarray in 10 years - the migration of the existing prototype alone added >10k lines of code across [80 pull requests](https://github.com/pydata/xarray/pulls?q=is%3Apr+label%3Atopic-DataTree+is%3Aclosed), and the resulting datatree implementation now contains contributions from at least 25 people.
 
 We also had to resolve some really [gnarly design questions](https://github.com/pydata/xarray/pull/9063) to make it work in a way we were happy with.
 
@@ -81,8 +81,8 @@ Overall while the migration effort took longer than anticipated we think it work
 
 ### Cons:
 
-- **Not everyone got direct funding** - it's less ideal that Tom, Justus, and Stephan didn't get direct funding for their supervisory work. In future it might be better to have one of the paid people at the contributing org already be a core xarray team member, or perhaps find some way to pay them as a "consultant".
-- **Tricky to accurately scope** out the duration of required work in advance, and hard to "just ship it". We hold the xarray project to high standards and backwards compatibility promises so we want to ensure that any publicly released features don't compromise on quality.
+- **Not everyone got direct funding** - It's less ideal that Tom, Justus, and Stephan didn't get direct funding for their supervisory work. In future it might be better to have one of the paid people at the contributing org already be a core xarray team member, or perhaps find some way to pay them as a consultant.
+- **Tricky to accurately scope** - The duration of required work was tricky to estimate in advance, and we didn't want to "just ship it". We hold the xarray project to high standards and backwards compatibility promises so we want to ensure that any publicly released features don't compromise on quality.
 
 This contributing model is more similar to how open-source software has historically been supported by industry, but perhaps because xarray is primarily developed and used by the scientific community we tend to default to more grant-based funding models.
 
