@@ -58,7 +58,7 @@ A separate repository was chosen for speed of iteration, and to be able to more 
 
 The prototype then sat there for 2 years, until the NASA ESDIS team approached the xarray core team in August 2023. ESDIS devs wanted the ability to work with entire hierarchical files, and had experimented with the prototype version of datatree, but they wanted datatree functionality to be migrated upstream into xarray's main repository so there would be more guarantees of long-term API stability and support.
 
-Amazingly the NASA team were able to offer engineer time, so starting in late 2023 Owen, Matt, and Eni (NASA) worked on migrating the prototype datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray team).
+Amazingly NASA were able to offer the time of 3 engineers: Owen (NASA EOSDIS Evolution and Development 3 (EED-3) contract), Matt (NASA National Snow and Ice Data Center Distributed Active Archive Center (NSIDC)), and Eni (Goddard Earth Sciences Data and Information Services Center (GES DISC)). So starting in late 2023 the NASA trio worked on migrating the prototype datatree into xarray upstream, with regular supervision from Tom, Justus, and Stephan (existing xarray core team).
 
 This second stage of development allowed us to reduce the bus factor on the datatree code, sanity check the original approach, and it gave us a chance to make some significant improvements to the design without backwards-compatibility concerns (for example enabling the [new "coordinate inheritance" feature](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html#alignment-and-coordinate-inheritance)).
 
@@ -100,5 +100,5 @@ A number of other people also [contributed to datatree](https://github.com/xarra
 
 ## Funding Acknowledgements
 
-- Owen, Eni, and Matt were able to contribute development time thanks to the [NASA ESDIS project](https://www.earthdata.nasa.gov/about/esdis).
+- Owen, Eni, and Matt were able to contribute development time as part of the [NASA ESDIS project](https://www.earthdata.nasa.gov/about/esdis).
 - Tom was supported first by the Gordon and Betty Moore foundation as part of Ryan Abernathey's [Climate Data Science Lab](https://ocean-transport.github.io/cds_lab.html) at Columbia University, then later by various funders for a fraction of his time through [[C]Worthy](https://www.cworthy.org/).
