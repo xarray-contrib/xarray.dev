@@ -25,20 +25,20 @@ summary: 'The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## Why trees?
 
-DataTree allows for organizing heterogeneous collections of scientific data in the same way that a nested directory structure facilitates organizing large numbers of files on disk. It does so in a way that preserves common structure between data in the collections, such as aligned arrays and common coordinates.
+The DataTree concept allows for organizing heterogeneous collections of scientific data in the same way that a nested directory structure facilitates organizing large numbers of files on disk. It does so in a way that preserves common structure between data in the collections, such as aligned arrays and common coordinates.
 
-For those familiar with netCDF4/Zarr groups, DataTree can also be thought of as an in-memory representation of a file's group structure. Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092)!
+For those familiar with netCDF4/Zarr groups, a DataTree can also be thought of as an in-memory representation of a file's group structure. Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092)!
 
 DataTree enables xarray to be used for various new use cases, including:
 
 - [Climate model intercomparisons](https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114),
 - Multi-scale image pyramids, e.g. in [genomics](https://spatialdata.scverse.org/en/latest/design_doc.html),
 - Organising heterogenous data, such as satellite observations and model simulations.
+- Simple and convenient access to entire hierarchical files.
 
-## What is a DataTree?
+## What is a DataTree exactly?
 
-Our solution is the new high-level container class `xarray.DataTree`.
-It acts like a tree of linked `xarray.Dataset` objects, with alignment enforced between parent and child nodes, but not between siblings. It can be written to and opened from formats containing multiple groups, such as netCDF4 files and Zarr stores.
+The new high-level container class `xarray.DataTree` acts like a tree of linked `xarray.Dataset` objects, with alignment enforced between arrays in parent and child nodes, but not between those in sibling nodes. It can be written to and opened from formats containing multiple groups, such as netCDF4 files and Zarr stores.
 
 For more details please see the [high-level description](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree), the [dedicated page on hierarchical data](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html), and the [section on IO with groups](https://docs.xarray.dev/en/stable/user-guide/io.html#groups) in the xarray documentation.
 
