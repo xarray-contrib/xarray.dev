@@ -38,7 +38,7 @@ DataTree enables xarray to be used for various new use cases, including:
 ## What is a DataTree?
 
 Our solution is the new high-level container class `xarray.DataTree`.
-It acts like a tree of linked `xarray.Dataset` objects, with alignment enforced between variables in sibling nodes but not between parents and children. It can be written to and opened from formats containing multiple groups, such as netCDF4 files and Zarr stores.
+It acts like a tree of linked `xarray.Dataset` objects, with alignment enforced between parent and child nodes, but not between siblings. It can be written to and opened from formats containing multiple groups, such as netCDF4 files and Zarr stores.
 
 For more details please see the [high-level description](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree), the [dedicated page on hierarchical data](https://docs.xarray.dev/en/stable/user-guide/hierarchical-data.html), and the [section on IO with groups](https://docs.xarray.dev/en/stable/user-guide/io.html#groups) in the xarray documentation.
 
