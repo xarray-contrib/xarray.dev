@@ -25,7 +25,15 @@ summary: 'The new xarray.DataTree class allows working with netCDF/Zarr groups, 
 
 ## Why trees?
 
-Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092). Such netCDF4/Zarr groups are the on-disk representation of a general problem of handling hierarchies of related but non-alignable array data. Real-world datasets (such as [climate model intercomparisons](https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114)) often fall into this category, and users wanted a way to work with such hierarchical data in-memory and a way to interact with it on disk.
+DataTree allows for organizing heterogeneous collections of scientific data in the same way that a nested directory structure facilitates organizing large numbers of files on disk. It does so in a way that preserves common structure between data in the collections, such as aligned arrays and common coordinates.
+
+For those familiar with netCDF4/Zarr groups, DataTree can also be thought of as an in-memory representation of a file's group structure. Xarray users have been [asking](https://github.com/pydata/xarray/issues/4118) for a way to handle multiple netCDF4 groups [since at least 2016](https://github.com/pydata/xarray/issues/1092)!
+
+DataTree enables xarray to be used for various new use cases, including:
+
+- [Climate model intercomparisons](https://medium.com/pangeo/easy-ipcc-part-1-multi-model-datatree-469b87cf9114),
+- Multi-scale image pyramids, e.g. in [genomics](https://spatialdata.scverse.org/en/latest/design_doc.html),
+- Organising heterogenous data, such as satellite observations and model simulations.
 
 ## What is a DataTree?
 
