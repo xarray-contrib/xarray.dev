@@ -1,6 +1,6 @@
 ---
 title: 'Xarray x NASA: xarray.DataTree for hierarchical data structures'
-date: '2024-12-04'
+date: '2024-12-19'
 authors:
   - name: Tom Nicholas
     github: tomnicholas
@@ -78,7 +78,7 @@ The scientific grant model for funding software expects you to present a full id
 
 Overall while the migration effort took longer than anticipated we think it worked out quite well!
 
-### Pros:
+### Pros
 
 - **Zero overhead** - the existing xarray team did not to have to write a proposal to get developer time, and there was literally zero paperwork inflicted (on them at least).
 - **Certainty of funding** - writing grant proposals is a lottery, so the time invested up front doesn't even come with any certainty of funding. Collaborating with another org has a much higher chance of actually leading to more money being available for developer time.
@@ -87,7 +87,7 @@ Overall while the migration effort took longer than anticipated we think it work
 - **User-driven Development** - it makes sense to have actual interested user communities involved in development.
 - **Stakeholder representation** - after officially adding Owen, Matt and Eni to the [xarray core team](https://xarray.dev/team), the NASA ESDIS project has some direct representation in, insider understanding of, and stake in continuing to support the xarray project.
 
-### Cons:
+### Cons
 
 - **Not everyone got direct funding** - It's less ideal that Tom, Justus, and Stephan didn't get direct funding for their supervisory work. In future it might be better to have one of the paid people at the contributing org already be a core xarray team member, or perhaps find some way to pay them as a consultant.
 - **Tricky to accurately scope** - The duration of required work was tricky to estimate in advance, and we didn't want to "just ship it". We hold the xarray project to high standards and backwards compatibility promises so we want to ensure that any publicly released features don't compromise on quality.
@@ -96,7 +96,7 @@ This contributing model is more similar to how open-source software has historic
 
 Overall we think this type of collaboration could work again in future! So if there is an xarray or xarray-adjacent feature your organisation would like to see, **please reach out to us**.
 
-## Go try out DataTree!
+## Go try out DataTree
 
 Please try datatree out! The hierarchical structure is potentially useful to any xarray users who work with more than one dataset at a time. Simply do `from xarray import DataTree` or call [`open_datatree(...)`](https://docs.xarray.dev/en/stable/generated/xarray.open_datatree.html) on a netCDF4 file / Zarr store containing multiple groups.
 
