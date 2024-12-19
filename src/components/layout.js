@@ -13,11 +13,11 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = "Xarray's 2024 User Survey is live now."
+  const bannerTitle = "Check out the new blog post on DataTree!"
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='https://forms.gle/KEq7WviCdz9xTaJX6'>
-      Please take ~5 minutes to fill it out and help us improve Xarray.
+    <Link href='/blog/datatree'>
+      Xarray x NASA: xarray.DataTree for hierarchical data structures
     </Link>
   )
 
