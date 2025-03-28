@@ -47,7 +47,7 @@ export const Projects = [
     description: 'Raster-based Spatial Analytics for Python',
     domains: ['🗺️ Geographic Processing'],
     repo: 'https://github.com/makepath/xarray-spatial',
-    homepage: 'https://xarray-spatial.org/',
+    homepage: 'https://xarray-spatial.readthedocs.io/en/stable/',
     logo: '/projects/Xarray-Spatial-logo.svg',
   },
   {
