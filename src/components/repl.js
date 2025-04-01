@@ -7,7 +7,7 @@ import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
 
 // See: https://github.com/jupyterlite/jupyterlite/issues/151
-const preRunCode = `%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport%20numpy%20as%20np%0Aimport%20pandas%20as%20pd`
+const preRunCode = `%23%20Import%20packages%0Aimport%20xarray%20as%20xr%0Aimport%20numpy%20as%20np%0Aimport%20pandas%20as%20pd%0Aimport%matplotlib%20as%20mpl`
 
 // https://github.com/jobovy/jupyterlite-repl-prerun
 const jupyterliteInstance = 'https://jupyterlite.github.io/demo/repl'
