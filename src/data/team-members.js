@@ -2,7 +2,7 @@ export const TeamMembers = [
   { name: 'Stephan Hoyer', github: 'shoyer' },
   { name: 'Joe Hamman', github: 'jhamman' },
   { name: 'Ryan Abernathey', github: 'rabernat' },
-  { name: 'Benôit Bovy', github: 'benbovy' },
+  { name: 'Benoît Bovy', github: 'benbovy' },
   { name: 'Fabien Maussion', github: 'fmaussion' },
   { name: 'Keisuke Fujii', github: 'fujiisoup' },
   { name: 'Maximilian Roos', github: 'max-sixty' },
