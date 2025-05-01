@@ -63,29 +63,25 @@ The profiling results clearly showed that the data loading step was the main bot
 
 This was also confirmed by a few other flags we added in our script to measure the time spent on data loading and model training. The results are shown below:
 
+[baseline plot](baseline.png)
 
+In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
 
-In the above plot, 
-
-- Real Data: Throughput of the data loading using the ERA-5 dataset.
+- Real Data: Baseline throughput of the end-to-end pipeline using real data.
 - No Training (i.e. data loading throughput): Throughput of the data loading without any training (to measure the time spent on data loading vs. training).
 - Synthetic Data (i.e. Training throughput): Throughput of the data loading using synthetic data (to remove the data loading bottleneck).
 
 
-The results show that the data loading step is the main bottleneck in our pipeline, with much lower throughput compared to the training step.
-
+The results show that the data loading step is the main bottleneck in our pipeline, with **much** lower throughput compared to the training step.
 
 ## Hackathon: Putting this altogether
 
-We implemented a workflow that reads ERA-5 climate data from Zarr stores using the Xarray-kvikIO integration.
-The data is then fed into a PyTorch DataLoader to train a U-Net model with a ResNet backbone for predicting next timestpes.
-For scaling up to multiple GPUs, we utilized Distributed Data Parallel (DDP).
-
 Our initial profiling showed that data loading is a major bottleneck in this workflow. 
 
-During the hackathon, we tested the following strategies:
+During the hackathon, we tested the following strategies to improve the data loading performance:
 
-1. Optimized Chunking: A blurb about this....
+1. Optimized Chunking & Compression
+   - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
 2. GPU native data loading with Zarr V3 and kvikIO
 3. Using `nvcomp` for decompression on GPUs
 4. NVIDIA DALI: We explored integrating NVIDIA's Data Loading Library (DALI) into Xarray to facilitate efficient data loading and preprocessing directly on the GPU. DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
