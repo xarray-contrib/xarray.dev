@@ -18,4 +18,10 @@ export default withMDX({
   images: {
     domains: ["raw.githubusercontent.com", "numpy.org", "dask.org", "chainer.org", ],
   },
+  i18n: {
+    // These are all the locales you want to support in
+    // your application
+    locales: ["en", "es", "pt"],
+    defaultLocale: "en",
+  },
 })
