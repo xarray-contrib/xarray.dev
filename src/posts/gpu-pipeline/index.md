@@ -1,4 +1,25 @@
-## Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)
+---
+title: 'Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)'
+date: '2025-05-01'
+
+authors:
+  - name: Negin Sobhani
+    github: negin513
+  - name: Wei Ji Leong
+    github: weiji14
+  - name: Max Jones
+    github: maxjones
+  - name: Akshay Subranian
+    github: akshaysubr
+  - name: Thomas Augspurger
+    github: tomaugspurger
+  - name: Katelyn Fitzgerald
+    github: kafitzgerald
+  
+summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xarray and Zarr.'
+---
+
+# Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)
 
 ## Introduction
 
