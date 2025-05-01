@@ -7,9 +7,22 @@ import {
   Sponsors,
 } from '@/components'
 
+import { useLingui } from '@lingui/react/macro'
+
 import { Layout } from '@/components/layout'
 
+import { loadCatalog } from '../i18n'
+
+export const getStaticProps = async (ctx) => {
+  const translation = await loadCatalog(ctx.locale)
+  return {
+    props: {
+      translation,
+    },
+  }
+}
 export default function IndexPage() {
+  const { t } = useLingui()
   return (
     <Layout
       url={`/`}
