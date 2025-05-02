@@ -38,7 +38,7 @@ msgstr ""
 msgid "🗺️ Geographic Processing"
 msgstr ""
 
-#: src/components/donate.js:45
+#: src/components/donate.js:47
 msgid "501(c)(3) nonprofit charity"
 msgstr ""
 
@@ -125,14 +125,18 @@ msgid "Documentation"
 msgstr ""
 
 #: src/data/menu-items.js:10
-#: src/components/donate.js:21
-#: src/components/donate.js:72
+#: src/components/donate.js:23
+#: src/components/donate.js:74
 msgid "Donate"
 msgstr ""
 
 #: src/data/menu-items.js:8
 #: src/components/ecosystem.js:60
 msgid "Ecosystem"
+msgstr ""
+
+#: src/components/language-switcher.js:17
+msgid "English"
 msgstr ""
 
 #: src/data/footer-items.js:31
@@ -160,7 +164,7 @@ msgstr ""
 msgid "Flexible split-apply-combine operations with groupby."
 msgstr ""
 
-#: src/components/donate.js:58
+#: src/components/donate.js:60
 msgid "for more information."
 msgstr ""
 
@@ -180,7 +184,7 @@ msgstr ""
 msgid "GroupBy operations"
 msgstr ""
 
-#: src/components/donate.js:61
+#: src/components/donate.js:63
 msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
 msgstr ""
 
@@ -191,7 +195,7 @@ msgstr ""
 #~ "              sustainability of the project. Visit"
 #~ msgstr ""
 
-#: src/components/donate.js:47
+#: src/components/donate.js:49
 msgid ""
 "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
 "              and administrative support to help ensure the health and\n"
@@ -249,6 +253,10 @@ msgstr ""
 msgid "Operate and manipulate physical quantities in Python"
 msgstr ""
 
+#: src/components/language-switcher.js:19
+msgid "Portuguese"
+msgstr ""
+
 #: src/components/dashboard/timeline-plot-container.js:49
 msgid "Pull Requests"
 msgstr ""
@@ -283,6 +291,10 @@ msgstr ""
 
 #: src/data/features.js:15
 msgid "Select values by label instead of integer location"
+msgstr ""
+
+#: src/components/language-switcher.js:18
+msgid "Spanish"
 msgstr ""
 
 #: src/data/array-libraries.js:36
@@ -375,7 +387,7 @@ msgstr ""
 msgid "Xarray includes a large and growing library of domain-agnostic functions for advanced analytics and visualization with these data structures."
 msgstr ""
 
-#: src/components/donate.js:38
+#: src/components/donate.js:40
 msgid "Xarray is a Sponsored Project of NumFOCUS, a "
 msgstr ""
 

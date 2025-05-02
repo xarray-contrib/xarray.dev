@@ -16,6 +16,8 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
+import { LanguageSwitcher } from './language-switcher'
+
 export const Header = () => {
   let menuItems = getMenuItems()
   const navItems = React.useMemo(() => menuItems, [])
@@ -94,6 +96,7 @@ export const Header = () => {
               navItems={navItems}
               display={{ base: 'none', md: 'flex' }}
             />
+            <LanguageSwitcher />
           </Stack>
         </Container>
       </Flex>

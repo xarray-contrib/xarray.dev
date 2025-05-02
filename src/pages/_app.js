@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 function MyApp({ Component, pageProps }) {
   useLinguiInit(pageProps.translation)
   const router = useRouter()
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url)

@@ -1,154 +1,154 @@
 {
-    "version": "https://jsonfeed.org/version/1",
-    "title": "Xarray Blog Feed",
-    "home_page_url": "https://xarray.dev/blog",
-    "feed_url": "https://xarray.dev/rss.json",
-    "description": "The latest news, insights, and practices about Xarray from the Xarray team",
-    "icon": "https://xarray.dev/Xarray-assets/Icon/Xarray_Icon_Final.png",
-    "items": [
-        {
-            "id": "datatree",
-            "url": "https://xarray.dev/blog/datatree",
-            "title": "Xarray x NASA: xarray.DataTree for hierarchical data structures",
-            "date_modified": "2024-12-19T00:00:00.000Z",
-            "author": {
-                "name": "Tom Nicholas"
-            }
-        },
-        {
-            "id": "dask-detrending",
-            "url": "https://xarray.dev/blog/dask-detrending",
-            "title": "Improving GroupBy.map with Dask and Xarray",
-            "date_modified": "2024-11-21T00:00:00.000Z",
-            "author": {
-                "name": "Patrick Hoefler"
-            }
-        },
-        {
-            "id": "multiple-groupers",
-            "url": "https://xarray.dev/blog/multiple-groupers",
-            "title": "Grouping by multiple arrays with Xarray",
-            "date_modified": "2024-09-02T00:00:00.000Z",
-            "author": {
-                "name": "Deepak Cherian"
-            }
-        },
-        {
-            "id": "xarray-tutorial",
-            "url": "https://xarray.dev/blog/xarray-tutorial",
-            "title": "The revamped Xarray tutorial",
-            "date_modified": "2024-06-11T00:00:00.000Z",
-            "author": {
-                "name": "Deepak Cherian"
-            }
-        },
-        {
-            "id": "pangeo-ml-ecosystem-2023",
-            "url": "https://xarray.dev/blog/pangeo-ml-ecosystem-2023",
-            "title": "The Pangeo Machine Learning Ecosystem",
-            "date_modified": "2024-04-03T00:00:00.000Z",
-            "author": {
-                "name": "Wei Ji Leong"
-            }
-        },
-        {
-            "id": "cupy-tutorial",
-            "url": "https://xarray.dev/blog/cupy-tutorial",
-            "title": "CuPy-Xarray: Xarray on GPUs!",
-            "date_modified": "2024-01-17T00:00:00.000Z",
-            "author": {
-                "name": "Negin Sobhani"
-            }
-        },
-        {
-            "id": "flox",
-            "url": "https://xarray.dev/blog/flox",
-            "title": "flox: Faster GroupBy reductions with Xarray",
-            "date_modified": "2023-07-18T00:00:00.000Z",
-            "author": {
-                "name": "Deepak Cherian"
-            }
-        },
-        {
-            "id": "cubed-xarray",
-            "url": "https://xarray.dev/blog/cubed-xarray",
-            "title": "Cubed: Bounded-memory serverless array processing in xarray",
-            "date_modified": "2023-06-28T00:00:00.000Z",
-            "author": {
-                "name": "Tom Nicholas"
-            }
-        },
-        {
-            "id": "introducing-xradar",
-            "url": "https://xarray.dev/blog/introducing-xradar",
-            "title": "Weather Radar Data in Xarray",
-            "date_modified": "2023-05-17T00:00:00.000Z",
-            "author": {
-                "name": "Maxwell Grover"
-            }
-        },
-        {
-            "id": "introducing-inference-data",
-            "url": "https://xarray.dev/blog/introducing-inference-data",
-            "title": "Better Bayesian Workflows with InferenceData and Xarray",
-            "date_modified": "2023-05-10T00:00:00.000Z",
-            "author": {
-                "name": "Ravin Kumar"
-            }
-        },
-        {
-            "id": "xarray-for-neurophysiology",
-            "url": "https://xarray.dev/blog/xarray-for-neurophysiology",
-            "title": "Using Xarray for the analysis of neurophysiology data",
-            "date_modified": "2023-03-29T00:00:00.000Z",
-            "author": {
-                "name": "Josh Siegle"
-            }
-        },
-        {
-            "id": "siparcs-2022",
-            "url": "https://xarray.dev/blog/siparcs-2022",
-            "title": "Reflections on my NCAR summer internship working with Xarray and satellite data",
-            "date_modified": "2022-11-01T00:00:00.000Z",
-            "author": {
-                "name": "Emma Marshall"
-            }
-        },
-        {
-            "id": "introducing-xwrf",
-            "url": "https://xarray.dev/blog/introducing-xwrf",
-            "title": "Making WRF model output Xarray-friendly using xWRF",
-            "date_modified": "2022-10-28T00:00:00.000Z",
-            "author": {
-                "name": "Lukas Pilz"
-            }
-        },
-        {
-            "id": "introducing-pint-xarray",
-            "url": "https://xarray.dev/blog/introducing-pint-xarray",
-            "title": "Unit-aware arithmetic in Xarray, via pint",
-            "date_modified": "2022-08-30T00:00:00.000Z",
-            "author": {
-                "name": "Tom Nicholas"
-            }
-        },
-        {
-            "id": "xarray-kvikio",
-            "url": "https://xarray.dev/blog/xarray-kvikio",
-            "title": "Enabling GPU-native analytics with Xarray and kvikIO",
-            "date_modified": "2022-08-30T00:00:00.000Z",
-            "author": {
-                "name": "Deepak Cherian"
-            }
-        },
-        {
-            "id": "czi-eoss-grant-conclusion",
-            "url": "https://xarray.dev/blog/czi-eoss-grant-conclusion",
-            "title": "Reflecting on Xarray’s first development grant",
-            "date_modified": "2022-06-09T00:00:00.000Z",
-            "author": {
-                "name": "Joe Hamman"
-            }
-        }
-    ]
+  "version": "https://jsonfeed.org/version/1",
+  "title": "Xarray Blog Feed",
+  "home_page_url": "https://xarray.dev/blog",
+  "feed_url": "https://xarray.dev/rss.json",
+  "description": "The latest news, insights, and practices about Xarray from the Xarray team",
+  "icon": "https://xarray.dev/Xarray-assets/Icon/Xarray_Icon_Final.png",
+  "items": [
+    {
+      "id": "datatree",
+      "url": "https://xarray.dev/blog/datatree",
+      "title": "Xarray x NASA: xarray.DataTree for hierarchical data structures",
+      "date_modified": "2024-12-19T00:00:00.000Z",
+      "author": {
+        "name": "Tom Nicholas"
+      }
+    },
+    {
+      "id": "dask-detrending",
+      "url": "https://xarray.dev/blog/dask-detrending",
+      "title": "Improving GroupBy.map with Dask and Xarray",
+      "date_modified": "2024-11-21T00:00:00.000Z",
+      "author": {
+        "name": "Patrick Hoefler"
+      }
+    },
+    {
+      "id": "multiple-groupers",
+      "url": "https://xarray.dev/blog/multiple-groupers",
+      "title": "Grouping by multiple arrays with Xarray",
+      "date_modified": "2024-09-02T00:00:00.000Z",
+      "author": {
+        "name": "Deepak Cherian"
+      }
+    },
+    {
+      "id": "xarray-tutorial",
+      "url": "https://xarray.dev/blog/xarray-tutorial",
+      "title": "The revamped Xarray tutorial",
+      "date_modified": "2024-06-11T00:00:00.000Z",
+      "author": {
+        "name": "Deepak Cherian"
+      }
+    },
+    {
+      "id": "pangeo-ml-ecosystem-2023",
+      "url": "https://xarray.dev/blog/pangeo-ml-ecosystem-2023",
+      "title": "The Pangeo Machine Learning Ecosystem",
+      "date_modified": "2024-04-03T00:00:00.000Z",
+      "author": {
+        "name": "Wei Ji Leong"
+      }
+    },
+    {
+      "id": "cupy-tutorial",
+      "url": "https://xarray.dev/blog/cupy-tutorial",
+      "title": "CuPy-Xarray: Xarray on GPUs!",
+      "date_modified": "2024-01-17T00:00:00.000Z",
+      "author": {
+        "name": "Negin Sobhani"
+      }
+    },
+    {
+      "id": "flox",
+      "url": "https://xarray.dev/blog/flox",
+      "title": "flox: Faster GroupBy reductions with Xarray",
+      "date_modified": "2023-07-18T00:00:00.000Z",
+      "author": {
+        "name": "Deepak Cherian"
+      }
+    },
+    {
+      "id": "cubed-xarray",
+      "url": "https://xarray.dev/blog/cubed-xarray",
+      "title": "Cubed: Bounded-memory serverless array processing in xarray",
+      "date_modified": "2023-06-28T00:00:00.000Z",
+      "author": {
+        "name": "Tom Nicholas"
+      }
+    },
+    {
+      "id": "introducing-xradar",
+      "url": "https://xarray.dev/blog/introducing-xradar",
+      "title": "Weather Radar Data in Xarray",
+      "date_modified": "2023-05-17T00:00:00.000Z",
+      "author": {
+        "name": "Maxwell Grover"
+      }
+    },
+    {
+      "id": "introducing-inference-data",
+      "url": "https://xarray.dev/blog/introducing-inference-data",
+      "title": "Better Bayesian Workflows with InferenceData and Xarray",
+      "date_modified": "2023-05-10T00:00:00.000Z",
+      "author": {
+        "name": "Ravin Kumar"
+      }
+    },
+    {
+      "id": "xarray-for-neurophysiology",
+      "url": "https://xarray.dev/blog/xarray-for-neurophysiology",
+      "title": "Using Xarray for the analysis of neurophysiology data",
+      "date_modified": "2023-03-29T00:00:00.000Z",
+      "author": {
+        "name": "Josh Siegle"
+      }
+    },
+    {
+      "id": "siparcs-2022",
+      "url": "https://xarray.dev/blog/siparcs-2022",
+      "title": "Reflections on my NCAR summer internship working with Xarray and satellite data",
+      "date_modified": "2022-11-01T00:00:00.000Z",
+      "author": {
+        "name": "Emma Marshall"
+      }
+    },
+    {
+      "id": "introducing-xwrf",
+      "url": "https://xarray.dev/blog/introducing-xwrf",
+      "title": "Making WRF model output Xarray-friendly using xWRF",
+      "date_modified": "2022-10-28T00:00:00.000Z",
+      "author": {
+        "name": "Lukas Pilz"
+      }
+    },
+    {
+      "id": "introducing-pint-xarray",
+      "url": "https://xarray.dev/blog/introducing-pint-xarray",
+      "title": "Unit-aware arithmetic in Xarray, via pint",
+      "date_modified": "2022-08-30T00:00:00.000Z",
+      "author": {
+        "name": "Tom Nicholas"
+      }
+    },
+    {
+      "id": "xarray-kvikio",
+      "url": "https://xarray.dev/blog/xarray-kvikio",
+      "title": "Enabling GPU-native analytics with Xarray and kvikIO",
+      "date_modified": "2022-08-30T00:00:00.000Z",
+      "author": {
+        "name": "Deepak Cherian"
+      }
+    },
+    {
+      "id": "czi-eoss-grant-conclusion",
+      "url": "https://xarray.dev/blog/czi-eoss-grant-conclusion",
+      "title": "Reflecting on Xarray’s first development grant",
+      "date_modified": "2022-06-09T00:00:00.000Z",
+      "author": {
+        "name": "Joe Hamman"
+      }
+    }
+  ]
 }
