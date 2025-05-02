@@ -5,6 +5,7 @@ import { fetcher } from '@/lib/data-fetching'
 import { Box, Container, SimpleGrid, Spinner } from '@chakra-ui/react'
 import { BsPeople, BsPerson } from 'react-icons/bs'
 import { GoBook, GoPackage, GoStar, GoTag } from 'react-icons/go'
+import { useLingui } from '@lingui/react/macro'
 import useSWR from 'swr'
 
 export const ProjectMetrics = () => {
@@ -12,8 +13,8 @@ export const ProjectMetrics = () => {
     'https://raw.githubusercontent.com/andersy005/xarray-datasette/a73704d803350a2ec059bec1b4cce601cd9efdd9/data/docs-monthly-views.json',
     fetcher,
   )
-
-  if (error) return <div>failed to load data</div>
+  const { t } = useLingui()
+  if (error) return <div>{t`failed to load data`}</div>
   if (!data)
     return (
       <Spinner
@@ -36,7 +37,7 @@ export const ProjectMetrics = () => {
       <Container maxW='container.lg'>
         {' '}
         <Heading as='h2' size='xl' textAlign={'center'}>
-          Xarray Project Metrics
+          {t`Xarray Project Metrics`}
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
           <StatisticsCard

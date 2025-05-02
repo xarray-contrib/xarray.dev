@@ -7,7 +7,7 @@ import useSWR from 'swr'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
   let { data, error } = useSWR(query, fetcher)
-  if (error) return <Text>failed to load</Text>
+  if (error) return <Text>{t`failed to load`}</Text>
   if (!data)
     return (
       <Spinner

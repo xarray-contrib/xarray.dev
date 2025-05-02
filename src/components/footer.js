@@ -17,6 +17,7 @@ import { Image, Link } from '@/components/mdx'
 import { NetlifyCallout } from '@/components/netlify'
 import { footerItems } from '@/data/footer-items'
 import { FaGithub, FaRss, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { useLingui } from '@lingui/react/macro'
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -51,6 +52,9 @@ const ListHeader = ({ children }) => {
 }
 
 export const Footer = () => {
+  let { t } = useLingui()
+  let footerItems = getFooterItems()
+  const currentYear = new Date().getFullYear()
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
@@ -72,8 +76,7 @@ export const Footer = () => {
             </Box>
 
             <Text fontSize={'sm'}>
-              © {new Date().getFullYear()}, Xarray core developers. Apache 2.0
-              Licensed.
+              {t`© ${currentYear}, Xarray core developers. Apache 2.0Licensed.`}
             </Text>
             <GitSHA />
 
@@ -123,7 +126,7 @@ export const Footer = () => {
             })}
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Resources</ListHeader>
+            <ListHeader>{t`Resources`}</ListHeader>
             {footerItems.resources.map((item) => {
               return (
                 <Link
@@ -138,7 +141,7 @@ export const Footer = () => {
             })}
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Community</ListHeader>
+            <ListHeader>{t`Community`}</ListHeader>
             {footerItems.community.map((item) => {
               return (
                 <Link

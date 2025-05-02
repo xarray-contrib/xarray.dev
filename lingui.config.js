@@ -1,7 +1,5 @@
 const nextConfig = require('./next.config')
 
-console.log('nextConfig', nextConfig)
-
 /** @type {import('@lingui/conf').LinguiConfig} */
 module.exports = {
   locales: nextConfig.i18n.locales,

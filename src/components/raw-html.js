@@ -27,11 +27,11 @@ export const RawHTML = ({ filePath }) => {
   )
 
   if (error) {
-    return <div>Error loading content</div>
+    return <div>{`tError loading content`}</div>
   }
 
   if (!htmlContent) {
-    return <div>Loading data...</div>
+    return <div>{t`Loading data...`}</div>
   }
 
   const html = sanitizeHTML(htmlContent)

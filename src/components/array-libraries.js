@@ -3,9 +3,10 @@ import React from 'react'
 import { IoIosGlobe, IoLogoGithub } from 'react-icons/io'
 
 import { Image } from '@/components/mdx'
-import { Libraries as data } from '@/data/array-libraries'
+import { getLibraries } from '@/data/array-libraries'
 
 import { SocialLink } from '@/components/social-link'
+import { useLingui } from '@lingui/react/macro'
 
 const Library = ({ name, description, repo, url, logo }) => {
   return (
@@ -41,12 +42,13 @@ const Library = ({ name, description, repo, url, logo }) => {
 }
 
 export const ArrayLibraries = () => {
+  const { t } = useLingui()
+  let data = getLibraries()
   const libraries = React.useMemo(() => data, [])
   return (
     <Box my={8}>
       <Text fontSize={'lg'}>
-        Xarray supports multiple array backends, allowing users to choose array
-        types that work best for their application.
+        {t`Xarray supports multiple array backends, allowing users to choose array types that work best for their application.`}
       </Text>
 
       <SimpleGrid

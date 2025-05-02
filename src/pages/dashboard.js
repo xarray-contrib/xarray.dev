@@ -1,12 +1,14 @@
 import { IssueTracker, ProjectMetrics } from '@/components/dashboard'
 import { Layout } from '@/components/layout'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 const DashboardPage = () => {
+  const { t } = useLingui()
   return (
     <Layout
-      title={'Xarray project statistics'}
+      title={t`Xarray project statistics`}
       url={`/dashboard`}
-      description={'Xarray project statistics'}
+      description={t`Xarray project statistics`}
       card={
         'https://raw.githubusercontent.com/xarray-contrib/xarray.dev/main/public/Xarray-assets/Icon/Xarray_Icon_Final.png'
       }
