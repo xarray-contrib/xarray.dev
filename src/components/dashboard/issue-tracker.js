@@ -4,13 +4,15 @@ import { GiDuration } from 'react-icons/gi'
 import { TimelinePlotContainer } from '@/components/dashboard/timeline-plot-container'
 import { TimeseriesAggStatsCard } from '@/components/dashboard/timeseries-agg-stats-card'
 import { Heading } from '@/components/mdx'
+import { useLingui } from '@lingui/react/macro'
 
 export const IssueTracker = () => {
+  const { t } = useLingui()
   return (
     <Box as='section' id='issue-tracker'>
       <Container maxW='container.lg'>
         <Heading as='h2' size='xl' textAlign={'center'}>
-          Xarray Issue Tracker
+          {t`Xarray Issue Tracker`}
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 5, lg: 8 }}>
           {' '}

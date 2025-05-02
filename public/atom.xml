@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://xarray.dev/blog</id>
+    <title>Xarray Blog Feed</title>
+    <updated>2025-05-02T01:50:45.994Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://xarray.dev/blog"/>
+    <link rel="self" href="https://xarray.dev/atom.xml"/>
+    <subtitle>The latest news, insights, and practices about Xarray from the Xarray team</subtitle>
+    <logo>https://xarray.dev/Xarray-assets/Icon/Xarray_Icon_Final.png</logo>
+    <icon>https://xarray.dev/favicon.ico</icon>
+    <rights>© 2025, Xarray core developers. Apache 2.0 Licensed</rights>
+    <entry>
+        <title type="html"><![CDATA[Xarray x NASA: xarray.DataTree for hierarchical data structures]]></title>
+        <id>datatree</id>
+        <link href="https://xarray.dev/blog/datatree"/>
+        <updated>2024-12-19T00:00:00.000Z</updated>
+        <author>
+            <name>Tom Nicholas</name>
+        </author>
+        <author>
+            <name>Owen Littlejohns</name>
+        </author>
+        <author>
+            <name>Matt Savoie</name>
+        </author>
+        <author>
+            <name>Eni Awowale</name>
+        </author>
+        <author>
+            <name>Alfonso Ladino</name>
+        </author>
+        <author>
+            <name>Justus Magin</name>
+        </author>
+        <author>
+            <name>Stephan Hoyer</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Improving GroupBy.map with Dask and Xarray]]></title>
+        <id>dask-detrending</id>
+        <link href="https://xarray.dev/blog/dask-detrending"/>
+        <updated>2024-11-21T00:00:00.000Z</updated>
+        <author>
+            <name>Patrick Hoefler</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Grouping by multiple arrays with Xarray]]></title>
+        <id>multiple-groupers</id>
+        <link href="https://xarray.dev/blog/multiple-groupers"/>
+        <updated>2024-09-02T00:00:00.000Z</updated>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The revamped Xarray tutorial]]></title>
+        <id>xarray-tutorial</id>
+        <link href="https://xarray.dev/blog/xarray-tutorial"/>
+        <updated>2024-06-11T00:00:00.000Z</updated>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+        <author>
+            <name>Scott Henderson</name>
+        </author>
+        <author>
+            <name>Jessica Scheick</name>
+        </author>
+        <author>
+            <name>Emma Marshall</name>
+        </author>
+        <author>
+            <name>Tom Nicholas</name>
+        </author>
+        <author>
+            <name>Anderson Banihirwe</name>
+        </author>
+        <author>
+            <name>Negin Sobhani</name>
+        </author>
+        <author>
+            <name>Don Setiawan</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Pangeo Machine Learning Ecosystem]]></title>
+        <id>pangeo-ml-ecosystem-2023</id>
+        <link href="https://xarray.dev/blog/pangeo-ml-ecosystem-2023"/>
+        <updated>2024-04-03T00:00:00.000Z</updated>
+        <author>
+            <name>Wei Ji Leong</name>
+        </author>
+        <author>
+            <name>Max Jones</name>
+        </author>
+        <author>
+            <name>Negin Sobhani</name>
+        </author>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CuPy-Xarray: Xarray on GPUs!]]></title>
+        <id>cupy-tutorial</id>
+        <link href="https://xarray.dev/blog/cupy-tutorial"/>
+        <updated>2024-01-17T00:00:00.000Z</updated>
+        <author>
+            <name>Negin Sobhani</name>
+        </author>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+        <author>
+            <name>Max Jones</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[flox: Faster GroupBy reductions with Xarray]]></title>
+        <id>flox</id>
+        <link href="https://xarray.dev/blog/flox"/>
+        <updated>2023-07-18T00:00:00.000Z</updated>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Cubed: Bounded-memory serverless array processing in xarray]]></title>
+        <id>cubed-xarray</id>
+        <link href="https://xarray.dev/blog/cubed-xarray"/>
+        <updated>2023-06-28T00:00:00.000Z</updated>
+        <author>
+            <name>Tom Nicholas</name>
+        </author>
+        <author>
+            <name>Tom White</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Weather Radar Data in Xarray]]></title>
+        <id>introducing-xradar</id>
+        <link href="https://xarray.dev/blog/introducing-xradar"/>
+        <updated>2023-05-17T00:00:00.000Z</updated>
+        <author>
+            <name>Maxwell Grover</name>
+        </author>
+        <author>
+            <name>Kai Mühlbauer</name>
+        </author>
+        <author>
+            <name>Edouard Goudenhoofdt</name>
+        </author>
+        <author>
+            <name>Alfonso Ladino</name>
+        </author>
+        <author>
+            <name>Zachary Sherman</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Better Bayesian Workflows with InferenceData and Xarray]]></title>
+        <id>introducing-inference-data</id>
+        <link href="https://xarray.dev/blog/introducing-inference-data"/>
+        <updated>2023-05-10T00:00:00.000Z</updated>
+        <author>
+            <name>Ravin Kumar</name>
+        </author>
+        <author>
+            <name>Oriol Abril-Pla</name>
+        </author>
+        <author>
+            <name>Osvaldo Martin</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Using Xarray for the analysis of neurophysiology data]]></title>
+        <id>xarray-for-neurophysiology</id>
+        <link href="https://xarray.dev/blog/xarray-for-neurophysiology"/>
+        <updated>2023-03-29T00:00:00.000Z</updated>
+        <author>
+            <name>Josh Siegle</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Reflections on my NCAR summer internship working with Xarray and satellite data]]></title>
+        <id>siparcs-2022</id>
+        <link href="https://xarray.dev/blog/siparcs-2022"/>
+        <updated>2022-11-01T00:00:00.000Z</updated>
+        <author>
+            <name>Emma Marshall</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Making WRF model output Xarray-friendly using xWRF]]></title>
+        <id>introducing-xwrf</id>
+        <link href="https://xarray.dev/blog/introducing-xwrf"/>
+        <updated>2022-10-28T00:00:00.000Z</updated>
+        <author>
+            <name>Lukas Pilz</name>
+        </author>
+        <author>
+            <name>Jonathan (JT) Thielen</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Unit-aware arithmetic in Xarray, via pint]]></title>
+        <id>introducing-pint-xarray</id>
+        <link href="https://xarray.dev/blog/introducing-pint-xarray"/>
+        <updated>2022-08-30T00:00:00.000Z</updated>
+        <author>
+            <name>Tom Nicholas</name>
+        </author>
+        <author>
+            <name>Justus Magin</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Enabling GPU-native analytics with Xarray and kvikIO]]></title>
+        <id>xarray-kvikio</id>
+        <link href="https://xarray.dev/blog/xarray-kvikio"/>
+        <updated>2022-08-30T00:00:00.000Z</updated>
+        <author>
+            <name>Deepak Cherian</name>
+        </author>
+        <author>
+            <name>Wei Ji Leong</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Reflecting on Xarray’s first development grant]]></title>
+        <id>czi-eoss-grant-conclusion</id>
+        <link href="https://xarray.dev/blog/czi-eoss-grant-conclusion"/>
+        <updated>2022-06-09T00:00:00.000Z</updated>
+        <author>
+            <name>Joe Hamman</name>
+        </author>
+    </entry>
+</feed>

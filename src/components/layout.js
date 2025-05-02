@@ -27,7 +27,7 @@ export const Layout = ({
   const bannerDescription = ''
   const bannerChildren = (
     <Link href='/blog/datatree'>
-      Xarray x NASA: xarray.DataTree for hierarchical data structures
+      {t`Xarray x NASA: xarray.DataTree for hierarchical data structures`}
     </Link>
   )
 

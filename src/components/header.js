@@ -1,7 +1,7 @@
 import { DesktopNav } from '@/components/desktop-nav'
 import { Link } from '@/components/mdx'
 import { MobileNav } from '@/components/mobile-nav'
-import { menuItems } from '@/data/menu-items'
+import { getMenuItems } from '@/data/menu-items'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -17,6 +17,7 @@ import {
 import React from 'react'
 
 export const Header = () => {
+  let menuItems = getMenuItems()
   const navItems = React.useMemo(() => menuItems, [])
 
   const { isOpen, onToggle } = useDisclosure()

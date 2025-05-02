@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Xarray Blog Feed</title>
+        <link>https://xarray.dev/blog</link>
+        <description>The latest news, insights, and practices about Xarray from the Xarray team</description>
+        <lastBuildDate>Fri, 02 May 2025 01:50:45 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <image>
+            <title>Xarray Blog Feed</title>
+            <url>https://xarray.dev/Xarray-assets/Icon/Xarray_Icon_Final.png</url>
+            <link>https://xarray.dev/blog</link>
+        </image>
+        <copyright>© 2025, Xarray core developers. Apache 2.0 Licensed</copyright>
+        <item>
+            <title><![CDATA[Xarray x NASA: xarray.DataTree for hierarchical data structures]]></title>
+            <link>https://xarray.dev/blog/datatree</link>
+            <guid>datatree</guid>
+            <pubDate>Thu, 19 Dec 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Improving GroupBy.map with Dask and Xarray]]></title>
+            <link>https://xarray.dev/blog/dask-detrending</link>
+            <guid>dask-detrending</guid>
+            <pubDate>Thu, 21 Nov 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Grouping by multiple arrays with Xarray]]></title>
+            <link>https://xarray.dev/blog/multiple-groupers</link>
+            <guid>multiple-groupers</guid>
+            <pubDate>Mon, 02 Sep 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[The revamped Xarray tutorial]]></title>
+            <link>https://xarray.dev/blog/xarray-tutorial</link>
+            <guid>xarray-tutorial</guid>
+            <pubDate>Tue, 11 Jun 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[The Pangeo Machine Learning Ecosystem]]></title>
+            <link>https://xarray.dev/blog/pangeo-ml-ecosystem-2023</link>
+            <guid>pangeo-ml-ecosystem-2023</guid>
+            <pubDate>Wed, 03 Apr 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[CuPy-Xarray: Xarray on GPUs!]]></title>
+            <link>https://xarray.dev/blog/cupy-tutorial</link>
+            <guid>cupy-tutorial</guid>
+            <pubDate>Wed, 17 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[flox: Faster GroupBy reductions with Xarray]]></title>
+            <link>https://xarray.dev/blog/flox</link>
+            <guid>flox</guid>
+            <pubDate>Tue, 18 Jul 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Cubed: Bounded-memory serverless array processing in xarray]]></title>
+            <link>https://xarray.dev/blog/cubed-xarray</link>
+            <guid>cubed-xarray</guid>
+            <pubDate>Wed, 28 Jun 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weather Radar Data in Xarray]]></title>
+            <link>https://xarray.dev/blog/introducing-xradar</link>
+            <guid>introducing-xradar</guid>
+            <pubDate>Wed, 17 May 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Better Bayesian Workflows with InferenceData and Xarray]]></title>
+            <link>https://xarray.dev/blog/introducing-inference-data</link>
+            <guid>introducing-inference-data</guid>
+            <pubDate>Wed, 10 May 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Using Xarray for the analysis of neurophysiology data]]></title>
+            <link>https://xarray.dev/blog/xarray-for-neurophysiology</link>
+            <guid>xarray-for-neurophysiology</guid>
+            <pubDate>Wed, 29 Mar 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Reflections on my NCAR summer internship working with Xarray and satellite data]]></title>
+            <link>https://xarray.dev/blog/siparcs-2022</link>
+            <guid>siparcs-2022</guid>
+            <pubDate>Tue, 01 Nov 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Making WRF model output Xarray-friendly using xWRF]]></title>
+            <link>https://xarray.dev/blog/introducing-xwrf</link>
+            <guid>introducing-xwrf</guid>
+            <pubDate>Fri, 28 Oct 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Unit-aware arithmetic in Xarray, via pint]]></title>
+            <link>https://xarray.dev/blog/introducing-pint-xarray</link>
+            <guid>introducing-pint-xarray</guid>
+            <pubDate>Tue, 30 Aug 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Enabling GPU-native analytics with Xarray and kvikIO]]></title>
+            <link>https://xarray.dev/blog/xarray-kvikio</link>
+            <guid>xarray-kvikio</guid>
+            <pubDate>Tue, 30 Aug 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Reflecting on Xarray’s first development grant]]></title>
+            <link>https://xarray.dev/blog/czi-eoss-grant-conclusion</link>
+            <guid>czi-eoss-grant-conclusion</guid>
+            <pubDate>Thu, 09 Jun 2022 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

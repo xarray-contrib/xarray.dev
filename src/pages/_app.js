@@ -26,8 +26,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <I18nProvider i18n={i18n}>
-        <ChakraProvider resetCSS theme={customTheme}>
+      <ChakraProvider resetCSS theme={customTheme}>
+        <I18nProvider i18n={i18n}>
           {/* Google Tag Manager - Global base code */}
           <Script
             strategy='afterInteractive'
@@ -48,8 +48,8 @@ function MyApp({ Component, pageProps }) {
             }}
           />
           <Component {...pageProps} />
-        </ChakraProvider>
-      </I18nProvider>
+        </I18nProvider>
+      </ChakraProvider>
     </>
   )
 }
