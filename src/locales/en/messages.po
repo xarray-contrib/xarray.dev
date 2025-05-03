@@ -39,8 +39,8 @@ msgid "🗺️ Geographic Processing"
 msgstr "🗺️ Geographic Processing"
 
 #: src/components/donate.js:47
-msgid "501(c)(3) nonprofit charity"
-msgstr "501(c)(3) nonprofit charity"
+#~ msgid "501(c)(3) nonprofit charity"
+#~ msgstr "501(c)(3) nonprofit charity"
 
 #: src/data/projects.js:64
 msgid "A high-level plotting API for the PyData ecosystem built on HoloViews"
@@ -126,7 +126,7 @@ msgstr "Documentation"
 
 #: src/data/menu-items.js:10
 #: src/components/donate.js:23
-#: src/components/donate.js:74
+#: src/components/donate.js:73
 msgid "Donate"
 msgstr "Donate"
 
@@ -135,7 +135,7 @@ msgstr "Donate"
 msgid "Ecosystem"
 msgstr "Ecosystem"
 
-#: src/components/language-switcher.js:17
+#: src/components/language-switcher.js:38
 msgid "English"
 msgstr "English"
 
@@ -165,8 +165,8 @@ msgid "Flexible split-apply-combine operations with groupby."
 msgstr "Flexible split-apply-combine operations with groupby."
 
 #: src/components/donate.js:60
-msgid "for more information."
-msgstr "for more information."
+#~ msgid "for more information."
+#~ msgstr "for more information."
 
 #: src/data/projects.js:8
 msgid "General Circulation Model Postprocessing with xarray"
@@ -184,9 +184,19 @@ msgstr "GitHub Discussions"
 msgid "GroupBy operations"
 msgstr "GroupBy operations"
 
-#: src/components/donate.js:63
+#: src/components/donate.js:62
 msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
 msgstr "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
+
+#: src/components/donate.js:49
+msgid ""
+"in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+"              and administrative support to help ensure the health and\n"
+"              sustainability of the project. For more information, visit "
+msgstr ""
+"in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+"              and administrative support to help ensure the health and\n"
+"              sustainability of the project. For more information, visit "
 
 #: src/components/donate.js:47
 #~ msgid ""
@@ -199,14 +209,14 @@ msgstr "If you like Xarray and want to support our mission, please consider maki
 #~ "              sustainability of the project. Visit"
 
 #: src/components/donate.js:49
-msgid ""
-"in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
-"              and administrative support to help ensure the health and\n"
-"              sustainability of the project. Visit "
-msgstr ""
-"in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
-"              and administrative support to help ensure the health and\n"
-"              sustainability of the project. Visit "
+#~ msgid ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit "
+#~ msgstr ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit "
 
 #: src/components/donate.js:47
 #~ msgid ""
@@ -262,7 +272,7 @@ msgstr "NumPy-compatible array library for GPU-accelerated computing with Python
 msgid "Operate and manipulate physical quantities in Python"
 msgstr "Operate and manipulate physical quantities in Python"
 
-#: src/components/language-switcher.js:19
+#: src/components/language-switcher.js:40
 msgid "Portuguese"
 msgstr "Portuguese"
 
@@ -302,7 +312,7 @@ msgstr "See More"
 msgid "Select values by label instead of integer location"
 msgstr "Select values by label instead of integer location"
 
-#: src/components/language-switcher.js:18
+#: src/components/language-switcher.js:39
 msgid "Spanish"
 msgstr "Spanish"
 
@@ -406,8 +416,12 @@ msgid "Xarray includes a large and growing library of domain-agnostic functions 
 msgstr "Xarray includes a large and growing library of domain-agnostic functions for advanced analytics and visualization with these data structures."
 
 #: src/components/donate.js:40
-msgid "Xarray is a Sponsored Project of NumFOCUS, a "
-msgstr "Xarray is a Sponsored Project of NumFOCUS, a "
+msgid "Xarray is a NumFOCUS Sponsored Project, a "
+msgstr "Xarray is a NumFOCUS Sponsored Project, a "
+
+#: src/components/donate.js:40
+#~ msgid "Xarray is a Sponsored Project of NumFOCUS, a "
+#~ msgstr "Xarray is a Sponsored Project of NumFOCUS, a "
 
 #: src/components/donate.js:38
 #~ msgid "Xarray is a Sponsored Project of NumFOCUS, a{' '}"

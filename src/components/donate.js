@@ -37,18 +37,18 @@ export const Donate = () => {
             position={'relative'}
           >
             <Text fontSize={'lg'}>
-              {t`Xarray is a Sponsored Project of NumFOCUS, a `}
+              {t`Xarray is a NumFOCUS Sponsored Project, a `}
               <Text
                 as={Link}
                 href={'https://en.wikipedia.org/wiki/501(c)(3)_organization'}
                 color={'blue.400'}
                 useExternalIcon
               >
-                {t`501(c)(3) nonprofit charity`}
+                501(c)(3) nonprofit charity
               </Text>{' '}
               {t`in the United States. NumFOCUS provides Xarray with fiscal, legal,
               and administrative support to help ensure the health and
-              sustainability of the project. Visit `}
+              sustainability of the project. For more information, visit `}
               <Text
                 as={Link}
                 useExternalIcon
@@ -57,7 +57,6 @@ export const Donate = () => {
               >
                 numfocus.org
               </Text>{' '}
-              {t`for more information.`}
               <br />
               <br />
               {t`If you like Xarray and want to support our mission, please consider making a donation to support our efforts.`}
