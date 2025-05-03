@@ -4,6 +4,7 @@ import { Spinner, Text } from '@chakra-ui/react'
 import * as d3 from 'd3'
 import { isWithinInterval, lastDayOfMonth, startOfMonth } from 'date-fns'
 import useSWR from 'swr'
+import { useLingui } from '@lingui/react/macro'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
   let { data, error } = useSWR(query, fetcher)

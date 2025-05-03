@@ -19,9 +19,7 @@ import React from 'react'
 import { LanguageSwitcher } from './language-switcher'
 
 export const Header = () => {
-  let menuItems = getMenuItems()
-  const navItems = React.useMemo(() => menuItems, [])
-
+  let navItems = getMenuItems()
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
 

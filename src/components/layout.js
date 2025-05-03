@@ -4,7 +4,7 @@ import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
 import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react/macro'
 import { useRouter } from 'next/router'
 
 export const Layout = ({
@@ -92,7 +92,6 @@ export const Layout = ({
           )}
           {children}
         </Box>
-
         <Footer />
       </Flex>
     </>

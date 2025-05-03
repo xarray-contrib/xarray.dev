@@ -98,6 +98,7 @@ export const MobileNav = ({ navItems, isOpen }) => {
       {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <LanguageSwitcher></LanguageSwitcher>
     </Stack>
   )
 }
