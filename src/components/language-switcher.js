@@ -53,8 +53,17 @@ export const LanguageSwitcher = () => {
       </MenuButton>
       <MenuList>
         {getLocales().map((object) => (
-          <Link href={'/' + object.locale + pathname} onClick={changeLocale}>
-            <MenuItem as={Button} size='xs' command={object.locale}>
+          <Link
+            key={object.locale}
+            href={'/' + object.locale + pathname}
+            onClick={changeLocale}
+          >
+            <MenuItem
+              key={object.locale}
+              as={Button}
+              size='xs'
+              command={object.locale}
+            >
               {object.label}
             </MenuItem>
           </Link>
