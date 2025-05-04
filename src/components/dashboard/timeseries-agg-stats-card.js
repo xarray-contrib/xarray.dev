@@ -7,6 +7,7 @@ import useSWR from 'swr'
 import { useLingui } from '@lingui/react/macro'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
+  const { t } = useLingui()
   let { data, error } = useSWR(query, fetcher)
   if (error) return <Text>{t`failed to load`}</Text>
   if (!data)
@@ -52,8 +53,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
       icon={icon}
       stat={
         result <= 2
-          ? `${d3.format('.1f')(result * 24)} hours`
-          : `${d3.format('.1f')(result)} days`
+          ? `${d3.format('.1f')(result * 24)} ` + t`hours`
+          : `${d3.format('.1f')(result)} ` + t`days`
       }
       diff={change}
     />
