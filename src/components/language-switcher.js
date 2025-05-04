@@ -38,7 +38,6 @@ export const LanguageSwitcher = () => {
     const catalog = await import(`../locales/${localeString}/messages.js`)
     i18n.load(localeString, catalog.messages)
     i18n.activate(localeString)
-    router.push(pathname, { locale: localeString })
   }
 
   useEffect(() => {
