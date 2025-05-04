@@ -7,7 +7,7 @@
     "extract": "lingui extract",
     "compile": "lingui compile",
     "dev": "next dev",
-    "build": "yarn extract && next build",
+    "build": "yarn extract && yarn compile && next build",
     "start": "next start",
     "lint": "next lint"
   },

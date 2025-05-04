@@ -41,13 +41,13 @@ export const ProjectMetrics = () => {
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
           <StatisticsCard
-            title={'Core Maintainers'}
+            title={t`Core Maintainers`}
             stat={'15'}
             icon={<BsPerson size={'3em'} />}
             link={'https://docs.xarray.dev/en/stable/team.html'}
           />
           <DatasetteStatsCard
-            title={'Contributors'}
+            title={t`Contributors`}
             query={
               'https://xarray-datasette.fly.dev/github/_analyze_tables_/contributors,user_id.json?_shape=array'
             }
@@ -56,7 +56,7 @@ export const ProjectMetrics = () => {
           />
 
           <DatasetteStatsCard
-            title={'Stargazers'}
+            title={t`Stargazers`}
             icon={<GoStar size={'3em'} />}
             query={
               'https://xarray-datasette.fly.dev/github/_analyze_tables_/stars,user.json?_shape=array'
@@ -65,20 +65,20 @@ export const ProjectMetrics = () => {
           />
 
           <StatisticsCard
-            title={'Dependent Packages/Repos'}
+            title={t`Dependent Packages/Repos`}
             stat={21275}
             icon={<GoPackage size={'3em'} />}
             link={'https://github.com/pydata/xarray/network/dependents'}
           />
 
           <StatisticsCard
-            title={`${month}/${year} Docs Visitors`}
+            title={t`Docs Visitors` + ` - ${month}/${year}`}
             stat={monthlyViews.users}
             icon={<GoBook size={'3em'} />}
           />
 
           <DatasetteStatsCard
-            title={'Releases'}
+            title={t`Releases`}
             query={
               'https://xarray-datasette.fly.dev/github/_analyze_tables_/releases,id.json?_shape=array'
             }

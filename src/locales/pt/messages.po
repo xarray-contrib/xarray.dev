@@ -43,6 +43,10 @@ msgstr "💊 Bioinformática"
 msgid "🗺️ Geographic Processing"
 msgstr "🗺️ Processamento Geográfico"
 
+#: src/pages/team.js:52
+msgid "370 volunteer contributors"
+msgstr ""
+
 #: src/components/donate.js:47
 #~ msgid "501(c)(3) nonprofit charity"
 #~ msgstr "501(c)(3) nonprofit charity"
@@ -108,6 +112,18 @@ msgstr "Projetos compatíveis"
 msgid "Contribute"
 msgstr "Contribuir"
 
+#: src/components/dashboard/project-metrics.js:50
+msgid "Contributors"
+msgstr ""
+
+#: src/components/dashboard/project-metrics.js:44
+msgid "Core Maintainers"
+msgstr ""
+
+#: src/pages/team.js:26
+msgid "Current core maintainers 🤝"
+msgstr ""
+
 #: src/data/footer-items.js:7
 msgid "Dashboard"
 msgstr "Painel de controle"
@@ -120,9 +136,21 @@ msgstr "Alinhamento tipo banco de dados baseado em rótulos de coordenadas que l
 msgid "Database like operations"
 msgstr "Operações do tipo banco de dados"
 
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
+msgid "days"
+msgstr ""
+
+#: src/components/dashboard/project-metrics.js:68
+msgid "Dependent Packages/Repos"
+msgstr ""
+
 #: src/data/array-libraries.js:15
 msgid "Distributed arrays and advanced parallelism for analytics, enabling performance at scale."
 msgstr "Arrays distribuídas e paralelismo avançado para análises, permitindo desempenho em escala."
+
+#: src/components/dashboard/project-metrics.js:75
+msgid "Docs Visitors"
+msgstr ""
 
 #: src/data/menu-items.js:12
 #: src/data/footer-items.js:25
@@ -140,7 +168,7 @@ msgstr "Fazer uma doação"
 msgid "Ecosystem"
 msgstr "Ecossistema"
 
-#: src/components/language-switcher.js:38
+#: src/components/language-switcher.js:18
 msgid "English"
 msgstr ""
 
@@ -149,6 +177,7 @@ msgid "Example Gallery"
 msgstr "Galeria de exemplos"
 
 #: src/components/ecosystem.js:32
+#: src/components/dashboard/timeseries-agg-stats-card.js:12
 msgid "failed to load"
 msgstr "Falha ao carregar"
 
@@ -188,6 +217,10 @@ msgstr "Discussões no GitHub"
 #: src/data/features.js:23
 msgid "GroupBy operations"
 msgstr "Operações GroupBy"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:56
+msgid "hours"
+msgstr ""
 
 #: src/components/donate.js:62
 msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
@@ -260,6 +293,14 @@ msgstr "Lista de Emails"
 msgid "Mathematical operations vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape."
 msgstr "Operações matemáticas são vetorizadas em várias dimensões (broadcasting de matrizes) com base em nomes de dimensão, não no formato da matriz."
 
+#: src/components/dashboard/issue-tracker.js:20
+msgid "Median time a pull request is open"
+msgstr ""
+
+#: src/components/dashboard/issue-tracker.js:27
+msgid "Median time an issue is open"
+msgstr ""
+
 #: src/components/hero-banner.js:41
 msgid "N-D labeled arrays and datasets in Python"
 msgstr "Matrizes e conjuntos de dados N-D rotulados em Python"
@@ -276,7 +317,11 @@ msgstr "Biblioteca de matrizes compatível com NumPy para computação acelerada
 msgid "Operate and manipulate physical quantities in Python"
 msgstr "Opere e manipule quantidades físicas em Python"
 
-#: src/components/language-switcher.js:40
+#: src/pages/team.js:44
+msgid "Our valuable contributors 💖"
+msgstr ""
+
+#: src/components/language-switcher.js:20
 msgid "Portuguese"
 msgstr ""
 
@@ -295,6 +340,10 @@ msgstr "Análise Espacial baseada em rasterização para Python"
 #: src/data/features.js:36
 msgid "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB."
 msgstr "Ler e gravar dados NetCDF, HDF, Zarr, OpenDAP e GRIB."
+
+#: src/components/dashboard/project-metrics.js:81
+msgid "Releases"
+msgstr ""
 
 #: src/components/footer.js:129
 msgid "Resources"
@@ -316,7 +365,7 @@ msgstr "Veja mais"
 msgid "Select values by label instead of integer location"
 msgstr "Selecione os valores por rótulo em vez do índice inteiro"
 
-#: src/components/language-switcher.js:39
+#: src/components/language-switcher.js:19
 msgid "Spanish"
 msgstr ""
 
@@ -332,6 +381,10 @@ msgstr "Patrocinadores"
 msgid "Stack Overflow"
 msgstr "Stack Overflow"
 
+#: src/components/dashboard/project-metrics.js:59
+msgid "Stargazers"
+msgstr ""
+
 #: src/components/ecosystem.js:48
 msgid "Stars"
 msgstr "Estrelas"
@@ -340,6 +393,7 @@ msgstr "Estrelas"
 msgid "Supported By"
 msgstr "Apoiado por"
 
+#: src/pages/team.js:21
 #: src/data/footer-items.js:9
 msgid "Team"
 msgstr "Equipe"
@@ -377,6 +431,10 @@ msgstr "Operações vetorizadas"
 msgid "Verification of weather and climate forecasts"
 msgstr "Verificação do tempo e previsão do clima"
 
+#: src/pages/team.js:55
+msgid "We appreciate all contributions from community to make Xarray thrive."
+msgstr ""
+
 #: src/components/sponsors.js:19
 #~ msgid ""
 #~ "We thank these institutions for generously supporting the development\n"
@@ -410,6 +468,10 @@ msgstr ""
 #: src/components/hero-banner.js:78
 msgid "Why Xarray?"
 msgstr "Por que Xarray?"
+
+#: src/pages/team.js:29
+msgid "Xarray core maintainers are responsible for the ongoing organizational maintenance and technical direction of the Xarray project. The current core team comprises:"
+msgstr ""
 
 #: src/components/hero-banner.js:61
 #~ msgid ""
@@ -452,6 +514,10 @@ msgid "Xarray is an open source project and Python package that introduces label
 msgstr ""
 "Xarray é um projeto de código aberto e pacote Python que introduz rótulos na forma de dimensões, coordenadas\n"
 " e atributos em matrizes do tipo NumPy, que permitem uma experiência do usuário mais intuitiva, mais concisa e menos propensa a erros."
+
+#: src/pages/team.js:47
+msgid "Xarray is made with love by more than "
+msgstr ""
 
 #: src/components/ecosystem.js:63
 msgid "Xarray is part of the larger scientific Python ecosystem. It is built on top of NumPy, Pandas, and Dask and supports a wide range of domain specific scientific applications."
