@@ -45,7 +45,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
 
   const change = {
     type: diffPercentage < 0 ? 'increase' : 'decrease',
-    value: `${d3.format('.2f')(Math.abs(diffPercentage))}% since last month`,
+    value:
+      `${d3.format('.2f')(Math.abs(diffPercentage))}% ` + t`since last month`,
   }
   return (
     <StatisticsCard

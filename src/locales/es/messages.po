@@ -8,7 +8,7 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: c8a631743e21d4c69bee82f0cb0d697e\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-05-04 15:05\n"
+"PO-Revision-Date: 2025-05-04 15:17\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -136,7 +136,7 @@ msgstr "Alineación similar a una base de datos basada en etiquetas de coordenad
 msgid "Database like operations"
 msgstr "Operaciones similares a bases de datos"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:57
+#: src/components/dashboard/timeseries-agg-stats-card.js:58
 msgid "days"
 msgstr "días"
 
@@ -218,7 +218,7 @@ msgstr "Discusiones de GitHub"
 msgid "GroupBy operations"
 msgstr "Operaciones de Agrupado Por"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:56
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
 msgid "hours"
 msgstr "horas"
 
@@ -362,6 +362,10 @@ msgstr "Ver más"
 #: src/data/features.js:15
 msgid "Select values by label instead of integer location"
 msgstr "Seleccione valores por etiqueta en lugar de ubicación entera"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:49
+msgid "since last month"
+msgstr "desde el mes pasado"
 
 #: src/components/language-switcher.js:19
 msgid "Spanish"
