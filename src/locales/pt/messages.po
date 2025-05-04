@@ -136,7 +136,7 @@ msgstr "Alinhamento tipo banco de dados baseado em rótulos de coordenadas que l
 msgid "Database like operations"
 msgstr "Operações do tipo banco de dados"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:57
+#: src/components/dashboard/timeseries-agg-stats-card.js:58
 msgid "days"
 msgstr ""
 
@@ -218,7 +218,7 @@ msgstr "Discussões no GitHub"
 msgid "GroupBy operations"
 msgstr "Operações GroupBy"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:56
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
 msgid "hours"
 msgstr ""
 
@@ -364,6 +364,10 @@ msgstr "Veja mais"
 #: src/data/features.js:15
 msgid "Select values by label instead of integer location"
 msgstr "Selecione os valores por rótulo em vez do índice inteiro"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:49
+msgid "since last month"
+msgstr ""
 
 #: src/components/language-switcher.js:19
 msgid "Spanish"

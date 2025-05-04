@@ -131,7 +131,7 @@ msgstr "Database like alignment based on coordinate labels that smoothly handles
 msgid "Database like operations"
 msgstr "Database like operations"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:57
+#: src/components/dashboard/timeseries-agg-stats-card.js:58
 msgid "days"
 msgstr "days"
 
@@ -213,7 +213,7 @@ msgstr "GitHub Discussions"
 msgid "GroupBy operations"
 msgstr "GroupBy operations"
 
-#: src/components/dashboard/timeseries-agg-stats-card.js:56
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
 msgid "hours"
 msgstr "hours"
 
@@ -360,6 +360,10 @@ msgstr "See More"
 #: src/data/features.js:15
 msgid "Select values by label instead of integer location"
 msgstr "Select values by label instead of integer location"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:49
+msgid "since last month"
+msgstr "since last month"
 
 #: src/components/language-switcher.js:19
 msgid "Spanish"
