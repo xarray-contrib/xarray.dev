@@ -23,9 +23,9 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 
 ## Introduction
 
-In large-scale geospatial AI and machine learning workflows, data loading is often the main bottleneck. Traditional pipelines rely on CPUs to transfer massive datasets from disk to GPU memory, consuming resources and limiting scalability and effective use of GPU resources.
+In large-scale geospatial AI and machine learning workflows, data loading is often the main bottleneck. Traditional pipelines rely on CPUs to preprocess and transfer massive datasets from storage to GPU memory, consuming resources and limiting scalability and effective use of GPU resources.
 
-To tackle this issue, a team from the [National Center for Atmospheric Research (NSF-NCAR)](https://ncar.ucar.edu) and [Development Seed](https://developmentseed.org) with mentors from [NVIDIA](https://www.nvidia.com) participated in a GPU hackathon to demonstrate how AI/ML workflows in Earth system sciences can benefit from GPU-native workflows using tools such as Zarr, kvikIO, and DALI.
+To tackle this issue, a team from the [National Center for Atmospheric Research (NSF-NCAR)](https://ncar.ucar.edu) and [Development Seed](https://developmentseed.org) with mentors from [NVIDIA](https://www.nvidia.com) participated in a GPU hackathon to demonstrate how AI/ML workflows in Earth system sciences can benefit from GPU-native workflows using tools such as [Zarr](https://zarr.readthedocs.io/), [KvikIO](https://docs.rapids.ai/api/kvikio/stable/), and [DALI](https://developer.nvidia.com/dali).
 
 In this post, we share our hackathon experience, the integration strategies we explored, and the performance gains we achieved to highlight how modern tools can transform data-intensive workflows.
 
@@ -37,13 +37,13 @@ Machine learning pipelines typically involve:
 - Transforming / preprocessing data (often CPU-bound).
 - Feeding the data into GPUs for training or inference.
 
-Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large dataset.
+Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets.
 
 In this hackathon, we tried looking at different ways of reducing this bottleneck.
 
 ### Data & Code Overview
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) training on ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization.
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization.
 
 -- TODO : Add an example image.
 
@@ -64,7 +64,7 @@ The profiling results clearly showed that the data loading step was the main bot
 
 This was also confirmed by a few other flags we added in our script to measure the time spent on data loading and model training. The results are shown below:
 
-[baseline plot](baseline.png)
+![baseline plot](baseline.png)
 
 In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
 
@@ -82,7 +82,7 @@ During the hackathon, we tested the following strategies to improve the data loa
 
 1. Optimized Chunking & Compression
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
-2. GPU native data loading with Zarr V3 and kvikIO
+2. GPU native data loading with Zarr V3 and KvikIO
 3. Using `nvcomp` for decompression on GPUs
 4. NVIDIA DALI: We explored integrating NVIDIA's Data Loading Library (DALI) into Xarray to facilitate efficient data loading and preprocessing directly on the GPU. DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
