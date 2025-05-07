@@ -177,14 +177,15 @@ msgid "Example Gallery"
 msgstr "Galería de ejemplos"
 
 #: src/components/dashboard/timeline-plot-container.js:23
-msgid "failed to 3 load data"
-msgstr ""
+#~ msgid "failed to 3 load data"
+#~ msgstr ""
 
 #: src/components/ecosystem.js:32
 #: src/components/dashboard/timeseries-agg-stats-card.js:12
 msgid "failed to load"
 msgstr "Falla en la carga"
 
+#: src/components/dashboard/timeline-plot-container.js:23
 #: src/components/dashboard/project-metrics.js:17
 msgid "failed to load data"
 msgstr "Error al cargar los datos"

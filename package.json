@@ -6,7 +6,7 @@
     "build-cards": "node build-cards.js",
     "extract": "lingui extract",
     "compile": "lingui compile",
-    "dev": "next dev",
+    "dev": "yarn compile && next dev",
     "build": "yarn extract && yarn compile && next build",
     "start": "next start",
     "lint": "next lint"
