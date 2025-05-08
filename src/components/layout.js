@@ -4,6 +4,8 @@ import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
 import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
+import { useLingui } from '@lingui/react/macro'
+import { useRouter } from 'next/router'
 
 export const Layout = ({
   title,
@@ -13,11 +15,19 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Check out the new blog post on DataTree!'
+  /**
+   * This macro hook is needed to get `t` which
+   * is bound to i18n from React.Context
+   */
+  const { t } = useLingui()
+  const router = useRouter()
+  const { pathname, asPath, query } = router
+
+  const bannerTitle = t`Check out the new blog post on DataTree!`
   const bannerDescription = ''
   const bannerChildren = (
     <Link href='/blog/datatree'>
-      Xarray x NASA: xarray.DataTree for hierarchical data structures
+      {t`Xarray x NASA: xarray.DataTree for hierarchical data structures`}
     </Link>
   )
 
@@ -69,7 +79,6 @@ export const Layout = ({
           )}
           {children}
         </Box>
-
         <Footer />
       </Flex>
     </>

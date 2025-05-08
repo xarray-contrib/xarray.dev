@@ -1,7 +1,7 @@
 import { DesktopNav } from '@/components/desktop-nav'
 import { Link } from '@/components/mdx'
 import { MobileNav } from '@/components/mobile-nav'
-import { menuItems } from '@/data/menu-items'
+import { getMenuItems } from '@/data/menu-items'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -16,9 +16,10 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 
-export const Header = () => {
-  const navItems = React.useMemo(() => menuItems, [])
+import { LanguageSwitcher } from './language-switcher'
 
+export const Header = () => {
+  let navItems = getMenuItems()
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
 
@@ -93,6 +94,7 @@ export const Header = () => {
               navItems={navItems}
               display={{ base: 'none', md: 'flex' }}
             />
+            <LanguageSwitcher />
           </Stack>
         </Container>
       </Flex>

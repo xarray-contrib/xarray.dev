@@ -9,6 +9,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 
+import { LanguageSwitcher } from '@/components/language-switcher'
 import { Link } from '@/components/mdx'
 
 const MobileNavItem = ({ href, children, label }) => {
@@ -97,6 +98,7 @@ export const MobileNav = ({ navItems, isOpen }) => {
       {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <LanguageSwitcher></LanguageSwitcher>
     </Stack>
   )
 }
