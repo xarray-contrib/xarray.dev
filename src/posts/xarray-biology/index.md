@@ -7,15 +7,13 @@ authors:
 summary: 'A discussion of how Xarray fits into Biological analysis workflows'
 ---
 
+I'm Ian, a multimodal microscopist, and the new "Xarray Community Developer." In this role, funded by the Chan Zuckerberg Institute, I work full-time to support the usage of Xarray in biological and biomedical applications.
 
-I'm Ian, a multimodal microscopist, and the new "Xarray Community Developer." In this role, funded by the Chan Zuckerberg Institute, I work full-time to support the usage of Xarray in biological and biomedical applications. 
-
-I ended up here because, five years in graduate school (alt: several years ago/early in grad school), I was sitting at my computer frustratedly trying to keep track of microscopy image metadata as I passed images through complicated, larger-than-memory jobs on the cluster. Which axis was what? Where did the exposure times go? I know I changed the media at 32 minutes, but what time index was that? Desperate for a solution, I found `Xarray`, seemingly a solution to all my woes. But I left thinking it was not for me as the examples were geoscience-centric. Fortunately, I eventually rediscovered `Xarray`, mentally translated the examples to biology, and found it incredibly useful. It is so useful that it since served as my default tool for all analyses in both structural and microbiology. 
+I ended up here because, five years in graduate school (alt: several years ago/early in grad school), I was sitting at my computer frustratedly trying to keep track of microscopy image metadata as I passed images through complicated, larger-than-memory jobs on the cluster. Which axis was what? Where did the exposure times go? I know I changed the media at 32 minutes, but what time index was that? Desperate for a solution, I found `Xarray`, seemingly a solution to all my woes. But I left thinking it was not for me as the examples were geoscience-centric. Fortunately, I eventually rediscovered `Xarray`, mentally translated the examples to biology, and found it incredibly useful. It is so useful that it since served as my default tool for all analyses in both structural and microbiology.
 
 My story is not unique. Have you experienced similar challenges when working with array data (e.g., microscopy images, genomic sequences, or anything else you might currently analyze using `NumPy`)? If so, this post is for you whether you have heard of `Xarray` before or not.
 
 In this post, I will introduce the concepts of `Xarray` at a high level with biological context and give examples where it is already in use. Then, I will discuss why more scientists in biology/biomedical fields have not yet adopted `Xarray`. Finally, I will describe what we (Biologists and Xarray contributors) can do to increase adoption.
-
 
 ## What is Xarray and Why Should You Use it?
 
@@ -24,7 +22,7 @@ Biological data almost always has rich context and metadata associated with the 
 Selecting data based on array indices rather than the physical values can be confusing. You know you switched the growth medium at 32 minutes, but which array index is that? Similarly, keeping track of which dimension is which can be difficult without labels. You have a five-dimensional array, but there are a few transposes in this code from last week, and now you don't remember which axis is which in the output. Managing a collection of multiple related arrays with slightly different shapes can be tricky. Imagine sending data into a batch job and trying to keep segmentations and raw images together. Or maybe you've tried to follow poorly commented analysis from an interesting paper and gotten lost in the details?
 
 **Data Structures**
-`Xarray`’s data structures provide a solution to all these problems. To quote the docs, "Xarray introduces labels in the form of dimensions, coordinates, and attributes on top of raw `NumPy`-like multidimensional arrays, which allows for a more intuitive, more concise, and less error-prone developer experience."  
+`Xarray`’s data structures provide a solution to all these problems. To quote the docs, "Xarray introduces labels in the form of dimensions, coordinates, and attributes on top of raw `NumPy`-like multidimensional arrays, which allows for a more intuitive, more concise, and less error-prone developer experience."
 
 `Xarray` accomplishes this by providing the [`DataArray`](https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataarray), which keeps track of its metadata and is coordinate aware (e.g., can hold the values of timepoints in seconds for you).
 
@@ -34,7 +32,6 @@ Here is an example of what a `DataArray` of a small stack of microscopy images m
 
 Looking at the `repr`, you can probably understand a lot about the experiment without any explanation. You no longer need to mentally keep track of transposes, axis labels, and metadata because you can always check the current state! This `Xarray` feature makes it easier for you to develop your analysis and also means that your code will be more easily understandable by others. Or if you receive a notebook from someone, you will have an easier time deciphering it.
 
-
 When you collect data, you likely collect more than just one type. You may have sequence data in addition to growth curves, fluorescence data, or some kind of spectral data. If you collect multiple arrays of data that share some dimensions (e.g., time) but not all, how do you keep them organized? They can't fit in one array as they don't share all their dimensions!
 
 Happily, `Xarray` solves this problem for us as well! The [`Dataset`](https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataset) object stores collections of related `DataArray's. For example, for our microscopy image stack, we might also create a segmentation layer that will share some of the dimensions of our image (`time`, `X`, `Y`, [`Z`]) but not all (`channel`, [`Z`]) and it would be great to keep them together.
@@ -42,18 +39,18 @@ Happily, `Xarray` solves this problem for us as well! The [`Dataset`](https://do
 <RawHTML filePath='/posts/xarray-biology/dataset-repr.html' />
 
 Finally, the [`DataTree`](https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataset) object allows you to keep trees of related datasets, for example, a representation of multiscale images allows for natural support of [OME-NGFF](https://www.nature.com/articles/s41592-021-01326-w) data.
+
 <RawHTML filePath='/posts/xarray-biology/datatree-repr.html' />
 
 Having labeled dimensions and the ability to organize multiple arrays is often reason enough to start using Xarray. But there are more benefits:
 
 - Readable and easy to use [indexing and selecting semantics](https://docs.xarray.dev/en/stable/user-guide/indexing.html)
-  -  e.g., Max projected GFP from minutes 15 and 20: `array.sel(channel='GFP', time=(15,30)).max(‘Z’)`
+  - e.g., Max projected GFP from minutes 15 and 20: `array.sel(channel='GFP', time=(15,30)).max(‘Z’)`
 - [Data merging](https://docs.xarray.dev/en/stable/user-guide/combining.html) based on dimensions and coordinates
 - Built-in [vizualization tooling](https://docs.xarray.dev/en/stable/user-guide/plotting.html)
 - Powerful [computational Patterns](https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html) such as `groupby`, `coarsen`, `resample`
 - Ability to scale to larger than memory datasets via [integration with Dask](https://docs.xarray.dev/en/stable/user-guide/dask.html)
 - Flexible [I/O framework](https://docs.xarray.dev/en/stable/user-guide/io.html) with potential for better integration with a zoo of bio formats
-
 
 ### When Can You Use Xarray?
 
@@ -74,7 +71,6 @@ That said, many parts of biology generate array data. And scientists in some are
 
 Given the benefits of switching to `Xarray`, why aren't more biologists using it? Is it secretly not as good as this blog claims? I spent February and April 2025 reaching out to scientists and scientific software developers across various fields of biology to find out. From those discussions, I've found three core reasons have prevented biologists who are already using Python from adopting `Xarray`.
 
-
 ### Awareness and Examples
 
 Many biologists have never heard of `Xarray`. This is because the geosciences community created Xarray, and there wasn't enough community overlap for the word to spread to biologists.
@@ -85,7 +81,7 @@ A related issue is that the examples and tutorials are geoscience-centric, which
 
 Once a potential user is convinced of `Xarray`'s value, they may still face technical barriers. Ranging from rough edges to missing features, however, none are insurmountable. These barriers can exist in `Xarray` or in other tools in their workflow not accepting `Xarray` as input.
 
-An example of a rough edge in `Xarray` is that, as of May 2025, you cannot use integers as keys in a `DataTree`. That is a problem, as integers are a natural key when tracking single-cell lineages. Rough edges like this one haven't been smoothed over yet because there has not been a large user base of biologists using `Xarray` and raising issues when they encounter problems. 
+An example of a rough edge in `Xarray` is that, as of May 2025, you cannot use integers as keys in a `DataTree`. That is a problem, as integers are a natural key when tracking single-cell lineages. Rough edges like this one haven't been smoothed over yet because there has not been a large user base of biologists using `Xarray` and raising issues when they encounter problems.
 
 Until recently, a missing feature was the ability to have `Xarray` coordinates that are more flexible than a fully instantiated array. Allowing for analytical transforms and having more flexible coordinates is critical to supporting volumetric imaging applications. Excitingly, in February 2025, initial support for this was [merged](https://github.com/pydata/xarray/pull/9543)!
 
