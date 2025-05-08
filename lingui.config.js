@@ -11,7 +11,6 @@ module.exports = {
   catalogs: [
     {
       path: 'src/locales/{locale}/messages',
-      //   path: 'src/locales/{locale}',
       include: ['src/'],
     },
   ],
