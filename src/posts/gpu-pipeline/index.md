@@ -107,7 +107,7 @@ During the hackathon, we tested the following strategies to improve the data loa
 3. Using `nvcomp` for decompression on GPUs
 4. NVIDIA DALI: We explored integrating NVIDIA's Data Loading Library (DALI) into Xarray to facilitate efficient data loading and preprocessing directly on the GPU. DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
-### Step 1: Optimized chunking :card_file_box:
+### Step 1: Optimized chunking
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
 We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3.
@@ -134,11 +134,11 @@ The plot below shows the read performance of the original dataset vs. the rechun
 
 TODO: ADD plot here.
 
-### Step 2: Reading with zarr-python v3 + kvikIO :open_book:
+### Step 2: Reading with zarr-python v3 + kvikIO 📖
 
 The advent of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) bought many improvements, including the ability to [read from Zarr stores to CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574).
 
-Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
+Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly! 
 
 To benefit from these new features, we recommend installing:
 
@@ -161,7 +161,8 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before it goes to GPU memory.
+Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before it goes to GPU memory. 
+
 If you prefer to bypass CPU memory, and have GPU Direct Storage (GDS) enabled, you can use the `kvikio` driver like so:
 
 ```python
@@ -173,11 +174,11 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-This will read the data directly from the Zarr store to GPU memory, bypassing CPU memory altogether. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory.
+This will read the data directly from the Zarr store to GPU memory, bypassing CPU memory. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory, but requires GPU Direct Storage (GDS) to be enabled on your system. For now decompression is still done on CPU, but this is a step towards a fully GPU-native workflow. In the figure below, we show the flowchart of the data loading process with GDS enabled , but please note that the decompression step is still done on CPU.
 
-[ TODO: add a figure showing this -- technically decompression is still done on CPU. ]
+![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
 
-(TODO ongoing work) Eventually with this [cupy-xarray Pull Request merged](https://github.com/xarray-contrib/cupy-xarray/pull/70) (based on earlier work at https://xarray.dev/blog/xarray-kvikio), this can be simplified to:
+Eventually with this [cupy-xarray Pull Request merged](https://github.com/xarray-contrib/cupy-xarray/pull/70) (based on earlier work at https://xarray.dev/blog/xarray-kvikio), this can be simplified to:
 
 ```python
 import cupy_xarray
@@ -192,7 +193,7 @@ How do these two methods, zarr (CPU) and kvikio (GPU), compare?
 
 For kvikio performance improvements, you need GPU Direct Storage (GDS) enabled on your system. This is a feature that allows the GPU to access data directly from storage, bypassing the CPU and reducing latency. GDS is supported on NVIDIA GPUs with the [GPUDirect Storage](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature.
 
-### Step 3: GPU-based decompression with nvCOMP :rocket:
+### Step 3: GPU-based decompression with nvCOMP 🚀
 
 For a fully GPU-native workflow, we can let the GPU do all of the work!
 This includes reading the compressed data, decompression (using nvCOMP), any augmentation steps, to the ML model training.
