@@ -21,7 +21,7 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 
 # Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)
 
-## TLDR
+## TL;DR
 
 ## Introduction
 
@@ -62,12 +62,21 @@ Here are some screenshots of the profiling results:
 ![baseline single GPU profiling screenshot -- Issue 1](/posts/gpu-pipline/profiling_screenshot1.png)
 ![baseline single GPU profiling screenshot -- Issue 2](/posts/gpu-pipline/profiling_screenshot2.png)
 
+
+<div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+  <img src="/posts/gpu-pipline/profiling_screenshot1.png" alt="Issue 1" style={{ width: '45%' }} />
+  <img src="/posts/gpu-pipline/profiling_screenshot2.png" alt="Issue 2" style={{ width: '45%' }} />
+</div>
+
+
 The profiling results clearly showed that the data loading step was the main bottleneck in our pipeline. Additionally, we noticed the alternating CPU and GPU compute steps (i.e. data loading and model training) were not overlapping, which meant that the GPU was often idle while waiting for the CPU to load data (fist screenshot above).
 
 
 This was also confirmed by a few other tests to measure the time spent on data loading and model training. The results are shown below:
 
-![baseline plot](/posts/gpu-pipline/baseline.png)
+<div style={{ textAlign: 'center' }}>
+  <img src="/posts/gpu-pipline/baseline.png" alt="baseline plot" style={{ width: '60%', maxWidth: '500px' }} />
+</div>
 
 In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
 
@@ -109,8 +118,8 @@ For more optimal performance, consider:
 
 1. Storing the data without compression (if not transferring over a network), as decompressing data can slow down read speeds. But see also GPU decompression with nvCOMP below. :wink:
 2. Concatenating several data variables together **if** a single chunk size is too small (`<1MB`), at the expense of reducing readability of the Zarr store.
-Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<10MB` (??TODO verify) for optimal reads.
-   - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in zarr-python?
+Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<100MB` (??TODO verify) for optimal reads.
+   - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in zarr-python. 
 
 The plot below shows the read performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed zarr v3 dataset.
 
