@@ -39,7 +39,7 @@ Machine learning pipelines typically involve:
 - Transforming / preprocessing data (often CPU-bound).
 - Feeding the data into GPUs for training or inference.
 
-Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets.
+Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets (profiles discussed below).
 
 In this hackathon, we tried looking at different ways of reducing this bottleneck.
 
