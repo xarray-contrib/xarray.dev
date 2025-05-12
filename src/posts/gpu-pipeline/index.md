@@ -57,12 +57,13 @@ First, we needed to identify the performance bottlenecks in our pipeline. We use
 
 Here are some screenshots of the profiling results:
 
-- ![image](https://hackmd.io/_uploads/H1N1TTtAyl.png)
-- ![image](https://hackmd.io/_uploads/SyYA3pt0ye.png)
+- ![profiling_screenshot1](posts/gpu-pipline/profiling_screenshot1.png)
+- ![profiling_screenshot2](posts/gpu-pipline/profiling_screenshot2.png)
 
-The profiling results clearly showed that the data loading step was the main bottleneck in our pipeline. The time spent on data loading was significantly higher than the time spent on model training.
+The profiling results clearly showed that the data loading step was the main bottleneck in our pipeline. Additionally, we noticed the alternating CPU and GPU compute steps (i.e. data loading and model training) were not overlapping, which meant that the GPU was often idle while waiting for the CPU to load data (fist screenshot above).
 
-This was also confirmed by a few other flags we added in our script to measure the time spent on data loading and model training. The results are shown below:
+
+This was also confirmed by a few other tests to measure the time spent on data loading and model training. The results are shown below:
 
 ![baseline plot](baseline.png)
 
