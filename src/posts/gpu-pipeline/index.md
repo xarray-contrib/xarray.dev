@@ -187,11 +187,11 @@ ds = xr.open_dataset(filename_or_obj="/tmp/air-temp.zarr", engine="kvikio")
 assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-How do these two methods, zarr (CPU) and kvikio (GPU), compare?
+How do these two methods, Zarr (CPU) and kvikio (GPU), compare?
 
 (TODO put in benchmark numbers here).
 
-For kvikio performance improvements, you need GPU Direct Storage (GDS) enabled on your system. This is a feature that allows the GPU to access data directly from storage, bypassing the CPU and reducing latency. GDS is supported on NVIDIA GPUs with the [GPUDirect Storage](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature.
+**Note**: For kvikio performance improvements, you need GPU Direct Storage (GDS) enabled on your system. This is a feature that allows the GPU to access data directly from storage, bypassing the CPU and reducing latency. GDS is supported on NVIDIA GPUs with the [GPUDirect Storage](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature.
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
 
