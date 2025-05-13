@@ -8,7 +8,7 @@ authors:
   - name: Wei Ji Leong
     github: weiji14
   - name: Max Jones
-    github: maxjones
+    github: maxrjones
   - name: Akshay Subranian
     github: akshaysubr
   - name: Thomas Augspurger
