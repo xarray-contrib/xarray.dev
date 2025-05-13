@@ -200,11 +200,11 @@ For a fully GPU-native workflow, we can let the GPU do all of the work, includin
 ![GPU native decompression](/posts/gpu-pipline/flowchart_3.png)
 
 Sending compressed instead of uncompressed data to the GPU means less data transfer overall, reducing I/O latency from storage to device.
-To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented at https://github.com/zarr-developers/zarr-python/pull/2863.
+To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented in [this PR](https://github.com/zarr-developers/zarr-python/pull/2863).
 
-![image](https://hackmd.io/_uploads/H1kJkk9Akx.png)
+![GPU native decompression](/posts/gpu-pipline/zstd_benchmark.png)
 
-Figure above shows benchmark comparing CPU vs GPU-based decompression, with or without GDS enabled.
+Figure above shows benchmark comparing CPU vs GPU-based decompression, with or without GDS enabled using [the data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py).
 
 Keep an eye on this space!
 
