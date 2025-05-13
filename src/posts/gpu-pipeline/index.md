@@ -138,7 +138,7 @@ TODO: ADD plot here.
 
 The advent of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) bought many improvements, including the ability to [read from Zarr stores to CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574).
 
-Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly! 
+Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
 
 To benefit from these new features, we recommend installing:
 
@@ -161,7 +161,7 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before it goes to GPU memory. 
+Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before it goes to GPU memory.
 
 If you prefer to bypass CPU memory, and have GPU Direct Storage (GDS) enabled, you can use the `kvikio` driver like so:
 
