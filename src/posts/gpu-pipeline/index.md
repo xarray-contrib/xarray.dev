@@ -23,7 +23,6 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 
 ## TL;DR
 
-
 ## Introduction
 
 In large-scale geospatial AI and machine learning workflows, data loading is often the main bottleneck. Traditional pipelines rely on CPUs to preprocess and transfer massive datasets from storage to GPU memory, consuming resources and limiting scalability and effective use of GPU resources.
@@ -46,7 +45,7 @@ In this hackathon, we tried looking at different ways of reducing this bottlenec
 
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization. 
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization.
 
 -- TODO : Add an example image.
 
@@ -58,9 +57,7 @@ More details on the model and training pipeline can be found in the [README](htt
 
 First, we needed to identify the performance bottlenecks in our pipeline. We used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify the areas that needed optimization. The profiling results clearly showed that the data loading step was the main bottleneck in our pipeline. Additionally, we noticed the alternating CPU and GPU compute steps (i.e. data loading and model training) were not overlapping, which meant that the GPU was often idle while waiting for the CPU to load data (fist screenshot above).
 
-
 Here are some screenshots of the profiling results:
-
 
 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
   <img
@@ -76,8 +73,12 @@ Here are some screenshots of the profiling results:
 </div>
 
 This was further confirmed by additional tests comparing data loading and training throughput, as illustrated in the figure below:
-<img src='/posts/gpu-pipline/baseline.png' alt='baseline plot' style={{ display: 'inline-block', width: '50%', maxWidth: '400px' }} />
 
+<img
+  src='/posts/gpu-pipline/baseline.png'
+  alt='baseline plot'
+  style={{ display: 'inline-block', width: '50%', maxWidth: '400px' }}
+/>
 
 In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
 
@@ -96,7 +97,7 @@ During the hackathon, we tested the following strategies to improve the data loa
 1. **Optimized Chunking & Compression**
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
 2. **GPU native data loading with Zarr V3 and KvikIO**
-    - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized KvikIO to bypass CPU memory, enabling direct data transfer from storage to GPU.
+   - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized KvikIO to bypass CPU memory, enabling direct data transfer from storage to GPU.
 3. **Using `nvcomp` for decompression on GPUs**
    - We explored using NVIDIA's nvCOMP library for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
 4. **NVIDIA DALI**: We explored integrating NVIDIA's Data Loading Library (DALI) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
@@ -123,7 +124,7 @@ For more optimal performance, consider:
 2. Concatenating several data variables together **if** a single chunk size is too small (`<1MB`), at the expense of reducing readability of the Zarr store.
    Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<100MB` for optimal reads.
    - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in zarr-python.
-3. Align chunks with access pattern of your model. 
+3. Align chunks with access pattern of your model.
 
 The plot below shows the read performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed zarr v3 dataset.
 
@@ -199,7 +200,7 @@ To unlock this, we would need zarr-python to support GPU-based decompression cod
 
 ![GPU native decompression](/posts/gpu-pipline/zstd_benchmark.png)
 
-Figure above shows benchmark comparing CPU vs GPU-based decompression, with or without GDS enabled using [the data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py). 
+Figure above shows benchmark comparing CPU vs GPU-based decompression, with or without GDS enabled using [the data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py).
 
 These results show that GPU-based decompression can significantly reduce the time spent on data loading and cut I/O latency from storage to device. This is especially useful for large datasets, as it allows for faster data loading and processing.
 
@@ -213,9 +214,9 @@ Ideally, we want to minimize idle time on both the CPU and GPU by overlapping th
 
 To address this inefficiency, we adopted [NVIDIA DALI (Data Loading Library)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html), which provides a flexible, GPU-accelerated data pipeline with built-in support for asynchronous execution across CPU and GPU stages. DALI helps reduce CPU pressure, enables concurrent preprocessing, and increases training throughput by pipelining operations.
 
-To start, we started with a minimal example in [zarr_DALI folder](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to create a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store, transfer them directly to GPU memory using CuPy-backed arrays. 
+To start, we started with a minimal example in [zarr_DALI folder](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to create a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store, transfer them directly to GPU memory using CuPy-backed arrays.
 
-Next, look at the [zarr_ML_optimization](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) folder that contains an end-to-end example on how this DALI pipeline can be integrated into a Pytorch Dataloader and full training workflow. 
+Next, look at the [zarr_ML_optimization](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) folder that contains an end-to-end example on how this DALI pipeline can be integrated into a Pytorch Dataloader and full training workflow.
 
 ![image](https://hackmd.io/_uploads/H1YVp6tR1l.png)
 
@@ -235,20 +236,44 @@ We are continuing to explore the following areas:
 
 ## Lessons Learned 💡
 
-- **Chunking matters!** It really does and can make a huge difference in performance. 
+- **Chunking matters!** It really does and can make a huge difference in performance.
 - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
 - Compression trade-offs: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
 - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
 - **GPU-native decompression** is a promising area for future work, but requires further development and testing.
 
-## Acknowledgements 🙌 
+## Acknowledgements 🙌
 
 This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NCAR for providing access to NCAR’s Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI).
 
-
-<div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', padding: '1rem 0' }}>
-  <img src="https://www.archives.ucar.edu/sites/default/files/images/NSF-NCAR_Lockup-UCAR-Dark_102523%20%282%29.png" alt="NSF NCAR Logo" style={{ height: '60px' }} />
-  <img src="https://devseed.com/aiaia-docs/assets/graphics/content/dev-seed-logo-test.png" alt="Development Seed Logo" style={{ height: '60px' }} />
-  <img src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png" alt="NVIDIA Logo" style={{ height: '60px' }} />
-  <img src="https://www.openhackathons.org/s/sfsites/c/resource/CommunityResourceNew/images/logo.png" alt="Open Hackathons Logo" style={{ height: '60px' }} />
+<div
+  style={{
+    display: 'flex',
+    gap: '1.5rem',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    padding: '1rem 0',
+  }}
+>
+  <img
+    src='https://www.archives.ucar.edu/sites/default/files/images/NSF-NCAR_Lockup-UCAR-Dark_102523%20%282%29.png'
+    alt='NSF NCAR Logo'
+    style={{ height: '60px' }}
+  />
+  <img
+    src='https://devseed.com/aiaia-docs/assets/graphics/content/dev-seed-logo-test.png'
+    alt='Development Seed Logo'
+    style={{ height: '60px' }}
+  />
+  <img
+    src='https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png'
+    alt='NVIDIA Logo'
+    style={{ height: '60px' }}
+  />
+  <img
+    src='https://www.openhackathons.org/s/sfsites/c/resource/CommunityResourceNew/images/logo.png'
+    alt='Open Hackathons Logo'
+    style={{ height: '60px' }}
+  />
 </div>
