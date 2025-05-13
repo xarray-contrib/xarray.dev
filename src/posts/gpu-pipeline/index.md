@@ -101,10 +101,10 @@ During the hackathon, we tested the following strategies to improve the data loa
 1. **Optimized Chunking & Compression**
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
 2. **GPU native data loading with Zarr V3 and KvikIO**
-   - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized KvikIO to bypass CPU memory, enabling direct data transfer from storage to GPU.
+   - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized [KvikIO](https://docs.rapids.ai/api/kvikio/stable/) to bypass CPU memory, enabling direct data transfer from storage to GPU.
 3. **Using `nvcomp` for decompression on GPUs**
-   - We explored using NVIDIA's nvCOMP library for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
-4. **NVIDIA DALI**: We explored integrating NVIDIA's Data Loading Library (DALI) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
+   - We explored using [NVIDIA's nvCOMP library](https://developer.nvidia.com/nvcomp) for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
+4. **NVIDIA DALI**: We explored integrating [NVIDIA's Data Loading Library (DALI)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
 ### Step 1: Optimized chunking
 
