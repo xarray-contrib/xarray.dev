@@ -60,32 +60,23 @@ First, we needed to identify the performance bottlenecks in our pipeline. We use
 
 Here are some screenshots of the profiling results:
 
-![baseline single GPU profiling screenshot -- Issue 1](/posts/gpu-pipline/profiling_screenshot1.png)
-![baseline single GPU profiling screenshot -- Issue 2](/posts/gpu-pipline/profiling_screenshot2.png)
 
 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
   <img
     src='/posts/gpu-pipline/profiling_screenshot1.png'
     alt='Issue 1'
-    style={{ width: '45%' }}
+    style={{ width: '50%' }}
   />
   <img
     src='/posts/gpu-pipline/profiling_screenshot2.png'
     alt='Issue 2'
-    style={{ width: '45%' }}
+    style={{ width: '55%' }}
   />
 </div>
 
+This was further confirmed by additional tests comparing data loading and training throughput, as illustrated in the figure below:
+<img src='/posts/gpu-pipline/baseline.png' alt='baseline plot' style={{ display: 'inline-block', width: '50%', maxWidth: '400px' }} />
 
-This was further confirmed by a few other tests to measure the time spent on data loading and model training. The results are shown below:
-
-<div style={{ textAlign: 'center' }}>
-  <img
-    src='/posts/gpu-pipline/baseline.png'
-    alt='baseline plot'
-    style={{ width: '60%', maxWidth: '500px' }}
-  />
-</div>
 
 In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
 
@@ -101,13 +92,13 @@ Our initial profiling showed that data loading is a major bottleneck in this wor
 
 During the hackathon, we tested the following strategies to improve the data loading performance:
 
-1. Optimized Chunking & Compression
+1. **Optimized Chunking & Compression**
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
-2. GPU native data loading with Zarr V3 and KvikIO. 
+2. **GPU native data loading with Zarr V3 and KvikIO**
     - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized KvikIO to bypass CPU memory, enabling direct data transfer from storage to GPU.
-3. Using `nvcomp` for decompression on GPUs.
+3. **Using `nvcomp` for decompression on GPUs**
    - We explored using NVIDIA's nvCOMP library for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
-4. NVIDIA DALI: We explored integrating NVIDIA's Data Loading Library (DALI) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
+4. **NVIDIA DALI**: We explored integrating NVIDIA's Data Loading Library (DALI) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
 ### Step 1: Optimized chunking
 
