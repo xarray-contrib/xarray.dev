@@ -49,7 +49,7 @@ In this hackathon, we tried looking at different ways of reducing this bottlenec
 
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization. [This repository](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus) contains all our work, including the data loading pipeline, model implementation, and training scripts for the hackathon. 
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization. [This repository](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus) contains all our work, including the data loading pipeline, model implementation, and training scripts for the hackathon.
 
 The basic data loader is implemented in `zarr_ML_optimization/train_unet.py` and the model is defined in `zarr_ML_optimization/model.py`. The training pipeline is designed to be flexible and can be easily adapted to different datasets and models.
 
