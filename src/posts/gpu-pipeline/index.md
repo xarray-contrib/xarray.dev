@@ -125,7 +125,7 @@ ds.to_zarr("rechunked_ERA5.zarr", zarr_version=3)
 
 For more optimal performance, consider:
 
-1. Storing the data without compression (if not transferring over a network), as decompressing data can slow down read speeds. But see also GPU decompression with nvCOMP below. :wink:
+1. Storing the data without compression (if not transferring over a network), as decompressing data can slow down read speeds. But see also GPU decompression with nvCOMP below. 😉
 2. Concatenating several data variables together **if** a single chunk size is too small (`<1MB`), at the expense of reducing readability of the Zarr store.
    Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<100MB` (??TODO verify) for optimal reads.
    - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in zarr-python.
@@ -195,10 +195,9 @@ How do these two methods, Zarr (CPU) and kvikio (GPU), compare?
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
 
-For a fully GPU-native workflow, we can let the GPU do all of the work!
-This includes reading the compressed data, decompression (using nvCOMP), any augmentation steps, to the ML model training.
+For a fully GPU-native workflow, we can let the GPU do all of the work, including decompression. This is where [NVIDIA's nvCOMP](https://developer.nvidia.com/nvcomp) library comes in. nvCOMP provides GPU-accelerated compression and decompression algorithms for various data formats, including Zstandard (Zstd). This means that all steps of data loading including reading, decompressing, and transforming data can be done on the GPU, significantly reducing the time spent on data loading (see figure below).
 
-![image](https://hackmd.io/_uploads/rJtz66YCyl.png)
+![GPU native decompression](/posts/gpu-pipline/flowchart_3.png)
 
 Sending compressed instead of uncompressed data to the GPU means less data transfer overall, reducing I/O latency from storage to device.
 To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented at https://github.com/zarr-developers/zarr-python/pull/2863.
@@ -209,11 +208,12 @@ Figure above shows benchmark comparing CPU vs GPU-based decompression, with or w
 
 Keep an eye on this space!
 
-### Step 4: Overlapping CPU and GPU compute with NVIDIA DALI :twisted_rightwards_arrows:
+### Step 4: Overlapping CPU and GPU compute with NVIDIA DALI 🔀
 
-Ideally, we want to minimize pauses where the device (GPU) is waiting for the host (CPU) or vice versa. This is one of the reasons we went with [NVIDIA DALI](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) that enables overlapping CPU and GPU computation.
+Ideally, we want to minimize pauses where the device (GPU) is waiting for the host (CPU) or vice versa (see profiling screenshots above!). This is one of the reasons we went with [NVIDIA DALI](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) that enables overlapping CPU and GPU computation.
 
 Our full codebase is available at https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus for reference.
+
 To start, there is a [zarr_DALI](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) folder with short, contained examples of a DALI pipeline loading from Zarr.
 
 Next, look at the [zarr_ML_optimization](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) folder that contains an end-to-end example on how this DALI pipeline can be integrated into a Pytorch Dataloader and full training workflow.
