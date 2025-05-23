@@ -37,27 +37,27 @@ In this post, we share our hackathon experience, the integration strategies we e
 
 ## Problem
 
-Machine learning pipelines typically involve:
+ML pipelines for large scientific datasets typically include steps:
 
-- Reading data from disk or object storage.
-- Transforming / preprocessing data (often CPU-bound).
-- Feeding the data into GPUs for training or inference.
+- Reading raw data from disk or object storage (often CPU-bound)
+- Transforming / preprocessing data (often CPU-bound)
+- Model Training/Inference (often GPU-bound)
 
-Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets (profiles discussed below).
+Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets. In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU. 
 
-In this hackathon, we tried looking at different ways of reducing this bottleneck.
+In this hackathon, we explored several strategies to reduce the data loading bottleneck and build a GPU-native pipeline to maximize GPU utilization.
+
 
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet backend) model on the ERA-5 Dataset to predict next time steps. The U-Net model is implemented in PyTorch and the training pipeline is built using PyTorch DataLoader. The model can be trained on a single GPU or multiple GPUs using Distributed Data Parallel (DDP) for parallelization. [This repository](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus) contains all our work, including the data loading pipeline, model implementation, and training scripts for the hackathon.
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus). 
 
-The basic data loader is implemented in `zarr_ML_optimization/train_unet.py` and the model is defined in `zarr_ML_optimization/model.py`. The training pipeline is designed to be flexible and can be easily adapted to different datasets and models.
 
-More details on the model and training pipeline can be found in the [README](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/zarr_ML_optimization/README.md) file in the `zarr_ML_optimization` folder.
+### Initial Performance Bottlenecks
 
-### Performance Bottlenecks
+First, we used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify performance bottlenecks. 
 
-First, we needed to identify the performance bottlenecks in our pipeline. We used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify the areas that needed optimization. The profiling results clearly showed that the data loading step was the main bottleneck in our pipeline. Additionally, we noticed the alternating CPU and GPU compute steps (i.e. data loading and model training) were not overlapping, which meant that the GPU was often idle while waiting for the CPU to load data (fist screenshot above).
+The initial profiling results clearly showed that the data loading step was the main bottleneck in our pipeline,  with minimal overlap between CPU and GPU compute steps, which meant that the GPU was often idle while waiting for the CPU to load data.
 
 Here are some screenshots of the profiling results:
 
@@ -74,7 +74,8 @@ Here are some screenshots of the profiling results:
   />
 </div>
 
-This was further confirmed by additional tests comparing data loading and training throughput, as illustrated in the figure below:
+
+We further quantified this bottleneck by comparing data loading and training throughput, as shown in the figure below:
 
 <img
   src='/posts/gpu-pipline/baseline.png'
@@ -82,9 +83,9 @@ This was further confirmed by additional tests comparing data loading and traini
   style={{ display: 'inline-block', width: '50%', maxWidth: '400px' }}
 />
 
-In the plot above, we show the throughput of the data loading and training steps in our pipeline. The three bars represent:
+In the plot above, the three bars represent:
 
-- Real Data: Baseline throughput of the end-to-end pipeline using real data.
+- Baseline: Baseline throughput of the end-to-end pipeline using real data.
 - No Training (i.e. data loading throughput): Throughput of the data loading without any training (to measure the time spent on data loading vs. training).
 - Synthetic Data (i.e. Training throughput): Throughput of the data loading using synthetic data (to remove the data loading bottleneck).
 
@@ -92,22 +93,20 @@ The results show that the data loading step is the main bottleneck in our pipeli
 
 ## Hackathon: Strategies Explored!
 
-Our initial profiling showed that data loading is a major bottleneck in this workflow.
-
 During the hackathon, we tested the following strategies to improve the data loading performance:
 
 1. **Optimized Chunking & Compression**
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
-2. **GPU native data loading with Zarr V3 and KvikIO**
+2. **GPU native data loading with Zarr v3 and KvikIO**
    - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized [KvikIO](https://docs.rapids.ai/api/kvikio/stable/) to bypass CPU memory, enabling direct data transfer from storage to GPU.
 3. **Using `nvcomp` for decompression on GPUs**
    - We explored using [NVIDIA's nvCOMP library](https://developer.nvidia.com/nvcomp) for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
 4. **NVIDIA DALI**: We explored integrating [NVIDIA's Data Loading Library (DALI)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
-### Step 1: Optimized chunking
+### Step 1: Optimized chunking 
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
-We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3.
+We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr V3.
 The full script is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/rechunk/era5_rechunking.ipynb), with the main code looking like so:
 
 ```python
@@ -125,16 +124,15 @@ For more optimal performance, consider:
 1. Storing the data without compression (if not transferring over a network), as decompressing data can slow down read speeds. But see also GPU decompression with nvCOMP below. 😉
 2. Concatenating several data variables together **if** a single chunk size is too small (`<1MB`), at the expense of reducing readability of the Zarr store.
    Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<100MB` for optimal reads.
-   - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in zarr-python.
-3. Align chunks with access pattern of your model.
+   - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in Zarr-python.
+3. Align chunks with model access pattern.
 
-The plot below shows the read performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed zarr v3 dataset.
+The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr v3 dataset.
 
-TODO: ADD plot here.
 
-### Step 2: Reading with zarr-python v3 + kvikIO 📖
+### Step 2: Reading with Zarr-Python v3 + kvikIO 📖
 
-The advent of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) bought many improvements, including the ability to [read from Zarr stores to CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574).
+[Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) introduces new capabilities, including the ability to [read from Zarr stores into CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574).
 
 Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
 
@@ -159,9 +157,9 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before it goes to GPU memory.
+Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory. 
 
-If you prefer to bypass CPU memory, and have GPU Direct Storage (GDS) enabled, you can use the `kvikio` driver like so:
+If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), you can use the `kvikio` to read data directly into GPU memory, bypassing CPU memory. 
 
 ```python
 import kvikio.zarr
@@ -172,7 +170,9 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-This will read the data directly from the Zarr store to GPU memory, bypassing CPU memory. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory, but requires GPU Direct Storage (GDS) to be enabled on your system. For now decompression is still done on CPU, but this is a step towards a fully GPU-native workflow. In the figure below, we show the flowchart of the data loading process with GDS enabled , but please note that the decompression step is still done on CPU.
+This will read the data directly from the Zarr store to GPU memory, significantly reducing I/O latency. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory, but requires GPU Direct Storage (GDS) to be enabled on your system.
+
+While decompression still occurs on the CPU, this marks an important step toward enabling fully GPU-native workflows. In the figure below, we show the flowchart of the data loading process with GDS enabled.
 
 ![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
 
@@ -193,22 +193,22 @@ How do these two methods, Zarr (CPU) and kvikio (GPU), compare?
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
 
-For a fully GPU-native workflow, we can let the GPU do all of the work, including decompression. This is where [NVIDIA's nvCOMP](https://developer.nvidia.com/nvcomp) library comes in. nvCOMP provides GPU-accelerated compression and decompression algorithms for various data formats, including Zstandard (Zstd). This means that all steps of data loading including reading, decompressing, and transforming data can be done on the GPU, significantly reducing the time spent on data loading (see figure below).
+For a fully GPU-native workflow, we can let the GPU do all of the work, including decompression. This is where [NVIDIA's nvCOMP](https://developer.nvidia.com/nvcomp) library comes in. nvCOMP provides GPU-accelerated compression and decompression algorithms for various data formats, including Zstandard (Zstd). This means that all steps of data loading including reading, decompressing, and transforming data can be done on the GPU, significantly reducing the time spent on data loading.
 
 ![GPU native decompression](/posts/gpu-pipline/flowchart_3.png)
 
 Sending compressed instead of uncompressed data to the GPU means less data transfer overall, reducing I/O latency from storage to device.
 To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented in [this PR](https://github.com/zarr-developers/zarr-python/pull/2863).
 
-![GPU native decompression](/posts/gpu-pipline/zstd_benchmark.png)
-
 Figure above shows benchmark comparing CPU vs GPU-based decompression, with or without GDS enabled using [the data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py).
+
+![GPU native decompression](/posts/gpu-pipline/zstd_benchmark.png)
 
 These results show that GPU-based decompression can significantly reduce the time spent on data loading and cut I/O latency from storage to device. This is especially useful for large datasets, as it allows for faster data loading and processing.
 
 Keep an eye on this space, as we are working on integrating this into the Zarr ecosystem to enable GPU-based decompression for Zarr stores. This will allow for a fully GPU-native workflow, where all steps of data loading, including reading, decompressing, and transforming data, can be done on the GPU. 😎
 
-💡 Takeaway: Even without full GDS support, GPU-based decompression can dramatically reduce latency and free up CPU resources for other tasks.
+> 💡 Takeaway: Even without full GDS support, GPU-based decompression can dramatically reduce latency and free up CPU resources for other tasks.
 
 ### Step 4: Overlapping CPU and GPU compute with NVIDIA DALI 🔀
 
@@ -216,13 +216,66 @@ Ideally, we want to minimize idle time on both the CPU and GPU by overlapping th
 
 To address this inefficiency, we adopted [NVIDIA DALI (Data Loading Library)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html), which provides a flexible, GPU-accelerated data pipeline with built-in support for asynchronous execution across CPU and GPU stages. DALI helps reduce CPU pressure, enables concurrent preprocessing, and increases training throughput by pipelining operations.
 
-To start, we started with a minimal example in [zarr_DALI folder](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to create a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store, transfer them directly to GPU memory using CuPy-backed arrays.
+We began with a minimal example in [zarr_DALI directory](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to build a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store and transfer them directly to GPU memory using CuPy arrays.
 
-Next, look at the [zarr_ML_optimization](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) folder that contains an end-to-end example on how this DALI pipeline can be integrated into a Pytorch Dataloader and full training workflow.
+In short, to use DALI with Zarr for data loading, you need to:
 
-![image](https://hackmd.io/_uploads/H1YVp6tR1l.png)
+I. Define an external input iterator to read data from data source (e.g., Zarr store) and yield batches of data:
 
-(TODO insert better nsight profiling figure than above showing overlapping CPU and GPU compute)
+```
+class ExternalInputIterator:
+    def __init__(self, zarr_path="data/example.zarr", batch_size=16):
+        store = zarr.open(zarr_path, mode="r")
+        self.images = store["images"]
+        self.labels = store["labels"]
+        self.batch_size = batch_size
+        self.indices = list(range(len(self.images)))
+
+    def __iter__(self):
+        self.i = 0
+        return self
+
+    def __next__(self):
+        batch, labels = [], []
+        for _ in range(self.batch_size):
+            idx = self.indices[self.i % len(self.images)]
+            batch.append(self.images[idx])
+            labels.append(self.labels[idx])
+            self.i += 1
+        return batch, labels
+```
+
+II. Define a DALI pipeline with `ExternalSource` operator to read data from the iterator.
+```
+eii = ExternalInputIterator()
+pipe = dali.pipeline.Pipeline(batch_size=16, num_threads=4, device_id=0)
+
+with pipe:
+  images, labels = fn.external_source(
+      source=eii,
+      num_outputs=2,
+      device="gpu", # use GPU memory
+      batch_size=16,
+  )
+```
+
+III. Build and run the pipeline: 
+```
+pipe.build()
+output = pipe.run()
+images_gpu, labels_gpu = output
+```
+
+Next, checkout the [end-to-end example](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) directory, where we show how to integrate the DALI pipeline into a PyTorch DataLoader and training loop. This example demonstrates how to use DALI to load data from Zarr stores, preprocess it on the GPU, and feed it into a PyTorch model for training.
+
+Profiling results from the DALI pipeline demonstrate effective overlap between CPU and GPU workloads, significantly reducing GPU idle time (blue) and increasing overall training throughput:
+
+<img
+  src='/posts/gpu-pipline/profiling_screenshot_dali.png'
+  alt='baseline plot'
+  style={{ display: 'inline-block', width: '70%', maxWidth: '400px' }}
+/>
+
 
 ## Going Forward 🔮
 
@@ -232,18 +285,19 @@ We are continuing to explore the following areas:
 
 - GPU Direct Storage (GDS) for optimal performance
 - NVIDIA DALI
-- Support for sharded Zarr with GPU-friendly access patterns.
-- Work out how to use GDS when reading from cloud object store instead of on-prem disk.
+- Support for sharded Zarr with GPU-friendly access patterns
+- Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
 
 ## Lessons Learned 💡
 
 - **Chunking matters!** It really does and can make a huge difference in performance.
+- ** Zarr v3 enables GPU-native workflows**: Zarr v3 currently supports reading data into device (GPU) memory as the final stage of the codec pipeline (by using `zarr.config.enable_gpu()`), but this is not yet fully GPU-native. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer step. 
 - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
-- Compression trade-offs: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
+- **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
 - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
-- CuPy-Xarray integration is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
-- **GPU-native decompression** is a promising area for future work, but requires further development and testing.
+- **CuPy-Xarray integration** is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
+- **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
 
 ## Acknowledgements 🙌
 
