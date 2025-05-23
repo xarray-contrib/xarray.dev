@@ -97,16 +97,16 @@ During the hackathon, we tested the following strategies to improve the data loa
 
 1. **Optimized Chunking & Compression**
    - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
-2. **GPU native data loading with Zarr v3 and KvikIO**
+2. **GPU-native data loading with Zarr v3 and KvikIO**
    - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized [KvikIO](https://docs.rapids.ai/api/kvikio/stable/) to bypass CPU memory, enabling direct data transfer from storage to GPU.
 3. **Using `nvcomp` for decompression on GPUs**
    - We explored using [NVIDIA's nvCOMP library](https://developer.nvidia.com/nvcomp) for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
 4. **NVIDIA DALI**: We explored integrating [NVIDIA's Data Loading Library (DALI)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
-### Step 1: Optimized chunking 
+### Step 1: Optimized chunking & Compression 
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
-We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr V3.
+We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3.
 The full script is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/rechunk/era5_rechunking.ipynb), with the main code looking like so:
 
 ```python
@@ -289,15 +289,15 @@ We are continuing to explore the following areas:
 - Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
 
-## Lessons Learned 💡
+> ## Lessons Learned 💡
 
-- **Chunking matters!** It really does and can make a huge difference in performance.
-- ** Zarr v3 enables GPU-native workflows**: Zarr v3 currently supports reading data into device (GPU) memory as the final stage of the codec pipeline (by using `zarr.config.enable_gpu()`), but this is not yet fully GPU-native. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer step. 
-- **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
-- **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
-- **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
-- **CuPy-Xarray integration** is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
-- **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
+> - **Chunking matters!** It really does and can make a huge difference in performance.
+> - **Zarr v3 enables GPU-native workflows**: Zarr v3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
+> - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
+> - **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
+> - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
+> - **CuPy-Xarray integration** is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
+> - **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
 
 ## Acknowledgements 🙌
 
