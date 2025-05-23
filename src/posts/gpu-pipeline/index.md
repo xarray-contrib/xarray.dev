@@ -43,21 +43,19 @@ ML pipelines for large scientific datasets typically include steps:
 - Transforming / preprocessing data (often CPU-bound)
 - Model Training/Inference (often GPU-bound)
 
-Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets. In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU. 
+Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets. In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.
 
 In this hackathon, we explored several strategies to reduce the data loading bottleneck and build a GPU-native pipeline to maximize GPU utilization.
 
-
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus). 
-
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus).
 
 ### Initial Performance Bottlenecks
 
-First, we used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify performance bottlenecks. 
+First, we used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify performance bottlenecks.
 
-The initial profiling results clearly showed that the data loading step was the main bottleneck in our pipeline,  with minimal overlap between CPU and GPU compute steps, which meant that the GPU was often idle while waiting for the CPU to load data.
+The initial profiling results clearly showed that the data loading step was the main bottleneck in our pipeline, with minimal overlap between CPU and GPU compute steps, which meant that the GPU was often idle while waiting for the CPU to load data.
 
 Here are some screenshots of the profiling results:
 
@@ -73,7 +71,6 @@ Here are some screenshots of the profiling results:
     style={{ width: '55%' }}
   />
 </div>
-
 
 We further quantified this bottleneck by comparing data loading and training throughput, as shown in the figure below:
 
@@ -103,7 +100,7 @@ During the hackathon, we tested the following strategies to improve the data loa
    - We explored using [NVIDIA's nvCOMP library](https://developer.nvidia.com/nvcomp) for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
 4. **NVIDIA DALI**: We explored integrating [NVIDIA's Data Loading Library (DALI)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
 
-### Step 1: Optimized chunking & Compression 
+### Step 1: Optimized chunking & Compression
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
 We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3.
@@ -128,7 +125,6 @@ For more optimal performance, consider:
 3. Align chunks with model access pattern.
 
 The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr v3 dataset.
-
 
 ### Step 2: Reading with Zarr-Python v3 + kvikIO 📖
 
@@ -157,9 +153,9 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory. 
+Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory.
 
-If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), you can use the `kvikio` to read data directly into GPU memory, bypassing CPU memory. 
+If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), you can use the `kvikio` to read data directly into GPU memory, bypassing CPU memory.
 
 ```python
 import kvikio.zarr
@@ -246,6 +242,7 @@ class ExternalInputIterator:
 ```
 
 II. Define a DALI pipeline with `ExternalSource` operator to read data from the iterator.
+
 ```
 eii = ExternalInputIterator()
 pipe = dali.pipeline.Pipeline(batch_size=16, num_threads=4, device_id=0)
@@ -259,7 +256,8 @@ with pipe:
   )
 ```
 
-III. Build and run the pipeline: 
+III. Build and run the pipeline:
+
 ```
 pipe.build()
 output = pipe.run()
@@ -275,7 +273,6 @@ Profiling results from the DALI pipeline demonstrate effective overlap between C
   alt='baseline plot'
   style={{ display: 'inline-block', width: '70%', maxWidth: '400px' }}
 />
-
 
 ## Going Forward 🔮
 
