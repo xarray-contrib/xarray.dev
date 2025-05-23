@@ -92,15 +92,7 @@ The results show that the data loading step is the main bottleneck in our pipeli
 
 During the hackathon, we tested the following strategies to improve the data loading performance:
 
-1. **Optimized Chunking & Compression**
-   - We explored different chunking and compression strategies to optimize the data loading performance. We found that using Zarr v3 with optimized chunking and compression significantly improved the data loading performance.
-2. **GPU-native data loading with Zarr v3 and KvikIO**
-   - Leveraging Zarr v3's support for reading data directly into GPU memory using CuPy arrays, we utilized [KvikIO](https://docs.rapids.ai/api/kvikio/stable/) to bypass CPU memory, enabling direct data transfer from storage to GPU.
-3. **Using `nvcomp` for decompression on GPUs**
-   - We explored using [NVIDIA's nvCOMP library](https://developer.nvidia.com/nvcomp) for GPU-accelerated decompression of Zarr data. This allowed us to offload the decompression step to the GPU, reducing the time spent on data loading.
-4. **NVIDIA DALI**: We explored integrating [NVIDIA's Data Loading Library (DALI)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html) into our pipeline to facilitate efficient data loading and preprocessing directly on the GPU. NVIDIA DALI provides highly optimized building blocks and an execution engine for data processing, accelerating deep learning applications.
-
-### Step 1: Optimized chunking & Compression
+### Step 1: Optimized Chunking & Compression
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
 We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3.
@@ -126,7 +118,7 @@ For more optimal performance, consider:
 
 The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr v3 dataset.
 
-![Rechunking performance](/posts/gpu-pipline/performance_plot.png)
+![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
 
 ### Step 2: Reading with Zarr-Python v3 + kvikIO 📖
 
@@ -168,26 +160,13 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-This will read the data directly from the Zarr store to GPU memory, significantly reducing I/O latency. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory, but requires GPU Direct Storage (GDS) to be enabled on your system.
+This will read the data directly from the Zarr store to GPU memory, significantly reducing I/O latency. This is especially useful for large datasets, as it reduces the amount of data that needs to be transferred between CPU and GPU memory, but it relies on [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.com/datacenter/pgp/gds/index.html) to be enabled on your system.
 
-While decompression still occurs on the CPU, this marks an important step toward enabling fully GPU-native workflows. In the figure below, we show the flowchart of the data loading process with GDS enabled.
+While decompression still occurs on the CPU, this marks an important step toward enabling fully GPU-native workflows. In the figure below, we show the flowchart of the data loading process with GDS enabled (i.e. using `kvikio`):
 
 ![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
 
-Eventually with this [cupy-xarray Pull Request merged](https://github.com/xarray-contrib/cupy-xarray/pull/70) (based on earlier work at https://xarray.dev/blog/xarray-kvikio), this can be simplified to:
-
-```python
-import cupy_xarray
-
-ds = xr.open_dataset(filename_or_obj="/tmp/air-temp.zarr", engine="kvikio")
-assert isinstance(ds.air.data, cp.ndarray)
-```
-
-How do these two methods, Zarr (CPU) and kvikio (GPU), compare?
-
-(TODO put in benchmark numbers here).
-
-**Note**: For kvikio performance improvements, you need GPU Direct Storage (GDS) enabled on your system. This is a feature that allows the GPU to access data directly from storage, bypassing the CPU and reducing latency. GDS is supported on NVIDIA GPUs with the [GPUDirect Storage](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature.
+**Note**: For KvikIO performance improvements, you need GPU Direct Storage (GDS) enabled on your system. This is a feature that allows the GPU to access data directly from storage, bypassing the CPU and reducing latency. GDS is supported on NVIDIA GPUs with the [GPUDirect Storage](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature.
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
 
@@ -273,7 +252,6 @@ Profiling results from the DALI pipeline demonstrate effective overlap between C
 <img
   src='/posts/gpu-pipline/profiling_screenshot_dali.png'
   alt='baseline plot'
-  style={{ display: 'inline-block', width: '70%', maxWidth: '400px' }}
 />
 
 ## Going Forward 🔮
