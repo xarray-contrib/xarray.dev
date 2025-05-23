@@ -126,6 +126,8 @@ For more optimal performance, consider:
 
 The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr v3 dataset.
 
+![Rechunking performance](/posts/gpu-pipline/performance_plot.png)
+
 ### Step 2: Reading with Zarr-Python v3 + kvikIO 📖
 
 [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) introduces new capabilities, including the ability to [read from Zarr stores into CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574).
