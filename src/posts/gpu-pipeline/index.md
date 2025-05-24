@@ -122,19 +122,19 @@ The plot below shows the performance of the original dataset vs. the rechunked d
 
 ### Step 2: Direct to GPU Data Reading with Zarr v3 (+ KvikIO) 📖
 
-One of the exciting features of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)]((https://github.com/zarr-developers/zarr-python/issues/2574)). 🎉 
+One of the exciting features of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)](<(https://github.com/zarr-developers/zarr-python/issues/2574)>). 🎉
 
-Specifically, you can either use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly! 
+Specifically, you can either use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
 
 To benefit from these new features, we recommend installing:
+
 - [`zarr>=3.0.3`](https://github.com/zarr-developers/zarr-python/releases/tag/v3.0.3)
 - [`xarray>=2025.03.00`](https://github.com/pydata/xarray/releases/tag/v2025.03.0)
 - [`kvikio>=25.04.00`](https://github.com/rapidsai/kvikio/releases/tag/v25.04.00)
 
-
 **Option 1: GPU-backed arrays via `zarr-python` (Zarr->CPU->GPU)**
 
-The example below shows how to read a Zarr store into CuPy arrays by using[`zarr.config.enable_gpu()`](https://zarr.readthedocs.io/en/v3.0.6/user-guide/gpu.html):  
+The example below shows how to read a Zarr store into CuPy arrays by using[`zarr.config.enable_gpu()`](https://zarr.readthedocs.io/en/v3.0.6/user-guide/gpu.html):
 
 ```python
 import cupy as cp
@@ -154,6 +154,7 @@ with zarr.config.enable_gpu():
 II. **Option 2: Direct-to-GPU via KvikIO (Zarr -> GPU)**
 If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), KvikIO enables the GPU to read data directly into GPU memory, bypassing CPU memory.
 Here is a minimal example of how to do this:
+
 ```python
 import kvikio.zarr
 
@@ -169,7 +170,6 @@ However, it relies on the [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.c
 **Note**: Even with GDS, the decompression step is still occurs on the CPU (see next section for GPU solutions!). This means that the data is still being decompressed on the CPU before being transferred to the GPU. However, this is still a significant improvement over the previous method, as it reduces the amount of data that needs to be transferred over the PCIe bus. In the figure below, we show the flowchart of the data loading process with GDS enabled (i.e. using `kvikio`):
 
 ![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
-
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
 
@@ -191,7 +191,7 @@ Here are the results:
 
 > These results show that GPU-based decompression can significantly reduce the time spent on data loading and cut I/O latency from storage to device (less data transfer over PCIe/NVLink). This is especially useful for large datasets, as it allows for faster data loading and processing.
 
-Keep an eye on this space, as we are working on integrating this into the Zarr ecosystem to enable GPU-based decompression for Zarr stores. This will allow for a fully GPU-native workflow, where all steps of data loading, including reading, decompressing, and transforming data, can be done on the GPU. 
+Keep an eye on this space, as we are working on integrating this into the Zarr ecosystem to enable GPU-based decompression for Zarr stores. This will allow for a fully GPU-native workflow, where all steps of data loading, including reading, decompressing, and transforming data, can be done on the GPU.
 
 > 💡 Takeaway: Even without full GDS support, GPU-based decompression can dramatically reduce I/O latency and free up CPU resources for other tasks.
 
@@ -271,11 +271,12 @@ We are continuing to explore the following areas:
 
 - GPU Direct Storage (GDS) for optimal performance
 - NVIDIA DALI
-- Support for sharded Zarr with GPU-friendly access patterns [already merged in Zarr v3](). 
+- Support for sharded Zarr with GPU-friendly access patterns [already merged in Zarr v3]().
 - Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
 
 > ## Lessons Learned 💡
+>
 > - **Chunking matters!** It really does and can make a huge difference in performance.
 > - **Zarr v3 enables GPU-native workflows**: Zarr v3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
 > - **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
