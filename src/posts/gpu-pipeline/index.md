@@ -120,11 +120,11 @@ The plot below shows the performance of the original dataset vs. the rechunked d
 
 ![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
 
-### Step 2: Direct to GPU Reading with Zarr-Python V3 (+ KvikIO) 📖
+### Step 2: Direct to GPU Data Reading with Zarr v3 (+ KvikIO) 📖
 
-[Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) introduces new capabilities, including the ability to [read from Zarr stores into CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574). 🎉
+One of the exciting features of [Zarr v3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)]((https://github.com/zarr-developers/zarr-python/issues/2574)). 🎉 
 
-Specifically, you can use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly! 
+Specifically, you can either use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly! 
 
 To benefit from these new features, we recommend installing:
 - [`zarr>=3.0.3`](https://github.com/zarr-developers/zarr-python/releases/tag/v3.0.3)
@@ -134,7 +134,7 @@ To benefit from these new features, we recommend installing:
 
 **Option 1: GPU-backed arrays via `zarr-python` (Zarr->CPU->GPU)**
 
-The example below shows how to read a Zarr store into GPU memory by using[`zarr.config.enable_gpu()`](https://zarr.readthedocs.io/en/v3.0.6/user-guide/gpu.html):  
+The example below shows how to read a Zarr store into CuPy arrays by using[`zarr.config.enable_gpu()`](https://zarr.readthedocs.io/en/v3.0.6/user-guide/gpu.html):  
 
 ```python
 import cupy as cp
@@ -149,7 +149,7 @@ with zarr.config.enable_gpu():
     assert isinstance(ds.air.data, cp.ndarray)
 ```
 
-Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory.
+⚠️ Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory.
 
 II. **Option 2: Direct-to-GPU via KvikIO (Zarr -> GPU)**
 If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), KvikIO enables the GPU to read data directly into GPU memory, bypassing CPU memory.
@@ -195,14 +195,13 @@ Keep an eye on this space, as we are working on integrating this into the Zarr e
 
 > 💡 Takeaway: Even without full GDS support, GPU-based decompression can dramatically reduce I/O latency and free up CPU resources for other tasks.
 
-
 ### Step 4: Overlapping CPU and GPU compute with NVIDIA DALI 🔀
 
 Ideally, we want to minimize idle time on both the CPU and GPU by overlapping their workloads. In traditional PyTorch DataLoaders, data loading and preprocessing often happen sequentially before GPU training can begin—this creates stalls where the GPU sits idle waiting for input (as seen in our baseline profiling screenshots above).
 
 To address this inefficiency, we adopted [NVIDIA DALI (Data Loading Library)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html), which provides a flexible, GPU-accelerated data pipeline with built-in support for asynchronous execution across CPU and GPU stages. DALI helps reduce CPU pressure, enables concurrent preprocessing, and increases training throughput by pipelining operations.
 
-We began with a minimal example in [zarr_DALI directory](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to build a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store and transfer them directly to GPU memory using CuPy arrays.
+First, we began with a minimal example in [zarr_DALI directory](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to build a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store and transfer them directly to GPU memory using CuPy arrays.
 
 In short, to use DALI with Zarr for data loading, you need to:
 
@@ -212,10 +211,11 @@ I. Define an external input iterator to read data from data source (e.g., Zarr s
 class ExternalInputIterator:
     def __init__(self, zarr_path="data/example.zarr", batch_size=16):
         store = zarr.open(zarr_path, mode="r")
-        self.images = store["images"]
-        self.labels = store["labels"]
+        self.data_array = store[variable_name]
+        self.labels = store[label_variable_name]
         self.batch_size = batch_size
         self.indices = list(range(len(self.images)))
+        self.num_samples = len(self.data_array)
 
     def __iter__(self):
         self.i = 0
@@ -225,13 +225,13 @@ class ExternalInputIterator:
         batch, labels = [], []
         for _ in range(self.batch_size):
             idx = self.indices[self.i % len(self.images)]
-            batch.append(self.images[idx])
+            batch.append(self.data_array[idx])
             labels.append(self.labels[idx])
             self.i += 1
         return batch, labels
 ```
 
-II. Define a DALI pipeline with `ExternalSource` operator to read data from the iterator.
+II. Define a DALI pipeline: Use `ExternalSource` operator to read data from the iterator.
 
 ```
 eii = ExternalInputIterator()
@@ -271,16 +271,15 @@ We are continuing to explore the following areas:
 
 - GPU Direct Storage (GDS) for optimal performance
 - NVIDIA DALI
-- Support for sharded Zarr with GPU-friendly access patterns
+- Support for sharded Zarr with GPU-friendly access patterns [already merged in Zarr v3](). 
 - Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
 
 > ## Lessons Learned 💡
-
 > - **Chunking matters!** It really does and can make a huge difference in performance.
 > - **Zarr v3 enables GPU-native workflows**: Zarr v3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
-> - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
 > - **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
+> - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
 > - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
 > - **CuPy-Xarray integration** is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
 > - **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
