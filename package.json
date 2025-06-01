@@ -31,7 +31,7 @@
     "d3": "^7.9.0",
     "date-fns": "^3.0.0",
     "date-fns-tz": "^3.2.0",
-    "feed": "^4.2.2",
+    "feed": "^5.1.0",
     "framer-motion": "^11.9.0",
     "gray-matter": "^4.0.3",
     "isomorphic-dompurify": "^2.16.0",
