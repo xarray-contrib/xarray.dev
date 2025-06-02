@@ -152,7 +152,7 @@ Attributes: (5)
 ## How does this work?
 
 Xarray's GroupBy API implements the split-apply-combine pattern (Wickham, 2011) which applies to a very large number of problems: histogramming, compositing, climatological averaging, resampling to a different time frequency, etc.
-The first step in doing so is converting group labels of arbitrary type to integer codes --- "factorization".
+The first step in doing so is converting group labels of arbitrary type to integer codes — ["factorization"](https://pandas.pydata.org/pandas-docs/stable/user_guide/reshaping.html#reshaping-factorize).
 [Grouper objects](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md) provide an extension point that allow users and downstream libraries to plug in custom factorization strategies.
 Here we do exactly that to handle the complexities of seasonal grouping ([example](https://github.com/pydata/xarray/blob/34efef2192a65e0f26a340ae305b0d3ed9e91b19/xarray/groupers.py#L764)).
 Given the user's definition of seasons, we construct the appropriate array of integer codes and run the aggregation as usual.
