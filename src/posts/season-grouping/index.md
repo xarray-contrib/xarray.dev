@@ -132,7 +132,7 @@ Attributes: (5)
 
 ### Multiple groupers
 
-These new Grouper objects compose well with grouping over other arrays ([see blog post](../multiple-groupers/)), for example
+These new Grouper objects compose well with grouping over other arrays ([see blog post](https://xarray.dev/blog/multiple-groupers/)), for example
 
 ```
 >>> from xarray.groupers import BinGrouper
