@@ -28,6 +28,7 @@ These approaches have significant limitations
 ## The Solution
 
 Our new Grouper objects - [`SeasonGrouper`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.SeasonGrouper.html#xarray.groupers.SeasonGrouper) and [`SeasonResampler`](https://docs.xarray.dev/en/latest/generated/xarray.groupers.SeasonResampler.html#xarray.groupers.SeasonResampler) - help solve nearly all the above problems.
+All of the GroupBy API is supported (reductions, iteration, `map`, etc.).
 
 ## Examples
 
@@ -37,6 +38,7 @@ Load in our classic example dataset:
 
 ````python
 >>> import xarray as xr
+>>>
 >>> ds = xr.tutorial.open_dataset("air_temperature")
 >>> ds
 <xarray.Dataset> Size: 31MB
@@ -54,6 +56,7 @@ Attributes: (5)
 
 ```python
 >>> from xarray.groupers import SeasonGrouper
+>>>
 >>> ds.groupby(time=SeasonGrouper(["DJF", "MAM", "JJA", "SON"])).count()
 <xarray.Dataset> Size: 43kB
 Dimensions:  (season: 4, lat: 25, lon: 53)
