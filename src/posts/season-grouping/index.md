@@ -14,15 +14,15 @@ Two new [Grouper](https://github.com/pydata/xarray/blob/main/design_notes/groupe
 ## The Problem
 
 Xarray has supported seasonal grouping using `ds.groupby("time.season")` for a very long time.
-Seasonal resampling has been supported using pandas syntax `ds.resample(time="QS-Dec")`.
+Seasonal resampling has been supported using [pandas syntax](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#resampling) `ds.resample(time="QS-Dec")`.
 
 These approaches have significant limitations
 
-1. Custom season definitions are not possible. This is a very common user request ([1](https://github.com/pydata/xarray/discussions/6180), [2](https://github.com/pydata/xarray/discussions/5134), [3](https://github.com/pydata/xarray/discussions/6865), [4](https://stackoverflow.com/questions/68455725/how-to-enable-season-selection-as-jjas-instead-of-jja-in-xarray), [6](https://stackoverflow.com/questions/69021082/december-january-seasonal-mean)).
+1. Custom season definitions are not possible. This is a very common user request ([1](https://github.com/pydata/xarray/discussions/6180), [2](https://github.com/pydata/xarray/discussions/5134), [3](https://github.com/pydata/xarray/discussions/6865), [4](https://stackoverflow.com/questions/68455725/how-to-enable-season-selection-as-jjas-instead-of-jja-in-xarray), [5](https://stackoverflow.com/questions/69021082/december-january-seasonal-mean)).
    - The `"time.season"` 'virtual variable' (or `time.dt.season`) hardcodes the Northern Hemisphere-centric three-month season definitions namely `["DJF", "MAM", "JJA", "SON"]`.
-   - The pandas resampling syntax is more powerful but is still limited to three month seasons, even though the start date can be changed (e.g. `QS-Aug` means 'quarters starting in August'.
-   - A common annoyance with `groupby('time.season')` is that seasons come out in alphabetical (nonsensical) order --- `["DJF", "JJA", "MAM", "SON"]` --- a consequence of this really being a 'categorical' reduction under the hood.
-2. Seasons spanning the end of the year (e.g DJF) need to be handled specially, in many cases we want to ignore any months in incompletely sampled seasons. E.g. for a time series beginning in Jan-2001 we'd prefer the DJF season beginning in Dec-2000 to be ignored.
+   - The pandas resampling syntax is more powerful but is still limited to three month seasons, even though the start date can be changed (e.g. `QS-Aug` means 'quarters starting in August').
+   - A common annoyance with `groupby('time.season')` is that seasons come out in alphabetical (nonsensical) order — `["DJF", "JJA", "MAM", "SON"]` — a consequence of this really being a 'categorical' reduction under the hood.
+2. Seasons spanning the end of the year (e.g DJF) need to be handled specially, in many cases we want to ignore any months in incompletely sampled seasons. As an example, for a time series beginning in Jan-2001 we'd prefer the DJF season beginning in Dec-2000 to be ignored.
 3. Overlapping seasons are a common request: `["DJFM", "MAMJ", "JJAS", "SOND"]`.
 
 ## The Solution
@@ -132,10 +132,11 @@ Attributes: (5)
 
 ### Multiple groupers
 
-These grouper objects composes with grouping over other arrays ([see blog post](../multiple-groupers/)), for example
+These new Grouper objects compose well with grouping over other arrays ([see blog post](../multiple-groupers/)), for example
 
 ```
 >>> from xarray.groupers import BinGrouper
+>>>
 >>> ds.groupby(lat=BinGrouper(bins=2), time=SeasonResampler(["JF", "MAM", "JJAS", "OND"])).count()
 <xarray.Dataset> Size: 7kB
 Dimensions:   (lon: 53, lat_bins: 2, time: 8)
@@ -150,9 +151,9 @@ Attributes: (5)
 
 ## How does this work?
 
-Xarray's GroupBy API implements the split-apply-combine pattern (Wickham, 2011)1, which applies to a very large number of problems: histogramming, compositing, climatological averaging, resampling to a different time frequency, etc.
+Xarray's GroupBy API implements the split-apply-combine pattern (Wickham, 2011) which applies to a very large number of problems: histogramming, compositing, climatological averaging, resampling to a different time frequency, etc.
 The first step in doing so is converting group labels of arbitrary type to integer codes --- "factorization".
-[Grouper objects](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md) present an extension point that allows custom factorization strategies.
+[Grouper objects](https://github.com/pydata/xarray/blob/main/design_notes/grouper_objects.md) provide an extension point that allow users and downstream libraries to plug in custom factorization strategies.
 Here we do exactly that to handle the complexities of seasonal grouping ([example](https://github.com/pydata/xarray/blob/34efef2192a65e0f26a340ae305b0d3ed9e91b19/xarray/groupers.py#L764)).
 Given the user's definition of seasons, we construct the appropriate array of integer codes and run the aggregation as usual.
 
