@@ -33,6 +33,7 @@ Xarray’s data structures provide a solution to all these problems. To quote th
 `Xarray` accomplishes this by providing the [`DataArray`](https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataarray), [`Dataset`](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataset) and [`DataTree`](https://docs.xarray.dev/en/stable/user-guide/data-structures.html#datatree). Which keep track of it metadata and are coordinate aware (e.g., can hold the values of timepoints in seconds for you).
 
 ### DataArray
+
 Here is an example of what a `DataArray` of a small stack of microscopy images might look like:
 
 <RawHTML filePath='/posts/xarray-biology/dataarray-repr.html' />
@@ -40,6 +41,7 @@ Here is an example of what a `DataArray` of a small stack of microscopy images m
 Looking at the `repr`, you can probably understand a lot about the experiment without any explanation. You no longer need to mentally keep track of transposes, axis labels, and metadata because you can always check the current state! This `Xarray` feature makes it easier for you to develop your analysis and also means that your code will be more easily understandable by others. Or if you receive a notebook from someone, you will have an easier time deciphering it. You can also use the metadata to expressss operations, writing `dim="time"` is much clearer than `axis=0`
 
 ### Dataset
+
 When you collect data, you likely collect more than just one type. You may have sequence data in addition to growth curves, fluorescence data, or some kind of spectral data. If you collect multiple arrays of data that share some dimensions (e.g., time) but not all, how do you keep them organized? They can't fit in one array as they don't share all their dimensions!
 
 Happily, `Xarray` solves this problem for us as well! The [`Dataset`](https://docs.xarray.dev/en/latest/user-guide/data-structures.html#dataset) object stores collections of related `DataArray`'s. For example, for our microscopy image stack, we might also create a segmentation layer that will share some of the dimensions of our image (`time`, `X`, `Y`, [`Z`]) but not all (`channel`, [`Z`]) and it would be great to keep them together.
@@ -53,6 +55,7 @@ Finally, the [`DataTree`](https://docs.xarray.dev/en/latest/user-guide/data-stru
 <RawHTML filePath='/posts/xarray-biology/datatree-repr.html' />
 
 ### Why use Xarray?
+
 Having labeled dimensions and the ability to organize multiple arrays is often reason enough to start using Xarray. But there are more benefits:
 
 - Readable and easy to use [indexing and selecting semantics](https://docs.xarray.dev/en/stable/user-guide/indexing.html)
@@ -62,16 +65,15 @@ Having labeled dimensions and the ability to organize multiple arrays is often r
 - Powerful [computational Patterns](https://tutorial.xarray.dev/intermediate/01-high-level-computation-patterns.html) such as `groupby`, `coarsen`, `resample`
 - Ability to scale to larger than memory datasets via [integration with Dask](https://docs.xarray.dev/en/stable/user-guide/dask.html)
 - Flexible [I/O framework](https://docs.xarray.dev/en/stable/user-guide/io.html) with potential for better integration with a zoo of bio formats
-- Arbitrary array types including `pydata/sparse` arrays.  
-
+- Arbitrary array types including `pydata/sparse` arrays.
 
 ### When Can You Use Xarray?
 
-As great as Xarray sounds, it does have limitations. Xarray is an array library; it's in the name! So, if your data is tabular and the tabular ecosystem is working well for you then keep using that! 
+As great as Xarray sounds, it does have limitations. Xarray is an array library; it's in the name! So, if your data is tabular and the tabular ecosystem is working well for you then keep using that!
 
 To better understand if you have tabular or array data, I recommend reading Ryan Abernathy's excellent post [Tensors vs. Tables](https://earthmover.io/blog/tensors-vs-tables?ref=xarray-bio-blog). If you have array-like data and have been using `pandas` to work with it and want to try out `xarray` you can do so easily with `pandas_df.to_xarray()`.
 
- Many parts of biology generate array data. And scientists in some areas are already benefiting from Xarray.
+Many parts of biology generate array data. And scientists in some areas are already benefiting from Xarray.
 
 ### Who is Using Xarray
 
@@ -128,7 +130,7 @@ As a community of contributors to `Xarray`, we need to:
 Make sure to **ask for help** when you need it. To do so:
 
 - Post on forums (e.g., [image.sc](https://forum.image.sc/), or the [Xarray Github Discussions](https://github.com/pydata/xarray/discussions))
-As part of my role as an "Xarray community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology 
+  As part of my role as an "Xarray community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology
 - Join the new Xarray for Biology [office hours](https://xarray-contrib.github.io/xarray-for-bio/getting-help.html#office-hours)
 - Book one on one time with Ian [here](https://calendar.app.google/xdjhynWycxE3okk68).
 
@@ -143,8 +145,6 @@ Anyone already using `Xarray` to work with biology data is uniquely well-positio
 **Build** and then **share** tools that use `Xarray` to do useful things, such as building domain-specific visualization tools that use Xarray metadata to build the visualizations. Or solving any problems that you run into; if it bothers you, it likely bothers someone else, and they'll be happy to use your solution.
 **Contribute** by commenting on Xarray issues, explaining how they affect biology use cases, and working on bug fixes and new features.
 **Support** other biologists learning to use Xarray. Respond to forum posts and help budding users, write and share small examples of using Xarray with biology data. Teach tutorials to your peers.
-
-
 
 As part of my role as an "Xarray community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology [office hours](https://xarray-contrib.github.io/xarray-for-bio/getting-help.html#office-hours), or book some time with me to talk Xarray and Biology [here](https://calendar.app.google/xdjhynWycxE3okk68).
 
