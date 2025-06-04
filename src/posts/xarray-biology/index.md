@@ -1,6 +1,6 @@
 ---
-title: 'Accelerating Biological Analysis with Xarray: Why You Should Try Using It Today'
-date: '2025-05-04'
+title: 'Accelerating Biological Analysis with Xarray'
+date: '2025-06-04'
 authors:
   - name: Ian Hunt-Isaak
     github: ianhi
@@ -129,7 +129,6 @@ Make sure to **ask for help** when you need it. To do so:
 
 - Post on forums (e.g., [image.sc](https://forum.image.sc/), or the [Xarray Github Discussions](https://github.com/pydata/xarray/discussions))
 As part of my role as an "Xarray community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology 
-
 - Join the new Xarray for Biology [office hours](https://xarray-contrib.github.io/xarray-for-bio/getting-help.html#office-hours)
 - Book one on one time with Ian [here](https://calendar.app.google/xdjhynWycxE3okk68).
 
