@@ -36,14 +36,11 @@ ds
 
 <RawHTML filePath='/posts/flexible-indexes/rangeindex-repr.html' />
 
-
 ### IntervalIndex
 
 TODO: Not sure if this one is ready to highlight(https://github.com/pydata/xarray/pull/10296)
 
-
 ## Third-party custom Indexes
-
 
 ### Xvec GeometryIndex
 
@@ -55,7 +52,7 @@ TODO: Highlight https://github.com/dcherian/rasterix
 
 ## What’s next
 
- While we're extremely excited about what can *already* be accomplished with the new indexing capabilities, there are plenty of exciting ideas for future work. If you're interested in getting involved we recommend following [this GitHub Issue](https://github.com/pydata/xarray/issues/6293)!
+While we're extremely excited about what can _already_ be accomplished with the new indexing capabilities, there are plenty of exciting ideas for future work. If you're interested in getting involved we recommend following [this GitHub Issue](https://github.com/pydata/xarray/issues/6293)!
 
 ## Acknowledgments
 
