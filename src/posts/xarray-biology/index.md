@@ -7,7 +7,9 @@ authors:
 summary: 'A discussion of how Xarray fits into Biological analysis workflows'
 ---
 
-**SciPy 2025 Sprint!** If you will be attending the [SciPy 2025](https://www.scipy2025.scipy.org/) conference join our Xarray for Biology Sprint! It's not required but if you are interested let us knnow via this [form](https://docs.google.com/forms/d/e/1FAIpQLSeGvTLONF-24V7z2HoACm4MhEr82c2V-VIzA9eqM9-jt-Xh8g/viewform?usp=sharing&ouid=111570313164368772519)
+**SciPy 2025 Sprint!** If you will be attending the [SciPy 2025](https://www.scipy2025.scipy.org/) conference join our Xarray for Biology Sprint! It's not required but if you are interested let us k/now via this [form](https://docs.google.com/forms/d/e/1FAIpQLSeGvTLONF-24V7z2HoACm4MhEr82c2V-VIzA9eqM9-jt-Xh8g/viewform?usp=sharing&ouid=111570313164368772519).
+
+----
 
 I'm Ian, a multimodal microscopist, and the new "Xarray Community Developer." In this role, funded by the Chan Zuckerberg Institute, I work full-time to support the usage of Xarray in biological and biomedical applications.
 
