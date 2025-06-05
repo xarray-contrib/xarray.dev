@@ -13,11 +13,17 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Check out the new blog post on DataTree!'
-  const bannerDescription = ''
+  const bannerTitle = 'Check out the new blog post!:'
+  // The first link will be the main description for the banner
+  const bannerDescription = (
+    <Link href='/blog/xarray-biology' fontWeight="medium"> {/* Ensure it stands out a bit */}
+      Xarray for Biology: Learn how Xarray can be used for Biological workflows.
+    </Link>
+  )
+  // The second link will be passed as children, styled to be smaller
   const bannerChildren = (
-    <Link href='/blog/datatree'>
-      Xarray x NASA: xarray.DataTree for hierarchical data structures
+    <Link href='https://docs.google.com/forms/d/e/1FAIpQLSeGvTLONF-24V7z2HoACm4MhEr82c2V-VIzA9eqM9-jt-Xh8g/viewform?usp=sharing&ouid=111570313164368772519' fontSize="sm"> {/* Add your second link here, smaller font */}
+      <b>SciPy 2025</b> Click here for info about an Xarray for Bio Sprint!
     </Link>
   )
 
