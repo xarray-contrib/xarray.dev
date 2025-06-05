@@ -1,6 +1,6 @@
 ---
 title: 'Accelerating Biological Analysis with Xarray'
-date: '2025-06-04'
+date: '2025-06-05'
 authors:
   - name: Ian Hunt-Isaak
     github: ianhi
