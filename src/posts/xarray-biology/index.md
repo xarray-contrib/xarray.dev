@@ -16,7 +16,6 @@ Hi! I'm Ian, a multimodal microscopist, and the new "Xarray Community Developer.
 
 I believe Xarray can be immensely valuable to the biological community. I discovered Xarray during my PhD where I used it to keep track of complex microscopy image metadata and execute larger-than-memory jobs on the cluster. It is so useful that it since served as my default tool for all analyses in both structural and microbiology. Uxing Xarray means I no longer ask myself questions like: Which axis was what? Where did the exposure times go? I know I changed the media at 32 minutes, but what time index was that? 
 
-<!-- Desperate for a solution, I found Xarray, seemingly a solution to all my woes. But I left thinking it was not for me as the examples were geoscience-centric. Fortunately, I eventually rediscovered Xarray, mentally translated the examples to biology, and found it incredibly useful. It is so useful that it since served as my default tool for all analyses in both structural and microbiology. -->
 
 You have likely experienced similar challenges when working with array data (e.g., microscopy images, genomic sequences, or anything else you might currently analyze using NumPy). However, while Xarray is heavily used in the geosciences community, which is where it was initially developed, biological applications are only recently gaining steam.
 
