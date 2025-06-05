@@ -150,7 +150,7 @@ Anyone already using Xarray to work with biology data is uniquely well-positione
 **Contribute** by commenting on Xarray issues, explaining how they affect biology use cases, and working on bug fixes and new features.
 **Support** other biologists learning to use Xarray. Respond to forum posts and help budding users, write and share small examples of using Xarray with biology data. Teach tutorials to your peers.
 
-As part of my role as an "Xarray community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology [office hours](https://xarray-contrib.github.io/xarray-for-bio/getting-help.html#office-hours), or book some time with me to talk Xarray and Biology [here](https://calendar.app.google/xdjhynWycxE3okk68).
+As part of my role as an "Xarray Community Developer" I'm always happy to talk to you about whether Xarray might be a good fit for your biology data. Please reach out if you have a question! I'm `@ianhi` on most platforms. You can also join our new Xarray in Biology [office hours](https://xarray-contrib.github.io/xarray-for-bio/getting-help.html#office-hours), or book some time with me to talk Xarray and Biology [here](https://calendar.app.google/xdjhynWycxE3okk68).
 
 ## Looking Forward
 
