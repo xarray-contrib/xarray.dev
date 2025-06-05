@@ -82,8 +82,8 @@ Many parts of biology generate array data. And scientists in some areas are alre
 - [`Sgkit`](https://sgkit-dev.github.io/sgkit/latest/getting_started.html#data-structures) "a toolkit for quantitative and population genetics" uses `Xarray` `Dataset`'s as a core data structure. `Xarray` allows them to keep track of the rich metadata associated with sequences and further uses computational patterns to speed up analyses.
   - `Xarray`'s interoperability with Zarr makes it a promising way to interact with new Variant Call Format (VCF) standard [`VCF Zarr`](https://www.biorxiv.org/content/10.1101/2024.06.11.598241v3)
 - `Xarray` has also been used for neurophysiology data by the [Ecephys](https://allensdk.readthedocs.io/en/latest/allensdk.brain_observatory.ecephys.html) package. See a previous blog post [xarray for neurophysiology](https://xarray.dev/blog/xarray-for-neurophysiology) to learn more.
-- The `scverse` family of software uses `anndata`, which, like `Xarray` provides labeled dimensions. There are plans to have `anndata` be powered by `anndata`
-- The `bioio` package, capable of reading a zoo of microscope formats, provides a function to get image stacks as a `DataArray`.
+- The `scverse` family of software uses [`anndata`](https://anndata.readthedocs.io/en/stable/), which, like `Xarray` provides labeled dimensions. There are plans to have `anndata` be powered by `anndata`
+- The [`bioio`](https://bioio-devs.github.io/bioio/OVERVIEW.html) package, capable of reading a zoo of microscope formats, provides a function to get image stacks as a `DataArray`.
 - The [`movement`](https://movement.neuroinformatics.dev/index.html) package for analyzing animal body movements uses `Xarray.Dataset`s as their data model.
 - The `Xarray.DataTree` provides a natural representation of multiscale images and can interoperate well with the OME-NGFF model. The [multiscale-spatial-image](https://github.com/spatial-image/multiscale-spatial-image?tab=readme-ov-file#multiscale-spatial-image) project uses `DataTree` for precisely this purpose.
 
