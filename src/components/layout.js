@@ -13,13 +13,22 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Xarray’s 2024 User Survey is live now.'
+  const bannerTitle = 'Check out the new blog post on DataTree!'
   const bannerDescription = ''
   const bannerChildren = (
-    <Link href='https://forms.gle/KEq7WviCdz9xTaJX6'>
-      Please take ~5 minutes to fill it out and help us improve Xarray.
+    <Link href='/blog/datatree'>
+      Xarray x NASA: xarray.DataTree for hierarchical data structures
     </Link>
   )
+
+  // Determine the base URL based on the environment
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+    : 'http://localhost:3000'
+
+  // Construct the full card URL
+  const fullCardUrl = card.startsWith('http') ? card : `${baseUrl}${card}`
+
   return (
     <>
       <Head>
@@ -27,11 +36,11 @@ export const Layout = ({
         <meta content='width=device-width, initial-scale=1' name='viewport' />
         <meta property='og:title' content={title} />
         <meta property='og:description' content={description} />
-        <meta property='og:image' content={card} />
+        <meta property='og:image' content={fullCardUrl} />
         <meta property='og:url' content={url} />
         <meta name='twitter:title' content={title} />
         <meta name='twitter:description' content={description} />
-        <meta name='twitter:image' content={card} />
+        <meta name='twitter:image' content={fullCardUrl} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@xarray_dev' />
         <link
