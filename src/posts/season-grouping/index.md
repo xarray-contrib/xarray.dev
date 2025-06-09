@@ -1,6 +1,6 @@
 ---
 title: 'Ergonomic seasonal grouping and resampling'
-date: '2025-06-18'
+date: '2025-06-10'
 authors:
   - name: Deepak Cherian
     github: dcherian
