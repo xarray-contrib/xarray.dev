@@ -9,7 +9,7 @@ authors:
     github: weiji14
   - name: Max Jones
     github: maxrjones
-  - name: Akshay Subranian
+  - name:  Akshay Subramaniam
     github: akshaysubr
   - name: Thomas Augspurger
     github: tomaugspurger
@@ -22,8 +22,9 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 # Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)
 
 ## TL;DR
-
-Earth science AI/ML workflows are often bottlenecked by slow data loading, leaving GPUs underutilized while CPUs struggle to feed large climate datasets like ERA5. In this blog post, we discuss how to build a GPU-native pipeline using Zarr v3, CuPy, KvikIO, and NVIDIA DALI to accelerate data throughput. We walk through profiling results, chunking strategies, direct-to-GPU data reads, and GPU-accelerated preprocessing, all aimed at maximizing GPU usage and minimizing I/O overhead.
+This is a long blog post, but if you want the TL;DR, here it is: 
+Earth science AI/ML workflows are often bottlenecked by slow data loading, leaving GPUs underutilized while CPUs struggle to feed large climate datasets like ERA5. In this blog post, we discuss how to build a GPU-native pipeline using Zarr v3, CuPy, KvikIO, and NVIDIA DALI to accelerate data throughput.
+We walk through profiling results, chunking strategies, direct-to-GPU data reads, and GPU-accelerated preprocessing, all aimed at maximizing GPU usage and minimizing I/O overhead.
 
 The result: faster training, higher throughput, and a scalable path forward for geoscience ML workflows. 🌍🤖🚀
 
@@ -39,17 +40,17 @@ In this post, we share our hackathon experience, the integration strategies we e
 
 ML pipelines for large scientific datasets typically include steps:
 
-- Reading raw data from disk or object storage (often CPU-bound)
+- Reading raw data from disk or object storage (IO-bound)
 - Transforming / preprocessing data (often CPU-bound)
 - Model Training/Inference (often GPU-bound)
 
-Although GPU compute is incredibly fast, the CPU can become a bottleneck when dealing with large datasets. In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.
+Although GPU compute is incredibly fast, the I/O & CPU can become a bottleneck when dealing with large datasets. **In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.**
 
 In this hackathon, we explored several strategies to reduce the data loading bottleneck and build a GPU-native pipeline to maximize GPU utilization.
 
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus).
+For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full benchmark repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus).
 
 ### Initial Performance Bottlenecks
 
@@ -110,12 +111,10 @@ ds.to_zarr("rechunked_ERA5.zarr", zarr_version=3)
 
 For more optimal performance, consider:
 
-1. Storing the data without compression (if not transferring over a network), as decompressing data can slow down read speeds. But see also GPU decompression with nvCOMP below. 😉
-2. Concatenating several data variables together **if** a single chunk size is too small (`<1MB`), at the expense of reducing readability of the Zarr store.
-   Having too many small chunks can be detrimental to read speeds. A compressed chunk should be `>1MB`, `<100MB` for optimal reads.
-   - Alternatively, wait for [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) to be supported for GPU buffers in Zarr-python.
-3. Align chunks with model access pattern.
-
+1. **Decompression**: If you're not transferring over a network (e.g. reading from local disk ), consider storing the data without compression, since decompresion can slow down read speeds. But see also GPU decompression with nvCOMP below. 😉
+2. **Align chunks with model access patterns:** Proper chunk alignment reduces the number of read operations, avoids unnecessary data loading, and improves GPU utilization.
+3. **Avoid Excessively Small or Large Chunks:** Having too many small chunks can degrade read speeds by increasing metadata overhead and I/O operations. As a general rule of thumb, a compressed chunk should be `>1MB`, `<100MB` for optimal reads. Consider concatenating several data variables together **if** a single chunk size is too small (`<1MB`), even at the expense of reducing readability of the Zarr store.
+   - Alternatively, [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) support for GPU buffers has been recently added to Zarr. Consider using `zarr-python >= 3.0.8` if you want to fully benfit from sharded storage with GPU compatibility.
 The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr v3 dataset.
 
 ![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
@@ -207,7 +206,7 @@ In short, to use DALI with Zarr for data loading, you need to:
 
 I. Define an external input iterator to read data from data source (e.g., Zarr store) and yield batches of data:
 
-```
+```python
 class ExternalInputIterator:
     def __init__(self, zarr_path="data/example.zarr", batch_size=16):
         store = zarr.open(zarr_path, mode="r")
