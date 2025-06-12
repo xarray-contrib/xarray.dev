@@ -13,7 +13,7 @@ authors:
     github: akshaysubr
   - name: Thomas Augspurger
     github: tomaugspurger
-  - name: Katelyn Fitzgerald
+  - name: Katelyn FitzGerald
     github: kafitzgerald
 
 summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xarray and Zarr.'
