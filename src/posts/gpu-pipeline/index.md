@@ -33,7 +33,7 @@ The result: faster training, higher throughput, and a scalable path forward for 
 
 In large-scale geospatial AI and machine learning workflows, data loading is often the main bottleneck. Traditional pipelines rely on CPUs to preprocess and transfer massive datasets from storage to GPU memory, consuming resources and limiting scalability and effective use of GPU resources.
 
-To tackle this issue, a team from the [National Center for Atmospheric Research (NSF-NCAR)](https://ncar.ucar.edu) and [Development Seed](https://developmentseed.org) with mentors from [NVIDIA](https://www.nvidia.com) participated in the [OpenHackathon](https://www.openhackathons.org/s/) to demonstrate how AI/ML workflows in Earth system sciences can benefit from GPU-native workflows using tools such as [Zarr](https://zarr.readthedocs.io/), [KvikIO](https://docs.rapids.ai/api/kvikio/stable/), and [DALI](https://developer.nvidia.com/dali).
+To tackle this issue, a team from the [NSF National Center for Atmospheric Research (NSF-NCAR)](https://ncar.ucar.edu) and [Development Seed](https://developmentseed.org) with mentors from [NVIDIA](https://www.nvidia.com) participated in an [OpenHackathon](https://www.openhackathons.org/s/) to demonstrate how AI/ML workflows in Earth system sciences can benefit from GPU-native technologies using tools such as [Zarr](https://zarr.readthedocs.io/), [KvikIO](https://docs.rapids.ai/api/kvikio/stable/), and [DALI](https://developer.nvidia.com/dali).
 
 In this post, we share our hackathon experience, the integration strategies we explored, and the performance gains we achieved to highlight how modern tools can transform data-intensive workflows.
 
