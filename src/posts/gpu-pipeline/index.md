@@ -43,7 +43,7 @@ ML pipelines for large scientific datasets typically include the following steps
 
 - Reading raw data from disk or object storage (IO-bound)
 - Transforming / preprocessing data (often CPU-bound)
-- Model Training/Inference (often GPU-bound)
+- Model training / inference (often GPU-bound)
 
 Although GPU compute is incredibly fast, I/O & CPU can become a bottleneck when dealing with large datasets. **In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.**
 
