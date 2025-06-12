@@ -298,7 +298,9 @@ We are continuing to explore the following areas:
 
 ## Acknowledgements 🙌
 
-This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NSF NCAR for providing access to Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI). A huge thank you to Deepak Cherian []
+This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NSF NCAR for providing access to Derecho supercomputer which we used for this project. A huge thank-you to our mentors from NVIDIA mentors, [Akshay Subramaniam](https://github.com/akshaysubr) and [Tom Augspurger](https://github.com/tomaugspurger), for their guidance and support throughout the hackathon.
+
+Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI). And a special thanks to [Deepak Cherian](https://github.com/dcherian) for providing guidance on Xarrary integration for reading from Zarr to GPU memory. 
 
 <div
   style={{
