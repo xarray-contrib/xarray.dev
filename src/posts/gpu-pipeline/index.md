@@ -159,9 +159,9 @@ with zarr.config.enable_gpu():
 ⚠️ Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory.
 
 II. **Option 2: Direct-to-GPU via KvikIO (Zarr -> GPU)**
-If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), KvikIO enables the GPU to read data directly into GPU memory, bypassing CPU memory.
-Here is a minimal example of how to do this:
+If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/),  you can use `kvikio` to read data directly into GPU memory, bypassing CPU memory.
 
+Here is a minimal example of how to do this:
 ```python
 import kvikio.zarr
 
@@ -175,7 +175,6 @@ This will read the data directly from the Zarr store to GPU memory, significantl
 However, it relies on the [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature to be enabled and correctly configured on your system.
 
 **Note**: Even with GDS, the decompression step is still occurs on the CPU (see next section for GPU solutions!). This means that the data is still being decompressed on the CPU before being transferred to the GPU. However, this is still a significant improvement over the previous method, as it reduces the amount of data that needs to be transferred over the PCIe bus. In the figure below, we show the flowchart of the data loading process with GDS enabled (i.e. using `kvikio`):
-
 ![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
 
 ### Step 3: GPU-based decompression with nvCOMP 🚀
@@ -194,7 +193,11 @@ We tested the performance of GPU-based decompression using nvCOMP with Zarr v3 a
 
 Here are the results:
 
-![GPU native decompression](/posts/gpu-pipline/zstd_benchmark.png)
+<img
+  src='/posts/gpu-pipline/zstd_benchmark.png'
+  alt='nvcomp Zstd performance benchmark'
+  style={{ display: 'block', width: '60%', maxWidth: '700px', align: 'center' }}
+/>
 
 > These results show that GPU-based decompression can significantly reduce the time spent on data loading and cut I/O latency from storage to device (less data transfer over PCIe/NVLink). This is especially useful for large datasets, as it allows for faster data loading and processing.
 
@@ -261,9 +264,9 @@ output = pipe.run()
 images_gpu, labels_gpu = output
 ```
 
-Next, checkout the [end-to-end example](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) directory, where we show how to integrate the DALI pipeline into a PyTorch DataLoader and training loop. This example demonstrates how to use DALI to load data from Zarr stores, preprocess it on the GPU, and feed it into a PyTorch model for training.
+Next, checkout the [end-to-end example](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_ML_optimization) directory, where we showed how to use DALI to load data from Zarr stores, preprocess it on the GPU, and feed it into a PyTorch model for training.
 
-Profiling results from the DALI pipeline demonstrate effective overlap between CPU and GPU workloads, significantly reducing GPU idle time (blue) and increasing overall training throughput:
+Profiling results show that the DALI pipeline enables efficient overlap of CPU and GPU operations, significantly reducing GPU idle time and boosting overall training throughput.
 
 <img
   src='/posts/gpu-pipline/profiling_screenshot_dali.png'
@@ -277,7 +280,7 @@ This work is still ongoing, and we are continuing to explore ways to optimize da
 We are continuing to explore the following areas:
 
 - GPU Direct Storage (GDS) for optimal performance
-- NVIDIA DALI
+- Better NVIDIA DALI integration for distributed training
 - Support for sharded Zarr with GPU-friendly access patterns [already merged in Zarr v3]().
 - Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
@@ -287,14 +290,14 @@ We are continuing to explore the following areas:
 > - **Chunking matters!** It really does and can make a huge difference in performance.
 > - **Zarr Python 3 enables GPU-native workflows**: Zarr Python 3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
 > - **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
-> - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
+> - **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
 > - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
 > - **CuPy-Xarray integration** is still a work in progress, but can be very useful for GPU-native workflows. Please see this PR for more details: [xarray-contrib/cupy-xarray#70](https://github.com/xarray-contrib/cupy-xarray/pull/70).
-> - **GPU-native decompression** is a promising area for future work, but full support (e.g. GPU-side Zstd decompression) requires further development and testing.
+> - **NVIDIA Nsight** provides a [powerful tool](https://developer.nvidia.com/nsight-systems) for identifying bottlenecks.
 
 ## Acknowledgements 🙌
 
-This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NCAR for providing access to NCAR’s Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI).
+This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NCAR for providing access to NCAR’s Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI). A huge thank you to Deepak Cherian []
 
 <div
   style={{
