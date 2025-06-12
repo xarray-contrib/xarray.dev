@@ -212,7 +212,7 @@ Ideally, we want to minimize idle time on both the CPU and GPU by overlapping th
 
 To address this inefficiency, we adopted [NVIDIA DALI (Data Loading Library)](https://docs.nvidia.com/deeplearning/dali/user-guide/docs/index.html), which provides a flexible, GPU-accelerated data pipeline with built-in support for asynchronous execution across CPU and GPU stages. DALI helps reduce CPU pressure, enables concurrent preprocessing, and increases training throughput by pipelining operations.
 
-First, we began with a minimal example in [zarr_DALI directory](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to build a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store and transfer them directly to GPU memory using CuPy arrays.
+First, we began with a minimal example in the [zarr_DALI directory](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/main/zarr_DALI) with short, contained examples of a DALI pipeline loading directly from Zarr stores. This example shows how to build a custom DALI `pipeline` that uses an `ExternalSource` operator to load batched image data from a Zarr store and transfer them directly to GPU memory using CuPy arrays.
 
 In short, to use DALI with Zarr for data loading, you need to:
 
