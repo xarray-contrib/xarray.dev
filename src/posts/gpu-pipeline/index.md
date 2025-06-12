@@ -103,7 +103,7 @@ During the hackathon, we tested the following strategies to improve the data loa
 
 ### Step 1: Optimized Chunking & Compression
 
-The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
+The copy of the ERA5 dataset we were using initially had a suboptimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 time steps of data was being read even if we only needed 2 consecutive time steps.
 We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr format 3.
 The full script is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/rechunk/era5_rechunking.ipynb), with the main code looking like so:
 
