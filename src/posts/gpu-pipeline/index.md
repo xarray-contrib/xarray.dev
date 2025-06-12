@@ -182,7 +182,7 @@ However, it relies on the [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.c
 
 For a fully GPU-native pipline, the decompression step should also be done on the GPU. This is where [NVIDIA's nvCOMP](https://developer.nvidia.com/nvcomp) library comes in. nvCOMP provides fast, GPU-native implementations of popular compression algorithms like Zstandard (Zstd)
 
-With nvCOMP, all steps of data loading including reading, decompressing, and transforming data can be done on the GPU, significantly reducing the time spent on data loading. Here is a flowchart of the data loading process with GDS and GPU-based decompression enabled:
+With nvCOMP, all steps of data loading including reading from disk, decompression, and transforming data can be done on the GPU, significantly reducing the time spent on data loading. Here is a flowchart of the data loading process with GDS and GPU-based decompression enabled:
 
 ![GPU native decompression](/posts/gpu-pipline/flowchart_3.png)
 
