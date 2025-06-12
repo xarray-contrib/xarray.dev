@@ -51,7 +51,7 @@ In this hackathon, we explored several strategies to reduce the data loading bot
 
 ### Data & Code Overview 📊
 
-For this hackathon, we developed a benchmark of training a U-NET (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full benchmark repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus).
+For this hackathon, we developed a benchmark of training a U-Net (with ResNet encoder) model on the ERA-5 Dataset to predict next time steps. The training pipeline used a standard PyTorch DataLoader and supported both single-GPU and multi-GPU training via Distributed Data Parallel (DDP). The full benchmark repo is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus).
 
 ### Initial Performance Bottlenecks
 
@@ -283,7 +283,7 @@ We are continuing to explore the following areas:
 - GPU Direct Storage (GDS) for optimal performance
 - Better NVIDIA DALI integration for distributed training
 - Support for sharded Zarr with GPU-friendly access patterns already [merged](https://github.com/zarr-developers/zarr-python/pull/2978) in Zarr v3.0.8.
-- Work out how to use GDS when reading from cloud object store instead of on-prem disk
+- Explore GDS for reading from cloud object storage instead of on-prem disk storage
 - GPU-based decompression with nvCOMP
 
 > ## Lessons Learned 💡
@@ -298,7 +298,7 @@ We are continuing to explore the following areas:
 
 ## Acknowledgements 🙌
 
-This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NCAR for providing access to NCAR’s Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI). A huge thank you to Deepak Cherian []
+This work was developed during the [NCAR/NOAA Open Hackathon](https://www.openhackathons.org/s/siteevent/a0CUP00000rwYYZ2A2/se000355) in Golden, Colorado from 18-27 February 2025. We would like to thank the OpenACC Hackathon for the opportunity to participate and learn from this experience. Special thanks to NSF NCAR for providing access to Derecho supercomputer which we used for this project. Thanks also to the open-source communities behind [Xarray](https://github.com/pydata/xarray), [Zarr](https://github.com/zarr-developers/zarr-python), [CuPy](https://github.com/cupy/cupy), [KvikIO](https://github.com/rapidsai/kvikio), and [DALI](https://github.com/NVIDIA/DALI). A huge thank you to Deepak Cherian []
 
 <div
   style={{
