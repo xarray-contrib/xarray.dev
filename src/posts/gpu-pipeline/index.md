@@ -159,9 +159,10 @@ with zarr.config.enable_gpu():
 ⚠️ Note that using `engine="zarr"` like above would still result in data being loaded into CPU memory before being transferred to GPU memory.
 
 II. **Option 2: Direct-to-GPU via KvikIO (Zarr -> GPU)**
-If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/),  you can use `kvikio` to read data directly into GPU memory, bypassing CPU memory.
+If your system supports [GPU Direct Storage (GDS)](https://developer.nvidia.com/blog/gpudirect-storage/), you can use `kvikio` to read data directly into GPU memory, bypassing CPU memory.
 
 Here is a minimal example of how to do this:
+
 ```python
 import kvikio.zarr
 
