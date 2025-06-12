@@ -282,7 +282,7 @@ We are continuing to explore the following areas:
 
 - GPU Direct Storage (GDS) for optimal performance
 - Better NVIDIA DALI integration for distributed training
-- Support for sharded Zarr with GPU-friendly access patterns [already merged in Zarr v3]().
+- Support for sharded Zarr with GPU-friendly access patterns already [merged](https://github.com/zarr-developers/zarr-python/pull/2978) in Zarr v3.0.8.
 - Work out how to use GDS when reading from cloud object store instead of on-prem disk
 - GPU-based decompression with nvCOMP
 
