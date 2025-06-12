@@ -9,7 +9,7 @@ authors:
     github: weiji14
   - name: Max Jones
     github: maxrjones
-  - name:  Akshay Subramaniam
+  - name: Akshay Subramaniam
     github: akshaysubr
   - name: Thomas Augspurger
     github: tomaugspurger
@@ -22,7 +22,8 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 # Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)
 
 ## TL;DR
-This is a long blog post, but if you want the TL;DR, here it is: 
+
+This is a long blog post, but if you want the TL;DR, here it is:
 Earth science AI/ML workflows are often bottlenecked by slow data loading, leaving GPUs underutilized while CPUs struggle to feed large climate datasets like ERA5. In this blog post, we discuss how to build a GPU-native pipeline using Zarr v3, CuPy, KvikIO, and NVIDIA DALI to accelerate data throughput.
 We walk through profiling results, chunking strategies, direct-to-GPU data reads, and GPU-accelerated preprocessing, all aimed at maximizing GPU usage and minimizing I/O overhead.
 
@@ -60,7 +61,14 @@ The initial profiling results clearly showed that the data loading step was the 
 
 Here are some screenshots of the profiling results:
 
-<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center' }}>
+<div
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+    justifyContent: 'center',
+  }}
+>
   <img
     src='/posts/gpu-pipline/profiling_screenshot1.png'
     alt='Issue 1'
@@ -78,26 +86,25 @@ We further quantified this bottleneck by comparing data loading and training thr
 <img
   src='/posts/gpu-pipline/baseline.png'
   alt='baseline plot'
-  style={{display: 'block', width: '75%', maxWidth: '700px', align: 'center' }}
+  style={{ display: 'block', width: '75%', maxWidth: '700px', align: 'center' }}
 />
 
 In the plot above, the three bars represent:
 
-- Training (Real Data): Baseline throughput of the end-to-end pipeline reading real data from disk. 
+- Training (Real Data): Baseline throughput of the end-to-end pipeline reading real data from disk.
 - No Training (i.e. data loading throughput): Throughput of the data loading without any training (to measure the time spent on data loading vs. training).
 - Synthetic Data (i.e. Training throughput): Throughput of the data loading using synthetic data (to remove the data loading bottleneck).
 
-The results show that the data loading step is the main bottleneck in our pipeline, with **much** lower throughput compared to the training step. 
-
+The results show that the data loading step is the main bottleneck in our pipeline, with **much** lower throughput compared to the training step.
 
 ## Hackathon: Strategies Explored!
 
-During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve a **
+During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve a \*\*
 
 ### Step 1: Optimized Chunking & Compression
 
 The ERA-5 dataset we were using had a sub-optimal chunking scheme of `{'time': 10, 'channel': C, 'height': H, 'width': W}`, which meant that a minimum of 10 timesteps of data was being read even if we only needed 2 consecutive timesteps at a time.
-We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3 format. 
+We decided to rechunk the data to align with our access pattern of 1-timestep at a time, while reformating to Zarr v3 format.
 The full script is available [here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/rechunk/era5_rechunking.ipynb), with the main code looking like so:
 
 ```python
@@ -116,14 +123,13 @@ For more optimal performance, consider:
 2. **Align chunks with model access patterns:** Proper chunk alignment reduces the number of read operations, avoids unnecessary data loading, and improves GPU utilization.
 3. **Avoid Excessively Small or Large Chunks:** Having too many small chunks can degrade read speeds by increasing metadata overhead and I/O operations. As a general rule of thumb, a compressed chunk should be `>1MB`, `<100MB` for optimal reads. Consider concatenating several data variables together **if** a single chunk size is too small (`<1MB`), even at the expense of reducing readability of the Zarr store.
    - Alternatively, [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) support for GPU buffers has been recently added to Zarr. Consider using `zarr-python >= 3.0.8` if you want to fully benfit from sharded storage with GPU compatibility.
-The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr format 3 dataset.
+     The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr format 3 dataset.
 
 ![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
 
-
 ### Step 2: Direct to GPU Data Reading with Zarr v3 (+ KvikIO) 📖
 
-One of the exciting features of [Zarr Python 3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)]((https://github.com/zarr-developers/zarr-python/issues/2574)). 🎉 
+One of the exciting features of [Zarr Python 3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)](<(https://github.com/zarr-developers/zarr-python/issues/2574)>). 🎉
 
 Specifically, you can either use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
 
