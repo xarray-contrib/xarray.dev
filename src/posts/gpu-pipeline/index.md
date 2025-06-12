@@ -285,7 +285,7 @@ We are continuing to explore the following areas:
 > ## Lessons Learned 💡
 >
 > - **Chunking matters!** It really does and can make a huge difference in performance.
-> - **Zarr v3 enables GPU-native workflows**: Zarr v3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
+> - **Zarr Python 3 enables GPU-native workflows**: Zarr Python 3 introduces experimental support for reading data directly into GPU memory via `zarr.config.enable_gpu()`. However, this is currently limited to the final stage of the codec pipeline, with decompression still handled by the CPU. We are working on enabling GPU-native decompression using `nvComp` to eliminate the host-device transfer.
 > - **Compression trade-offs**: Using compression can reduce the amount of data transferred, but can also increase the time spent on decompression. We found that using Zarr v3 with GPU-based decompression can significantly improve performance.
 > - **GPU Direct Storage (GDS)** can be an improvement for data-intensive workflows, but requires some setup and configuration.
 > - **NVIDIA DALI** is a powerful tool for optimizing data loading, but requires some effort to integrate into existing workflows.
