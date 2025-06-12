@@ -24,8 +24,8 @@ summary: 'How to accelerate AI/ML workflows in Earth Sciences with GPU-native Xa
 ## TL;DR
 
 This is a long blog post, but if you want the TL;DR, here it is:
-Earth science AI/ML workflows are often bottlenecked by slow data loading, leaving GPUs underutilized while CPUs struggle to feed large climate datasets like ERA5. In this blog post, we discuss how to build a GPU-native pipeline using Zarr v3, CuPy, KvikIO, and NVIDIA DALI to accelerate data throughput.
-We walk through profiling results, chunking strategies, direct-to-GPU data reads, and GPU-accelerated preprocessing, all aimed at maximizing GPU usage and minimizing I/O overhead.
+Earth science AI/ML workflows are often bottlenecked by slow data loading, leaving GPUs underutilized while CPUs struggle to feed large datasets like ERA5. In this blog post, we discuss how to build a GPU-native pipeline using Zarr python 3, CuPy, KvikIO, and NVIDIA DALI to accelerate data throughput.
+We walk through profiling results, chunking strategies, direct-to-GPU data reads, GPU-accelerated preprocessing, and DALI implementation all aimed at maximizing GPU usage and minimizing I/O overhead.
 
 The result: faster training, higher throughput, and a scalable path forward for geoscience ML workflows. 🌍🤖🚀
 
