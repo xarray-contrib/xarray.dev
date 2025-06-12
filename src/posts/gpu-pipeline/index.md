@@ -202,7 +202,7 @@ Here are the results:
 
 > These results show that GPU-based decompression can significantly reduce the time spent on data loading and cut I/O latency from storage to device (less data transfer over PCIe/NVLink). This is especially useful for large datasets, as it allows for faster data loading and processing.
 
-Keep an eye on this space, as we are working on integrating this into the Zarr ecosystem to enable GPU-based decompression for Zarr stores. This will allow for a fully GPU-native workflow, where all steps of data loading, including reading, decompressing, and transforming data, can be done on the GPU.
+Keep an eye on this space, as we are working on integrating this into the Zarr ecosystem to enable GPU-based decompression for Zarr stores. This will allow for a fully GPU-native workflow, where all steps of data loading, including reading, decompression, and transforming data, can be done on the GPU.
 
 > 💡 Takeaway: Even without full GDS support, GPU-based decompression can dramatically reduce I/O latency and free up CPU resources for other tasks.
 
