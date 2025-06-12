@@ -45,7 +45,7 @@ ML pipelines for large scientific datasets typically include steps:
 - Transforming / preprocessing data (often CPU-bound)
 - Model Training/Inference (often GPU-bound)
 
-Although GPU compute is incredibly fast, the I/O & CPU can become a bottleneck when dealing with large datasets. **In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.**
+Although GPU compute is incredibly fast, I/O & CPU can become a bottleneck when dealing with large datasets. **In an ideal scenario, we want to saturate the GPU with data as quickly as possible to minimize idle time on both the CPU and GPU.**
 
 In this hackathon, we explored several strategies to reduce the data loading bottleneck and build a GPU-native pipeline to maximize GPU utilization.
 
