@@ -81,7 +81,7 @@ Here are some screenshots of the profiling results:
   />
 </div>
 
-We further quantified this bottleneck by comparing data loading and training throughput, as shown in the figure below:
+We further quantified this bottleneck by comparing data loading and training throughput, as shown in the figure below (higher bars/more throughput is better):
 
 <img
   src='/posts/gpu-pipline/baseline.png'
