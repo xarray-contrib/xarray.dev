@@ -39,7 +39,7 @@ In this post, we share our hackathon experience, the integration strategies we e
 
 ## Problem
 
-ML pipelines for large scientific datasets typically include steps:
+ML pipelines for large scientific datasets typically include the following steps:
 
 - Reading raw data from disk or object storage (IO-bound)
 - Transforming / preprocessing data (often CPU-bound)
