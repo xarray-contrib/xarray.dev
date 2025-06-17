@@ -93,8 +93,8 @@ four_monthly.mean().air.plot(
 )
 ```
 
-<p align="center">
-  <img src='/posts/season-grouping/four-month-seasons.png' width='50%' />
+<p align='center'>
+  <img src='/posts/season-grouping/four-month-seasons.png' width='70%' />
 </p>
 
 ### SeasonResampler
