@@ -70,8 +70,10 @@ Data variables:
 
 Overlapping seasons are supported:
 
-```
->>> ds.groupby(time=SeasonGrouper(["DJFM", "MAMJ", "JJAS", "SOND"])).count()
+```python
+>>> four_monthly = ds.groupby(time=SeasonGrouper(["DJFM", "MAMJ", "JJAS", "SOND"])).count()
+>>> four_monthly.count()
+
 <xarray.Dataset> Size: 43kB
 Dimensions:  (lat: 25, lon: 53, season: 4)
 Coordinates:
@@ -82,6 +84,18 @@ Data variables:
     air      (lat, lon, season) int64 42kB 968 976 976 976 ... 968 976 976 976
 Attributes: (5)
 ```
+
+Let's make a plot using [FacetGrid](https://docs.xarray.dev/en/stable/user-guide/plotting.html#faceting)!
+
+```
+four_monthly.mean().air.plot(
+    col="season", cmap="magma", robust=True, col_wrap=2
+)
+```
+
+<p align="center">
+  <img src='/posts/season-grouping/four-month-seasons.png' width='50%' />
+</p>
 
 ### SeasonResampler
 
@@ -137,7 +151,7 @@ Attributes: (5)
 
 These new Grouper objects compose well with grouping over other arrays ([see blog post](https://xarray.dev/blog/multiple-groupers/)), for example
 
-```
+```python
 >>> from xarray.groupers import BinGrouper
 >>>
 >>> ds.groupby(lat=BinGrouper(bins=2), time=SeasonResampler(["JF", "MAM", "JJAS", "OND"])).count()
@@ -162,8 +176,9 @@ Given the user's definition of seasons, we construct the appropriate array of in
 
 ## Limitations
 
-1. `SeasonGrouper` does not support the `drop_incomplete` option yet. This would be a great contribution.
+1. `SeasonGrouper` does not support the `drop_incomplete` option yet. This would be a great contribution ([issue](https://github.com/pydata/xarray/issues/10426)).
 2. `SeasonResampler` does not support overlapping seasons. This seems much harder to solve.
+3. Rechunking to a seasonal frequency with `SeasonResampler`` is not supported yet. This would also be a great contribution ([issue](https://github.com/pydata/xarray/issues/10425)). Such rechunking is a remarkably useful technique in making climatology calculations much more parallel-friendly. For example: `ds.chunk(time=TimeResampler("10YS"))` rechunks so that 10 years of data is contained in a single chunk. See these two Pangeo discourse forum posts ([1](https://discourse.pangeo.io/t/xarray-memoryerror-with-groupby-workloads/4273/9), [2](https://discourse.pangeo.io/t/best-practice-advice-on-parallel-processing-a-suite-of-zarr-files-with-dask-and-xarray/5201/9)) for applications of this technique.
 
 ## Summary
 
