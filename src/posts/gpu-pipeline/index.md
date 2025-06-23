@@ -127,7 +127,7 @@ For more optimal performance, consider:
 
 ![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
 
-### Step 2: Direct to GPU Data Reading with Zarr v3 (+ KvikIO) 📖
+### Step 2: Direct to GPU Data Reading with Zarr-Python 3 (+ KvikIO) 📖
 
 One of the exciting features of [Zarr Python 3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)](<(https://github.com/zarr-developers/zarr-python/issues/2574)>). 🎉
 
@@ -190,7 +190,7 @@ With nvCOMP, all steps of data loading including reading from disk, decompressio
 
 To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented in [this PR](https://github.com/zarr-developers/zarr-python/pull/2863).
 
-We tested the performance of GPU-based decompression using nvCOMP with Zarr v3 and KvikIO, and compared it to CPU-based decompression using [this data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py).
+We tested the performance of GPU-based decompression using nvCOMP with Zarr-Python 3 and KvikIO, and compared it to CPU-based decompression using [this data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/main/benchmark/era5_zarr_benchmark.py).
 
 Here are the results:
 
