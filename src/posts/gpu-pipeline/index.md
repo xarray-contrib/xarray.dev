@@ -133,7 +133,6 @@ For more optimal performance, consider:
   style={{ display: 'block', width: '75%', maxWidth: '500px', align: 'center' }}
 />
 
-
 Please note how compression becomes increasingly beneficial as data reading throughput scales with the number of GPUs, especially when I/O becomes a bottleneck.
 
 ### Step 2: Direct to GPU Data Reading with Zarr-Python 3 (+ KvikIO) 📖
