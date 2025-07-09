@@ -86,7 +86,7 @@ We further quantified this bottleneck by comparing data loading and training thr
 <img
   src='/posts/gpu-pipline/baseline.png'
   alt='baseline plot'
-  style={{ display: 'block', width: '75%', maxWidth: '700px', align: 'center' }}
+  style={{ display: 'block', width: '75%', maxWidth: '300px', align: 'center' }}
 />
 
 In the plot above, the three bars represent:
@@ -278,7 +278,13 @@ Profiling results show that the DALI pipeline enables efficient overlap of CPU a
   alt='baseline plot'
 />
 
-The result of putting all thes improvements together shows a
+The following plot compares the throughput of the baseline pipeline vs. all-in-all optimized workflow (including NVIDIA-DALI), showing a significant (~17x) improvement in training throughput:
+
+<img
+  src='/posts/gpu-pipline/all_in_all_improvement.png'
+  alt='DALI performance plot'
+  style={{ display: 'block', width: '75%', maxWidth: '400px', align: 'center' }}
+/>
 
 ## Going Forward 🔮
 
