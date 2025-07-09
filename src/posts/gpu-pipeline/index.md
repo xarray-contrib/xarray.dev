@@ -284,7 +284,8 @@ We are continuing to explore the following areas:
 - Better NVIDIA DALI integration for distributed training
 - Support for sharded Zarr with GPU-friendly access patterns already [merged](https://github.com/zarr-developers/zarr-python/pull/2978) in Zarr v3.0.8.
 - Explore GDS for reading from cloud object storage instead of on-prem disk storage
-- GPU-based decompression with nvCOMP
+- [GPU-based decompression with nvCOMP]
+- Performance of [IceChunk](https://icechunk.io/en/latest/) & [Virtualzarr](https://virtualizarr.readthedocs.io/en/latest/) for cloud-native data loading
 
 > ## Lessons Learned 💡
 >
