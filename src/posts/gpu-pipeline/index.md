@@ -55,7 +55,7 @@ For this hackathon, we developed a benchmark of training a U-Net (with ResNet en
 
 ### Initial Performance Bottlenecks
 
-First, we used NVIDIA's [Nsight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify performance bottlenecks.
+First, we used NVIDIA's [NSight Systems](https://developer.nvidia.com/nsight-systems) to profile our code and identify performance bottlenecks.
 
 The initial profiling results clearly showed that the data loading step was the main bottleneck in our pipeline, with minimal overlap between CPU and GPU compute steps, which meant that the GPU was often idle while waiting for the CPU to load data.
 
