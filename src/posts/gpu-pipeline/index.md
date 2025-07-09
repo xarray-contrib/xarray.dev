@@ -137,7 +137,7 @@ Please note how compression becomes increasingly beneficial as data reading thro
 
 ### Step 2: Direct to GPU Data Reading with Zarr-Python 3 (+ KvikIO) 📖
 
-One of the exciting features of [Zarr Python 3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)](<(https://github.com/zarr-developers/zarr-python/issues/2574)>). 🎉
+One of the exciting features of [Zarr Python 3](https://zarr.dev/blog/zarr-python-3-release/) is the ability to [read data directly into CuPy arrays (i.e. GPU memory)](https://github.com/zarr-developers/zarr-python/issues/2574). 🎉
 
 Specifically, you can either use the [`zarr-python`](https://github.com/zarr-developers/zarr-python) driver to read data from zarr->CPU->GPU, or the [`kvikio`](https://github.com/rapidsai/kvikio) driver to read data from zarr->GPU directly!
 
@@ -181,7 +181,7 @@ with zarr.config.enable_gpu():
 ```
 
 This will read the data directly from the Zarr store to GPU memory, significantly reducing I/O latency, especially for large datasets.
-However, it relies on the [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.com/datacenter/pgp/gds/index.html) feature being enabled and correctly configured on your system.
+However, it relies on the [NVIDIA GPUDirect Storage (GDS)](https://docs.nvidia.com/gpudirect-storage/overview-guide/index.html) feature being enabled and correctly configured on your system.
 
 **Note**: Even with GDS, the decompression step will still occur on the CPU (see next section for GPU solutions!). This means that the data is still being decompressed on the CPU before being transferred to the GPU. However, this is still a significant improvement over the previous method, as it reduces the amount of data that needs to be transferred over the PCIe bus. In the figure below, we show the flowchart of the data loading process with GDS enabled (i.e. using `kvikio`):
 ![Flowchart-technically decompression is still done on CPUs](/posts/gpu-pipline/flowchart_2.png)
