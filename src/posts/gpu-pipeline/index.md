@@ -1,6 +1,6 @@
 ---
 title: 'Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray, Zarr, DALI,  and nvcomp (and more!)'
-date: '2025-05-01'
+date: '2025-07-09'
 
 authors:
   - name: Negin Sobhani
