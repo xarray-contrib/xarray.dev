@@ -97,11 +97,11 @@ In the plot above, the three bars represent:
 
 The results show that the data loading step is the main bottleneck in our pipeline, with **much** lower throughput compared to the training step.
 
-PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and `prefetch_factor` that can improve I/O performance. We didn’t tune these in our setup, but this blog post shows how they can be used to overlap I/O latency when streaming Zarr data from the cloud using Xarray, Xbatcher, and Dask.
+PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and `prefetch_factor` that can improve I/O performance. Tuning these options were beyond the scope of this hackathon. If you are interested, [this blog post](https://earthmover.io/blog/cloud-native-dataloader) shows how they can be used to overlap I/O latency when streaming Zarr data from the cloud using Xarray, Xbatcher, and Dask.
 
 ## Hackathon: Strategies Explored!
 
-During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve a \*\*
+During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve 
 
 ### Step 1: Optimized Chunking & Compression
 
@@ -127,7 +127,9 @@ For more optimal performance, consider:
    - Alternatively, [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) support for GPU buffers has been recently added to Zarr. Consider using `zarr-python >= 3.0.8` if you want to fully benfit from sharded storage with GPU compatibility.
      The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr format 3 dataset.
 
-![Rechunking performance](/posts/gpu-pipeline/performance_plot.png)
+![Rechunking performance](/posts/gpu-pipeline/scaling_chunking_performance_plot.png)
+
+Please note how compression becomes increasingly beneficial as data reading throughput scales with the number of GPUs, especially when I/O becomes a bottleneck.
 
 ### Step 2: Direct to GPU Data Reading with Zarr-Python 3 (+ KvikIO) 📖
 
@@ -276,6 +278,7 @@ Profiling results show that the DALI pipeline enables efficient overlap of CPU a
   alt='baseline plot'
 />
 
+The result of putting all thes improvements together shows a 
 ## Going Forward 🔮
 
 This work is still ongoing, and we are continuing to explore ways to optimize data loading and processing for large-scale geospatial AI/ML workflows. We started this work during a 3-day hackathon, and we are excited to continue this work in the future. During the hackathon, we were able to make significant progress in optimizing data loading and processing for large-scale geospatial AI/ML workflows.
