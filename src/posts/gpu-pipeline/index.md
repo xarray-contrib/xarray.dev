@@ -127,7 +127,12 @@ For more optimal performance, consider:
    - Alternatively, [sharding](https://zarr.readthedocs.io/en/stable/user-guide/performance.html#sharding) support for GPU buffers has been recently added to Zarr. Consider using `zarr-python >= 3.0.8` if you want to fully benfit from sharded storage with GPU compatibility.
      The plot below shows the performance of the original dataset vs. the rechunked dataset (to optimal chunk size) vs. uncompressed Zarr format 3 dataset.
 
-![Rechunking performance](/posts/gpu-pipeline/scaling_chunking_performance_plot.png)
+<img
+  src='/posts/gpu-pipline/scaling_chunking_performance_plot.png'
+  alt='baseline plot'
+  style={{ display: 'block', width: '75%', maxWidth: '500px', align: 'center' }}
+/>
+
 
 Please note how compression becomes increasingly beneficial as data reading throughput scales with the number of GPUs, especially when I/O becomes a bottleneck.
 
