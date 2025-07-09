@@ -283,7 +283,7 @@ The following plot compares the throughput of the baseline pipeline vs. all-in-a
 <img
   src='/posts/gpu-pipline/all_in_all_improvement.png'
   alt='DALI performance plot'
-  style={{ display: 'block', width: '75%', maxWidth: '400px', align: 'center' }}
+  style={{ display: 'block', width: '75%', maxWidth: '500px', align: 'center' }}
 />
 
 ## Going Forward 🔮
