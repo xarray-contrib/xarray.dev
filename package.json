@@ -51,6 +51,6 @@
     "eslint-config-next": "14.2.14",
     "playwright": "^1.47.2",
     "typescript": ">=5.8.2",
-    "webpack": "^5.98.0"
+    "webpack": "^5.99.9"
   }
 }
