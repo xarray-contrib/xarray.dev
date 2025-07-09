@@ -1,5 +1,5 @@
 ---
-title: 'Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray and Zarr (and more!)'
+title: 'Accelerating AI/ML Workflows in Earth Sciences with GPU-Native Xarray, Zarr, DALI,  and nvcomp (and more!)'
 date: '2025-05-01'
 
 authors:
@@ -96,6 +96,8 @@ In the plot above, the three bars represent:
 - Synthetic Data (i.e. Training throughput): Throughput of the data loading using synthetic data (to remove the data loading bottleneck).
 
 The results show that the data loading step is the main bottleneck in our pipeline, with **much** lower throughput compared to the training step.
+
+PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and `prefetch_factor` that can improve I/O performance. We didn’t tune these in our setup, but this blog post shows how they can be used to overlap I/O latency when streaming Zarr data from the cloud using Xarray, Xbatcher, and Dask.
 
 ## Hackathon: Strategies Explored!
 
