@@ -101,7 +101,7 @@ PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and 
 
 ## Hackathon: Strategies Explored!
 
-During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve 
+During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve
 
 ### Step 1: Optimized Chunking & Compression
 
@@ -278,7 +278,8 @@ Profiling results show that the DALI pipeline enables efficient overlap of CPU a
   alt='baseline plot'
 />
 
-The result of putting all thes improvements together shows a 
+The result of putting all thes improvements together shows a
+
 ## Going Forward 🔮
 
 This work is still ongoing, and we are continuing to explore ways to optimize data loading and processing for large-scale geospatial AI/ML workflows. We started this work during a 3-day hackathon, and we are excited to continue this work in the future. During the hackathon, we were able to make significant progress in optimizing data loading and processing for large-scale geospatial AI/ML workflows.
