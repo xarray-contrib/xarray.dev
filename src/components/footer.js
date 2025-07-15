@@ -14,7 +14,7 @@ import { getRootURL } from '@/lib/seo-utils'
 
 import { GitSHA } from '@/components/git-sha'
 import { Image, Link } from '@/components/mdx'
-import { VercelCallout } from '@/components/vercel'
+import { NetlifyCallout } from '@/components/netlify'
 import { footerItems } from '@/data/footer-items'
 import { FaGithub, FaRss, FaTwitter, FaYoutube } from 'react-icons/fa'
 
@@ -154,7 +154,7 @@ export const Footer = () => {
           </Stack>
         </SimpleGrid>
         <VStack as='footer' spacing={4} mt={12} textAlign='center'>
-          <VercelCallout />
+          <NetlifyCallout />
         </VStack>
       </Container>
     </Box>
