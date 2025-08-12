@@ -13,7 +13,14 @@ authors:
 summary: 'It is now possible to take full advantage of coordinate data via Xarray explicit and flexible indexes'
 ---
 
-_TLDR: Xarray>2025.6 has been through a major refactoring of its internals that makes coordinate-based data selection and alignment more customizable, via built-in and/or 3rd party indexes! In this post we highlight a few examples that take advantage of this new superpower. If you're interested in this topic, also check out Deepak Cherian's [2025 SciPy Presentation](https://www.youtube.com/watch?v=I-NHCuLhRjY) and [Slides](https://docs.google.com/presentation/d/1sQU2N0-ThNZM8TUhsZy-kT0bZnu0H5X0FRJz2eKwEpA/edit?slide=id.g37373ba88e6_0_214#slide=id.g37373ba88e6_0_214)!_
+_TLDR: Xarray>2025.6 has been through a major refactoring of its internals that makes coordinate-based data selection and alignment customizable, enabling more efficient handling of both traditional and more exotic data structures! In this post we highlight a few examples that take advantage of this new superpower. If you're interested in this topic, also check out Deepak Cherian's [2025 SciPy Presentation](https://www.youtube.com/watch?v=I-NHCuLhRjY) and [Slides](https://docs.google.com/presentation/d/1sQU2N0-ThNZM8TUhsZy-kT0bZnu0H5X0FRJz2eKwEpA/edit?slide=id.g37373ba88e6_0_214#slide=id.g37373ba88e6_0_214)!_
+
+<figure>
+  <img src='/posts/flexible-indexing/xarray-dataset-diagram-new.webp' />
+  <figcaption>
+    Flexible indexing supports more exotic datasets in Xarray{' '}
+  </figcaption>
+</figure>
 
 {/* This is a comment that won't be rendered! */}
 
@@ -62,23 +69,32 @@ da.sel(x=3)
 ## Alternatives to Pandas.Index
 
 Importantly, a loop over all the coordinate values is not the only way to create an index.
-You might recognize that our coordinates about can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that information we can quickly get measurement values at any poisition: `Y(X=4)` = `Y[sqrt(4)]` = `Y[2]=30`.
+You might recognize that our coordinates about can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that information we can quickly get measurement values at any poisition: `Y(X=4)` = `Y[sqrt(4)]` = `Y[2]=30`. Xarray now has a [`CoordinateTransformIndex`](https://xarray-indexes.readthedocs.io/blocks/transform.html) to handle this on-demand lookup of coordinate positions.
 
 ### Xarray RangeIndex
 
-Often, coordinates are even simplier and can be definied by a start, stop, and uniform step size.
-For this common case, Xarray added a built-in `RangeIndex` that bypasses Pandas.
-Note that coordinates are now calculated on-the-fly rather than loaded into memory up-front when creating a Dataset.
+A simple special case of `CoordinateTransformIndex` is a `RangeIndex` where coordinates are even simplier and can be definied by a start, stop, and uniform step size. `Pandas.RangeIndex` only supports _integers_, whereas Xarray handles floating-point values. Coordinate look-up is performed on-the-fly rather than loading all values into memory up-front when creating a Dataset, which is critical for the example below that has a coordinate array of 7TB!
 
 ```python
 from xarray.indexes import RangeIndex
 
-index = RangeIndex.arange(0.0, 100_000, 0.1, dim='x')
+index = RangeIndex.arange(0.0, 1000.0, 1e-9, dim='x') # 7TB coordinate array
 ds = xr.Dataset(coords=xr.Coordinates.from_xindex(index))
 ds
 ```
 
 <RawHTML filePath='/posts/flexible-indexing/ds-range-repr.html' />
+
+```
+sliced = ds.isel(x=slice(1_000, 50_000, 100))
+sliced.x
+```
+
+<RawHTML filePath='/posts/flexible-indexing/ds-range-slice-repr.html' />
+
+### Xarray NDPointIndex
+
+TODO
 
 ## Third-party custom Indexes
 
@@ -193,17 +209,17 @@ subset['population'].xvec.plot(col='year');
   <img src='/posts/flexible-indexing/xvecfig.png' />
 </p>
 
+### Discrete Global Grid Systems with xdggs.DGGSIndex
+
+https://xarray-indexes.readthedocs.io/earth/xdggs.html
+
+TODO
+
 ## What's next?
 
 While we're extremely excited about what can _already_ be accomplished with the new indexing capabilities, there are plenty of exciting ideas for future work.
-
 Have an idea for your own custom index? Check out [this section of the Xarray documentation](https://docs.xarray.dev/en/stable/internals/how-to-create-custom-index.html).
-Also check out the [A Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io)!
-
-There are a few new indexes that will soon become part of the Xarray codebase!
-
-- [IntervalIndex](https://github.com/pydata/xarray/pull/10296)
-- [NDPointIndex (KDTree)](https://github.com/pydata/xarray/pull/10478) # This is done?!
+Also check out the [Xarray API Docs](https://docs.xarray.dev/en/latest/api/indexes.html) and [A Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io)!
 
 ## Acknowledgments
 
