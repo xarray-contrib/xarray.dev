@@ -15,6 +15,8 @@ summary: 'It is now possible to take full advantage of coordinate data via Xarra
 
 _TLDR: Xarray>2025.6 has been through a major refactoring of its internals that makes coordinate-based data selection and alignment more customizable, via built-in and/or 3rd party indexes! In this post we highlight a few examples that take advantage of this new superpower. If you're interested in this topic, also check out Deepak Cherian's [2025 SciPy Presentation](https://www.youtube.com/watch?v=I-NHCuLhRjY) and [Slides](https://docs.google.com/presentation/d/1sQU2N0-ThNZM8TUhsZy-kT0bZnu0H5X0FRJz2eKwEpA/edit?slide=id.g37373ba88e6_0_214#slide=id.g37373ba88e6_0_214)!_
 
+{/* This is a comment that won't be rendered! */}
+
 # Exciting new ways to slice and dice your data with Xarray!
 
 First thing's first, _what is an `index` and why is it helpful?_
@@ -35,7 +37,7 @@ To extract the answer in code we can loop over _all_ the values of `X` to find `
 
 > 💡 **Note:**
 > With only 6 coordinates, we easily see `X[3]=8`, but for large datasets we should loop over _all_ the coordinates to ensure there are no repeated values!
-This initial pass over all the coordinates to build an _index_ takes some time and may not always be desireable.
+> This initial pass over all the coordinates to build an _index_ takes some time and may not always be desireable.
 
 ## Pandas.Index
 
@@ -50,7 +52,7 @@ da = xr.DataArray(y, coords={'x': x})
 da
 ```
 
-<RawHTML filePath='./da-pandas-repr.html' />
+<RawHTML filePath='/posts/flexible-indexing/da-pandas-repr.html' />
 
 ```python
 da.sel(x=3)
@@ -76,7 +78,7 @@ ds = xr.Dataset(coords=xr.Coordinates.from_xindex(index))
 ds
 ```
 
-<RawHTML filePath='./ds-range-repr.html' />
+<RawHTML filePath='/posts/flexible-indexing/ds-range-repr.html' />
 
 ## Third-party custom Indexes
 
@@ -129,7 +131,7 @@ da = xr.open_dataarray('https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh
 da
 ```
 
-<RawHTML filePath='./da-rasterix-repr.html' />
+<RawHTML filePath='/posts/flexible-indexing/da-rasterix-repr.html' />
 
 ```python
 print('Original geotransform:\n', da.xindexes['x'].transform())
@@ -172,7 +174,7 @@ cube = xr.Dataset(
 cube
 ```
 
-<RawHTML filePath='./xvec-repr.html' />
+<RawHTML filePath='/posts/flexible-indexing/xvec-repr.html' />
 
 ```python
 # Efficient selection using shapely.STRtree
@@ -187,7 +189,9 @@ subset = cube.xvec.query(
 subset['population'].xvec.plot(col='year');
 ```
 
-![xvec figure](./xvecfig.png)
+<p align='center'>
+  <img src='/posts/flexible-indexing/xvecfig.png' />
+</p>
 
 ## What's next?
 
