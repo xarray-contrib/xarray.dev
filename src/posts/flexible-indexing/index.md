@@ -21,20 +21,26 @@ First thing's first, _what is an `index` and why is it helpful?_
 
 > An _index_ makes repeated subsetting and selection of data more efficient.
 
-Examples of indexes are all around you and are a fundamental way to organize and simplify access to information. If you want a book about Natural Sciences, you can go to your local library branch and head straight to section `500`. Or if you're in the mood for a good novel go to section `800` thanks to the Dewey Decimal System [(credit to Dewey, 1876)](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification)!
+Examples of indexes are all around you and are a fundamental way to organize and simplify access to information.
+If you want a book about Natural Sciences, you can go to your local library branch and head straight to section `500`.
+Or if you're in the mood for a good novel go to section `800` thanks to the Dewey Decimal System [(credit to Dewey, 1876)](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification)!
 
-Some indexes are less universal and more multi-dimensional: In my local grocery store I know that aisle 12, top shelf has the best cereal. And the second shelf on aisle 1 has the yogurt. In this example, _aisles 1-12 and shelves 1-5 are the coordinates_ of our grocery, but the more infomative _aisle content labels_ are the indexes. Once you've mentally asigned labels to your grocery, you can get what you want quickly without needing to wander around!
+Some indexes are less universal and more multi-dimensional: In my local grocery store I know that aisle 12, top shelf has the best cereal.
+And the second shelf on aisle 1 has the yogurt. In this example, _aisles 1-12 and shelves 1-5 are the coordinates_ of our grocery, but the more infomative _aisle content labels_ are the indexes.
+Once you've mentally asigned labels to your grocery, you can get what you want quickly without needing to wander around!
 
 The same efficiencies arise in computing. Consider a simple 1D dataset consisting of measurements `Y=[10,20,30,40,50,60]` at six positions `X=[1, 2, 4, 8, 16, 32]`. _What was our measurement at `X=8`?_
 
 To extract the answer in code we can loop over _all_ the values of `X` to find `X=8`. In Python conventions we find it at position 3, then use that to get our answer `Y[3]=40`.
 
 > 💡 **Note:**
-> With only 6 coordinates, we easily see `X[3]=8`, but for large datasets we should loop over _all_ the coordinates to ensure there are no repeated values! This initial pass over all the coordinates to build an _index_ takes some time and may not always be desireable.
+> With only 6 coordinates, we easily see `X[3]=8`, but for large datasets we should loop over _all_ the coordinates to ensure there are no repeated values!
+This initial pass over all the coordinates to build an _index_ takes some time and may not always be desireable.
 
 ## Pandas.Index
 
-In the example above the index is simply a key:value mapping between the coordinate values and integer positions `i=[0,1,2,3,4,5]` in the coordinates array. This in fact is the default [Pandas.Index](https://pandas.pydata.org/docs/reference/indexing.html)! And this is what Xarray has exclusively used until now to power [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html#indexing-with-dimension-names):
+In the example above the index is simply a key:value mapping between the coordinate values and integer positions `i=[0,1,2,3,4,5]` in the coordinates array.
+This in fact is the default [Pandas.Index](https://pandas.pydata.org/docs/reference/indexing.html)! And this is what Xarray has exclusively used until now to power [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html#indexing-with-dimension-names):
 
 ```python
 # NOTE Xarray builds a "PandasIndex" for coordinate 'x' by default
@@ -44,7 +50,7 @@ da = xr.DataArray(y, coords={'x': x})
 da
 ```
 
-<RawHTML filePath='/posts/flexible-indexes/da-pandas-repr.html' />
+<RawHTML filePath='./da-pandas-repr.html' />
 
 ```python
 da.sel(x=3)
@@ -53,11 +59,14 @@ da.sel(x=3)
 
 ## Alternatives to Pandas.Index
 
-Importantly, a loop over all the coordinate values is not the only way to create an index. You might recognize that our coordinates about can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that information we can quickly get measurement values at any poisition: `Y(X=4)` = `Y[sqrt(4)]` = `Y[2]=30`.
+Importantly, a loop over all the coordinate values is not the only way to create an index.
+You might recognize that our coordinates about can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that information we can quickly get measurement values at any poisition: `Y(X=4)` = `Y[sqrt(4)]` = `Y[2]=30`.
 
 ### Xarray RangeIndex
 
-Often, coordinates are even simplier and can be definied by a start, stop, and uniform step size. For this common case, Xarray added a built-in `RangeIndex` that bypasses Pandas. Note that coordinates are now calculated on-the-fly rather than loaded into memory up-front when creating a Dataset.
+Often, coordinates are even simplier and can be definied by a start, stop, and uniform step size.
+For this common case, Xarray added a built-in `RangeIndex` that bypasses Pandas.
+Note that coordinates are now calculated on-the-fly rather than loaded into memory up-front when creating a Dataset.
 
 ```python
 from xarray.indexes import RangeIndex
@@ -67,7 +76,7 @@ ds = xr.Dataset(coords=xr.Coordinates.from_xindex(index))
 ds
 ```
 
-<RawHTML filePath='/posts/flexible-indexes/ds-range-repr.html' />
+<RawHTML filePath='./ds-range-repr.html' />
 
 ## Third-party custom Indexes
 
@@ -77,9 +86,13 @@ A lot of work over the last several years has gone into the nuts and bolts of Xa
 
 > real-world datasets are usually more than just raw numbers; they have labels which encode information about how the array values map to locations in space, time, etc. [Xarray Docs](https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html#what-labels-enable)
 
-We often think about metadata providing context for _measurement values_ but metadata is also critical for coordinates! In particular, to align two different datasets we must ask if the coordinates are in the same coordinate system. In other words, do they share the same origin and scale?
+We often think about metadata providing context for _measurement values_ but metadata is also critical for coordinates!
+In particular, to align two different datasets we must ask if the coordinates are in the same coordinate system.
+In other words, do they share the same origin and scale?
 
-There are currently over 7000 commonly used [Coordinate Reference Systems (CRS)](https://spatialreference.org/ref/epsg/) for geospatial data in the authoritative EPSG database! And of course an infinite number of custom-defined CRSs. [xproj.CRSIndex](https://xproj.readthedocs.io/en/latest/) gives Xarray objects an automatic awareness of the coordinate reference system operations like `xr.align()` no longer succeed when they should raise an error:
+There are currently over 7000 commonly used [Coordinate Reference Systems (CRS)](https://spatialreference.org/ref/epsg/) for geospatial data in the authoritative EPSG database!
+And of course an infinite number of custom-defined CRSs.
+[xproj.CRSIndex](https://xproj.readthedocs.io/en/latest/) gives Xarray objects an automatic awareness of the coordinate reference system operations like `xr.align()` no longer succeed when they should raise an error:
 
 ```python
 from xproj import CRSIndex
@@ -96,7 +109,10 @@ MergeError: conflicting values/indexes on objects to be combined for coordinate 
 
 ### Rasterix RasterIndex
 
-Earlier we mentioned that coordinates often have a _functional representation_. For 2D geospatial raster images, this function often takes the form of an [Affine Transform](https://en.wikipedia.org/wiki/Affine_transformation). This how the [rasterix RasterIndex](https://github.com/xarray-contrib/rasterix) computes coordinates rather than storing them all in memory. Also alignment by comparing transforms minimizes common errors due to floating point mismatches.
+Earlier we mentioned that coordinates often have a _functional representation_.
+For 2D geospatial raster images, this function often takes the form of an [Affine Transform](https://en.wikipedia.org/wiki/Affine_transformation).
+This how the [rasterix RasterIndex](https://github.com/xarray-contrib/rasterix) computes coordinates rather than storing them all in memory.
+Also alignment by comparing transforms minimizes common errors due to floating point mismatches.
 
 Below is a simple example of slicing a large mosaic of GeoTiffs without ever loading the coordiantes into memory, note that a new Affine is defined after the slicing operation:
 
@@ -113,7 +129,7 @@ da = xr.open_dataarray('https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh
 da
 ```
 
-<RawHTML filePath='/posts/flexible-indexes/da-rasterix-repr.html' />
+<RawHTML filePath='./da-rasterix-repr.html' />
 
 ```python
 print('Original geotransform:\n', da.xindexes['x'].transform())
@@ -134,7 +150,9 @@ Sliced geotransform:
 
 ### XVec GeometryIndex
 
-A "vector data cube" is an n-D array that has at least one dimension indexed by a 2-D array of vector geometries. Large vector cubes can take advantage of an [R-tree spatial index](https://en.wikipedia.org/wiki/R-tree) for efficiently selecting vector geometries within a given bounding box. The `XVec.GeometryIndex` provides this functionality, below is a short code snippet but please refer to the [documentation for more](https://xvec.readthedocs.io/en/stable/indexing.html)!
+A "vector data cube" is an n-D array that has at least one dimension indexed by a 2-D array of vector geometries.
+Large vector cubes can take advantage of an [R-tree spatial index](https://en.wikipedia.org/wiki/R-tree) for efficiently selecting vector geometries within a given bounding box.
+The `XVec.GeometryIndex` provides this functionality, below is a short code snippet but please refer to the [documentation for more](https://xvec.readthedocs.io/en/stable/indexing.html)!
 
 ```python
 import xvec
@@ -154,7 +172,7 @@ cube = xr.Dataset(
 cube
 ```
 
-<RawHTML filePath='/posts/flexible-indexes/xvec-repr.html' />
+<RawHTML filePath='./xvec-repr.html' />
 
 ```python
 # Efficient selection using shapely.STRtree
@@ -169,13 +187,14 @@ subset = cube.xvec.query(
 subset['population'].xvec.plot(col='year');
 ```
 
-![xvec figure](/posts/flexible-indexes/xvecfig.png)
+![xvec figure](./xvecfig.png)
 
 ## What's next?
 
 While we're extremely excited about what can _already_ be accomplished with the new indexing capabilities, there are plenty of exciting ideas for future work.
 
-Have an idea for your own custom index? Check out [this section of the Xarray documentation](https://docs.xarray.dev/en/stable/internals/how-to-create-custom-index.html). Also check out the [A Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io)!
+Have an idea for your own custom index? Check out [this section of the Xarray documentation](https://docs.xarray.dev/en/stable/internals/how-to-create-custom-index.html).
+Also check out the [A Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io)!
 
 There are a few new indexes that will soon become part of the Xarray codebase!
 
