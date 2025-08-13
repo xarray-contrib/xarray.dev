@@ -5,7 +5,7 @@ export const footerItems = {
     { label: 'Team', href: '/team' },
     {
       label: 'Citing Xarray',
-      href: 'https://docs.xarray.dev/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray',
+      href: 'https://docs.xarray.dev/en/stable/get-help/faq.html#how-should-i-cite-xarray',
     },
     {
       label: 'Roadmap',
@@ -21,7 +21,7 @@ export const footerItems = {
     { label: 'Documentation', href: 'https://docs.xarray.dev/en/stable/' },
     {
       label: 'Tutorials',
-      href: 'https://docs.xarray.dev/en/stable/tutorials-and-videos.html',
+      href: 'https://tutorial.xarray.dev/intro.html',
     },
     {
       label: 'Example Gallery',
