@@ -13,7 +13,7 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Check out the new blog post!:'
+  const bannerTitle = 'Check out the latest blog post:'
   // The first link will be the main description for the banner
   const bannerDescription = (
     <Link href='/blog/flexible-indexing' fontWeight='medium'>
