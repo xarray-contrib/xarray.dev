@@ -19,7 +19,7 @@ export const Layout = ({
     <Link href='/blog/flexible-indexing' fontWeight='medium'>
       {' '}
       {/* Ensure it stands out a bit */}
-      Xarray indexes: Unleash the power of coordinates!
+      Xarray Indexes: Exciting new ways to slice and dice your data!
     </Link>
   )
   // The second link will be passed as children, styled to be smaller
