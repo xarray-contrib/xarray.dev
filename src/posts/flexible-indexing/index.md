@@ -124,7 +124,8 @@ da_sliced = da.sel(x=slice(-122.4, -120.0), y=slice(-47.1,-49.0))
 print('Sliced geotransform:\n', da_sliced.xindexes['x'].transform())
 ```
 
-```
+Notice how the offsets have changes from -180 → -122 and from 84 → -47.1, while the spacing is unchanged.
+
 Original geotransform:
  | 0.00, 0.00,-180.00|
 | 0.00,-0.00, 84.00|
