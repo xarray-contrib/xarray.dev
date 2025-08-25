@@ -39,7 +39,7 @@ The same efficiencies arise in computing. Consider a simple 1D dataset consistin
 To answer this in code, we need an index that is simply a _key:value_ mapping or "hash table" between the coordinate values and integer positions `i=[0,1,2,3,4,5]` in the coordinates array.
 With only 6 coordinates, we easily see `X[3]=8` so our measurement of interest is `Y[3]=40`.
 
-> 💡 **Note:** for large datasets we should loop over _all_ the coordinates to ensure there are no repeated values! This initial pass over all the coordinates to build an index may take significant time and may not always be desirable.
+> 💡 **Note:** Index structures present a trade-off: they are a little slow to construct but much faster at lookups that brute-force searches.
 
 ## pandas.Index
 
