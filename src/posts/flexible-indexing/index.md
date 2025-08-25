@@ -1,5 +1,5 @@
 ---
-title: 'Xarray Indexes: Exciting new ways to slice and dice your data!'
+title: 'Flexible Indexes: Exciting new ways to slice and dice your data!'
 date: '2025-08-11'
 authors:
   - name: Benoît Bovy
