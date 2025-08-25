@@ -104,10 +104,14 @@ Below is a simple example of slicing a large mosaic of GeoTiffs without ever loa
 import rasterix
 
 #26475 GeoTiffs represented by a GDAL VRT
-da = xr.open_dataarray('https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh.vrt',
-                       engine='rasterio',
-                       parse_coordinates=False).squeeze().pipe(
-    rasterix.assign_index
+da = (
+    xr.open_dataarray(
+        "https://opentopography.s3.sdsc.edu/raster/COP30/COP30_hh.vrt",
+        engine="rasterio",
+        parse_coordinates=False,
+    )
+    .squeeze()
+    .pipe(rasterix.assign_index)
 )
 da
 ```
