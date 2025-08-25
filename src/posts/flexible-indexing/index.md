@@ -18,7 +18,7 @@ summary: 'An introduction to customizable coordinate-based data selection and al
 <figure>
   <img src='/posts/flexible-indexing/summary-slide.png' />
   <figcaption>
-    *Summary schematic from Deepak Cherian's [2025 SciPy
+    *Summary schematic from our [2025 SciPy
     Presentation](https://www.youtube.com/watch?v=I-NHCuLhRjY) highlighting new
     custom Indexes and usecases. [Link to full slide
     deck](https://docs.google.com/presentation/d/1sQU2N0-ThNZM8TUhsZy-kT0bZnu0H5X0FRJz2eKwEpA/edit?slide=id.g37373ba88e6_0_214#slide=id.g37373ba88e6_0_214)*
