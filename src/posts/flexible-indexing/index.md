@@ -127,15 +127,16 @@ print('Sliced geotransform:\n', da_sliced.xindexes['x'].transform())
 Notice how the offsets have changes from -180 → -122 and from 84 → -47.1, while the spacing is unchanged.
 
 Original geotransform:
- | 0.00, 0.00,-180.00|
+| 0.00, 0.00,-180.00|
 | 0.00,-0.00, 84.00|
 | 0.00, 0.00, 1.00|
 
 Sliced geotransform:
- | 0.00, 0.00,-122.40|
+| 0.00, 0.00,-122.40|
 | 0.00,-0.00,-47.10|
 | 0.00, 0.00, 1.00|
-```
+
+````
 
 ### XProj CRSIndex
 
@@ -156,7 +157,7 @@ lons2 = np.arange(-122, -118, 1)
 ds1 = xr.Dataset(coords={'longitude': lons1}).proj.assign_crs(crs=4267)
 ds2 = xr.Dataset(coords={'longitude': lons2}).proj.assign_crs(crs=4326)
 ds1 + ds2
-```
+````
 
 ```pytb
 MergeError: conflicting values/indexes on objects to be combined for coordinate 'crs'
