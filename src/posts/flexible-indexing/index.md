@@ -36,14 +36,13 @@ In the United States, if you want a book about Natural Sciences, you can go to y
 The need for an index becomes critical as the size of data grows - just imagine the time it would take to find a specific novel amongst a million uncategorized books!
 
 The same efficiencies arise in computing. Consider a simple 1D dataset consisting of measurements `Y=[10,20,30,40,50,60]` at six coordinate positions `X=[1, 2, 4, 8, 16, 32]`. _What was our measurement at `X=8`?_
-To answer this in code, we need an index that is simply a _key:value_ mapping or "hash table" between the coordinate values and integer positions `i=[0,1,2,3,4,5]` in the coordinates array.
-With only 6 coordinates, we easily see `X[3]=8` so our measurement of interest is `Y[3]=40`.
+To answer this in code, we could either do a brute-force linear search (or binary search if sorted) through the coordinates array, or we could build a more efficient data structure designed for fast searches --- an Index. A common convenient index is a _key:value_ mapping or "hash table" between the coordinate values and their integer positions `i=[0,1,2,3,4,5]`. Finally, we are able to identify the index for our coordinate of interest (`X[3]=8`) and use it to lookup our measurement value `Y[3]=40`.
 
-> 💡 **Note:** Index structures present a trade-off: they are a little slow to construct but much faster at lookups that brute-force searches.
+> 💡 **Note:** Index structures present a trade-off: they are a little slow to construct but much faster at lookups than brute-force searches.
 
 ## pandas.Index
 
-Xarray's [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html#indexing-with-dimension-names) allows a more expressive and simple syntax in which you don't have to think about the index (`da.sel(x=8) = 40`). Up until now, Xarray has relied exclusively on [pandas.Index](https://pandas.pydata.org/docs/user_guide/indexing.html), which is still used by default:
+Xarray's [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html#indexing-with-dimension-names) allows a more expressive and simple syntax in which you don't have to think about the index (`da.sel(x=8)`). Up until now, Xarray has relied exclusively on [pandas.Index](https://pandas.pydata.org/docs/user_guide/indexing.html), which is still used by default:
 
 ```python
 x = np.array([1, 2, 4, 8, 16, 32])
@@ -61,12 +60,11 @@ da.sel(x=8)
 
 ## Alternatives to pandas.Index
 
-Importantly, a loop over all the coordinate values is not the only way to create an index.
-You might recognize that our coordinates can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that function we can quickly get measurement values at any position: `Y(X=8)` = `Y[log2(8)]` = `Y[3]=40`. Xarray now has a [CoordinateTransformIndex](https://xarray-indexes.readthedocs.io/blocks/transform.html) to handle this type of on-demand lookup of coordinate positions!
+There are many different indexing schemes and ways to generate an index. A basic approach is to run a loop over all coordinate values to create an _index:coordinate_ mapping, optionally identifying duplicates and sorting along the way. But, you might recognize that our example coordinates above can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that function we can quickly get measurement values at any coordinate: `Y(X=8)` = `Y[log2(8)]` = `Y[3]=40`. Xarray now has a [CoordinateTransformIndex](https://xarray-indexes.readthedocs.io/blocks/transform.html) to handle this type of on-demand calculation of coordinates!
 
 ### xarray RangeIndex
 
-A simple special case of `CoordinateTransformIndex` is a `RangeIndex` where coordinates can be defined by a start, stop, and uniform step size. _`pandas.RangeIndex` only supports integers_, whereas Xarray handles floating-point values. Coordinate look-up is performed on-the-fly rather than loading all values into memory up-front when creating a Dataset, which is critical for the example below that has a coordinate array of 7TB!
+A simple special case of `CoordinateTransformIndex` is a `RangeIndex` where coordinates can be defined by a start, stop, and uniform step size. _`pandas.RangeIndex` only supports integers_, whereas Xarray handles floating-point values. Coordinate look-up is performed on-the-fly rather than loading all values into memory up-front when creating a Dataset, which is critical for the example below that has a coordinate array of 7 terabytes!
 
 ```python
 from xarray.indexes import RangeIndex
@@ -97,7 +95,7 @@ Earlier we mentioned that coordinates often have a _functional representation_.
 For 2D raster images, this function often takes the form of an [Affine Transform](https://en.wikipedia.org/wiki/Affine_transformation).
 The [rasterix](https://github.com/xarray-contrib/rasterix) library extends Xarray with a `RasterIndex` which computes coordinates for geospatial images such as GeoTiffs via Affine Transform.
 
-Below is a simple example of slicing a large mosaic of GeoTiffs without ever loading the coordinates into memory, note that a new Affine is defined after the slicing operation:
+Below is a simple example of slicing a large mosaic of GeoTiffs without ever loading the coordinates into memory:
 
 ```python
 # 811816322401 values!
@@ -118,29 +116,27 @@ da
 
 <RawHTML filePath='/posts/flexible-indexing/da-rasterix-repr.html' />
 
+After the slicing operation, a new Affine is defined. For example, notice how the origin changes below from (-180.0, 84.0) -> (-122.4, -47.1), while the spacing is unchanged (0.000277).
+
 ```python
 print('Original geotransform:\n', da.xindexes['x'].transform())
 da_sliced = da.sel(x=slice(-122.4, -120.0), y=slice(-47.1,-49.0))
 print('Sliced geotransform:\n', da_sliced.xindexes['x'].transform())
 ```
 
-Notice how the offsets have changes from -180 → -122 and from 84 → -47.1, while the spacing is unchanged.
+```python
+# Original geotransform:
+Affine(0.0002777777777777778, 0.0, -180.0001389,
+       0.0, -0.0002777777777777778, 84.0001389)
 
-Original geotransform:
-| 0.00, 0.00,-180.00|
-| 0.00,-0.00, 84.00|
-| 0.00, 0.00, 1.00|
-
-Sliced geotransform:
-| 0.00, 0.00,-122.40|
-| 0.00,-0.00,-47.10|
-| 0.00, 0.00, 1.00|
-
-````
+# Sliced geotransform:
+Affine(0.0002777777777777778, 0.0, -122.40013889999999,
+       0.0, -0.0002777777777777778, -47.09986109999999)
+```
 
 ### XProj CRSIndex
 
-> real-world datasets are usually more than just raw numbers; they have labels which encode information about how the array values map to locations in space, time, etc. [Xarray Docs](https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html#what-labels-enable)
+> "real-world datasets are usually more than just raw numbers; they have labels which encode information about how the array values map to locations in space, time, etc." -- [Xarray Documentation](https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html#what-labels-enable)
 
 We often think about metadata providing context for _measurement values_ but metadata is also critical for coordinates!
 In particular, to align two different datasets we must ask if the coordinates are in the same coordinate system.
@@ -148,7 +144,7 @@ In other words, do they share the same origin and scale?
 
 There are currently over 7000 commonly used [Coordinate Reference Systems (CRS)](https://spatialreference.org/ref/epsg/) for geospatial data in the authoritative EPSG database!
 And of course an infinite number of custom-defined CRSs.
-[xproj.CRSIndex](https://xproj.readthedocs.io/en/latest/) gives Xarray objects an automatic awareness of the coordinate reference system operations like `xr.align()`, which can raise an informative error when there is a CRS mismatch:
+[xproj.CRSIndex](https://xproj.readthedocs.io/en/latest/) gives Xarray objects an automatic awareness of the coordinate reference system so that operations like `xr.align()` raises an informative error when there is a CRS mismatch:
 
 ```python
 from xproj import CRSIndex
@@ -157,7 +153,7 @@ lons2 = np.arange(-122, -118, 1)
 ds1 = xr.Dataset(coords={'longitude': lons1}).proj.assign_crs(crs=4267)
 ds2 = xr.Dataset(coords={'longitude': lons2}).proj.assign_crs(crs=4326)
 ds1 + ds2
-````
+```
 
 ```pytb
 MergeError: conflicting values/indexes on objects to be combined for coordinate 'crs'
@@ -166,9 +162,9 @@ MergeError: conflicting values/indexes on objects to be combined for coordinate 
 ### XVec GeometryIndex
 
 A "vector data cube" is an n-D array that has at least one dimension indexed by an array of vector geometries.
-Large vector cubes can take advantage of an [R-tree spatial index](https://en.wikipedia.org/wiki/R-tree) for efficiently selecting vector geometries within a given bounding box.
-With this feature, Xarray objects gain functionality equivalent to geopandas' GeoDataFrames!
-The `xvec.GeometryIndex` provides this functionality, below is a short code snippet but please refer to the [documentation for more](https://xvec.readthedocs.io/en/stable/indexing.html)!
+With the `xvec.GeometryIndex`, Xarray objects gain functionality equivalent to geopandas' GeoDataFrames!
+For example, large vector cubes can take advantage of an [R-tree spatial index](https://en.wikipedia.org/wiki/R-tree) for efficiently selecting vector geometries within a given bounding box.
+Below is a short code snippet which automatically uses R-tree selection behind the scenes:
 
 ```python
 import xvec
