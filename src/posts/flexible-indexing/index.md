@@ -167,6 +167,7 @@ MergeError: conflicting values/indexes on objects to be combined for coordinate 
 
 A "vector data cube" is an n-D array that has at least one dimension indexed by an array of vector geometries.
 Large vector cubes can take advantage of an [R-tree spatial index](https://en.wikipedia.org/wiki/R-tree) for efficiently selecting vector geometries within a given bounding box.
+With this feature, Xarray objects gain functionality equivalent to geopandas' GeoDataFrames!
 The `xvec.GeometryIndex` provides this functionality, below is a short code snippet but please refer to the [documentation for more](https://xvec.readthedocs.io/en/stable/indexing.html)!
 
 ```python
