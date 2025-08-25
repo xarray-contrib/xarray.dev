@@ -78,7 +78,7 @@ ds
 
 <RawHTML filePath='/posts/flexible-indexing/ds-range-repr.html' />
 
-Selection preserves the RangeIndex and does not require loading all the coordinates into memory.
+Selection with slices preserves the RangeIndex and does not require loading all the coordinates into memory.
 
 ```
 sliced = ds.isel(x=slice(1_000, 50_000, 100))
