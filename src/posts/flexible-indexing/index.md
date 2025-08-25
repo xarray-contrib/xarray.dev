@@ -27,7 +27,7 @@ summary: 'An introduction to customizable coordinate-based data selection and al
 
 ## Indexing basics
 
-First thing's first, _what is an `index` and why is it helpful?_
+First thing's first, _what is an Index and why is it helpful?_
 
 > In brief, an _index_ makes selection of subsets of data more efficient. Xarray Indexes connect coordinate labels to associated data values and encode important contextual information about the coordinate space.
 
