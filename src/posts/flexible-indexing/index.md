@@ -87,7 +87,7 @@ sliced.x
 
 ## Third-party custom Indexes
 
-In addition to a few new built-in indexes, `xarray.Index` provides an API that allows dealing with coordinate data and metadata in a highly customizable way for the most common Xarray operations such as `sel`, `align`, `concat`, `stack`. This is a powerful extension mechanism that is very important for supporting a multitude of domain-specific data structures.
+In addition to a few new built-in indexes, `xarray.Index` provides an API that allows dealing with coordinate data and metadata in a highly customizable way for the most common Xarray operations such as `sel`, `align`, `concat`, `stack`. This is a powerful extension mechanism that is very important for supporting a multitude of domain-specific data structures. Here are a few examples below.
 
 ### rasterix RasterIndex
 
