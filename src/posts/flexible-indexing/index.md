@@ -42,7 +42,7 @@ To answer this in code, we could either do a brute-force linear search (or binar
 
 ## pandas.Index
 
-Xarray's [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html#indexing-with-dimension-names) allows a more expressive and simple syntax in which you don't have to think about the index (`da.sel(x=8)`). Up until now, Xarray has relied exclusively on [pandas.Index](https://pandas.pydata.org/docs/user_guide/indexing.html), which is still used by default:
+Xarray's [label-based selection](https://docs.xarray.dev/en/latest/user-guide/indexing.html) allows a more expressive and simple syntax in which you don't have to think about the index (`da.sel(x=8)`). Up until now, Xarray has relied exclusively on [pandas.Index](https://pandas.pydata.org/docs/user_guide/indexing.html), which is still used by default:
 
 ```python
 x = np.array([1, 2, 4, 8, 16, 32])
