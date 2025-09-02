@@ -13,7 +13,7 @@ authors:
 summary: 'An introduction to customizable coordinate-based data selection and alignment for more efficient handling of both traditional and more exotic data structures'
 ---
 
-**TL;DR**: xarray>=2025.6 has been through a major refactoring of its internals that makes coordinate-based data selection and alignment customizable, enabling more efficient handling of both traditional and more exotic data structures. In this post we highlight a few examples that take advantage of this new superpower! See the [Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io/) for more!
+**TL;DR**: over the last few years Xarray has been through a gradual although major refactoring of its internals that makes coordinate-based data selection and alignment customizable. Xarray>=2025.6 now enables more efficient handling of both traditional and more exotic data structures. In this post we highlight a few examples that take advantage of this new superpower! See the [Gallery of Custom Index Examples](https://xarray-indexes.readthedocs.io/) for more!
 
 <figure>
   <img src='/posts/flexible-indexing/summary-slide.png' />
