@@ -60,7 +60,7 @@ da.sel(x=8)
 
 ## Alternatives to pandas.Index
 
-There are many different indexing schemes and ways to generate an index. A basic approach is to run a loop over all coordinate values to create an _index:coordinate_ mapping, optionally identifying duplicates and sorting along the way. But, you might recognize that our example coordinates above can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that function we can quickly get measurement values at any coordinate: `Y(X=8)` = `Y[log2(8)]` = `Y[3]=40`. Xarray now has a [CoordinateTransformIndex](https://xarray-indexes.readthedocs.io/blocks/transform.html) to handle this type of on-demand calculation of coordinates!
+There are many different indexing schemes and ways to generate an index. pandas.Index's approach is roughly similar to running a loop over all coordinate values and creating an _index:coordinate_ mapping, optionally identifying duplicates and sorting along the way. But, you might recognize that our example coordinates above can in fact be represented by a function `X(i)=2**i` where `i` is the integer position! Given that function we can quickly get measurement values at any coordinate: `Y(X=8)` = `Y[log2(8)]` = `Y[3]=40`. Xarray now has a [CoordinateTransformIndex](https://xarray-indexes.readthedocs.io/blocks/transform.html) to handle this type of on-demand calculation of coordinates!
 
 ### xarray RangeIndex
 
