@@ -91,7 +91,7 @@ In addition to a few new built-in indexes, `xarray.Index` provides an API that a
 
 ### rasterix RasterIndex
 
-Earlier we mentioned that coordinates often have a _functional representation_.
+Earlier we mentioned that coordinates may have a _functional representation_.
 For 2D raster images, this function often takes the form of an [Affine Transform](https://en.wikipedia.org/wiki/Affine_transformation).
 The [rasterix](https://github.com/xarray-contrib/rasterix) library extends Xarray with a `RasterIndex` which computes coordinates for geospatial images such as GeoTiffs via Affine Transform.
 
