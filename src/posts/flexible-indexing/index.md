@@ -29,7 +29,7 @@ summary: 'An introduction to customizable coordinate-based data selection and al
 
 First thing's first, _what is an Index and why is it helpful?_
 
-> In brief, an _index_ makes selection of subsets of data more efficient. Xarray Indexes connect coordinate labels to associated data values and encode important contextual information about the coordinate space.
+> In brief, an _index_ makes data retrieval and alignment more efficient. Xarray Indexes connect coordinate labels to associated data location (array indices) and encode important contextual information about the coordinate space.
 
 Examples of indexes are all around you and are a fundamental way to organize and simplify access to information.
 In the United States, if you want a book about Natural Sciences, you can go to your local library branch and head straight to section 500. Or if you're in the mood for a classic novel go to section 800. Connecting thematic labels with numbers (`{'Natural Sciences': 500, 'Literature': 800}`) is a classic indexing system that's been around for hundreds of years [(Dewey Decimal System, 1876)](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification).
