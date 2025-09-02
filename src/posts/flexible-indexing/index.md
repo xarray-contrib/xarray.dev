@@ -210,7 +210,7 @@ Be sure to check out the [Gallery of Custom Index Examples](https://xarray-index
 
 While we're extremely excited about what can _already_ be accomplished with the new indexing capabilities, there are plenty of exciting ideas for future work.
 
-Have an idea for your own custom index? Check out [this section of the Xarray documentation](https://docs.xarray.dev/en/stable/internals/how-to-create-custom-index.html).
+Have an idea for your own custom index? Check out [this section of the Xarray documentation](https://docs.xarray.dev/en/stable/internals/how-to-create-custom-index.html). In a follow-up blog post, we will also illustrate how Xarray's internals interact with the xarray.Index API and how it can be leveraged in order to customize the behavior of some of the most common Xarray operations like indexing and alignment.
 
 ## Acknowledgments
 
