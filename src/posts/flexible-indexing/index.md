@@ -140,7 +140,6 @@ Affine(0.0002777777777777778, 0.0, -122.40013889999999,
 
 We often think about metadata providing context for _measurement values_ but metadata is also critical for coordinates!
 In particular, to align two different datasets we must ask if the coordinates are in the same coordinate system.
-In other words, do they share the same origin and scale?
 
 There are currently over 7000 commonly used [Coordinate Reference Systems (CRS)](https://spatialreference.org/ref/epsg/) for geospatial data in the authoritative EPSG database!
 And of course an infinite number of custom-defined CRSs.
