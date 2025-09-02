@@ -1,6 +1,6 @@
 ---
 title: 'Flexible Indexes: Exciting new ways to slice and dice your data!'
-date: '2025-08-11'
+date: '2025-09-02'
 authors:
   - name: Scott Henderson
     github: scottyhq
