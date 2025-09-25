@@ -94,13 +94,11 @@ Lastly, we highlighted some of the high-level Pangeo ML libraries enabling user 
 ## Where to learn more
 
 - Educational resources:
-
   - [Project Pythia Cookbooks](https://cookbooks.projectpythia.org)
   - [GeoSMART Machine Learning Curriculum](https://geo-smart.github.io/mlgeo-book)
   - [University of Washington Hackweeks as a Service](https://guidebook.hackweek.io)
 
 - Pangeo ML Working Group:
-
   - [Monthly meetings](https://pangeo.io/meeting-notes.html#working-group-meetings)
   - [Discourse Forum](https://discourse.pangeo.io/tag/machine-learning)
 

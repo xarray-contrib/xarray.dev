@@ -50,3 +50,46 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
     alt='Deploys by Netlify'
   />
 </a>
+
+## Authoring blog post tips
+
+1. To create a new blog post a good place to start is copying a subfolder under `src/posts/`, so, for example https://xarray.dev/blog/flox is written here https://github.com/xarray-contrib/xarray.dev/blob/e04905f5ea039eb2eb848c0b4945beee323900e4/src/posts/flox/index.md
+
+### Static assets
+
+Once you have `src/posts/newpost/index.md` start writing! If you want to include figures or other static assets, they go into a matching `public/posts/newpost` folder. But! reference an images without the `public` part of the path like this:
+
+```html
+<p align="center">
+  <img src="/posts/newpost/figure.png" />
+</p>
+```
+
+### Xarray HTML reprs
+
+To include an html repr, you must save it first:
+
+```python
+with open('da-repr.html', 'w') as f:
+   f.write(da._repr_html_())
+```
+
+Then put it into the post's static assets folder `public/posts/newpost/da-repr.html`. And finally in `src/posts/newpost/index.md` you can include it with this syntax:
+
+```
+<RawHTML filePath='/posts/newpost/da-repr.html' />
+```
+
+### Toggling visibilty of sections (markdown comments)
+
+While authoring, you might want to toggle specific sections on and off during rendering. You can do that with this syntax:
+
+```
+{/* This is a comment that won't be rendered! */}
+```
+
+### Landing page banner
+
+If you'd like to add a link to the latest blog post on the landing page banner, edit this section here:
+
+https://github.com/xarray-contrib/xarray.dev/blob/e04905f5ea039eb2eb848c0b4945beee323900e4/src/components/layout.js#L18
