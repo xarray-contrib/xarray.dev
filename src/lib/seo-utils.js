@@ -1,10 +1,11 @@
 export function getRootURL() {
   let url = 'https://xarray.dev'
-  if (
-    process.env.NEXT_PUBLIC_VERCEL_URL &&
-    process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production'
-  ) {
-    url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+
+  // Use Netlify URL environment variable for deploy previews and branch deploys
+  if (process.env.NEXT_PUBLIC_SITE_URL && process.env.CONTEXT !== 'production') {
+    url = process.env.NEXT_PUBLIC_SITE_URL
+  } else if (process.env.URL && process.env.CONTEXT !== 'production') {
+    url = process.env.URL
   }
 
   return url

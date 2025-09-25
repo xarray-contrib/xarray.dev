@@ -2,9 +2,17 @@ import { Link } from '@/components/mdx'
 import { Flex, Text } from '@chakra-ui/react'
 import { IoGitBranchOutline } from 'react-icons/io5'
 
-const sha = process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || ''
-const owner = process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER || ''
-const slug = process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG || ''
+const sha = process.env.HEAD || ''
+const repositoryUrl = process.env.REPOSITORY_URL || ''
+
+// Extract owner and repo from REPOSITORY_URL (format: https://github.com/owner/repo)
+const getRepoInfo = (url) => {
+  if (!url) return { owner: '', slug: '' }
+  const match = url.match(/github\.com\/([^\/]+)\/([^\/]+?)(?:\.git)?$/)
+  return match ? { owner: match[1], slug: match[2] } : { owner: '', slug: '' }
+}
+
+const { owner, slug } = getRepoInfo(repositoryUrl)
 
 export const GitSHA = () => {
   if (!sha || !owner || !slug) {

@@ -22,9 +22,9 @@ export const Layout = ({
   )
 
   // Determine the base URL based on the environment
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : 'http://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+    ? process.env.NEXT_PUBLIC_SITE_URL
+    : process.env.URL || 'http://localhost:3000'
 
   // Construct the full card URL
   const fullCardUrl = card.startsWith('http') ? card : `${baseUrl}${card}`
