@@ -101,7 +101,7 @@ PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and 
 
 ## Hackathon: Strategies Explored!
 
-During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve
+During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve at least ~17x improvement on 1 GPU in training throughput by optimizing data loading and preprocessing steps.
 
 ### Step 1: Optimized Chunking & Compression
 
