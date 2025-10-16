@@ -1,6 +1,6 @@
 # xarray landing page
 
-![Vercel Deployment](https://img.shields.io/github/deployments/xarray-contrib/xarray.dev/Production?label=vercel&logo=vercel&style=for-the-badge)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4f940719-54bd-4ff7-95e0-0088dfb3c10f/deploy-status)](https://app.netlify.com/projects/xarraydev/deploys)
 
 Landing Page for xarray project.
 
@@ -44,10 +44,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-<a href="https://vercel.com?utm_source=xarray&utm_campaign=oss">
-<p align="center">
-  <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg">
-</p>
+<a href='https://www.netlify.com'>
+  <img
+    src='https://www.netlify.com/assets/badges/netlify-badge-color-bg.svg'
+    alt='Deploys by Netlify'
+  />
 </a>
 
 ## Authoring blog post tips
