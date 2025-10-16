@@ -16,10 +16,10 @@ export const Layout = ({
   const bannerTitle = 'Check out the latest blog post:'
   // The first link will be the main description for the banner
   const bannerDescription = (
-    <Link href='/blog/flexible-indexing' fontWeight='medium'>
+    <Link href='/blog/xarray-napari-plan' fontWeight='medium'>
       {' '}
       {/* Ensure it stands out a bit */}
-      Flexible Indexes: Exciting new ways to slice and dice your data!
+      Xarray ❤️ napari: A plan for seamless integration
     </Link>
   )
   // The second link will be passed as children, styled to be smaller
