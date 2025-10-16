@@ -19,6 +19,11 @@ package-lock.json
 # production
 /build
 
+# generated RSS/Atom feeds
+public/atom.xml
+public/rss.json
+public/rss.xml
+
 # misc
 .DS_Store
 *.pem
