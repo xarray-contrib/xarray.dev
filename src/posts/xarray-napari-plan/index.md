@@ -13,7 +13,7 @@ summary: "The Napari and Xarray teams' plan to combine the power of Napari and X
 
 <Note>
   This post is cross-posted on the [napari
-  blog](https://napari.org/stable/blog).
+  blog](https://napari.org/stable/blog/napari-xarray.html)
 </Note>
 
 ## TL;DR
