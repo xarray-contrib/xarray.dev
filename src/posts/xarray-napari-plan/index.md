@@ -107,9 +107,24 @@ But something being hard is not a reason not to try to do it. In that spirit bot
 
 Thanks to support from the Chan Zuckerberg Institute the napari, Xarray, and [CellProfiler](https://cellprofiler.org/) team members were able to attend SciPy 2025. At the sprints members of these three teams—Ian Hunt-Isaak, Tim Monko, Nodar Gogoberidze, Beth Cimini, Peter Sobolewski and Carol Willing—collaborated to develop a plan for enhancing the integration of Xarray with napari. The rest of this blog post is the initial roadmap we came up with for better integration of Xarray and napari.
 
+<div style={{ textAlign: 'center', margin: '20px 0' }}>
+  <img
+    src='./scipy-napari-xarray-sprint.png'
+    alt='SciPy 2025 sprint participants from napari, Xarray, and CellProfiler teams collaborating on the development roadmap'
+    aria-label='Team photo of the napari, Xarray, and CellProfiler sprint participants at SciPy 2025'
+    style={{ width: '70%', height: 'auto', borderRadius: '5px' }}
+  />
+  <p style={{ fontSize: '0.9em', color: '#666', marginTop: '10px' }}>
+    <em>
+      The napari, Xarray, and CellProfiler teams at the SciPy 2025 sprints,
+      collaborating on the roadmap for enhanced integration.
+    </em>
+  </p>
+</div>
+
 ### Get Involved
 
-This is a community effort, so your contributions and thoughts are very welcome! To get involved in shaping this vision of the future, please join the napari [Zulip](https://napari.zulipchat.com/) and introduce yourself on this [introductions issue](https://github.com/napari/napari-xarray/issues/8) in the napari Xarray repository.
+This is a community effort, so your contributions and thoughts are very welcome! To get involved in shaping this vision of the future, please join the napari [Zulip](https://napari.zulipchat.com/#narrow/channel/212875-general/topic/Announcing.20the.20Xarray.20napari.20collaboration.20initiative.21) and introduce yourself on this [introductions issue](https://github.com/napari/napari-xarray/issues/8) in the [napari-xarray repository](https://github.com/napari/napari-xarray).
 
 ### **🗺️ Roadmap**
 
