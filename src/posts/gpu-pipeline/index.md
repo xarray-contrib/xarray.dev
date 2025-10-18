@@ -101,7 +101,7 @@ PyTorch’s `DataLoader` includes options like `num_workers`, `pin_memory`, and 
 
 ## Hackathon: Strategies Explored!
 
-During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve
+During the hackathon, we tested the following strategies to improve the data loading performance. In the end, we were able to achieve at least ~17x improvement on 1 GPU in training throughput by optimizing data loading and preprocessing steps.
 
 ### Step 1: Optimized Chunking & Compression
 
@@ -198,7 +198,7 @@ With nvCOMP, all steps of data loading including reading from disk, decompressio
 
 To unlock this, we would need zarr-python to support GPU-based decompression codecs, with one for Zstandard (Zstd) currently being implemented in [this PR](https://github.com/zarr-developers/zarr-python/pull/2863).
 
-We tested the performance of GPU-based decompression using nvCOMP with Zarr-Python 3 and KvikIO, and compared it to CPU-based decompression using [this data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/tree/v1.0/benchmarks/era5_zarr_benchmark.py).
+We tested the performance of GPU-based decompression using nvCOMP with Zarr-Python 3 and KvikIO, and compared it to CPU-based decompression using [this data reading benchmark here](https://github.com/pangeo-data/ncar-hackathon-xarray-on-gpus/blob/v1.0/benchmarks/era5_zarr_benchmark.py).
 
 Here are the results:
 
