@@ -69,7 +69,7 @@ To get a sense of the benefits Xarray provides, read the [Accelerating Biologica
 
 <div style={{ textAlign: 'center', margin: '20px 0' }}>
   <iframe
-    src='/posts/xarray-biology/dataarray-repr.html'
+    src='/posts/xarray-napari-plan/dataarray-repr.html'
     width='100%'
     height='600'
     frameBorder='0'
