@@ -109,17 +109,30 @@ Thanks to support from the Chan Zuckerberg Institute the napari, Xarray, and [Ce
 
 <div style={{ textAlign: 'center', margin: '20px 0' }}>
   <img
-    src='./scipy-napari-xarray-sprint.png'
+    src='/posts/xarray-napari-plan/scipy-napari-xarray-sprint.png'
     alt='SciPy 2025 sprint participants from napari, Xarray, and CellProfiler teams collaborating on the development roadmap'
     aria-label='Team photo of the napari, Xarray, and CellProfiler sprint participants at SciPy 2025'
-    style={{ width: '70%', height: 'auto', borderRadius: '5px' }}
+    style={{
+      width: '70%',
+      height: 'auto',
+      borderRadius: '5px',
+      display: 'block',
+      margin: '0 auto',
+    }}
   />
-  <p style={{ fontSize: '0.9em', color: '#666', marginTop: '10px' }}>
+  <div
+    style={{
+      fontSize: '0.9em',
+      color: '#666',
+      marginTop: '10px',
+      textAlign: 'center',
+    }}
+  >
     <em>
       The napari, Xarray, and CellProfiler teams at the SciPy 2025 sprints,
       collaborating on the roadmap for enhanced integration.
     </em>
-  </p>
+  </div>
 </div>
 
 ### Get Involved
