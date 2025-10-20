@@ -50,7 +50,7 @@
     "@types/react": "^18.3.11",
     "eslint": "^9.25.1",
     "eslint-config-next": "15.3.3",
-    "playwright": "^1.47.2",
+    "playwright": "^1.55.1",
     "typescript": ">=5.9.2",
     "webpack": "^5.101.0"
   }
