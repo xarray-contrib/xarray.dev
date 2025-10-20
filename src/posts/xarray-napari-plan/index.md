@@ -67,15 +67,7 @@ However, there are still several key pain points around managing image metadata 
 
 To get a sense of the benefits Xarray provides, read the [Accelerating Biological Analysis with Xarray](https://xarray.dev/blog/xarray-biology) blog post and look at the rich repr of an `Xarray.DataArray` for an image stack:
 
-<div style={{ textAlign: 'center', margin: '20px 0' }}>
-  <iframe
-    src='/posts/xarray-napari-plan/dataarray-repr.html'
-    width='100%'
-    height='600'
-    frameBorder='0'
-    style={{ border: '1px solid #ccc', borderRadius: '5px' }}
-  ></iframe>
-</div>
+<RawHTML filePath='/posts/xarray-napari-plan/dataarray-repr.html' />
 
 Having napari leverage the Xarray metadata will not only improve the experience of napari users but also provide Xarray users with a polished interactive visualization tool.
 
