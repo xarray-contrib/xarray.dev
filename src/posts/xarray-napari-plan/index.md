@@ -1,6 +1,6 @@
 ---
 title: 'Xarray ❤️ napari'
-date: '2025-10-20'
+date: '2025-10-24'
 authors:
   - name: Ian Hunt-Isaak
     github: ianhi
