@@ -18,14 +18,10 @@
   status = 404
 
 # Environment variables for different deploy contexts
+# Note: Netlify automatically provides URL and DEPLOY_PRIME_URL
+# We don't need to set NEXT_PUBLIC_SITE_URL for previews since our code falls back to process.env.URL
 [context.production.environment]
   NEXT_PUBLIC_SITE_URL = "https://xarray.dev"
-
-[context.deploy-preview.environment]
-  NEXT_PUBLIC_SITE_URL = "$DEPLOY_PRIME_URL"
-
-[context.branch-deploy.environment]
-  NEXT_PUBLIC_SITE_URL = "$DEPLOY_PRIME_URL"
 
 # Headers for security
 [[headers]]
