@@ -44,9 +44,15 @@ export const Layout = ({
     ? process.env.NEXT_PUBLIC_SITE_URL
     : process.env.URL || 'http://localhost:3000'
 
+  // Canonical URL always points to production for SEO
+  const canonicalBaseUrl = 'https://xarray.dev'
+  const canonicalUrl = url.startsWith('http')
+    ? url
+    : `${canonicalBaseUrl}${url}`
+
   // Construct the full card URL
   const fullCardUrl = card.startsWith('http') ? card : `${baseUrl}${card}`
-  // Construct the full URL for og:url
+  // Construct the full URL for og:url (can use preview URL)
   const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`
 
   return (
@@ -80,7 +86,7 @@ export const Layout = ({
         <meta name='twitter:image' content={fullCardUrl} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@xarray_dev' />
-        <link rel='canonical' href={fullUrl} />
+        <link rel='canonical' href={canonicalUrl} />
         <link
           rel='icon'
           type='image/png'
