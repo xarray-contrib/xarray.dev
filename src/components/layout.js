@@ -39,10 +39,8 @@ export const Layout = ({
   //   </Link>
   //)
 
-  // Determine the base URL based on the environment
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : process.env.URL || 'http://localhost:3000'
+  // Base URL is set via build command (DEPLOY_PRIME_URL for previews, production URL otherwise)
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
   // Canonical URL always points to production for SEO
   const canonicalBaseUrl = 'https://xarray.dev'
@@ -52,7 +50,7 @@ export const Layout = ({
 
   // Construct the full card URL
   const fullCardUrl = card.startsWith('http') ? card : `${baseUrl}${card}`
-  // Construct the full URL for og:url (can use preview URL)
+  // Construct the full URL for og:url (uses preview URL in previews, production in prod)
   const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`
 
   return (

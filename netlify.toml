@@ -1,6 +1,7 @@
 [build]
   publish = ".next"
-  command = "npm run build"
+  # Use DEPLOY_PRIME_URL for previews, fallback to production URL
+  command = "NEXT_PUBLIC_SITE_URL=${DEPLOY_PRIME_URL:-https://xarray.dev} npm run build"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -17,11 +18,8 @@
   to = "/404.html"
   status = 404
 
-# Environment variables for different deploy contexts
-# Note: Netlify automatically provides URL and DEPLOY_PRIME_URL
-# We don't need to set NEXT_PUBLIC_SITE_URL for previews since our code falls back to process.env.URL
-[context.production.environment]
-  NEXT_PUBLIC_SITE_URL = "https://xarray.dev"
+# Environment variables set via build command above
+# DEPLOY_PRIME_URL is automatically provided by Netlify
 
 # Headers for security
 [[headers]]
