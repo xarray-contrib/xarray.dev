@@ -15,7 +15,7 @@ import { getRootURL } from '@/lib/seo-utils'
 import { GitSHA } from '@/components/git-sha'
 import { Image, Link } from '@/components/mdx'
 import { NetlifyCallout } from '@/components/netlify'
-import { footerItems } from '@/data/footer-items'
+import { getFooterItems } from '@/data/footer-items'
 import { FaGithub, FaRss, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { useLingui } from '@lingui/react/macro'
 

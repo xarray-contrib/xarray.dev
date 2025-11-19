@@ -1,5 +1,6 @@
 import { sanitizeHTML } from '@/lib/sanitize-html'
 import { Box } from '@chakra-ui/react'
+import { useLingui } from '@lingui/react/macro'
 import useSWR from 'swr'
 
 async function fetcher(url) {
@@ -20,6 +21,8 @@ async function fetcher(url) {
 }
 
 export const RawHTML = ({ filePath }) => {
+  const { t } = useLingui()
+
   const { data: htmlContent, error } = useSWR(
     `/api/html-content?filePath=${encodeURIComponent(filePath)}`,
     fetcher,
@@ -27,7 +30,7 @@ export const RawHTML = ({ filePath }) => {
   )
 
   if (error) {
-    return <div>{`tError loading content`}</div>
+    return <div>{t`Error loading content`}</div>
   }
 
   if (!htmlContent) {

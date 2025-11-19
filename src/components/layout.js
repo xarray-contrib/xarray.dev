@@ -23,7 +23,7 @@ export const Layout = ({
   const router = useRouter()
   const { pathname, asPath, query } = router
 
-  const bannerTitle = 'Check out the latest blog post:'
+  const bannerTitle = t`Check out the latest blog post:`
   // The first link will be the main description for the banner
   const bannerDescription = (
     <Link href='/blog/xarray-napari-plan' fontWeight='medium'>
