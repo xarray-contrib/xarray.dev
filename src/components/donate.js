@@ -7,8 +7,6 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-
-
 import { Heading, Image, Link } from '@/components/mdx'
 
 import { BiDonateHeart } from 'react-icons/bi'

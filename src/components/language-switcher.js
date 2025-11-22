@@ -28,7 +28,6 @@ function getLocaleLabel(locale) {
 }
 
 export const LanguageSwitcher = () => {
-
   const router = useRouter()
   const pathname = usePathname()
 

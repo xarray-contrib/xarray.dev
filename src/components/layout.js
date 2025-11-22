@@ -22,7 +22,6 @@ export const Layout = ({
   const { t } = useLingui()
   const router = useRouter()
 
-
   const bannerTitle = t`Check out the latest blog post:`
   // The first link will be the main description for the banner
   const bannerDescription = (
