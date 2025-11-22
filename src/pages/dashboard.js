@@ -1,6 +1,6 @@
 import { IssueTracker, ProjectMetrics } from '@/components/dashboard'
 import { Layout } from '@/components/layout'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react/macro'
 
 const DashboardPage = () => {
   const { t } = useLingui()
