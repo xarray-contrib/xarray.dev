@@ -28,7 +28,7 @@ function getLocaleLabel(locale) {
 }
 
 export const LanguageSwitcher = () => {
-  const { t } = useLingui()
+
   const router = useRouter()
   const pathname = usePathname()
 
@@ -43,7 +43,7 @@ export const LanguageSwitcher = () => {
   useEffect(() => {
     const storedLocale = localStorage.getItem('locale')
     if (storedLocale && storedLocale !== router.locale) {
-      changeLocale({ target: { value: storedLocale } })
+      changeLocale()
     }
   }, [])
   return (
