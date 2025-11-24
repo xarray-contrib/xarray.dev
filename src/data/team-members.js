@@ -24,4 +24,5 @@ export const TeamMembers = [
   { name: 'Owen Littlejohns', github: 'owenlittlejohns' },
   { name: 'Eni Awowale', github: 'eni-awowale' },
   { name: 'Julia Signell', github: 'jsignell' },
+  { name: 'Ilan Gold', github: 'ilan-gold' },
 ]
