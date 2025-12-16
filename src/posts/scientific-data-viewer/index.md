@@ -7,7 +7,6 @@ authors:
 summary: 'Scientific Data Viewer is a VS Code extension that lets you explore NetCDF, Zarr, HDF5, GRIB, GeoTIFF, and other scientific data files directly in your editor.'
 ---
 
-
 ## TL;DR
 
 Scientific Data Viewer is a VS Code extension that lets you explore NetCDF, Zarr, HDF5, GRIB, GeoTIFF, and other scientific data files directly in your editor. Built on Xarray, it displays the familiar HTML and text representations you know from Jupyter notebooks, making it easy to inspect file structure, dimensions, coordinates, and attributes without leaving your development environment.
@@ -40,36 +39,48 @@ The extension uses Xarray under the hood to open files and extract metadata. It 
   <tbody>
     <tr>
       <td>NetCDF</td>
-      <td><code>.nc</code>, <code>.netcdf</code>, <code>.nc4</code></td>
+      <td>
+        <code>.nc</code>, <code>.netcdf</code>, <code>.nc4</code>
+      </td>
     </tr>
     <tr>
       <td>CDF (NASA)</td>
-      <td><code>.cdf</code></td>
+      <td>
+        <code>.cdf</code>
+      </td>
     </tr>
     <tr>
       <td>Zarr</td>
-      <td><code>.zarr</code></td>
+      <td>
+        <code>.zarr</code>
+      </td>
     </tr>
     <tr>
       <td>HDF5</td>
-      <td><code>.h5</code>, <code>.hdf5</code></td>
+      <td>
+        <code>.h5</code>, <code>.hdf5</code>
+      </td>
     </tr>
     <tr>
       <td>GRIB</td>
-      <td><code>.grib</code>, <code>.grib2</code>, <code>.grb</code></td>
+      <td>
+        <code>.grib</code>, <code>.grib2</code>, <code>.grb</code>
+      </td>
     </tr>
     <tr>
       <td>GeoTIFF</td>
-      <td><code>.tif</code>, <code>.tiff</code>, <code>.geotiff</code></td>
+      <td>
+        <code>.tif</code>, <code>.tiff</code>, <code>.geotiff</code>
+      </td>
     </tr>
     <tr>
       <td>JPEG-2000</td>
-      <td><code>.jp2</code>, <code>.jpeg2000</code></td>
+      <td>
+        <code>.jp2</code>, <code>.jpeg2000</code>
+      </td>
     </tr>
   </tbody>
 </table>
-
-
 
 ## What You Can Do
 
