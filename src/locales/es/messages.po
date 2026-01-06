@@ -79,8 +79,8 @@ msgstr "Herramientas independientes del backend para diagnósticos y visualizaci
 msgid "Bayesian Inference"
 msgstr "Inferencia Bayesiana"
 
-#: src/data/menu-items.js:11
 #: src/data/footer-items.js:8
+#: src/data/menu-items.js:11
 msgid "Blog"
 msgstr "Blog"
 
@@ -88,9 +88,13 @@ msgstr "Blog"
 msgid "Brand Assets"
 msgstr "Recursos de marca"
 
+#: src/components/layout.js:25
+msgid "Check out the latest blog post:"
+msgstr ""
+
 #: src/components/layout.js:26
-msgid "Check out the new blog post on DataTree!"
-msgstr "¡Consulta la nueva publicación del blog sobre DataTree!"
+#~ msgid "Check out the new blog post on DataTree!"
+#~ msgstr "¡Consulta la nueva publicación del blog sobre DataTree!"
 
 #: src/data/footer-items.js:11
 msgid "Citing Xarray"
@@ -152,25 +156,29 @@ msgstr "Arreglos distribuidos y paralelismo avanzado para el análisis, lo que p
 msgid "Docs Visitors"
 msgstr "Visitantes de la documentación"
 
-#: src/data/menu-items.js:12
 #: src/data/footer-items.js:25
+#: src/data/menu-items.js:12
 msgid "Documentation"
 msgstr "Documentación"
 
+#: src/components/donate.js:21
+#: src/components/donate.js:71
 #: src/data/menu-items.js:10
-#: src/components/donate.js:23
-#: src/components/donate.js:73
 msgid "Donate"
 msgstr "Donar"
 
-#: src/data/menu-items.js:8
 #: src/components/ecosystem.js:60
+#: src/data/menu-items.js:8
 msgid "Ecosystem"
 msgstr "Ecosistema"
 
 #: src/components/language-switcher.js:18
 msgid "English"
 msgstr "Inglés"
+
+#: src/components/raw-html.js:33
+msgid "Error loading content"
+msgstr ""
 
 #: src/data/footer-items.js:31
 msgid "Example Gallery"
@@ -180,13 +188,13 @@ msgstr "Galería de ejemplos"
 #~ msgid "failed to 3 load data"
 #~ msgstr ""
 
-#: src/components/ecosystem.js:32
 #: src/components/dashboard/timeseries-agg-stats-card.js:12
+#: src/components/ecosystem.js:32
 msgid "failed to load"
 msgstr "Falla en la carga"
 
-#: src/components/dashboard/timeline-plot-container.js:23
 #: src/components/dashboard/project-metrics.js:17
+#: src/components/dashboard/timeline-plot-container.js:23
 msgid "failed to load data"
 msgstr "Error al cargar los datos"
 
@@ -226,11 +234,11 @@ msgstr "Operaciones de Agrupado Por"
 msgid "hours"
 msgstr "horas"
 
-#: src/components/donate.js:62
+#: src/components/donate.js:60
 msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
 msgstr "Si te gusta Xarray y quieres apoyar nuestra misión, considera hacer una donación para apoyar nuestros esfuerzos."
 
-#: src/components/donate.js:49
+#: src/components/donate.js:47
 msgid ""
 "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
 "              and administrative support to help ensure the health and\n"
@@ -282,6 +290,10 @@ msgstr "Listado de reportes"
 #: src/components/features.js:25
 msgid "Key Features & Capabilities"
 msgstr "Características y capacidades"
+
+#: src/components/raw-html.js:37
+msgid "Loading data..."
+msgstr ""
 
 #: src/components/ecosystem.js:33
 msgid "loading..."
@@ -399,8 +411,8 @@ msgstr "Estrellas"
 msgid "Supported By"
 msgstr "Con el apoyo de"
 
-#: src/pages/team.js:21
 #: src/data/footer-items.js:9
+#: src/pages/team.js:21
 msgid "Team"
 msgstr "Equipo"
 
@@ -487,7 +499,7 @@ msgstr "Los mantenedores principales de Xarray son responsables del continuo man
 msgid "Xarray includes a large and growing library of domain-agnostic functions for advanced analytics and visualization with these data structures."
 msgstr "Xarray incluye una biblioteca grande y en crecimiento de funciones independientes del dominio para análisis y visualización avanzados con estas estructuras de datos."
 
-#: src/components/donate.js:40
+#: src/components/donate.js:38
 msgid "Xarray is a NumFOCUS Sponsored Project, a "
 msgstr "Xarray es un proyecto patrocinado por NumFOCUS, una "
 
@@ -543,8 +555,8 @@ msgid "Xarray supports multiple array backends, allowing users to choose array t
 msgstr "Xarray admite múltiples motores, lo que permite a los usuarios elegir los tipos de estructuras de datos que funcionan mejor para su aplicación."
 
 #: src/components/layout.js:30
-msgid "Xarray x NASA: xarray.DataTree for hierarchical data structures"
-msgstr "Xarray x NASA: xarray.DataTree para estructuras de datos jerárquicas"
+#~ msgid "Xarray x NASA: xarray.DataTree for hierarchical data structures"
+#~ msgstr "Xarray x NASA: xarray.DataTree para estructuras de datos jerárquicas"
 
 #: src/pages/index.js:29
 msgid "Xarray: N-D labeled arrays and datasets in Python"
