@@ -53,7 +53,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ## Translations
 
-Translations are managed through Crowdin at https://scientific-python.crowdin.com. The xarray project is part of the Scientific Python organization on Crowdin, which also includes projects such as NumPy, SciPy, and others.
+Translations are managed through Crowdin at https://scientific-python.crowdin.com. The xarray project is part of the [Scientific Python](https://scientific-python.org/) organization on Crowdin, which also includes projects such as NumPy, SciPy, and others.
 
 When creating new content or editing existing content, only the english version of the content should be modified directly in this repository. Once this new content is merged into the main branch of the xarray.dev website, the Crowdin integration will automatically pick up the changes and notify translators that new translations are needed. Once the translation is completed, a pull request will be automatically created in this repository to add the new translated content.
 
