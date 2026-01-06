@@ -51,6 +51,14 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
   />
 </a>
 
+## Translations
+
+Translations are managed through Crowdin at https://scientific-python.crowdin.com. The xarray project is part of the Scientific Python organization on Crowdin, which also includes projects such as NumPy, SciPy, and others.
+
+When creating new content or editing existing content, only the english version of the content should be modified directly in this repository. Once this new content is merged into the main branch of the xarray.dev website, the Crowdin integration will automatically pick up the changes and notify translators that new translations are needed. Once the translation is completed, a pull request will be automatically created in this repository to add the new translated content.
+
+For more details on how the integration works, see https://scientific-python-translations.github.io/docs/. For more details on how to translate the website, see https://scientific-python-translations.github.io/translate/.
+
 ## Authoring blog post tips
 
 1. To create a new blog post a good place to start is copying a subfolder under `src/posts/`, so, for example https://xarray.dev/blog/flox is written here https://github.com/xarray-contrib/xarray.dev/blob/e04905f5ea039eb2eb848c0b4945beee323900e4/src/posts/flox/index.md
