@@ -4,6 +4,8 @@ import { Header } from '@/components/header'
 import { Link } from '@/components/mdx'
 import { Box, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
+import { useLingui } from '@lingui/react/macro'
+import { useRouter } from 'next/router'
 
 export const Layout = ({
   title,
@@ -13,7 +15,14 @@ export const Layout = ({
   url = 'https://xarray.dev',
   enableBanner = false,
 }) => {
-  const bannerTitle = 'Check out the latest blog post:'
+  /**
+   * This macro hook is needed to get `t` which
+   * is bound to i18n from React.Context
+   */
+  const { t } = useLingui()
+  const router = useRouter()
+
+  const bannerTitle = t`Check out the latest blog post:`
   // The first link will be the main description for the banner
   const bannerDescription = (
     <Link href='/blog/xarray-napari-plan' fontWeight='medium'>
@@ -60,7 +69,7 @@ export const Layout = ({
           rel='icon'
           type='image/png'
           sizes='96x96'
-          href='/Xarray-assets/Icon/Xarray_Icon_final.svg'
+          href='/Xarray-assets/Icon/Xarray_Icon_Final.svg'
         />
         <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
         <link rel='icon' type='image/png' href='/favicon.png' />
@@ -82,7 +91,6 @@ export const Layout = ({
           )}
           {children}
         </Box>
-
         <Footer />
       </Flex>
     </>

@@ -4,10 +4,12 @@ import { Spinner, Text } from '@chakra-ui/react'
 import * as d3 from 'd3'
 import { isWithinInterval, lastDayOfMonth, startOfMonth } from 'date-fns'
 import useSWR from 'swr'
+import { useLingui } from '@lingui/react/macro'
 
 export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
+  const { t } = useLingui()
   let { data, error } = useSWR(query, fetcher)
-  if (error) return <Text>failed to load</Text>
+  if (error) return <Text>{t`failed to load`}</Text>
   if (!data)
     return (
       <Spinner
@@ -43,7 +45,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
 
   const change = {
     type: diffPercentage < 0 ? 'increase' : 'decrease',
-    value: `${d3.format('.2f')(Math.abs(diffPercentage))}% since last month`,
+    value:
+      `${d3.format('.2f')(Math.abs(diffPercentage))}% ` + t`since last month`,
   }
   return (
     <StatisticsCard
@@ -51,8 +54,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
       icon={icon}
       stat={
         result <= 2
-          ? `${d3.format('.1f')(result * 24)} hours`
-          : `${d3.format('.1f')(result)} days`
+          ? `${d3.format('.1f')(result * 24)} ` + t`hours`
+          : `${d3.format('.1f')(result)} ` + t`days`
       }
       diff={change}
     />
