@@ -12,6 +12,11 @@ export const Layout = ({
   children,
   url = 'https://xarray.dev',
   enableBanner = false,
+  type = 'website',
+  imageWidth,
+  imageHeight,
+  publishedTime,
+  authors,
 }) => {
   const bannerTitle = 'Check out the latest blog post:'
   // The first link will be the main description for the banner
@@ -34,13 +39,19 @@ export const Layout = ({
   //   </Link>
   //)
 
-  // Determine the base URL based on the environment
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : process.env.URL || 'http://localhost:3000'
+  // Base URL is set via build command (DEPLOY_PRIME_URL for previews, production URL otherwise)
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
+  // Canonical URL always points to production for SEO
+  const canonicalBaseUrl = 'https://xarray.dev'
+  const canonicalUrl = url.startsWith('http')
+    ? url
+    : `${canonicalBaseUrl}${url}`
 
   // Construct the full card URL
   const fullCardUrl = card.startsWith('http') ? card : `${baseUrl}${card}`
+  // Construct the full URL for og:url (uses preview URL in previews, production in prod)
+  const fullUrl = url.startsWith('http') ? url : `${baseUrl}${url}`
 
   return (
     <>
@@ -50,12 +61,30 @@ export const Layout = ({
         <meta property='og:title' content={title} />
         <meta property='og:description' content={description} />
         <meta property='og:image' content={fullCardUrl} />
-        <meta property='og:url' content={url} />
+        {imageWidth && <meta property='og:image:width' content={imageWidth} />}
+        {imageHeight && (
+          <meta property='og:image:height' content={imageHeight} />
+        )}
+        <meta property='og:url' content={fullUrl} />
+        <meta property='og:type' content={type} />
+        {type === 'article' && publishedTime && (
+          <meta property='article:published_time' content={publishedTime} />
+        )}
+        {type === 'article' &&
+          authors &&
+          authors.map((author) => (
+            <meta
+              key={author.github}
+              property='article:author'
+              content={`https://github.com/${author.github}`}
+            />
+          ))}
         <meta name='twitter:title' content={title} />
         <meta name='twitter:description' content={description} />
         <meta name='twitter:image' content={fullCardUrl} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@xarray_dev' />
+        <link rel='canonical' href={canonicalUrl} />
         <link
           rel='icon'
           type='image/png'

@@ -38,6 +38,11 @@ export default function Post({ source, frontmatter, postId }) {
       card={`/cards/${postId}.png`}
       description={frontmatter.summary}
       url={`/blog/${postId}`}
+      type='article'
+      imageWidth='2560'
+      imageHeight='1440'
+      publishedTime={date.toISOString()}
+      authors={frontmatter.authors}
     >
       <Box as={'section'}>
         <Container maxW='container.lg' py={10}>
