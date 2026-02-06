@@ -1,6 +1,7 @@
 import { Image } from '@/components/mdx'
 import { formatDate } from '@/lib/date-formatting'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
+import { loadCatalog } from '../../i18n'
 import {
   Avatar,
   AvatarGroup,
@@ -84,21 +85,27 @@ const Card = ({ frontmatter, id }) => {
 
 export default Card
 
-export async function getStaticPaths() {
-  const paths = getAllPostsIds()
+export async function getStaticPaths({ locales }) {
+  const postIds = getAllPostsIds()
 
   const isDev =
     process.env.CONTEXT !== 'production' ||
     process.env.NODE_ENV === 'development'
+
+  const basePaths = isDev ? postIds : []
+  const paths = basePaths.flatMap((entry) =>
+    locales.map((locale) => ({ ...entry, locale })),
+  )
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths: isDev ? paths : [], fallback: false }
+  return { paths, fallback: false }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
+  const translation = await loadCatalog(locale)
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
   const source = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(source)
-  return { props: { frontmatter: data, id: params.id } }
+  return { props: { frontmatter: data, id: params.id, translation } }
 }

@@ -28,6 +28,7 @@ import { Link, mapping } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
+import { loadCatalog } from '../../i18n'
 
 export default function Post({ source, frontmatter, postId }) {
   const date = new Date(frontmatter.date)
@@ -104,15 +105,19 @@ export default function Post({ source, frontmatter, postId }) {
   )
 }
 
-export async function getStaticPaths() {
-  const paths = getAllPostsIds()
+export async function getStaticPaths({ locales }) {
+  const postIds = getAllPostsIds()
+  const paths = postIds.flatMap((entry) =>
+    locales.map((locale) => ({ ...entry, locale })),
+  )
   return {
     paths,
     fallback: false,
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
+  const translation = await loadCatalog(locale)
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
   const source = fs.readFileSync(filePath, 'utf8')
@@ -125,5 +130,12 @@ export async function getStaticProps({ params }) {
     },
   })
 
-  return { props: { source: mdxSource, frontmatter: data, postId: params.id } }
+  return {
+    props: {
+      source: mdxSource,
+      frontmatter: data,
+      postId: params.id,
+      translation,
+    },
+  }
 }

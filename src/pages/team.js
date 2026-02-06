@@ -4,6 +4,7 @@ import { TeamMember } from '@/components/team-member'
 import { TeamMembers } from '@/data/team-members'
 import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { useLingui } from '@lingui/react/macro'
+import { loadCatalog } from '../i18n'
 
 const Team = () => {
   const { t } = useLingui()
@@ -71,3 +72,8 @@ const Team = () => {
 }
 
 export default Team
+
+export async function getStaticProps({ locale }) {
+  const translation = await loadCatalog(locale)
+  return { props: { translation } }
+}
