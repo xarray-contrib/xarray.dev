@@ -12,6 +12,15 @@ summary: 'Scientific Data Viewer is a VS Code extension that lets you explore Ne
 
 Scientific Data Viewer is a VS Code extension that lets you explore NetCDF, Zarr, HDF5, GRIB, GeoTIFF, and other scientific data files directly in your editor. Built on Xarray, it displays the familiar HTML and text representations you know from Jupyter notebooks, making it easy to inspect file structure, dimensions, coordinates, and attributes without leaving your development environment.
 
+<div align="center">
+  <img src="/posts/scientific-data-viewer/scientific-data-viewer-logo.png" alt="Scientific Data Viewer Icon" width="128" height="128"/>
+
+
+Available on:
+[VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=eschalk0.scientific-data-viewer) • [Open VSX Registry](https://open-vsx.org/extension/eschalk0/scientific-data-viewer)
+
+</div>
+
 ---
 
 ## The Problem
@@ -26,9 +35,15 @@ For quick inspection tasks, this context switch is costly. You might also find y
 
 Scientific Data Viewer brings Xarray's data inspection capabilities directly into VS Code. Click on a `.nc` file in the explorer, and instead of seeing binary gibberish, you get the same rich representation you're used to from Jupyter:
 
+<div align="center">
+
 ![Screenshot showing Xarray HTML representation in VS Code](/posts/scientific-data-viewer/light-nc-xarray-html-and-text-repr-0.3.0.png)
 
+</div>
+
 The extension uses Xarray under the hood to open files and extract metadata. It supports the formats that Xarray supports, including:
+
+<div align="center">
 
 <table>
   <thead>
@@ -69,6 +84,7 @@ The extension uses Xarray under the hood to open files and extract metadata. It 
   </tbody>
 </table>
 
+</div>
 
 
 ## What You Can Do
@@ -90,19 +106,34 @@ For files with hierarchical structure (like nested Zarr groups or HDF5 groups), 
 
 A "Data Structure" panel appears in VS Code's explorer sidebar when viewing a scientific data file. This tree view mirrors the structure shown in the main panel and lets you quickly navigate to specific variables or groups.
 
+<div align="center">
+
 ![Screenshot showing the "Data Structure" tree view with focus on a variable in VS Code](/posts/scientific-data-viewer/light-zarr-tree-view-focus-on-variable-0.3.0.png)
+
+</div>
 
 ### Basic Plotting (Experimental)
 
 The extension includes experimental plotting capabilities using Matplotlib. You can generate quick visualizations of variables directly in the editor—useful for sanity checks, though not intended to replace proper analysis tools. The plotting automatically adapts to your VS Code theme (light or dark).
 
+<div align="center">
+
 ![Screenshot showing plots in the extension webview on the left, and an opened plot in a new tab on the right in VS Code](/posts/scientific-data-viewer/light-tif-plot-opened-0.3.0.png)
+
+</div>
+
+Available on: VSCode Marketplace • Open VSX Registry
 
 ### Export to HTML
 
 Need to share your data inspection results? The extension can export the entire viewer contents as a self-contained HTML report, including all metadata and representations. This is handy for documentation or for sharing with colleagues who don't have the data file.
 
+<div align="center">
+
+
 ![Screenshot showing an exported HTML report opened in Firefox](/posts/scientific-data-viewer/dark-exported-html-report-in-firefox-0.8.0.png)
+
+</div>
 
 ## Getting Started
 
