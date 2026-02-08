@@ -1,6 +1,6 @@
 ---
 title: 'Exploring Scientific Data Files in VS Code with Xarray'
-date: '2025-12-16'
+date: '2026-02-08'
 authors:
   - name: Etienne Schalk
     github: etienneschalk
