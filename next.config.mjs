@@ -13,8 +13,6 @@ const withMDX = nextMDX({
 })
 
 export default withMDX({
-  // Silence Next.js 16 Turbopack warning when webpack config is present (e.g. from @next/mdx)
-  turbopack: {},
   // Append the default value with md extensions
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   images: {
