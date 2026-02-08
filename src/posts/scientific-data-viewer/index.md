@@ -195,7 +195,7 @@ If you spend time working with NetCDF, Zarr, or other scientific formats, give i
 
 ## Thanks
 
-I would like to thank my colleagues: Nicolas Bertaud, Charles Le Mero, Yoann Rey-Ricord, Thomas Vidal, and Fabien Vidor for their valuable feedback and reviews on the extension stores. I am also grateful to the community members who contributed by reporting issues and suggesting features on GitHub: hbeukers, paulsally, ChunkyPandas03, and fpartous.
+I would like to thank my colleagues: Nicolas Bertaud, Charles Le Mero, Yoann Rey-Ricord, Thomas Vidal, and Fabien Vidor for their valuable feedback and reviews on the extension stores. I am also grateful to the community members who contributed by reporting issues and suggesting features on GitHub: hbeukers, paulsally, ChunkyPandas03, fpartous and efvik.
 
 ---
 
