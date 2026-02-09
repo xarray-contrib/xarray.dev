@@ -113,7 +113,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ params, locale = 'en' }) {
   const translation = await loadCatalog(locale)
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
