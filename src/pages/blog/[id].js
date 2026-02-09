@@ -127,5 +127,12 @@ export async function getStaticProps({ params, locale }) {
     },
   })
 
-  return { props: { source: mdxSource, frontmatter: data, postId: params.id, translation } }
+  return {
+    props: {
+      source: mdxSource,
+      frontmatter: data,
+      postId: params.id,
+      translation,
+    },
+  }
 }
