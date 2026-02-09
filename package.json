@@ -51,7 +51,7 @@
     "@lingui/loader": "^5.9.0",
     "@lingui/react": "^5.9.0",
     "@types/react": "^18.3.11",
-    "eslint": "^9.39.1",
+    "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.30",
     "playwright": "^1.57.0",
     "typescript": ">=5.9.2",

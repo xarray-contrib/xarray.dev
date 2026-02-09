@@ -24,15 +24,4 @@ export default withMDX({
     locales: ["en", "es", "pt"],
     defaultLocale: "en",
   },
-  async rewrites() {
-    return {
-      beforeFiles: [
-        // Blog posts are not localized, so we always redirect back to the root blog path
-        {
-          source: '/:locale(es|pt)/blog/:id',
-          destination: '/blog/:id',
-        },
-      ],
-    }
-  },
 })
