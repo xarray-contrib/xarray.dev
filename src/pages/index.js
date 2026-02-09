@@ -21,6 +21,7 @@ export const getStaticProps = async (ctx) => {
     },
   }
 }
+
 export default function IndexPage() {
   const { t } = useLingui()
   return (

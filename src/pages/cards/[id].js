@@ -16,6 +16,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 import { MdOutlineCalendarToday, MdPeopleOutline } from 'react-icons/md'
+import { loadCatalog } from '../../i18n'
 
 const Card = ({ frontmatter, id }) => {
   const date = new Date(frontmatter.date)
@@ -95,10 +96,11 @@ export async function getStaticPaths() {
   return { paths: isDev ? paths : [], fallback: false }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
   const source = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(source)
-  return { props: { frontmatter: data, id: params.id } }
+  const translation = await loadCatalog(locale)
+  return { props: { frontmatter: data, id: params.id, translation } }
 }
