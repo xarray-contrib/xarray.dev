@@ -29,6 +29,7 @@ import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
 import { loadCatalog } from '../../i18n'
+import { i18nConfig } from '@/config/i18n.mjs'
 
 export default function Post({ source, frontmatter, postId, translation }) {
   const date = new Date(frontmatter.date)
@@ -106,15 +107,24 @@ export default function Post({ source, frontmatter, postId, translation }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostsIds()
+  const posts = getAllPostsIds()
+
+  // Blog posts are not translated, so we serve the english
+  // version of all posts
+  const paths = posts.flatMap((post) =>
+    i18nConfig.locales.map((locale) => ({
+      params: post.params,
+      locale,
+    }))
+  )
+
   return {
     paths,
     fallback: false,
   }
 }
 
-export async function getStaticProps({ params, locale = 'en' }) {
-  const translation = await loadCatalog(locale)
+export async function getStaticProps({ params }) {
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
   const source = fs.readFileSync(filePath, 'utf8')
@@ -132,7 +142,6 @@ export async function getStaticProps({ params, locale = 'en' }) {
       source: mdxSource,
       frontmatter: data,
       postId: params.id,
-      translation,
     },
   }
 }

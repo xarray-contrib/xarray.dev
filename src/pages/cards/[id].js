@@ -96,11 +96,10 @@ export async function getStaticPaths() {
   return { paths: isDev ? paths : [], fallback: false }
 }
 
-export async function getStaticProps({ params, locale = 'en' }) {
+export async function getStaticProps({ params }) {
   const postData = getPostData(params.id)
   const filePath = path.join(process.cwd(), 'src/posts', postData.file)
   const source = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(source)
-  const translation = await loadCatalog(locale)
-  return { props: { frontmatter: data, id: params.id, translation } }
+  return { props: { frontmatter: data, id: params.id } }
 }

@@ -111,13 +111,11 @@ export default function Blog({ allPostsData }) {
 }
 
 export async function getStaticProps({ params, locale = 'en' }) {
-  const translation = await loadCatalog(locale)
   const allPostsData = getSortedPostsMetadata()
   generateRssFeed(allPostsData)
   return {
     props: {
       allPostsData,
-      translation,
     },
   }
 }
