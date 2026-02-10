@@ -115,7 +115,7 @@ export async function getStaticPaths() {
     i18nConfig.locales.map((locale) => ({
       params: post.params,
       locale,
-    }))
+    })),
   )
 
   return {
