@@ -1,22 +1,22 @@
 import React from 'react'
 
 import { Box, Container, Flex, SimpleGrid, Text } from '@chakra-ui/react'
+import { useLingui } from '@lingui/react/macro'
 
 import { Heading, Image, Link } from '@/components/mdx'
 import { Sponsors as data } from '@/data/sponsors'
 
 export const Sponsors = () => {
   const sponsors = React.useMemo(() => data, [])
-
+  const { t } = useLingui()
   return (
     <Box id={'sponsors'} as='section'>
       <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
-          Supported By
+          {t`Supported By`}
         </Heading>
         <Text fontSize={'lg'}>
-          We thank these institutions for generously supporting the development
-          and maintenance of Xarray.
+          {t`We thank these institutions for generously supporting the development and maintenance of Xarray.`}
         </Text>
 
         <SimpleGrid

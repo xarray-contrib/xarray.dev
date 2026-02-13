@@ -3,16 +3,18 @@ import React from 'react'
 
 import { Link } from '@/components/mdx'
 import { ProjectCard } from '@/components/project-card'
-import { Projects } from '@/data/projects'
+import { getProjects } from '@/data/projects'
+
+import { useLingui } from '@lingui/react/macro'
 
 export const ScientificDomains = () => {
+  const { t } = useLingui()
+  const Projects = getProjects()
   const projects = React.useMemo(() => Projects, [])
-
   return (
     <Box my={8}>
       <Text fontSize={'lg'}>
-        This section lists some of the standalone packages, projects developed
-        with xarray.
+        {t`This section lists some of the standalone packages, projects developed with xarray.`}
       </Text>
 
       <SimpleGrid
@@ -43,7 +45,7 @@ export const ScientificDomains = () => {
         variant={'outline'}
         colorScheme={'blue'}
       >
-        See More
+        {t`See More`}
       </Button>
     </Box>
   )

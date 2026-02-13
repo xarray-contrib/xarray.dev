@@ -3,6 +3,8 @@ import { AspectRatio, Box, Container, SimpleGrid, Text } from '@chakra-ui/react'
 import { Code, Heading } from '@/components/mdx'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
+import { useLingui } from '@lingui/react/macro'
+
 //TODO: We could remove xarrray installation step by requesting xarray to be added to the Pyodide standard lib
 //TODO: Or wait until jupyterlite has streamlined the installation process of user-specified packages
 
@@ -61,6 +63,7 @@ data.isel(lon=0).plot();
 # For more, head over to the documentation page`
 
 export const Repl = () => {
+  const { t } = useLingui()
   return (
     <Box id={'repl'} as='section'>
       <Container maxW='container.lg' centerContent>
@@ -68,8 +71,7 @@ export const Repl = () => {
           Try Xarray
         </Heading>
         <Text fontSize={'lg'}>
-          Try Xarray in a REPL directly in your browser (no installation
-          needed)!
+          {t`Try Xarray in a REPL directly in your browser (no installation needed)!`}
         </Text>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} my={8}>

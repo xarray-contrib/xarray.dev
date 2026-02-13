@@ -1,7 +1,7 @@
 import { DesktopNav } from '@/components/desktop-nav'
 import { Link } from '@/components/mdx'
 import { MobileNav } from '@/components/mobile-nav'
-import { menuItems } from '@/data/menu-items'
+import { getMenuItems } from '@/data/menu-items'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {
   Box,
@@ -15,12 +15,16 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import React from 'react'
+import { useRouter } from 'next/router'
+
+import { LanguageSwitcher } from './language-switcher'
 
 export const Header = () => {
-  const navItems = React.useMemo(() => menuItems, [])
-
+  let navItems = getMenuItems()
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
+  const router = useRouter()
+  const isBlogPage = router.asPath.startsWith('/blog')
 
   return (
     <Box>
@@ -41,7 +45,7 @@ export const Header = () => {
           ),
         }}
       >
-        <Container as={Flex} maxW={'container.lg'} align={'center'}>
+        <Container as={Flex} maxW={'fit-content'} align={'center'}>
           <Flex
             flex={{ base: '0', md: 'auto' }}
             ml={{ base: -2 }}
@@ -93,10 +97,12 @@ export const Header = () => {
               navItems={navItems}
               display={{ base: 'none', md: 'flex' }}
             />
+
+            {!isBlogPage && <LanguageSwitcher />}
           </Stack>
         </Container>
       </Flex>
-      <MobileNav isOpen={isOpen} navItems={navItems} />
+      <MobileNav isOpen={isOpen} navItems={navItems} isBlogPage={isBlogPage} />
     </Box>
   )
 }

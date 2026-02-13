@@ -47,3 +47,12 @@ yarn-error.log*
 
 .yarn
 .vscode/
+
+# Lingui
+src/locales/**/*.mo
+src/locales/**/*.js
+
+# RSS
+atom.xml
+rss.json
+rss.xml

@@ -1,0 +1,575 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-05-01 08:03-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: pt\n"
+"Project-Id-Version: c8a631743e21d4c69bee82f0cb0d697e\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-05-03 18:36\n"
+"Last-Translator: \n"
+"Language-Team: Portuguese, Brazilian\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: c8a631743e21d4c69bee82f0cb0d697e\n"
+"X-Crowdin-Project-ID: 14\n"
+"X-Crowdin-Language: pt-BR\n"
+"X-Crowdin-File: /[Scientific-Python-Translations.xarray-translations] main/src/locales/en/messages.po\n"
+"X-Crowdin-File-ID: 1180\n"
+
+#: src/components/footer.js:79
+msgid "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
+msgstr "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
+
+#: src/data/projects.js:9
+msgid "🌊 Oceanography"
+msgstr "🌊 Oceanografia"
+
+#: src/data/projects.js:41
+msgid "🌎 Geoscience"
+msgstr "🌎 Geociência"
+
+#: src/data/projects.js:33
+msgid "🌪🌡 Meteorology"
+msgstr "🌪🌡 Meteorologia"
+
+#: src/data/projects.js:57
+msgid "💊 Bioinformatics"
+msgstr "💊 Bioinformática"
+
+#: src/data/projects.js:17
+#: src/data/projects.js:49
+msgid "🗺️ Geographic Processing"
+msgstr "🗺️ Processamento Geográfico"
+
+#: src/pages/team.js:52
+msgid "370 volunteer contributors"
+msgstr ""
+
+#: src/components/donate.js:47
+#~ msgid "501(c)(3) nonprofit charity"
+#~ msgstr "501(c)(3) nonprofit charity"
+
+#: src/data/projects.js:64
+msgid "A high-level plotting API for the PyData ecosystem built on HoloViews"
+msgstr "Uma API de alto nível para o ecossistema PyData construído a partir de HoloViews"
+
+#: src/data/array-libraries.js:29
+msgid "An implementation of chunked, compressed, N-dimensional arrays for Python."
+msgstr "Uma implementação de matrizes N-dimensionais fatiadas e compactadas para Python."
+
+#: src/data/features.js:11
+msgid "Apply operations over named dimensions"
+msgstr "Aplicar operações sobre dimensões nomeadas"
+
+#: src/data/features.js:31
+msgid "Arbitrary metadata tracking"
+msgstr "Rastreamento de metadados arbitrários"
+
+#: src/components/ecosystem.js:78
+msgid "Array Libraries"
+msgstr "Bibliotecas para Matrizes"
+
+#: src/data/projects.js:24
+msgid "Backend-agnostic tools for diagnostics and visualizations of Bayesian inference in Python"
+msgstr "Ferramentas agnósticas de back-end para diagnósticos e visualizações de inferência Bayesiana em Python"
+
+#: src/data/projects.js:25
+msgid "Bayesian Inference"
+msgstr "Inferência Bayesiana"
+
+#: src/data/footer-items.js:8
+#: src/data/menu-items.js:11
+msgid "Blog"
+msgstr "Blog"
+
+#: src/data/footer-items.js:19
+msgid "Brand Assets"
+msgstr "Material de Marketing"
+
+#: src/components/layout.js:25
+msgid "Check out the latest blog post:"
+msgstr ""
+
+#: src/components/layout.js:26
+#~ msgid "Check out the new blog post on DataTree!"
+#~ msgstr "Confira o novo post sobre DataTree!"
+
+#: src/data/footer-items.js:11
+msgid "Citing Xarray"
+msgstr "Citando Xarray"
+
+#: src/data/projects.js:56
+msgid "Collection of tools for the analysis and visualization of spatial molecular data"
+msgstr "Coleção de ferramentas para a análise e visualização de dados moleculares espaciais"
+
+#: src/components/footer.js:144
+msgid "Community"
+msgstr "Comunidade"
+
+#: src/data/footer-items.js:35
+msgid "Compatible Projects"
+msgstr "Projetos compatíveis"
+
+#: src/data/footer-items.js:42
+msgid "Contribute"
+msgstr "Contribuir"
+
+#: src/components/dashboard/project-metrics.js:50
+msgid "Contributors"
+msgstr ""
+
+#: src/components/dashboard/project-metrics.js:44
+msgid "Core Maintainers"
+msgstr ""
+
+#: src/pages/team.js:26
+msgid "Current core maintainers 🤝"
+msgstr ""
+
+#: src/data/footer-items.js:7
+msgid "Dashboard"
+msgstr "Painel de controle"
+
+#: src/data/features.js:28
+msgid "Database like alignment based on coordinate labels that smoothly handles missing values."
+msgstr "Alinhamento tipo banco de dados baseado em rótulos de coordenadas que lidam de maneira fácil com valores faltantes."
+
+#: src/data/features.js:27
+msgid "Database like operations"
+msgstr "Operações do tipo banco de dados"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:58
+msgid "days"
+msgstr ""
+
+#: src/components/dashboard/project-metrics.js:68
+msgid "Dependent Packages/Repos"
+msgstr ""
+
+#: src/data/array-libraries.js:15
+msgid "Distributed arrays and advanced parallelism for analytics, enabling performance at scale."
+msgstr "Arrays distribuídas e paralelismo avançado para análises, permitindo desempenho em escala."
+
+#: src/components/dashboard/project-metrics.js:75
+msgid "Docs Visitors"
+msgstr ""
+
+#: src/data/footer-items.js:25
+#: src/data/menu-items.js:12
+msgid "Documentation"
+msgstr "Documentação"
+
+#: src/components/donate.js:21
+#: src/components/donate.js:71
+#: src/data/menu-items.js:10
+msgid "Donate"
+msgstr "Fazer uma doação"
+
+#: src/components/ecosystem.js:60
+#: src/data/menu-items.js:8
+msgid "Ecosystem"
+msgstr "Ecossistema"
+
+#: src/components/language-switcher.js:18
+msgid "English"
+msgstr ""
+
+#: src/components/raw-html.js:33
+msgid "Error loading content"
+msgstr ""
+
+#: src/data/footer-items.js:31
+msgid "Example Gallery"
+msgstr "Galeria de exemplos"
+
+#: src/components/dashboard/timeline-plot-container.js:23
+#~ msgid "failed to 3 load data"
+#~ msgstr ""
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:12
+#: src/components/ecosystem.js:32
+msgid "failed to load"
+msgstr "Falha ao carregar"
+
+#: src/components/dashboard/project-metrics.js:17
+#: src/components/dashboard/timeline-plot-container.js:23
+msgid "failed to load data"
+msgstr "falha ao carregar os dados"
+
+#: src/data/menu-items.js:6
+msgid "Features"
+msgstr "Funcionalidades"
+
+#: src/data/features.js:35
+msgid "Flexible and Extensible I/O backend API"
+msgstr "API de backend I/O flexível e extensível"
+
+#: src/data/features.js:24
+msgid "Flexible split-apply-combine operations with groupby."
+msgstr "Operações flexíveis de combinação-aplicação com groupby."
+
+#: src/components/donate.js:60
+#~ msgid "for more information."
+#~ msgstr "for more information."
+
+#: src/data/projects.js:8
+msgid "General Circulation Model Postprocessing with xarray"
+msgstr "Pós-processamento de modelo geral de circulação com xarray"
+
+#: src/components/hero-banner.js:70
+msgid "Get Started"
+msgstr "Comece Agora"
+
+#: src/data/footer-items.js:46
+msgid "GitHub Discussions"
+msgstr "Discussões no GitHub"
+
+#: src/data/features.js:23
+msgid "GroupBy operations"
+msgstr "Operações GroupBy"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
+msgid "hours"
+msgstr ""
+
+#: src/components/donate.js:60
+msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
+msgstr ""
+"Se você gosta do Xarray e quer apoiar nossa missão, por favor\n"
+"considere fazer uma doação para apoiar nosso trabalho."
+
+#: src/components/donate.js:47
+msgid ""
+"in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+"              and administrative support to help ensure the health and\n"
+"              sustainability of the project. For more information, visit "
+msgstr ""
+
+#: src/components/donate.js:47
+#~ msgid ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit"
+#~ msgstr ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit"
+
+#: src/components/donate.js:49
+#~ msgid ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit "
+#~ msgstr ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit "
+
+#: src/components/donate.js:47
+#~ msgid ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit{' '}"
+#~ msgstr ""
+#~ "in the United States. NumFOCUS provides Xarray with fiscal, legal,\n"
+#~ "              and administrative support to help ensure the health and\n"
+#~ "              sustainability of the project. Visit{' '}"
+
+#: src/data/features.js:7
+msgid "Interoperability"
+msgstr "Interoperabilidade"
+
+#: src/data/features.js:8
+msgid "Interoperable with the scientific Python ecosystem including NumPy, Dask, Pandas, and Matplotlib."
+msgstr "Interoperável com o ecossistema científico de Python, incluindo NumPy, Dask, Pandas e Matplotlib."
+
+#: src/data/footer-items.js:50
+msgid "Issue Tracker"
+msgstr "Rastreador de Problemas"
+
+#: src/components/features.js:25
+msgid "Key Features & Capabilities"
+msgstr "Principais Recursos & Funcionalidades"
+
+#: src/components/raw-html.js:37
+msgid "Loading data..."
+msgstr ""
+
+#: src/components/ecosystem.js:33
+msgid "loading..."
+msgstr "carregando..."
+
+#: src/data/footer-items.js:58
+msgid "Mailing List"
+msgstr "Lista de Emails"
+
+#: src/data/features.js:20
+msgid "Mathematical operations vectorize across multiple dimensions (array broadcasting) based on dimension names, not shape."
+msgstr "Operações matemáticas são vetorizadas em várias dimensões (broadcasting de matrizes) com base em nomes de dimensão, não no formato da matriz."
+
+#: src/components/dashboard/issue-tracker.js:20
+msgid "Median time a pull request is open"
+msgstr ""
+
+#: src/components/dashboard/issue-tracker.js:27
+msgid "Median time an issue is open"
+msgstr ""
+
+#: src/components/hero-banner.js:41
+msgid "N-D labeled arrays and datasets in Python"
+msgstr "Matrizes e conjuntos de dados N-D rotulados em Python"
+
+#: src/data/array-libraries.js:8
+msgid "NumPy is the fundamental package for array computing with Python."
+msgstr "NumPy é o pacote fundamental para a computação de matrizes com Python."
+
+#: src/data/array-libraries.js:22
+msgid "NumPy-compatible array library for GPU-accelerated computing with Python."
+msgstr "Biblioteca de matrizes compatível com NumPy para computação acelerada pela GPU com Python."
+
+#: src/data/array-libraries.js:43
+msgid "Operate and manipulate physical quantities in Python"
+msgstr "Opere e manipule quantidades físicas em Python"
+
+#: src/pages/team.js:44
+msgid "Our valuable contributors 💖"
+msgstr ""
+
+#: src/components/language-switcher.js:20
+msgid "Portuguese"
+msgstr ""
+
+#: src/components/dashboard/timeline-plot-container.js:49
+msgid "Pull Requests"
+msgstr "Pull Requests"
+
+#: src/data/projects.js:16
+msgid "Python library for processing spatial data and interpolating it on regular grids"
+msgstr "Biblioteca Python para processar dados espaciais e interpolá-los em malhas regulares"
+
+#: src/data/projects.js:48
+msgid "Raster-based Spatial Analytics for Python"
+msgstr "Análise Espacial baseada em rasterização para Python"
+
+#: src/data/features.js:36
+msgid "Read and write data to and from NetCDF, HDF, Zarr, OpenDAP, and GRIB."
+msgstr "Ler e gravar dados NetCDF, HDF, Zarr, OpenDAP e GRIB."
+
+#: src/components/dashboard/project-metrics.js:81
+msgid "Releases"
+msgstr ""
+
+#: src/components/footer.js:129
+msgid "Resources"
+msgstr "Recursos"
+
+#: src/data/footer-items.js:15
+msgid "Roadmap"
+msgstr "Planejamento"
+
+#: src/components/ecosystem.js:75
+msgid "Scientific Domains"
+msgstr "Domínios científicos"
+
+#: src/components/scientific-domains.js:48
+msgid "See More"
+msgstr "Veja mais"
+
+#: src/data/features.js:15
+msgid "Select values by label instead of integer location"
+msgstr "Selecione os valores por rótulo em vez do índice inteiro"
+
+#: src/components/dashboard/timeseries-agg-stats-card.js:49
+msgid "since last month"
+msgstr ""
+
+#: src/components/language-switcher.js:19
+msgid "Spanish"
+msgstr ""
+
+#: src/data/array-libraries.js:36
+msgid "Sparse multi-dimensional arrays for the PyData ecosystem"
+msgstr "Matrizes esparsas multidimensionais para o ecossistema PyData"
+
+#: src/data/menu-items.js:9
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#: src/data/footer-items.js:54
+msgid "Stack Overflow"
+msgstr "Stack Overflow"
+
+#: src/components/dashboard/project-metrics.js:59
+msgid "Stargazers"
+msgstr ""
+
+#: src/components/ecosystem.js:48
+msgid "Stars"
+msgstr "Estrelas"
+
+#: src/components/sponsors.js:16
+msgid "Supported By"
+msgstr "Apoiado por"
+
+#: src/data/footer-items.js:9
+#: src/pages/team.js:21
+msgid "Team"
+msgstr "Equipe"
+
+#. placeholder {0}: new Date(start).toLocaleDateString()
+#: src/components/dashboard/timeline-plot-container.js:41
+msgid "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to "
+msgstr ""
+"Esta é uma linha do tempo de quantas issues abertas e pull requests o Xarray tem\n"
+"no GitHub ao longo do tempo de {0} até"
+
+#: src/components/scientific-domains.js:17
+msgid "This section lists some of the standalone packages, projects developed with xarray."
+msgstr ""
+"Esta seção lista alguns pacotes autônomos e projetos desenvolvidos\n"
+"com xarray."
+
+#: src/data/menu-items.js:7
+msgid "Try"
+msgstr "Experimentar"
+
+#: src/components/repl.js:74
+msgid "Try Xarray in a REPL directly in your browser (no installation needed)!"
+msgstr "Experimente o Xarray em uma REPL diretamente no seu browser (não é necessário instalar nada)!"
+
+#: src/data/footer-items.js:27
+msgid "Tutorials"
+msgstr "Tutoriais"
+
+#: src/data/features.js:19
+msgid "Vectorized operations"
+msgstr "Operações vetorizadas"
+
+#: src/data/projects.js:40
+msgid "Verification of weather and climate forecasts"
+msgstr "Verificação do tempo e previsão do clima"
+
+#: src/pages/team.js:55
+msgid "We appreciate all contributions from community to make Xarray thrive."
+msgstr ""
+
+#: src/components/sponsors.js:19
+#~ msgid ""
+#~ "We thank these institutions for generously supporting the development\n"
+#~ "             and maintenance of Xarray."
+#~ msgstr ""
+#~ "We thank these institutions for generously supporting the development\n"
+#~ "             and maintenance of Xarray."
+
+#: src/components/sponsors.js:19
+#~ msgid ""
+#~ "We thank these institutions for generously supporting the development\n"
+#~ "and maintenance of Xarray."
+#~ msgstr ""
+#~ "We thank these institutions for generously supporting the development\n"
+#~ "and maintenance of Xarray."
+
+#: src/components/sponsors.js:19
+#~ msgid ""
+#~ "We thank these institutions for generously supporting the development \n"
+#~ "and maintenance of Xarray."
+#~ msgstr ""
+#~ "We thank these institutions for generously supporting the development \n"
+#~ "and maintenance of Xarray."
+
+#: src/components/sponsors.js:19
+msgid "We thank these institutions for generously supporting the development and maintenance of Xarray."
+msgstr ""
+"Agradecemos essas instituições por apoiarem generosamente o desenvolvimento\n"
+"e a manutenção do Xarray."
+
+#: src/components/hero-banner.js:78
+msgid "Why Xarray?"
+msgstr "Por que Xarray?"
+
+#: src/pages/team.js:29
+msgid "Xarray core maintainers are responsible for the ongoing organizational maintenance and technical direction of the Xarray project. The current core team comprises:"
+msgstr ""
+
+#: src/components/hero-banner.js:61
+#~ msgid ""
+#~ "Xarray includes a large and growing library of domain-agnostic\n"
+#~ "                 functions for advanced analytics and visualization with these data\n"
+#~ "                 structures."
+#~ msgstr ""
+#~ "Xarray includes a large and growing library of domain-agnostic\n"
+#~ "                 functions for advanced analytics and visualization with these data\n"
+#~ "                 structures."
+
+#: src/components/hero-banner.js:48
+msgid "Xarray includes a large and growing library of domain-agnostic functions for advanced analytics and visualization with these data structures."
+msgstr "Xarray inclui uma grande e crescente biblioteca de funções agnósticas de domínio para análises avançadas e visualização com estas estruturas de dados."
+
+#: src/components/donate.js:38
+msgid "Xarray is a NumFOCUS Sponsored Project, a "
+msgstr ""
+
+#: src/components/donate.js:40
+#~ msgid "Xarray is a Sponsored Project of NumFOCUS, a "
+#~ msgstr "Xarray is a Sponsored Project of NumFOCUS, a "
+
+#: src/components/donate.js:38
+#~ msgid "Xarray is a Sponsored Project of NumFOCUS, a{' '}"
+#~ msgstr "Xarray is a Sponsored Project of NumFOCUS, a{' '}"
+
+#: src/components/hero-banner.js:56
+#~ msgid ""
+#~ "Xarray is an open source project and Python package that introduces labels in the\n"
+#~ "                 form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays,\n"
+#~ "                 which allows for more intuitive, more concise, and less error-prone user experience."
+#~ msgstr ""
+#~ "Xarray is an open source project and Python package that introduces labels in the\n"
+#~ "                 form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays,\n"
+#~ "                 which allows for more intuitive, more concise, and less error-prone user experience."
+
+#: src/components/hero-banner.js:45
+msgid "Xarray is an open source project and Python package that introduces labels in the form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays, which allows for more intuitive, more concise, and less error-prone user experience."
+msgstr ""
+"Xarray é um projeto de código aberto e pacote Python que introduz rótulos na forma de dimensões, coordenadas\n"
+" e atributos em matrizes do tipo NumPy, que permitem uma experiência do usuário mais intuitiva, mais concisa e menos propensa a erros."
+
+#: src/pages/team.js:47
+msgid "Xarray is made with love by more than "
+msgstr ""
+
+#: src/components/ecosystem.js:63
+msgid "Xarray is part of the larger scientific Python ecosystem. It is built on top of NumPy, Pandas, and Dask and supports a wide range of domain specific scientific applications."
+msgstr ""
+"Xarray é parte do ecossistema científico de Python. É construído\n"
+"a partir da NumPy, do Pandas e do Dask e suporta uma ampla gama de aplicativos científicos específicos."
+
+#: src/components/dashboard/issue-tracker.js:15
+msgid "Xarray Issue Tracker"
+msgstr "Rastreador de Problemas Xarray"
+
+#: src/components/dashboard/project-metrics.js:40
+msgid "Xarray Project Metrics"
+msgstr "Métricas do Projeto Xarray"
+
+#: src/pages/dashboard.js:9
+#: src/pages/dashboard.js:11
+msgid "Xarray project statistics"
+msgstr "Métricas do Projeto Xarray"
+
+#: src/components/features.js:28
+msgid "Xarray provides data models for working with labeled arrays and datasets. Its toolkit includes a broad set of domain-agnostic functions for advanced analytics and visualization with these data structures."
+msgstr "Xarray fornece modelos de dados para trabalhar com matrizes e conjuntos de dados rotulados. Seu kit de ferramentas inclui um amplo conjunto de funções agnósticas de domínio para análise avançada e visualização com estas estruturas de dados."
+
+#: src/components/array-libraries.js:51
+msgid "Xarray supports multiple array backends, allowing users to choose array types that work best for their application."
+msgstr "O Xarray suporta vários backends de matrizes, permitindo que os usuários escolham tipos de matrizes que funcionam melhor para sua aplicação."
+
+#: src/components/layout.js:30
+#~ msgid "Xarray x NASA: xarray.DataTree for hierarchical data structures"
+#~ msgstr "Xarray x NASA: xarray.DataTree para estruturas de dados hierárquicas"
+
+#: src/pages/index.js:29
+msgid "Xarray: N-D labeled arrays and datasets in Python"
+msgstr "Xarray: matrizes N-D rotuladas e conjuntos de dados em Python"

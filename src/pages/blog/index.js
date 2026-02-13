@@ -109,7 +109,7 @@ export default function Blog({ allPostsData }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params, locale = 'en' }) {
   const allPostsData = getSortedPostsMetadata()
   generateRssFeed(allPostsData)
   return {

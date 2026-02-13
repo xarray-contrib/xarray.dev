@@ -10,6 +10,7 @@ import {
   Tabs,
   Text,
 } from '@chakra-ui/react'
+import { useLingui } from '@lingui/react/macro'
 import * as d3 from 'd3'
 import useSWR from 'swr'
 
@@ -18,8 +19,8 @@ export const TimelinePlotContainer = () => {
     'https://pydata-datasette.fly.dev/open_pulls_and_issues.json?_shape=array&&sql=select%0D%0A++time%2C%0D%0A++open_issues%2C%0D%0A++open_pull_requests%0D%0Afrom%0D%0A++open_pulls_and_issues%0D%0Awhere%0D%0A++project+%3D+%27pydata%2Fxarray%27%0D%0Aorder+by%0D%0A++time',
     fetcher,
   )
-
-  if (error) return <div>failed to load data</div>
+  const { t } = useLingui()
+  if (error) return <div>{t`failed to load data`}</div>
   if (!data)
     return (
       <Spinner
@@ -37,8 +38,7 @@ export const TimelinePlotContainer = () => {
   return (
     <Box my={8}>
       <Text fontSize={'md'} align={'center'}>
-        This is a timeline of how many open issues and pull requests Xarray has
-        on Github over time from {new Date(start).toLocaleDateString()} to{' '}
+        {t`This is a timeline of how many open issues and pull requests Xarray has on Github over time from ${new Date(start).toLocaleDateString()} to `}
         {new Date(end).toLocaleDateString()}.
       </Text>
       <br />
@@ -46,7 +46,7 @@ export const TimelinePlotContainer = () => {
       <Tabs align='center' variant='enclosed' isFitted colorScheme='teal'>
         <TabList>
           <Tab _selected={{ color: 'white', bg: 'teal.500' }}>
-            Pull Requests
+            {t`Pull Requests`}
           </Tab>
           <Tab _selected={{ color: 'white', bg: 'teal.500' }}>Issues</Tab>
         </TabList>

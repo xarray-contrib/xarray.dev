@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compile": "lingui compile"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,9 @@
     "@emotion/styled": "^11.13.0",
     "@fontsource-variable/inter": "^5.2.5",
     "@giscus/react": "^3.0.0",
+    "@lingui/babel-plugin-lingui-macro": "^5.9.0",
+    "@lingui/loader": "^5.9.0",
+    "@lingui/react": "^5.9.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.14",

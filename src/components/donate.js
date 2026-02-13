@@ -10,13 +10,15 @@ import {
 import { Heading, Image, Link } from '@/components/mdx'
 
 import { BiDonateHeart } from 'react-icons/bi'
+import { useLingui } from '@lingui/react/macro'
 
 export const Donate = () => {
+  const { t } = useLingui()
   return (
     <Box id={'donate'} as='section'>
       <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
-          Donate
+          {t`Donate`}
         </Heading>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
@@ -33,7 +35,7 @@ export const Donate = () => {
             position={'relative'}
           >
             <Text fontSize={'lg'}>
-              Xarray is a Sponsored Project of NumFOCUS, a{' '}
+              {t`Xarray is a NumFOCUS Sponsored Project, a `}
               <Text
                 as={Link}
                 href={'https://en.wikipedia.org/wiki/501(c)(3)_organization'}
@@ -42,9 +44,9 @@ export const Donate = () => {
               >
                 501(c)(3) nonprofit charity
               </Text>{' '}
-              in the United States. NumFOCUS provides Xarray with fiscal, legal,
+              {t`in the United States. NumFOCUS provides Xarray with fiscal, legal,
               and administrative support to help ensure the health and
-              sustainability of the project. Visit{' '}
+              sustainability of the project. For more information, visit `}
               <Text
                 as={Link}
                 useExternalIcon
@@ -53,11 +55,9 @@ export const Donate = () => {
               >
                 numfocus.org
               </Text>{' '}
-              for more information.
               <br />
               <br />
-              If you like Xarray and want to support our mission, please
-              consider making a donation to support our efforts.
+              {t`If you like Xarray and want to support our mission, please consider making a donation to support our efforts.`}
             </Text>
             <Button
               as={Link}
@@ -68,7 +68,7 @@ export const Donate = () => {
               rightIcon={<BiDonateHeart />}
               href={'https://numfocus.org/donate-to-xarray'}
             >
-              Donate
+              {t`Donate`}
             </Button>
           </Stack>
 
