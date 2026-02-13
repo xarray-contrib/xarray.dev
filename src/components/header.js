@@ -97,7 +97,7 @@ export const Header = () => {
               navItems={navItems}
               display={{ base: 'none', md: 'flex' }}
             />
-            
+
             {!isBlogPage && <LanguageSwitcher />}
           </Stack>
         </Container>
