@@ -15,6 +15,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import { LanguageSwitcher } from './language-switcher'
 
@@ -22,6 +23,8 @@ export const Header = () => {
   let navItems = getMenuItems()
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
+  const router = useRouter()
+  const isBlogPage = router.asPath.startsWith('/blog')
 
   return (
     <Box>
@@ -94,11 +97,12 @@ export const Header = () => {
               navItems={navItems}
               display={{ base: 'none', md: 'flex' }}
             />
-            <LanguageSwitcher />
+            
+            {!isBlogPage && <LanguageSwitcher />}
           </Stack>
         </Container>
       </Flex>
-      <MobileNav isOpen={isOpen} navItems={navItems} />
+      <MobileNav isOpen={isOpen} navItems={navItems} isBlogPage={isBlogPage} />
     </Box>
   )
 }

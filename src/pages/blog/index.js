@@ -20,7 +20,6 @@ import { Link } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { getSortedPostsMetadata } from '@/lib/posts'
 import { generateRssFeed } from '@/lib/rss-feed'
-import { loadCatalog } from '../../i18n'
 
 const SinglePost = ({ page }) => {
   const date = new Date(page.date)

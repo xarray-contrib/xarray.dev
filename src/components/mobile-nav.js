@@ -73,7 +73,7 @@ const MobileNavItem = ({ href, children, label }) => {
   )
 }
 
-export const MobileNav = ({ navItems, isOpen }) => {
+export const MobileNav = ({ navItems, isOpen, isBlogPage }) => {
   if (!isOpen) return null
 
   return (
@@ -98,7 +98,7 @@ export const MobileNav = ({ navItems, isOpen }) => {
       {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      <LanguageSwitcher></LanguageSwitcher>
+      {!isBlogPage && <LanguageSwitcher />}
     </Stack>
   )
 }
