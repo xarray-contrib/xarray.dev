@@ -16,6 +16,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 import { MdOutlineCalendarToday, MdPeopleOutline } from 'react-icons/md'
+import { loadCatalog } from '../../i18n'
 
 const Card = ({ frontmatter, id }) => {
   const date = new Date(frontmatter.date)
