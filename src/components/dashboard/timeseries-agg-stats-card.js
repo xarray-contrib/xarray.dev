@@ -45,8 +45,7 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
 
   const change = {
     type: diffPercentage < 0 ? 'increase' : 'decrease',
-    value:
-      `${d3.format('.2f')(Math.abs(diffPercentage))}% ` + t`since last month`,
+    value: t`${d3.format('.2f')(Math.abs(diffPercentage))}% since last month`,
   }
   return (
     <StatisticsCard
@@ -54,8 +53,8 @@ export const TimeseriesAggStatsCard = ({ query, title, icon }) => {
       icon={icon}
       stat={
         result <= 2
-          ? `${d3.format('.1f')(result * 24)} ` + t`hours`
-          : `${d3.format('.1f')(result)} ` + t`days`
+          ? t`${d3.format('.1f')(result * 24)} hours`
+          : t`${d3.format('.1f')(result)} days`
       }
       diff={change}
     />

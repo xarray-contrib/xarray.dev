@@ -72,7 +72,7 @@ export const ProjectMetrics = () => {
           />
 
           <StatisticsCard
-            title={t`Docs Visitors` + ` - ${month}/${year}`}
+            title={t`Docs Visitors - ${month}/${year}`}
             stat={monthlyViews.users}
             icon={<GoBook size={'3em'} />}
           />
