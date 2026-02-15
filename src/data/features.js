@@ -29,7 +29,7 @@ export const getFeatures = () => {
     },
     {
       title: t`Arbitrary metadata tracking`,
-      text: 'Keep track of arbitrary metadata in the form of a Python dictionary.',
+      text: t`Keep track of arbitrary metadata in the form of a Python dictionary.`,
     },
     {
       title: t`Flexible and Extensible I/O backend API`,
