@@ -28,7 +28,6 @@ import { Link, mapping } from '@/components/mdx'
 import { distanceToNow, formatDate } from '@/lib/date-formatting'
 import { MDXElements } from '@/lib/mdx-elements'
 import { getAllPostsIds, getPostData } from '@/lib/posts'
-import { loadCatalog } from '../../i18n'
 import { i18nConfig } from '@/config/i18n.mjs'
 
 export default function Post({ source, frontmatter, postId, translation }) {

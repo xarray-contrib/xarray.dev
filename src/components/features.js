@@ -16,8 +16,7 @@ import { useLingui } from '@lingui/react/macro'
 
 export const Features = () => {
   const { t } = useLingui()
-  let data = getFeatures()
-  const features = React.useMemo(() => data, [])
+  const features = getFeatures()
   return (
     <Box id={'features'} as='section'>
       <Container maxW='container.lg' centerContent>

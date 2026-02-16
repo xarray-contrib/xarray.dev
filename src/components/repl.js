@@ -68,7 +68,7 @@ export const Repl = () => {
     <Box id={'repl'} as='section'>
       <Container maxW='container.lg' centerContent>
         <Heading as='h1' size='2xl'>
-          Try Xarray
+          {t`Try Xarray`}
         </Heading>
         <Text fontSize={'lg'}>
           {t`Try Xarray in a REPL directly in your browser (no installation needed)!`}

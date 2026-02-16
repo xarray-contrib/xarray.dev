@@ -42,7 +42,7 @@ export const Donate = () => {
                 color={'blue.400'}
                 useExternalIcon
               >
-                501(c)(3) nonprofit charity
+                {t`501(c)(3) nonprofit charity`}
               </Text>{' '}
               {t`in the United States. NumFOCUS provides Xarray with fiscal, legal,
               and administrative support to help ensure the health and

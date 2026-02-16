@@ -1,6 +1,16 @@
 import { IssueTracker, ProjectMetrics } from '@/components/dashboard'
 import { Layout } from '@/components/layout'
 import { useLingui } from '@lingui/react/macro'
+import { loadCatalog } from '../i18n'
+
+export const getStaticProps = async (ctx) => {
+  const translation = await loadCatalog(ctx.locale)
+  return {
+    props: {
+      translation,
+    },
+  }
+}
 
 const DashboardPage = () => {
   const { t } = useLingui()
