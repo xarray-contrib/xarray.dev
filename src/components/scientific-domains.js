@@ -9,8 +9,7 @@ import { useLingui } from '@lingui/react/macro'
 
 export const ScientificDomains = () => {
   const { t } = useLingui()
-  const Projects = getProjects()
-  const projects = React.useMemo(() => Projects, [])
+  const projects = getProjects()
   return (
     <Box my={8}>
       <Text fontSize={'lg'}>

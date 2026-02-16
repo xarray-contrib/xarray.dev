@@ -13,15 +13,37 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: d3.format('.1f')(result)
+#: src/components/dashboard/timeseries-agg-stats-card.js:57
+msgid "{0} days"
+msgstr "{0} days"
+
+#. placeholder {0}: d3.format('.1f')(result * 24)
+#: src/components/dashboard/timeseries-agg-stats-card.js:56
+msgid "{0} hours"
+msgstr "{0} hours"
+
+#. placeholder {0}: d3.format('.2f')(Math.abs(diffPercentage))
+#: src/components/dashboard/timeseries-agg-stats-card.js:48
+msgid "{0}% since last month"
+msgstr "{0}% since last month"
+
 #: src/components/footer.js:79
-msgid "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
-msgstr "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
+msgid "© {currentYear}, Xarray core developers. Apache 2.0 Licensed."
+msgstr "© {currentYear}, Xarray core developers. Apache 2.0 Licensed."
+
+#: src/components/footer.js:79
+#~ msgid "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
+#~ msgstr "© {currentYear}, Xarray core developers. Apache 2.0Licensed."
 
 #: src/data/projects.js:9
 msgid "🌊 Oceanography"
 msgstr "🌊 Oceanography"
 
 #: src/data/projects.js:41
+#: src/data/projects.js:73
+#: src/data/projects.js:81
+#: src/data/projects.js:105
 msgid "🌎 Geoscience"
 msgstr "🌎 Geoscience"
 
@@ -33,26 +55,50 @@ msgstr "🌪🌡 Meteorology"
 msgid "💊 Bioinformatics"
 msgstr "💊 Bioinformatics"
 
+#: src/data/projects.js:89
+msgid "💥 plasma physics"
+msgstr "💥 plasma physics"
+
+#: src/data/projects.js:65
+msgid "📊 Visualization"
+msgstr "📊 Visualization"
+
 #: src/data/projects.js:17
 #: src/data/projects.js:49
 msgid "🗺️ Geographic Processing"
 msgstr "🗺️ Geographic Processing"
 
-#: src/pages/team.js:52
+#: src/data/projects.js:97
+msgid "🧬 genomics"
+msgstr "🧬 genomics"
+
+#: src/pages/team.js:62
 msgid "370 volunteer contributors"
 msgstr "370 volunteer contributors"
 
-#: src/components/donate.js:47
-#~ msgid "501(c)(3) nonprofit charity"
-#~ msgstr "501(c)(3) nonprofit charity"
+#: src/components/donate.js:45
+msgid "501(c)(3) nonprofit charity"
+msgstr "501(c)(3) nonprofit charity"
+
+#: src/data/projects.js:72
+msgid "A community platform for Big Data geoscience"
+msgstr "A community platform for Big Data geoscience"
 
 #: src/data/projects.js:64
 msgid "A high-level plotting API for the PyData ecosystem built on HoloViews"
 msgstr "A high-level plotting API for the PyData ecosystem built on HoloViews"
 
+#: src/data/projects.js:80
+msgid "An accessor for Xarray objects that interprets Climate and Forecast (CF) metadata convention attributes"
+msgstr "An accessor for Xarray objects that interprets Climate and Forecast (CF) metadata convention attributes"
+
 #: src/data/array-libraries.js:29
 msgid "An implementation of chunked, compressed, N-dimensional arrays for Python."
 msgstr "An implementation of chunked, compressed, N-dimensional arrays for Python."
+
+#: src/data/projects.js:104
+msgid "Analysis ready CMIP6 data in Python the easy way with pangeo tools."
+msgstr "Analysis ready CMIP6 data in Python the easy way with pangeo tools."
 
 #: src/data/features.js:11
 msgid "Apply operations over named dimensions"
@@ -95,6 +141,10 @@ msgstr "Check out the latest blog post:"
 msgid "Citing Xarray"
 msgstr "Citing Xarray"
 
+#: src/data/projects.js:32
+msgid "Collection of tools for reading, visualizing and performing calculations with weather data"
+msgstr "Collection of tools for reading, visualizing and performing calculations with weather data"
+
 #: src/data/projects.js:56
 msgid "Collection of tools for the analysis and visualization of spatial molecular data"
 msgstr "Collection of tools for the analysis and visualization of spatial molecular data"
@@ -119,7 +169,7 @@ msgstr "Contributors"
 msgid "Core Maintainers"
 msgstr "Core Maintainers"
 
-#: src/pages/team.js:26
+#: src/pages/team.js:36
 msgid "Current core maintainers 🤝"
 msgstr "Current core maintainers 🤝"
 
@@ -136,8 +186,8 @@ msgid "Database like operations"
 msgstr "Database like operations"
 
 #: src/components/dashboard/timeseries-agg-stats-card.js:58
-msgid "days"
-msgstr "days"
+#~ msgid "days"
+#~ msgstr "days"
 
 #: src/components/dashboard/project-metrics.js:68
 msgid "Dependent Packages/Repos"
@@ -226,8 +276,8 @@ msgid "GroupBy operations"
 msgstr "GroupBy operations"
 
 #: src/components/dashboard/timeseries-agg-stats-card.js:57
-msgid "hours"
-msgstr "hours"
+#~ msgid "hours"
+#~ msgstr "hours"
 
 #: src/components/donate.js:60
 msgid "If you like Xarray and want to support our mission, please consider making a donation to support our efforts."
@@ -273,6 +323,10 @@ msgstr ""
 #~ "              and administrative support to help ensure the health and\n"
 #~ "              sustainability of the project. Visit{' '}"
 
+#: src/data/projects.js:88
+msgid "Integrated modeling and experimental data analysis software for magnetically confined thermonuclear fusion experiments"
+msgstr "Integrated modeling and experimental data analysis software for magnetically confined thermonuclear fusion experiments"
+
 #: src/data/features.js:7
 msgid "Interoperability"
 msgstr "Interoperability"
@@ -285,7 +339,15 @@ msgstr "Interoperable with the scientific Python ecosystem including NumPy, Dask
 msgid "Issue Tracker"
 msgstr "Issue Tracker"
 
-#: src/components/features.js:25
+#: src/components/dashboard/timeline-plot-container.js:50
+msgid "Issues"
+msgstr "Issues"
+
+#: src/data/features.js:32
+msgid "Keep track of arbitrary metadata in the form of a Python dictionary."
+msgstr "Keep track of arbitrary metadata in the form of a Python dictionary."
+
+#: src/components/features.js:24
 msgid "Key Features & Capabilities"
 msgstr "Key Features & Capabilities"
 
@@ -329,7 +391,7 @@ msgstr "NumPy-compatible array library for GPU-accelerated computing with Python
 msgid "Operate and manipulate physical quantities in Python"
 msgstr "Operate and manipulate physical quantities in Python"
 
-#: src/pages/team.js:44
+#: src/pages/team.js:54
 msgid "Our valuable contributors 💖"
 msgstr "Our valuable contributors 💖"
 
@@ -337,7 +399,7 @@ msgstr "Our valuable contributors 💖"
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: src/components/dashboard/timeline-plot-container.js:49
+#: src/components/dashboard/timeline-plot-container.js:48
 msgid "Pull Requests"
 msgstr "Pull Requests"
 
@@ -365,11 +427,15 @@ msgstr "Resources"
 msgid "Roadmap"
 msgstr "Roadmap"
 
+#: src/data/projects.js:96
+msgid "Scalable statistical genetic data analysis in Python"
+msgstr "Scalable statistical genetic data analysis in Python"
+
 #: src/components/ecosystem.js:75
 msgid "Scientific Domains"
 msgstr "Scientific Domains"
 
-#: src/components/scientific-domains.js:48
+#: src/components/scientific-domains.js:47
 msgid "See More"
 msgstr "See More"
 
@@ -378,8 +444,8 @@ msgid "Select values by label instead of integer location"
 msgstr "Select values by label instead of integer location"
 
 #: src/components/dashboard/timeseries-agg-stats-card.js:49
-msgid "since last month"
-msgstr "since last month"
+#~ msgid "since last month"
+#~ msgstr "since last month"
 
 #: src/components/language-switcher.js:19
 msgid "Spanish"
@@ -410,22 +476,31 @@ msgid "Supported By"
 msgstr "Supported By"
 
 #: src/data/footer-items.js:9
-#: src/pages/team.js:21
+#: src/pages/team.js:31
 msgid "Team"
 msgstr "Team"
 
-#. placeholder {0}: new Date(start).toLocaleDateString()
 #: src/components/dashboard/timeline-plot-container.js:41
-msgid "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to "
-msgstr "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to "
+#~ msgid "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to "
+#~ msgstr "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to "
 
-#: src/components/scientific-domains.js:17
+#. placeholder {0}: new Date(start).toLocaleDateString()
+#. placeholder {1}: new Date(end).toLocaleDateString()
+#: src/components/dashboard/timeline-plot-container.js:41
+msgid "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to {1}."
+msgstr "This is a timeline of how many open issues and pull requests Xarray has on Github over time from {0} to {1}."
+
+#: src/components/scientific-domains.js:16
 msgid "This section lists some of the standalone packages, projects developed with xarray."
 msgstr "This section lists some of the standalone packages, projects developed with xarray."
 
 #: src/data/menu-items.js:7
 msgid "Try"
 msgstr "Try"
+
+#: src/components/repl.js:71
+msgid "Try Xarray"
+msgstr "Try Xarray"
 
 #: src/components/repl.js:74
 msgid "Try Xarray in a REPL directly in your browser (no installation needed)!"
@@ -443,7 +518,7 @@ msgstr "Vectorized operations"
 msgid "Verification of weather and climate forecasts"
 msgstr "Verification of weather and climate forecasts"
 
-#: src/pages/team.js:55
+#: src/pages/team.js:65
 msgid "We appreciate all contributions from community to make Xarray thrive."
 msgstr "We appreciate all contributions from community to make Xarray thrive."
 
@@ -479,7 +554,11 @@ msgstr "We thank these institutions for generously supporting the development an
 msgid "Why Xarray?"
 msgstr "Why Xarray?"
 
-#: src/pages/team.js:29
+#: src/pages/team.js:22
+msgid "Xarray Contributors"
+msgstr "Xarray Contributors"
+
+#: src/pages/team.js:39
 msgid "Xarray core maintainers are responsible for the ongoing organizational maintenance and technical direction of the Xarray project. The current core team comprises:"
 msgstr "Xarray core maintainers are responsible for the ongoing organizational maintenance and technical direction of the Xarray project. The current core team comprises:"
 
@@ -523,7 +602,7 @@ msgstr "Xarray is a NumFOCUS Sponsored Project, a "
 msgid "Xarray is an open source project and Python package that introduces labels in the form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays, which allows for more intuitive, more concise, and less error-prone user experience."
 msgstr "Xarray is an open source project and Python package that introduces labels in the form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays, which allows for more intuitive, more concise, and less error-prone user experience."
 
-#: src/pages/team.js:47
+#: src/pages/team.js:57
 msgid "Xarray is made with love by more than "
 msgstr "Xarray is made with love by more than "
 
@@ -539,16 +618,16 @@ msgstr "Xarray Issue Tracker"
 msgid "Xarray Project Metrics"
 msgstr "Xarray Project Metrics"
 
-#: src/pages/dashboard.js:9
-#: src/pages/dashboard.js:11
+#: src/pages/dashboard.js:19
+#: src/pages/dashboard.js:21
 msgid "Xarray project statistics"
 msgstr "Xarray project statistics"
 
-#: src/components/features.js:28
+#: src/components/features.js:27
 msgid "Xarray provides data models for working with labeled arrays and datasets. Its toolkit includes a broad set of domain-agnostic functions for advanced analytics and visualization with these data structures."
 msgstr "Xarray provides data models for working with labeled arrays and datasets. Its toolkit includes a broad set of domain-agnostic functions for advanced analytics and visualization with these data structures."
 
-#: src/components/array-libraries.js:51
+#: src/components/array-libraries.js:50
 msgid "Xarray supports multiple array backends, allowing users to choose array types that work best for their application."
 msgstr "Xarray supports multiple array backends, allowing users to choose array types that work best for their application."
 
@@ -556,6 +635,6 @@ msgstr "Xarray supports multiple array backends, allowing users to choose array 
 #~ msgid "Xarray x NASA: xarray.DataTree for hierarchical data structures"
 #~ msgstr "Xarray x NASA: xarray.DataTree for hierarchical data structures"
 
-#: src/pages/index.js:29
+#: src/pages/index.js:30
 msgid "Xarray: N-D labeled arrays and datasets in Python"
 msgstr "Xarray: N-D labeled arrays and datasets in Python"

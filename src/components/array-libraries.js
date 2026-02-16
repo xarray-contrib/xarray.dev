@@ -43,8 +43,7 @@ const Library = ({ name, description, repo, url, logo }) => {
 
 export const ArrayLibraries = () => {
   const { t } = useLingui()
-  let data = getLibraries()
-  const libraries = React.useMemo(() => data, [])
+  const libraries = getLibraries()
   return (
     <Box my={8}>
       <Text fontSize={'lg'}>

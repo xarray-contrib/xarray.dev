@@ -38,8 +38,7 @@ export const TimelinePlotContainer = () => {
   return (
     <Box my={8}>
       <Text fontSize={'md'} align={'center'}>
-        {t`This is a timeline of how many open issues and pull requests Xarray has on Github over time from ${new Date(start).toLocaleDateString()} to `}
-        {new Date(end).toLocaleDateString()}.
+        {t`This is a timeline of how many open issues and pull requests Xarray has on Github over time from ${new Date(start).toLocaleDateString()} to ${new Date(end).toLocaleDateString()}.`}
       </Text>
       <br />
       <br />
@@ -48,7 +47,7 @@ export const TimelinePlotContainer = () => {
           <Tab _selected={{ color: 'white', bg: 'teal.500' }}>
             {t`Pull Requests`}
           </Tab>
-          <Tab _selected={{ color: 'white', bg: 'teal.500' }}>Issues</Tab>
+          <Tab _selected={{ color: 'white', bg: 'teal.500' }}>{t`Issues`}</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
