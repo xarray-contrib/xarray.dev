@@ -2,7 +2,10 @@ import { Box, Button, Container, Heading, Stack, Text } from '@chakra-ui/react'
 
 import { Image, Link } from '@/components/mdx'
 
+import { useLingui } from '@lingui/react/macro'
+
 export const HeroBanner = () => {
+  const { t } = useLingui()
   return (
     <Box as='section'>
       <Container maxW='container.lg' py={24} centerContent>
@@ -35,20 +38,14 @@ export const HeroBanner = () => {
               </Text>
               <br />
               <Text as={'span'} color={'red.400'}>
-                N-D labeled arrays and datasets in Python
+                {t`N-D labeled arrays and datasets in Python`}
               </Text>
             </Heading>
             <Text fontSize={'lg'}>
-              <strong>Xarray</strong> is an open source project and Python
-              package that introduces labels in the form of dimensions,
-              coordinates, and attributes on top of raw NumPy-like arrays, which
-              allows for more intuitive, more concise, and less error-prone user
-              experience.
+              {t`Xarray is an open source project and Python package that introduces labels in the form of dimensions, coordinates, and attributes on top of raw NumPy-like arrays, which allows for more intuitive, more concise, and less error-prone user experience.`}
               <br />
               <br />
-              Xarray includes a large and growing library of domain-agnostic
-              functions for advanced analytics and visualization with these data
-              structures.
+              {t`Xarray includes a large and growing library of domain-agnostic functions for advanced analytics and visualization with these data structures.`}
             </Text>
           </Stack>
           <Stack flex={1} spacing={{ base: 10, md: 20 }}>
@@ -70,7 +67,7 @@ export const HeroBanner = () => {
                 colorScheme={'blue'}
                 href='https://docs.xarray.dev/en/stable/getting-started-guide/quick-overview.html'
               >
-                Get Started
+                {t`Get Started`}
               </Button>
               <Button
                 useExternalIcon
@@ -78,7 +75,7 @@ export const HeroBanner = () => {
                 variant={'outline'}
                 href='https://docs.xarray.dev/en/stable/getting-started-guide/why-xarray.html'
               >
-                Why Xarray?
+                {t`Why Xarray?`}
               </Button>
             </Stack>
           </Stack>
