@@ -23,7 +23,7 @@
     "@chakra-ui/system": "^2.6.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/inter": "^5.2.8",
     "@giscus/react": "^3.0.0",
     "@lingui/babel-plugin-lingui-macro": "^5.9.0",
     "@lingui/loader": "^5.9.0",
