@@ -40,7 +40,7 @@ export const ScientificDomains = () => {
       <Button
         as={Link}
         useExternalIcon
-        href='https://docs.xarray.dev/en/stable/ecosystem.html'
+        href='https://docs.xarray.dev/en/stable/user-guide/ecosystem.html'
         variant={'outline'}
         colorScheme={'blue'}
       >
