@@ -1,3 +1,8 @@
+public/atom.xml
+public/rss.json
+public/rss.html
+public/rss.xml
+
 yarn.lock
 package-lock.json
 
