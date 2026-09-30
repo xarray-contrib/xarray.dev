@@ -9,7 +9,7 @@ export const getFooterItems = () => {
       { label: t`Team`, href: '/team' },
       {
         label: t`Citing Xarray`,
-        href: 'https://docs.xarray.dev/en/stable/getting-started-guide/faq.html#how-should-i-cite-xarray',
+        href: 'https://docs.xarray.dev/en/stable/get-help/faq.html#how-should-i-cite-xarray',
       },
       {
         label: t`Roadmap`,
