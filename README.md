@@ -59,6 +59,18 @@ When creating new content or editing existing content, only the english version 
 
 For more details on how the integration works, see https://scientific-python-translations.github.io/docs/. For more details on how to translate the website, see https://scientific-python-translations.github.io/translate/.
 
+### Modifying translatable strings
+
+This site uses [Lingui](https://lingui.dev/) for internationalization. When you add or modify user-facing strings, you must update the message catalogs before committing:
+
+```bash
+npx lingui extract
+```
+
+This updates the `.po` files in `src/locales/` with new message entries. You do **not** need to run `lingui compile` — the build handles this automatically. Blog posts are not translated and do not need to use Lingui.
+
+See [INTERNATIONALIZATION.md](INTERNATIONALIZATION.md) for details on how to write translatable code.
+
 ## Authoring blog post tips
 
 1. To create a new blog post a good place to start is copying a subfolder under `src/posts/`, so, for example https://xarray.dev/blog/flox is written here https://github.com/xarray-contrib/xarray.dev/blob/e04905f5ea039eb2eb848c0b4945beee323900e4/src/posts/flox/index.md
