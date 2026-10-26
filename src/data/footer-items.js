@@ -25,7 +25,7 @@ export const getFooterItems = () => {
       { label: t`Documentation`, href: 'https://docs.xarray.dev/en/stable/' },
       {
         label: t`Tutorials`,
-        href: 'https://docs.xarray.dev/en/stable/tutorials-and-videos.html',
+        href: 'https://docs.xarray.dev/en/stable/getting-started-guide/tutorials-and-videos.html',
       },
       {
         label: t`Example Gallery`,
@@ -40,7 +40,7 @@ export const getFooterItems = () => {
     community: [
       {
         label: t`Contribute`,
-        href: 'https://docs.xarray.dev/en/stable/contributing.html',
+        href: 'https://docs.xarray.dev/en/stable/contribute/contributing.html',
       },
       {
         label: t`GitHub Discussions`,

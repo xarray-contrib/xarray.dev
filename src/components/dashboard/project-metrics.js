@@ -44,7 +44,7 @@ export const ProjectMetrics = () => {
             title={t`Core Maintainers`}
             stat={'15'}
             icon={<BsPerson size={'3em'} />}
-            link={'https://docs.xarray.dev/en/stable/team.html'}
+            link={'/team'}
           />
           <DatasetteStatsCard
             title={t`Contributors`}
